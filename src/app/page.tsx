@@ -1,113 +1,249 @@
+"use client"
 import Image from "next/image";
+import "./styles.css"
+import Head from 'next/head';
+import { useRef, useEffect, useState } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 export default function Home() {
+  const parallaxRef = useRef(null);
+
+  useEffect(() => {
+    let ctx = gsap.context(() => {
+      gsap.registerPlugin(ScrollTrigger);
+      let sections = gsap.utils.toArray(".panels");
+      gsap.to(sections, {
+        xPercent: -100 * (sections.length - 1),
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".slider-container",
+          pin: true,
+          scrub: 1,
+          snap: 1 / (sections.length - 1),
+          end: () => "+=5000"
+        }
+      });
+
+      let tl = gsap.timeline({})
+      tl.fromTo(
+        document.querySelectorAll(".ofx"),
+        { opacity: 0 },
+        {
+          opacity: 1, duration: 2, ease: "expo.inOut"
+        }
+      );
+      tl.to("#main-heading", {
+        opacity: 1, duration: 3, ease: "expo.inOut",
+      }, "<")
+      tl.fromTo("#sub-script", { y: "10px" }, {
+        opacity: 1, duration: 1.5, y: "0px", ease: "power3.out"
+      }, "-=1.5")
+      tl.fromTo("#my-bulb-svg", {
+        left: "-350px", opacity: 0,
+      }, { left: "-150px", opacity: 1, duration: 2, ease: "expo.out", }, "-=1.5")
+      tl.fromTo("#my-globe-svg", {
+        right: "-250px", opacity: 0,
+      }, { right: "0px", opacity: 1, duration: 2, ease: "expo.out", }, "<")
+      tl.fromTo("#hills", {
+        right: "-250px", opacity: 0,
+      }, { right: "-100px", opacity: 1, duration: 2, ease: "expo.out", }, "<")
+      tl.fromTo("#scroll-assist", {
+        y: 100, opacity: 0, scale: 1.2
+      }, { y: -50, opacity: 1, scale: 1, duration: 1, ease: "expo.out" })
+
+    });
+    return () => ctx.revert();
+
+
+  }, []);
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
+    <>
+      {/* AKAAR CREATIVE AGENCY */}
+      {/* AKAAR VIDEOGRAPHY & PHOTOGRAPHY */}
+      {/* AKAAR  WEDDINGS*/}
+      {/* AKAAR  CONTACT*/}
+      <div className="slider-container">
+        <div id="section-1" className="full-screen panels">
+          <svg id="my-bulb-svg" width="500" height="500" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g id="bulb">
+              <path id="bulb_2"
+                d="M274.466 37.557C271.046 34.305 266.725 32.087 262.276 30.605C262.246 30.595 262.178 30.576 262.076 30.549C258.046 29.47 253.798 29.47 249.768 30.549C249.667 30.576 249.598 30.595 249.568 30.605C245.119 32.087 240.798 34.306 237.378 37.557C227.198 47.236 228.852 64.804 238.766 74.074C241.547 76.674 242.768 80.031 243.619 83.732C243.876 84.847 245.351 96.472 244.836 96.472C249.811 96.472 255.921 96.472 255.921 96.472C255.921 96.472 262.031 96.472 267.006 96.472C266.492 96.472 267.967 84.846 268.223 83.732C269.075 80.032 270.296 76.675 273.077 74.074C282.992 64.805 284.645 47.237 274.466 37.557Z"
+                fill="#EDB62B" />
+              <path id="shade-curve" opacity="0.52"
+                d="M251.935 83.732C251.084 80.032 249.862 76.675 247.082 74.074C237.168 64.804 235.514 47.236 245.694 37.557C249.114 34.305 253.435 32.087 257.884 30.605C257.914 30.595 257.982 30.576 258.084 30.549C258.744 30.372 259.41 30.235 260.08 30.116C256.66 29.509 253.138 29.646 249.768 30.549C249.667 30.576 249.598 30.595 249.568 30.605C245.119 32.087 240.797 34.306 237.378 37.557C227.198 47.236 228.852 64.804 238.766 74.074C241.547 76.674 242.768 80.031 243.619 83.732C243.876 84.847 245.351 96.472 244.836 96.472C247.693 96.472 250.918 96.472 253.152 96.472C253.667 96.472 252.192 84.846 251.935 83.732Z"
+                fill="#FFF6E7" />
+              <path id="Vector_23"
+                d="M255.922 96.472V69.36L260.694 66.609C262.271 65.7 261.956 63.337 260.196 62.873L251.512 60.581C250.031 60.19 249.863 58.156 251.26 57.527L255.921 55.43V46.227"
+                stroke="#FEFEFE" stroke-width="2.2387" stroke-miterlimit="10"
+                stroke-linecap="round" />
+              <path id="Vector_24"
+                d="M269.213 100.203C269.213 101.027 268.545 101.695 267.721 101.695H243.345C242.521 101.695 241.853 101.027 241.853 100.203C241.853 99.379 242.521 98.711 243.345 98.711H267.721C268.544 98.711 269.213 99.379 269.213 100.203Z"
+                fill="#2F2F35" />
+              <path id="Vector_25"
+                d="M269.213 104.68C269.213 105.504 268.545 106.173 267.721 106.173H243.345C242.521 106.173 241.853 105.505 241.853 104.68C241.853 103.856 242.521 103.188 243.345 103.188H267.721C268.544 103.188 269.213 103.856 269.213 104.68Z"
+                fill="#2F2F35" />
+              <path id="Vector_26"
+                d="M269.213 109.157C269.213 109.981 268.545 110.649 267.721 110.649H243.345C242.521 110.649 241.853 109.981 241.853 109.157C241.853 108.333 242.521 107.664 243.345 107.664H267.721C268.544 107.665 269.213 108.333 269.213 109.157Z"
+                fill="#2F2F35" />
+              <path id="Vector_27"
+                d="M255.532 121.096C260.34 121.096 264.238 117.198 264.238 112.39H246.827C246.827 117.199 250.724 121.096 255.532 121.096Z"
+                fill="#2F2F35" />
+            </g>
+          </svg>
+          <svg id="my-globe-svg" width="500" height="500" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g id="globe-stars">
+              <path id="star"
+                d="M373.444 194.954L375.552 199.226L380.266 199.911L376.855 203.236L377.66 207.932L373.444 205.715L369.227 207.932L370.033 203.236L366.622 199.911L371.336 199.226L373.444 194.954Z"
+                fill="#9E9E9E" />
+              <path id="star_2"
+                d="M434.141 188.986L437.085 194.951L443.668 195.908L438.905 200.551L440.029 207.107L434.141 204.012L428.254 207.107L429.378 200.551L424.615 195.908L431.198 194.951L434.141 188.986Z"
+                fill="#666666" />
+              <path id="star_3"
+                d="M415.72 278.379L417.363 281.708L421.038 282.242L418.379 284.834L419.007 288.493L415.72 286.765L412.434 288.493L413.061 284.834L410.402 282.242L414.077 281.708L415.72 278.379Z"
+                fill="#9E9E9E" />
+              <path id="star_4"
+                d="M357.095 255.824L360.039 261.789L366.621 262.745L361.858 267.388L362.983 273.944L357.095 270.849L351.207 273.944L352.332 267.388L347.568 262.745L354.151 261.789L357.095 255.824Z"
+                fill="#666666" />
+              <g id="Globe">
+                <g id="Group_4">
+                  <path id="ball"
+                    d="M413.544 269.92C430.373 263.172 438.545 244.058 431.797 227.229C425.048 210.4 405.935 202.228 389.106 208.976C372.277 215.725 364.105 234.838 370.853 251.667C377.601 268.496 396.715 276.668 413.544 269.92Z"
+                    fill="#EDB62B" />
+                </g>
+                <g id="Group_5" opacity="0.67">
+                  <path id="moon"
+                    d="M392.481 271.063C404.078 274.299 415.953 270.88 424.054 263.108C418.568 264.578 412.63 264.65 406.763 263.013C389.299 258.14 379.092 240.033 383.965 222.569C385.602 216.702 388.738 211.659 392.836 207.727C381.993 210.633 372.919 219.023 369.683 230.62C364.811 248.083 375.018 266.19 392.481 271.063Z"
+                    fill="#A87D1D" />
+                </g>
+                <path id="shade" opacity="0.52"
+                  d="M410.128 207.822C408.493 207.366 406.851 207.042 405.216 206.843C404.36 209.913 403.893 213.144 403.893 216.487C403.893 233.576 415.857 247.861 431.863 251.449C432.267 250.417 432.623 249.356 432.927 248.266C437.798 230.802 427.591 212.694 410.128 207.822Z"
+                  fill="#FFF6E7" />
+              </g>
+              <g>
+                <path id="ring"
+                  d="M368.589 236.741C355.853 231.779 347.931 227.29 348.597 224.905C349.704 220.937 374.152 224.292 403.203 232.398C432.254 240.504 454.906 250.292 453.799 254.26C453.136 256.638 444.092 256.386 430.698 254.058"
+                  stroke="#666666" stroke-width="2" stroke-miterlimit="10" />
+                <circle id="Ellipse 1" r="4.5" fill="#D9D9D9">
+                  <animateMotion dur="5s" repeatCount="indefinite">
+                    <mpath href="#ring" />
+                  </animateMotion>
+                </circle>
+              </g>
+            </g>
+          </svg>
+          <svg id="hills" width="259" height="201" viewBox="0 0 1038 804" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g id="undraw_art_re_vj2w 1" clip-path="url(#clip0_1_3)">
+              <path id="Vector" d="M664.01 510.834C662.172 470.173 654.784 429.953 642.05 391.294C642.05 391.294 642.06 391.284 642.05 391.284C639.27 382.814 636.223 374.414 632.91 366.084C631.67 362.954 630.393 359.834 629.08 356.724C618.791 332.349 606.363 308.934 591.94 286.754C586.82 278.854 581.443 271.121 575.81 263.554C562.602 245.812 548.117 229.057 532.47 213.424C526.08 207.034 519.533 200.864 512.83 194.914C511.86 194.044 510.89 193.184 509.91 192.344C485.812 171.268 459.521 152.839 431.49 137.374C431.09 137.134 430.7 136.924 430.3 136.714C424.59 133.574 418.81 130.567 412.96 127.694C412.36 127.394 411.77 127.094 411.17 126.814C406.16 124.364 401.1 122.014 395.99 119.764C395.18 119.394 394.36 119.034 393.54 118.684C393.52 118.674 393.51 118.664 393.49 118.664C392.05 118.034 390.61 117.414 389.17 116.804C388.79 116.644 388.41 116.484 388.03 116.324H388.02C336.208 94.5637 280.762 82.7546 224.58 81.514C220.96 81.424 217.33 81.3806 213.69 81.384H116.15C108.577 81.3781 101.037 82.3837 93.73 84.374C93.58 84.414 93.44 84.4539 93.29 84.494C75.3349 89.5113 59.5122 100.261 48.2325 115.104C36.9529 129.947 30.8346 148.071 30.81 166.714V537.724C30.809 539.737 31.2542 541.726 32.1135 543.547C32.9729 545.367 34.2251 546.975 35.78 548.254C35.8 548.274 35.82 548.284 35.83 548.294C38.2689 550.302 41.3308 551.398 44.49 551.394H645.32C650.408 551.388 655.285 549.364 658.883 545.766C662.48 542.169 664.504 537.292 664.51 532.204C664.51 525.054 664.343 517.931 664.01 510.834Z" fill="#F2F2F2" />
+              <path id="Vector_2" d="M440.878 454.746C440.927 488.084 433.295 520.986 418.572 550.898H44.49C40.9952 550.898 37.6435 549.51 35.1723 547.038C32.7011 544.567 31.3127 541.216 31.3127 537.721V350.637C88.7894 244.841 221.148 205.67 326.944 263.147C361.418 281.876 390.199 309.561 410.252 343.283C430.304 377.004 440.885 415.512 440.878 454.746Z" fill="#D5DBFD" />
+              <path id="Vector_3" d="M664.011 419.954V532.204C664.011 537.162 662.041 541.917 658.536 545.423C655.03 548.929 650.275 550.898 645.317 550.898H43.6615C40.1924 550.898 36.8653 549.52 34.412 547.068C31.9586 544.615 30.5798 541.288 30.5788 537.819V537.686C30.5788 444.191 321.378 364.443 404.062 333.476C450.753 316.045 502.003 315.119 549.294 330.851C596.585 346.583 637.067 378.027 664.011 419.954Z" fill="#D5DBFD" />
+              <path id="Vector_4" d="M618.536 219.028C623.341 189.418 603.233 161.519 573.623 156.714C544.013 151.908 516.114 172.017 511.309 201.627C506.504 231.237 526.612 259.136 556.222 263.941C585.832 268.746 613.731 248.638 618.536 219.028Z" fill="#FF6584" />
+              <path id="Vector_5" d="M281.36 222.794C281.36 230.334 281.047 237.531 280.42 244.384C272.32 333.814 212.84 365.734 140.68 365.734C138.87 365.734 137.08 365.714 135.29 365.664C131.69 365.594 128.12 365.424 124.6 365.174C92.21 362.884 63.17 353.354 41.28 334.064C37.5426 330.766 34.0438 327.207 30.81 323.414C11.53 300.824 0 268.124 0 222.794C0 149.124 68 61.5239 109.45 14.9739C113.247 10.6941 117.884 7.24169 123.073 4.83142C128.261 2.42116 133.891 1.10466 139.61 0.963888H140.01C146.024 0.855198 151.99 2.05135 157.497 4.46997C163.004 6.88858 167.921 10.4722 171.91 14.9739C190.785 36.0777 208.374 58.2978 224.58 81.5139C254.69 125.064 281.36 176.664 281.36 222.794Z" fill="#6C63FF" />
+              <path id="Vector_6" d="M135.55 349.524L187.01 277.624L135.42 357.414L135.29 365.664L134.14 436.414L133.72 462.364H119.51L120.49 443.624L124.6 365.174L130.15 259.184L130.1 258.354L130.2 258.204L130.24 257.354L130.72 248.194L79.01 168.214L130.88 240.684L131 242.804L135.19 162.724L93.29 84.494L90.92 80.074L93.73 84.374L135.74 148.654L136.36 124.744L137.5 81.384L139.61 0.963989H140.01L139.57 81.384L139.39 113.544L166.69 81.384L183.46 61.634L169.62 81.384L139.2 124.814L138.04 196.524L179.19 127.714L137.87 207.074L137.22 246.944L196.95 151.154L141.6 252.424L136.99 260.854L135.55 349.524Z" fill="#6A7FF8" />
+              <path id="Vector_7" d="M510.74 174.234C510.74 180.574 510.463 186.611 509.91 192.344C503.13 263.714 455.42 289.214 397.57 289.214C396.12 289.214 394.67 289.194 393.24 289.164C390.34 289.104 387.473 288.967 384.64 288.754C376.189 288.207 367.803 286.915 359.58 284.894C339.14 279.814 321.42 269.984 308.32 254.134C293.34 236.004 284.41 210.004 284.41 174.234C284.41 147.674 295.4 118.864 310.53 91.7839C327.05 62.2139 348.51 34.7139 365.98 14.4539C369.784 10.0283 374.477 6.45411 379.755 3.96431C385.033 1.47452 390.776 0.125047 396.61 0.00389181H397.01C403.102 -0.0925267 409.141 1.15191 414.698 3.64904C420.256 6.14617 425.197 9.8349 429.17 14.4539C462.65 53.2639 510.74 118.674 510.74 174.234Z" fill="#6C63FF" />
+              <path id="Vector_8" d="M393.45 276.174L434.84 218.344L393.35 282.524L393.24 289.164L392.77 318.114L392.46 337.674L391.98 366.944H380.55L381.89 341.334L383.66 307.504L384.64 288.754L389.1 203.504L389.07 202.844L389.14 202.724L389.56 194.664L347.97 130.324L389.69 188.624L389.79 190.334L393.16 125.914L388.03 116.324H388.02L357.55 59.434L393.6 114.604L396.61 0.0039978H397.01L396.53 86.354L431.98 44.604L396.39 95.424L395.99 119.764L395.45 153.104L411.17 126.814L428.55 97.754L412.96 127.694L395.31 161.594L394.79 193.664L430.3 136.714L442.84 116.614L431.49 137.374L394.61 204.854L393.45 276.174Z" fill="#6A7FF8" />
+              <path id="Vector_9" d="M743.87 294.454C743.87 351.834 709.76 371.864 667.68 371.864C666.71 371.864 665.74 371.854 664.77 371.834C662.82 371.784 660.89 371.704 658.98 371.554C650.068 371.028 641.282 369.185 632.91 366.084C608.32 356.634 591.5 334.754 591.5 294.454C591.503 291.881 591.65 289.31 591.94 286.754C593.35 273.884 598.11 260.454 604.61 247.404C608.337 239.988 612.47 232.784 616.99 225.824C622.75 216.884 628.94 208.414 634.95 200.784C638.752 195.938 643.586 192.001 649.101 189.26C654.615 186.518 660.672 185.04 666.83 184.934C666.97 184.934 667.11 184.924 667.26 184.934C673.634 184.847 679.942 186.231 685.694 188.98C691.445 191.73 696.485 195.769 700.42 200.784C721.07 227.014 743.87 263.064 743.87 294.454Z" fill="#6C63FF" />
+              <path id="Vector_10" d="M664.91 363.084L692.77 324.154L664.84 367.364L664.77 371.834L663.98 419.904L663.91 424.194H656.22L656.98 409.684L658.98 371.554L661.98 314.164L661.95 313.714L662 313.634L662.29 308.214L634.29 264.894L662.37 304.144L662.44 305.294L664.71 261.924L640.74 217.164L665.01 254.324L666.83 184.934C666.97 184.934 667.11 184.924 667.26 184.934L666.98 235.294L690.85 207.184L666.88 241.394L666.25 280.234L688.54 242.964L666.16 285.944L665.81 307.534L698.16 255.664L665.69 315.064L664.91 363.084Z" fill="#6A7FF8" />
+              <path id="Vector_11" d="M182.228 400.316C178.856 405.694 174.482 405.568 170.537 403.095C166.593 400.623 164.573 396.74 167.945 391.362C171.317 385.984 182.747 383.618 182.747 383.618C182.747 383.618 185.6 394.938 182.228 400.316Z" fill="#6C63FF" />
+              <path id="Vector_12" d="M77.2676 414.996C73.8959 420.374 69.5212 420.248 65.5771 417.775C61.6329 415.302 59.6128 411.42 62.9845 406.042C66.3562 400.663 77.7871 398.298 77.7871 398.298C77.7871 398.298 80.6393 409.617 77.2676 414.996Z" fill="#6C63FF" />
+              <path id="Vector_13" d="M449.358 389.123C449.982 395.441 446.444 398.017 441.812 398.475C437.179 398.932 433.206 397.098 432.582 390.78C431.958 384.463 439.552 375.598 439.552 375.598C439.552 375.598 448.734 382.806 449.358 389.123Z" fill="#6C63FF" />
+              <path id="Vector_14" d="M328.292 310.769C324.92 316.148 320.545 316.021 316.601 313.549C312.657 311.076 310.637 307.194 314.009 301.815C317.38 296.437 328.811 294.072 328.811 294.072C328.811 294.072 331.663 305.391 328.292 310.769Z" fill="#6C63FF" />
+              <path id="Vector_15" d="M607.207 393.71C603.836 399.088 599.461 398.962 595.517 396.489C591.573 394.017 589.553 390.134 592.924 384.756C596.296 379.378 607.727 377.012 607.727 377.012C607.727 377.012 610.579 388.332 607.207 393.71Z" fill="#6C63FF" />
+            </g>
+            <defs>
+              <clipPath id="clip0_1_3">
+                <rect width="1150.08" height="803.243" fill="white" />
+              </clipPath>
+            </defs>
+          </svg>
+
+          <div className="cnt-for-h">
             <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
+              className="ofx"
+              id="afx"
+              src="/static/1.gif"
+              width={150}
+              height={150}
+              alt="Picture of the videographer"
             />
-          </a>
+            <Image
+              className="ofx"
+              id="photofx"
+              src="/static/2.gif"
+              width={150}
+              height={150}
+              alt="Picture of the photographer"
+            />
+            <Image
+              className="ofx"
+              id="photofx-1"
+              src="/static/3.gif"
+              width={150}
+              height={150}
+              alt="Picture of the photographer"
+            />
+            <Image
+              className="ofx"
+              id="photofx-2"
+              src="/static/4.gif"
+              width={150}
+              height={150}
+              alt="Picture of the photographer"
+            />
+            <Image
+              className="ofx"
+              id="photofx-3"
+              src="/static/5.gif"
+              width={150}
+              height={150}
+              alt="Picture of the photographer"
+            />
+            <Image
+              className="ofx"
+              id="photofx-4"
+              src="/static/6.gif"
+              width={150}
+              height={150}
+              alt="Picture of the photographer"
+            />
+            <Image
+              className="ofx"
+              id="photofx-5"
+              src="/static/7.gif"
+              width={150}
+              height={150}
+              alt="Picture of the photographer"
+            />
+            <Image
+              className="ofx"
+              id="photofx-6"
+              src="/static/8.gif"
+              width={150}
+              height={150}
+              alt="Picture of the photographer"
+            />
+            <h1 id="main-heading" style={{ textAlign: "center" }}>AKAAR<sup>CREATIVE AGENCY</sup></h1>
+            <p id="sub-script"><span>AKAAR</span> - is a dynamic force in the world of visual storytelling, specializing in creative videography, photography, and animation that captivates and inspires. We blend artistic vision with strategic marketing to craft compelling content that resonates with your audience. At Akaar, we bring ideas to life, turning your brand's message into unforgettable visual experiences.</p>
+          </div>
+
+          <div id="scroll-assist">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+        <div id="section-2" className="full-screen panels">
+
+        </div>
+        <div id="section-3" className="full-screen panels">
+
+        </div>
+        <div id="section-4" className="full-screen panels">
+
         </div>
       </div>
-
-      <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+    </>
   );
 }
