@@ -13,6 +13,14 @@
     src: url("./fonts/organetto-expregular.otf");
 }
 
+body {
+    overflow-y: hidden;
+    overflow-x: hidden;
+    scroll-behavior: smooth; /* Smooth scroll for "jump" scrolls */
+
+}
+
+
 .full-screen {
     display: block;
     width: 100%;
@@ -345,7 +353,7 @@
     font-size: 25px;
     font-weight: bold;
     letter-spacing: 18px;
-    color:gray;
+    color: gray;
 }
 
 .mask {

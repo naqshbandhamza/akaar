@@ -26,9 +26,9 @@ export default function Home() {
     });
 
     if (document.readyState === 'complete') {
-      setTimeout(()=>{
+      setTimeout(() => {
         setPageLoaded(true);
-      },3000)
+      }, 3000)
     }
 
     const handlePageLoad = () => {
@@ -45,6 +45,14 @@ export default function Home() {
   useEffect(() => {
     if (pageloaded) {
       console.log("page loaded")
+      const container = document.querySelector('.slider-container');
+      const sections:any = document.querySelectorAll('.panels');
+
+      document.addEventListener('wheel', function (event) {
+        event.preventDefault(); // Prevent the default vertical scroll behavior
+         document.documentElement.scrollLeft += event.deltaY; // Scroll horizontally based on the vertical scroll
+        
+      });
 
       let preloader: any = document.getElementById('loading');
       let content: any = document.getElementById('content');
@@ -65,6 +73,7 @@ export default function Home() {
             trigger: ".slider-container",
             pin: true,
             scrub: 1,
+            // markers: true,
             snap: 1 / (sections.length - 1),
             end: () => "+=5000"
           }
@@ -109,6 +118,7 @@ export default function Home() {
       {/* AKAAR VIDEOGRAPHY & PHOTOGRAPHY */}
       {/* AKAAR  WEDDINGS*/}
       {/* AKAAR  CONTACT*/}
+
       <div id="loading">
         <div className="text-container" id="loading-image">
           <h1 className="masked-text">AKAAR <sup>...</sup></h1>
