@@ -103,6 +103,88 @@ export default function Home() {
             }
           });
 
+        gsap.to("#akaar-wed-shadow",
+          {
+            y: "+=30",
+            duration: 3,
+            scrollTrigger: {
+              trigger: "#wedding-illus",
+              scrub: true,
+              // markers: true,
+              start: "500 10%",
+              end: "1500 10%"
+            }
+          });
+
+
+        const myTimeline = gsap.timeline({
+          paused: true // Start with the timeline paused
+        })
+        myTimeline.to(
+          "#scroll-assist",
+          { backgroundColor: "#FFF5D8", duration: 1, ease: "expo.inOut" }
+        ).to("#scroll-assist :nth-child(1)", {
+          backgroundColor: "#FFC325", duration: 1, ease: "expo.inOut"
+        }, "<");
+
+        const myTimeline1 = gsap.timeline({
+          paused: true // Start with the timeline paused
+        })
+        myTimeline1.to(
+          "#scroll-assist",
+          { backgroundColor: "#FFC7C7", duration: 1, ease: "expo.inOut" }
+        ).to("#scroll-assist :nth-child(1)", {
+          backgroundColor: "#FF2424", duration: 1, ease: "expo.inOut"
+        }, "<");
+
+        const myTimeline2 = gsap.timeline({
+          paused: true // Start with the timeline paused
+        })
+        myTimeline2.to(
+          "#scroll-assist",
+          { backgroundColor: "#DFC3EC", duration: 1, ease: "expo.inOut" }
+        ).to("#scroll-assist :nth-child(1)", {
+          backgroundColor: "#7800B0", duration: 1, ease: "expo.inOut"
+        }, "<");
+
+        // Trigger the animation when scrolling reaches a certain point
+        ScrollTrigger.create({
+          trigger: "#wedding-illus", // Element that triggers the animation
+          // markers: true,
+          scrub:1,
+          start: "500 10%",    // Start the animation when the top of the element reaches the center of the viewport
+          end: "1500 10%",
+          onEnter: () => myTimeline.play(), // Play the animation when the scroll reaches the trigger point
+          onLeaveBack:()=>myTimeline.reverse(),
+          once: false,             // Ensure the animation only triggers once and not every time you scroll
+        });
+
+        // Trigger the animation when scrolling reaches a certain point
+        ScrollTrigger.create({
+          trigger: "#wedding-illus", // Element that triggers the animation
+          // markers: true,
+          scrub:1,
+          start: "2200 10%",    // Start the animation when the top of the element reaches the center of the viewport
+          end: "2700 10%",
+          onEnter: () => myTimeline1.play(), // Play the animation when the scroll reaches the trigger point
+          onLeaveBack:()=>myTimeline1.reverse(),
+          once: false,             // Ensure the animation only triggers once and not every time you scroll
+        });
+
+        // Trigger the animation when scrolling reaches a certain point
+        ScrollTrigger.create({
+          trigger: "#wedding-illus", // Element that triggers the animation
+          // markers: true,
+          scrub:1,
+          start: "4000 10%",    // Start the animation when the top of the element reaches the center of the viewport
+          end: "5000 10%",
+          onEnter: () => myTimeline2.play(), // Play the animation when the scroll reaches the trigger point
+          onLeaveBack:()=>myTimeline2.reverse(),
+          once: false,             // Ensure the animation only triggers once and not every time you scroll
+        });
+
+
+
 
 
 
@@ -319,15 +401,14 @@ export default function Home() {
               />
             </span>
           </div>
-
-          <div id="scroll-assist">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-          </div>
         </div>
         <div id="section-2" className="full-screen panels">
+          <div className="akaar-wedstyle">
+            <h1 id="akaar-wed-shadow" style={{ color: "#B2AFA5" }}>AKAAR WEDDINGS</h1>
+          </div>
+          <div id="akaar-wed" className="akaar-wedstyle">
+            <h1>AKAAR WEDDINGS</h1>
+          </div>
           <div id="wedding-illus">
             <svg width="294" height="430" viewBox="0 0 194 330" fill="none" xmlns="http://www.w3.org/2000/svg">
               <g id="OBJECTS">
@@ -528,6 +609,12 @@ export default function Home() {
         </div>
         <div id="section-4" className="full-screen panels">
 
+        </div>
+        <div id="scroll-assist">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
         </div>
       </div>
 
