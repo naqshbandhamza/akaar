@@ -14,10 +14,12 @@
 }
 
 body {
-    overflow-y: hidden;
+    margin:0;
+    padding: 0;
+    overflow-y: auto;
     overflow-x: hidden;
-    scroll-behavior: smooth; /* Smooth scroll for "jump" scrolls */
-
+    scroll-behavior: smooth;
+    /* Smooth scroll for "jump" scrolls */
 }
 
 
@@ -30,9 +32,8 @@ body {
 
 .slider-container {
     width: 400%;
-    display: flex;
-    flex-direction: row;
-
+    display: none;
+    opacity: 0;
 }
 
 #section-1 {
@@ -54,16 +55,14 @@ body {
 
 .cnt-for-h {
     position: absolute;
-    top: 40%;
+    top: 45%;
     left: 50%;
-    transform: translate(-50%, -40%);
+    height: 300px;
+    width: 760px;
+    transform: translate(-50%, -45%);
 }
 
 #section-1 h1 {
-    /* position: absolute;
-    top: 35%;
-    left: 50%;
-    transform: translate(-50%, -35%); */
     font-family: organetto;
     font-size: 45px;
     font-weight: bold;
@@ -335,11 +334,6 @@ body {
     top: 10%;
     left: 50%;
     transform: translate(-50%, -10%);
-}
-
-#content {
-    display: none;
-    opacity: 0;
 }
 
 .text-container {

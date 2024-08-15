@@ -5,18 +5,32 @@ import Head from 'next/head';
 import { useRef, useEffect, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { ReactLenis, useLenis } from 'lenis/react'
 
 export default function Home() {
   const parallaxRef = useRef(null);
 
   const [pageloaded, setPageLoaded] = useState(false);
 
+  const lenisRef: any = useRef()
+
+  useEffect(() => {
+    function update(time) {
+      lenisRef.current?.lenis?.raf(time * 1000)
+    }
+
+    gsap.ticker.add(update)
+
+    return () => {
+      gsap.ticker.remove(update)
+    }
+  })
+
   useEffect(() => {
     const textContainer: any = document.querySelector('.text-container');
     const mask = document.createElement('div');
     mask.classList.add('mask');
     textContainer.appendChild(mask);
-
     gsap.to(mask, {
       duration: 2,
       scaleX: 0,
@@ -24,44 +38,28 @@ export default function Home() {
       repeat: -1,
       yoyo: true
     });
-
     if (document.readyState === 'complete') {
       setTimeout(() => {
         setPageLoaded(true);
       }, 3000)
     }
-
     const handlePageLoad = () => {
       setPageLoaded(true); // Set state to true when the page loads
     };
-
     // Add event listener to detect page load
     window.addEventListener('load', handlePageLoad);
-
-    // Cleanup the event listener on component unmount
     return () => window.removeEventListener('load', handlePageLoad);
   }, []);
 
   useEffect(() => {
     if (pageloaded) {
-      console.log("page loaded")
-      const container = document.querySelector('.slider-container');
-      const sections:any = document.querySelectorAll('.panels');
-
-      document.addEventListener('wheel', function (event) {
-        event.preventDefault(); // Prevent the default vertical scroll behavior
-         document.documentElement.scrollLeft += event.deltaY; // Scroll horizontally based on the vertical scroll
-        
-      });
 
       let preloader: any = document.getElementById('loading');
       let content: any = document.getElementById('content');
 
-      console.log(preloader)
-
       preloader.style.display = 'none';
-      content.style.display = 'block';
-      gsap.fromTo("#content", { y: "0.5rem", opacity: 0 }, { y: "0", duration: 1, opacity: 1, ease: "power4.inOut" })
+      content.style = "display: flex; flex-direction: row;"
+      gsap.fromTo(".slider-container", { opacity: 0 }, { duration: 1, opacity: 1, ease: "power4.inOut" })
 
       let ctx = gsap.context(() => {
         gsap.registerPlugin(ScrollTrigger);
@@ -78,6 +76,20 @@ export default function Home() {
             end: () => "+=5000"
           }
         });
+
+        gsap.to("#headings",
+          {
+            x: "+=200px",
+            scrollTrigger: {
+              trigger: "#headings",
+              scrub: true,
+              // markers: true,
+              start: "top top",
+              end: "+=50%"
+            }
+          });
+
+
 
         let tl = gsap.timeline({})
         tl.fromTo(
@@ -124,8 +136,9 @@ export default function Home() {
           <h1 className="masked-text">AKAAR <sup>...</sup></h1>
         </div>
       </div>
-      <section id="content">
-        <div className="slider-container">
+      <ReactLenis ref={lenisRef} autoRaf={false}>
+
+        <div id="content" className="slider-container">
           <div id="section-1" className="full-screen panels">
             <svg id="my-bulb-svg" width="500" height="500" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
               <g id="bulb">
@@ -284,8 +297,10 @@ export default function Home() {
                 height={150}
                 alt="Picture of the photographer"
               />
-              <h1 id="main-heading" style={{ textAlign: "center" }}>AKAAR<sup>CREATIVE AGENCY</sup></h1>
-              <p id="sub-script"><span>AKAAR</span> - is a dynamic force in the world of visual storytelling, specializing in creative videography, photography, and animation that captivates and inspires. We blend artistic vision with strategic marketing to craft compelling content that resonates with your audience. At Akaar, we bring ideas to life, turning your brand's message into unforgettable visual experiences.</p>
+              <div id="headings">
+                <h1 id="main-heading" style={{ textAlign: "center" }}>AKAAR<sup>CREATIVE AGENCY</sup></h1>
+                <p id="sub-script"><span>AKAAR</span> - is a dynamic force in the world of visual storytelling, specializing in creative videography, photography, illustration and animation that captivates and inspires. We blend artistic vision with strategic marketing to craft compelling content that resonates with your audience. At Akaar, we bring ideas to life, turning your brand's message into unforgettable visual experiences.</p>
+              </div>
             </div>
 
             <div id="scroll-assist">
@@ -305,7 +320,8 @@ export default function Home() {
 
           </div>
         </div>
-      </section>
+
+      </ReactLenis>
     </>
   );
 }
