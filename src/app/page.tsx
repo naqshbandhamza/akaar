@@ -249,14 +249,14 @@ export default function Home() {
         let tween = gsap.fromTo("#now-booking-wed",
           {
             x: 200,
-            scale:0
+            scale: 0
           },
           {
             x: -50,
-            scale:1,
+            scale: 1,
             duration: 1,
             paused: true,
-            ease:"elastic.out"
+            ease: "elastic.out"
           });
 
         ScrollTrigger.create({
