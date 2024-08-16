@@ -15,16 +15,15 @@
 
 @font-face {
     font-family: "Protrakt";
-   src: url("./fonts/911porschav3bold.ttf");
+    src: url("./fonts/911porschav3bold.ttf");
 }
 
 body {
-    margin:0;
+    margin: 0;
     padding: 0;
     overflow-y: auto;
     overflow-x: hidden;
     scroll-behavior: smooth;
-    /* Smooth scroll for "jump" scrolls */
 }
 
 
@@ -101,7 +100,6 @@ body {
 /**************bulb *************/
 
 #my-bulb-svg {
-    /* background-color: #ff4400; */
     position: absolute;
     opacity: 0;
     left: -350px;
@@ -167,10 +165,6 @@ body {
     animation: globestars 3s ease-in-out infinite;
 }
 
-#star {
-    /* animation-delay: 1.2s; */
-}
-
 #star_2 {
     animation-delay: 0.5s;
 }
@@ -184,7 +178,6 @@ body {
 }
 
 #Globe {
-    /* transform-style: preserve-3d; */
     transform-origin: center;
     animation: globe 4s linear infinite;
 }
@@ -211,7 +204,7 @@ body {
     }
 }
 
-/************* afx *****************/
+/******************************/
 
 #afx {
     position: absolute;
@@ -370,34 +363,91 @@ body {
 
 /************************************* section 2 ****************************/
 
-#wedding-illus{
+#wedding-illus {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     opacity: 0.9;
 }
 
-#akaar-wed{
-   background-color: #FFFBEC;
-   height: 65px;
+#akaar-wed,
+#akaar-wed-shadow {
+    background-color: #FFFBEC;
+    height: 65px;
 }
 
-.akaar-wedstyle{
-     /* background-color: #EDB62B; */
-     text-align: center;
-     width: 900px;
-     font-size: 62px;
-     position: absolute;
-     top: 30%;
-     left: 50%;
-     transform: translate(-50%,-30%);
-     font-family: Protrakt;
-     color:black
+.akaar-wedstyle {
+    text-align: center;
+    width: 900px;
+    font-size: 62px;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -30%);
+    font-family: Protrakt;
+    color: black
 }
 
-#content{
+#content {
     position: relative;
     height: 100vh;
     width: 400%;
+}
+
+/******************* street light ****************/
+
+#street-light {
+    position: absolute;
+    top: -80px;
+    left: -350px;
+}
+
+#street-light #Vector_8,
+#street-light #Vector_9,
+#street-light #Vector_10 {
+    fill: #FDC469;
+    animation: glow 2s ease infinite;
+}
+
+@keyframes glow {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+        fill: #ffa200;
+        filter: drop-shadow(0px 10px 20px rgba(255, 162, 0, 0.7));
+    }
+}
+
+/**************** wed clock *****************/
+
+#wed-clock {
+    position: absolute;
+    top: -120px;
+    right: -450px;
+}
+
+/**************** wed plant *****************/
+
+#wed-plant {
+    position: absolute;
+    top: 190px;
+    right: -480px;
+}
+
+#now-booking-wed{
+    position: absolute;
+    top: 65%;
+    left: 40%;
+    transform: translate(-40%,-65%);
+    background-color: #FFC325;
+    height: 90px;
+    width: 90px;
+    border-radius: 50%;
+    font-family: Protrakt;
+    color: white;
+    font-size: 10px;
 }
