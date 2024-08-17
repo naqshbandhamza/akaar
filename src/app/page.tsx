@@ -5,24 +5,14 @@ import Head from 'next/head';
 import { useRef, useEffect, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 import { ReactLenis, useLenis } from 'lenis/react'
 
 export default function Home() {
 
   const [pageloaded, setPageLoaded] = useState(false);
+  const [first, setFirst] = useState(0)
   const lenisRef: any = useRef()
-
-  // useEffect(() => {
-  //   function update(time) {
-  //     lenisRef.current?.lenis?.raf(time * 1000)
-  //   }
-
-  //   gsap.ticker.add(update)
-
-  //   return () => {
-  //     gsap.ticker.remove(update)
-  //   }
-  // })
 
   // this useEffect is for page preloader
   useEffect(() => {
@@ -63,21 +53,11 @@ export default function Home() {
       gsap.fromTo(".slider-container", { opacity: 0 }, { duration: 1, opacity: 1, ease: "power4.inOut" })
 
       let ctx = gsap.context(() => {
-        gsap.registerPlugin(ScrollTrigger);
-
-        const tl22 = gsap.timeline({
-          paused: true
-        })
-
-        tl22.to("#akaar-wed-shadow",
-          {
-            y: "+=20", delay: 0.5, duration: 0.5,
-          }).to("#akaar-wed-shadow-1", {
-            y: "+=40", duration: 0.5,
-          });
+        gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
         // horizontal scroll
         let sections = gsap.utils.toArray(".panels");
+
         gsap.to(sections, {
           xPercent: -100 * (sections.length - 1),
           ease: "none",
@@ -88,56 +68,64 @@ export default function Home() {
             // markers: true,
             snap: {
               snapTo: 1 / (sections.length - 1),
-              // duration: 1,   // Duration of the snapping animation (in seconds)
-              duration: { min: 0.2, max: 0.3 }, // Snap duration
-              delay: 0.1, // Delay before snapping starts
-              ease: "power1.inOut", // Easing function for the snap
+              // duration: { min: 0.4, max: 0.4 },
+              // delay: 1,
             },
             onSnapComplete: (self) => {
-              // Get the index of the current section
-              const currentSection = Math.round(self.progress * (sections.length - 1));
-              // Check if we're in a specific section
-              if (currentSection === 0) {
-                tl22.time(0);
-                tl22.pause()
-              } else if (currentSection === 1) { // Assuming you want to trigger on the 3rd section (index 2)
-                tl22.play();
-              } else if (currentSection === 2) {
-                tl22.time(0);
-                tl22.pause()
-              } else if (currentSection === 3) {
-                tl22.time(0);
-                tl22.pause()
-              }
+              // const currentSection = Math.round(self.progress * (sections.length - 1));
+              // if (currentSection === 0) {
+              //   tl22.time(0);
+              //   tl22.pause()
+              // } else if (currentSection === 1) {
+              //   tl22.play();
+              // } else if (currentSection === 2) {
+              //   tl22.time(0);
+              //   tl22.pause()
+              // } else if (currentSection === 3) {
+              //   tl22.time(0);
+              //   tl22.pause()
+              // }
             },
             end: () => "+=5000"
           }
         });
 
-        gsap.to("#headings",
+        const mytimeline3 = gsap.timeline({ paused: true })
+
+        mytimeline3.fromTo("#headings",
           {
-            x: "-=200",
-            duration: 3,
-            scrollTrigger: {
-              trigger: "#headings",
-              scrub: true,
-              // markers: true,
-              start: "top 10%",
-              end: "+=2000 10%"
-            }
-          });
-        gsap.to("#my-vectors img",
+            x: 40, opacity: 0,
+          },
           {
-            x: "-=200",
-            duration: 3,
-            scrollTrigger: {
-              trigger: "#headings",
-              scrub: true,
-              // markers: true,
-              start: "top 10%",
-              end: "+=2000 10%"
-            }
+            x: 0, opacity: 1,
+            duration: 2,
           });
+        //, #my-bulb-svg, #my-globe-svg, #hills
+        mytimeline3.fromTo("#my-vectors img",
+          {
+            x: -50, opacity: 0,
+          },
+          {
+            x: 0, opacity: 1,
+            duration: 2,
+
+          }, "<");
+
+        ScrollTrigger.create({
+          trigger: "#headings",
+          scrub: 1,
+          // markers: true,
+          start: "top 10%",
+          end: "+=500 10%",
+          onEnter: () => { mytimeline3.reverse() },
+          onLeaveBack: () => { mytimeline3.play() },
+          once: false,
+        });
+
+        if (first === 0) {
+          mytimeline3.play()
+          setFirst(1)
+        }
 
         // const tl2 = gsap.timeline({
         //   scrollTrigger: {
@@ -149,7 +137,7 @@ export default function Home() {
         //   }
         // });
 
-        //Add animations to the timeline
+        // //Add animations to the timeline
         // tl2.to("#akaar-wed-shadow",
         //   {
         //     y: "+=20",
@@ -157,38 +145,44 @@ export default function Home() {
         //     y: "+=40",
         //   });
 
-        // gsap.to("#street-light, #wed-clock, #wed-plant", {
-        //   x: "-=100",
-        //   scrollTrigger: {
-        //     trigger: "#wedding-illus",
-        //     scrub: true,
-        //     // markers: true,
-        //     start: "1000 10%",
-        //     end: "2500 10%"
-        //   }
-        // })
+        const mytween = gsap.to("#street-light, #wed-clock, #wed-plant", {
+          opacity: 1,
+          x: "-=100",
+          duration: 2.5,
+          paused: true
+        })
 
-        // const tl2 = gsap.timeline({
-        //   paused: true
-        // });
+        ScrollTrigger.create({
+          trigger: "#wedding-illus",
+          scrub: true,
+          // markers: true,
+          start: "1000 10%",
+          end: "2500 10%",
+          onEnter: () => mytween.play(),
+          onLeaveBack: () => mytween.reverse(),
+        })
 
-        // // Add animations to the timeline
-        // tl2.to("#akaar-wed-shadow",
-        //   {
-        //     y: "+=20", duration: 0.75, delay: 0.5, ease: "power1.easeInOut"
-        //   }).to("#akaar-wed-shadow-1", {
-        //     y: "+=40", duration: 0.75, ease: "power1.easeInOut"
-        //   });
+        const tl2 = gsap.timeline({
+          paused: true
+        });
 
-        // ScrollTrigger.create({
-        //   trigger: "#wedding-illus",
-        //   // scrub: true,
-        //   // markers: true,
-        //   start: "1000 10%",
-        //   end: "2000 10%",
-        //   onEnter: () => tl2.play(),
-        //   onLeaveBack: () => tl2.reverse(),
-        // })
+        // Add animations to the timeline
+        tl2.to("#akaar-wed-shadow",
+          {
+            y: "+=20", duration: 0.75, delay: 0.5, ease: "power1.easeInOut"
+          }).to("#akaar-wed-shadow-1", {
+            y: "+=40", duration: 0.75, ease: "power1.easeInOut"
+          });
+
+        ScrollTrigger.create({
+          trigger: "#wedding-illus",
+          // scrub: true,
+          // markers: true,
+          start: "1000 10%",
+          end: "2000 10%",
+          onEnter: () => tl2.play(),
+          onLeaveBack: () => tl2.reverse(),
+        })
 
 
         const myTimeline = gsap.timeline({
@@ -265,7 +259,7 @@ export default function Home() {
         tl.to("#main-heading", {
           opacity: 1, duration: 3, ease: "expo.inOut",
         }, "<")
-        tl.fromTo("#sub-script", { y: "10px" }, {
+        tl.fromTo("#sub-script", { y: "0px" }, {
           opacity: 1, duration: 1.5, y: "0px", ease: "power3.out"
         }, "-=1.5")
         tl.fromTo("#my-bulb-svg", {
