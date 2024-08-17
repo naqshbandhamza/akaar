@@ -189,8 +189,8 @@ export default function Home() {
           paused: true
         })
         myTimeline.to(
-          "#scroll-assist",
-          { backgroundColor: "#FFF5D8", duration: 1, ease: "expo.inOut" }
+          "#scroll-assist, #lang-btn",
+          { backgroundColor: "#FFF5D8", color: "#FFC325", duration: 1, ease: "expo.inOut" }
         ).to("#scroll-assist :nth-child(1)", {
           backgroundColor: "#FFC325", duration: 1, ease: "expo.inOut"
         }, "<");
@@ -199,8 +199,8 @@ export default function Home() {
           paused: true
         })
         myTimeline1.to(
-          "#scroll-assist",
-          { backgroundColor: "#FFC7C7", duration: 1, ease: "expo.inOut" }
+          "#scroll-assist, #lang-btn",
+          { backgroundColor: "#FFC7C7", color: "#FF2424", duration: 1, ease: "expo.inOut" }
         ).to("#scroll-assist :nth-child(1)", {
           backgroundColor: "#FF2424", duration: 1, ease: "expo.inOut"
         }, "<");
@@ -209,8 +209,8 @@ export default function Home() {
           paused: true
         })
         myTimeline2.to(
-          "#scroll-assist",
-          { backgroundColor: "#DFC3EC", duration: 1, ease: "expo.inOut" }
+          "#scroll-assist, #lang-btn",
+          { backgroundColor: "#DFC3EC", color: "#7800B0", duration: 1, ease: "expo.inOut" }
         ).to("#scroll-assist :nth-child(1)", {
           backgroundColor: "#7800B0", duration: 1, ease: "expo.inOut"
         }, "<");
@@ -897,9 +897,23 @@ export default function Home() {
             <div></div>
             <div></div>
           </div>
+          <button id="lang-btn">
+            EN
+          </button>
         </div>
         <div id="section-5">
-
+          <div style={{ width: "100%", height: "90px", textAlign: "center" }}>
+            <h1>Our Portfolio</h1>
+          </div>
+          <div id="portfolio-grid">
+            <div className="product">
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/FJGSqtMzmlo?si=48HwWIVNCRaeELEr" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>            </div>
+            <div className="product"></div>
+            <div className="product"></div>
+            <div className="product"></div>
+            <div className="product"></div>
+            <div className="product"></div>
+          </div>
         </div>
       </div>
     </>
