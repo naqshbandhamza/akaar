@@ -72,26 +72,13 @@ export default function Home() {
               // delay: 1,
             },
             onSnapComplete: (self) => {
-              // const currentSection = Math.round(self.progress * (sections.length - 1));
-              // if (currentSection === 0) {
-              //   tl22.time(0);
-              //   tl22.pause()
-              // } else if (currentSection === 1) {
-              //   tl22.play();
-              // } else if (currentSection === 2) {
-              //   tl22.time(0);
-              //   tl22.pause()
-              // } else if (currentSection === 3) {
-              //   tl22.time(0);
-              //   tl22.pause()
-              // }
+
             },
             end: () => "+=5000"
           }
         });
 
         const mytimeline3 = gsap.timeline({ paused: true })
-
         mytimeline3.fromTo("#headings",
           {
             x: 40, opacity: 0,
@@ -127,24 +114,6 @@ export default function Home() {
           setFirst(1)
         }
 
-        // const tl2 = gsap.timeline({
-        //   scrollTrigger: {
-        //     trigger: "#wedding-illus",
-        //     scrub: true,
-        //     markers: true,
-        //     start: "700 20%",
-        //     end: "1500 20%"
-        //   }
-        // });
-
-        // //Add animations to the timeline
-        // tl2.to("#akaar-wed-shadow",
-        //   {
-        //     y: "+=20",
-        //   }).to("#akaar-wed-shadow-1", {
-        //     y: "+=40",
-        //   });
-
         const mytween = gsap.to("#street-light, #wed-clock, #wed-plant", {
           opacity: 1,
           x: "-=100",
@@ -152,21 +121,22 @@ export default function Home() {
           paused: true
         })
 
+        const mytween1 = gsap.to("#akaar-presents", { opacity: 1, duration: 1, paused: true, })
+
         ScrollTrigger.create({
           trigger: "#wedding-illus",
           scrub: true,
           // markers: true,
           start: "1000 10%",
           end: "2500 10%",
-          onEnter: () => mytween.play(),
-          onLeaveBack: () => mytween.reverse(),
+          onEnter: () => { mytween.play(); mytween1.play(); },
+          onLeaveBack: () => { mytween.reverse(); mytween1.reverse(); },
         })
 
         const tl2 = gsap.timeline({
           paused: true
         });
 
-        // Add animations to the timeline
         tl2.to("#akaar-wed-shadow",
           {
             y: "+=20", duration: 0.75, delay: 0.5, ease: "power1.easeInOut"
@@ -305,6 +275,18 @@ export default function Home() {
     }
   }, [pageloaded]);
 
+  const handleClick = (passedValue) => {
+    document.getElementById("full-screen-container").style.display = "block"
+    let myele = document.getElementById("fscreen")
+    const iframe: any = document.getElementById(passedValue);
+    myele.appendChild(iframe.cloneNode(true));
+  };
+
+  const close = () => {
+    let myele = document.getElementById("fscreen").innerHTML = "";
+    document.getElementById("full-screen-container").style.display = "none";
+  }
+
   return (
     <>
       {/* AKAAR CREATIVE AGENCY */}
@@ -315,6 +297,18 @@ export default function Home() {
       <div id="loading">
         <div className="text-container" id="loading-image">
           <h1 className="masked-text">AKAAR <sup>...</sup></h1>
+        </div>
+      </div>
+
+      <div id="full-screen-container">
+      <div id="akaar-presents">
+            <h4 className="text-shadow" style={{color:"white"}}>AKAAR Presents MANTO</h4>
+          </div>
+        <button className="close-btn" onClick={() => {
+          close()
+        }}>x</button>
+        <div id="fscreen">
+
         </div>
       </div>
 
@@ -891,6 +885,9 @@ export default function Home() {
           <div id="section-4" className="full-screen panels">
 
           </div>
+          <div id="akaar-presents">
+            <h4>AKAAR Presents</h4>
+          </div>
           <div id="scroll-assist">
             <div></div>
             <div></div>
@@ -907,7 +904,11 @@ export default function Home() {
           </div>
           <div id="portfolio-grid">
             <div className="product">
-              <iframe width="560" height="315" src="https://www.youtube.com/embed/FJGSqtMzmlo?si=48HwWIVNCRaeELEr" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>            </div>
+              <button className="fullscreen-btn" onClick={() => handleClick("1-video")}></button>
+              <iframe id="1-video" width="560" height="315" src="https://www.youtube.com/embed/FJGSqtMzmlo?si=48HwWIVNCRaeELEr" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen={false}>
+
+              </iframe>
+            </div>
             <div className="product"></div>
             <div className="product"></div>
             <div className="product"></div>

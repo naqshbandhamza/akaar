@@ -14,6 +14,11 @@
 }
 
 @font-face {
+    font-family: organettoex;
+    src: url("./fonts/organetto-expultrabold.otf");
+}
+
+@font-face {
     font-family: "Protrakt";
     src: url("./fonts/911porschav3bold.ttf");
 }
@@ -83,7 +88,7 @@ body {
     transform: translate(-50%, -45%);
 }
 
-#sub-script{
+#sub-script {
     width: 800px;
 }
 
@@ -297,6 +302,19 @@ body {
     opacity: 0;
 }
 
+#akaar-presents {
+    position: absolute;
+    top: 5%;
+    left: calc(50vw);
+    transform: translate(-50%, -5%);
+    font-family: organettoex;
+    color: black;
+    font-size: 14px;
+    letter-spacing: 2px;
+    font-weight: bolder;
+    opacity: 0;
+}
+
 #scroll-assist {
     position: absolute;
     top: 95%;
@@ -348,6 +366,48 @@ body {
     z-index: 99;
 }
 
+#full-screen-container {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    text-align: center;
+    opacity: 1;
+    background-color: #1d1c1ce5;
+    z-index: 99;
+
+}
+
+.text-shadow {
+    /* font-size: 36px; */
+    color: #333;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.close-btn{
+    position: absolute;
+    top:5px;
+    left:5px;
+    color:white
+}
+
+#fscreen {
+    width: 70%;
+    height: 75%;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 85px;
+    
+}
+
+
+#fscreen iframe{
+    height: 100%;
+    width: 100%;
+}
+
 #loading-image {
     position: absolute;
     top: 10%;
@@ -380,12 +440,12 @@ body {
     transform-origin: right;
 }
 
-#lang-btn{
+#lang-btn {
     font-family: Protrakt;
     font-size: 12px;
     position: absolute;
     bottom: 35px;
-    left:35px;
+    left: 35px;
     background-color: #F5F6FF;
     height: 50px;
     width: 50px;
@@ -415,9 +475,9 @@ body {
     width: 900px;
     font-size: 62px;
     position: absolute;
-    top: 30%;
+    top: 35%;
     left: 50%;
-    transform: translate(-50%, -30%);
+    transform: translate(-50%, -35%);
     font-family: Protrakt;
     color: black
 }
@@ -473,9 +533,9 @@ body {
     top: 65%;
     left: 40%;
     transform: translate(-40%, -65%);
-    background-color: #FFC325;
-    height: 90px;
-    width: 90px;
+    background-color: #ffc125dd;
+    height: 110px;
+    width: 110px;
     border-radius: 50%;
     font-family: Protrakt;
     color: white;
@@ -494,10 +554,10 @@ body {
     overflow: hidden;
 }
 
-#portfolio-grid{
+#portfolio-grid {
     display: grid;
-    grid-template-columns: 250px 250px 250px 250px;
-    grid-template-rows: 300px 300px 300px 300px;
+    grid-template-columns: 300px 300px 300px 300px;
+    grid-template-rows: 250px 250px 250px 250px;
     column-gap: 15px;
     row-gap: 15px;
     max-width: fit-content;
@@ -514,16 +574,41 @@ body {
 }
 
 .product iframe,
-.product video{
-    width: 250px;
+.product video {
+    width: 300px;
     height: 300px;
     object-fit: cover;
 }
 
-#section-5 h1{
+#section-5 h1 {
     margin-top: 40px;
     text-align: center;
     font-family: organetto;
     font-size: 22px;
     color: black;
+}
+
+@keyframes fullscreenbtnanim {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
+
+.fullscreen-btn {
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+    z-index: 5;
+    border-width: 1px;
+    border-color: white;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    animation: fullscreenbtnanim 1.5s infinite ease-in-out;
 }
