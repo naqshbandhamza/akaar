@@ -56,8 +56,7 @@ export default function Home() {
         gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
         // horizontal scroll
-        let sections = gsap.utils.toArray(".panels");
-
+        let sections: any = gsap.utils.toArray(".panels");
         gsap.to(sections, {
           xPercent: -100 * (sections.length - 1),
           ease: "none",
@@ -78,6 +77,7 @@ export default function Home() {
           }
         });
 
+        //section 1
         const mytimeline3 = gsap.timeline({ paused: true })
         mytimeline3.fromTo("#headings",
           {
@@ -102,8 +102,8 @@ export default function Home() {
           trigger: "#headings",
           scrub: 1,
           // markers: true,
-          start: "top 10%",
-          end: "+=500 10%",
+          start: "top top",
+          end: "+=500 top",
           onEnter: () => { mytimeline3.reverse() },
           onLeaveBack: () => { mytimeline3.play() },
           once: false,
@@ -114,6 +114,7 @@ export default function Home() {
           setFirst(1)
         }
 
+        //section 2
         const mytween = gsap.to("#street-light, #wed-clock, #wed-plant", {
           opacity: 1,
           x: "-=100",
@@ -127,8 +128,8 @@ export default function Home() {
           trigger: "#wedding-illus",
           scrub: true,
           // markers: true,
-          start: "1000 10%",
-          end: "2500 10%",
+          start: `${sections[0].offsetWidth * 1} top`,
+          end: `${sections[0].offsetWidth * 1 + 500} top`,
           onEnter: () => { mytween.play(); mytween1.play(); },
           onLeaveBack: () => { mytween.reverse(); mytween1.reverse(); },
         })
@@ -148,13 +149,13 @@ export default function Home() {
           trigger: "#wedding-illus",
           // scrub: true,
           // markers: true,
-          start: "1000 10%",
-          end: "2000 10%",
+          start: `${sections[0].offsetWidth * 1} top`,
+          end: `${sections[0].offsetWidth * 1 + 500} top`,
           onEnter: () => tl2.play(),
           onLeaveBack: () => tl2.reverse(),
         })
 
-
+        //scroll assist on 2nd section
         const myTimeline = gsap.timeline({
           paused: true
         })
@@ -165,6 +166,18 @@ export default function Home() {
           backgroundColor: "#FFC325", duration: 1, ease: "expo.inOut"
         }, "<");
 
+        ScrollTrigger.create({
+          trigger: "#wedding-illus",
+          // markers: true,
+          scrub: 1,
+          start: `${sections[0].offsetWidth * 1} top`,
+          end: `${sections[0].offsetWidth * 1 + 500} top`,
+          onEnter: () => myTimeline.play(),
+          onLeaveBack: () => myTimeline.reverse(),
+          once: false,
+        });
+
+        //scroll assist on 3rd section
         const myTimeline1 = gsap.timeline({
           paused: true
         })
@@ -175,6 +188,18 @@ export default function Home() {
           backgroundColor: "#FF2424", duration: 1, ease: "expo.inOut"
         }, "<");
 
+        ScrollTrigger.create({
+          trigger: "#wedding-illus",
+          // markers: true,
+          scrub: 1,
+          start: `${sections[0].offsetWidth * 2} top`,
+          end: `${sections[0].offsetWidth * 2 + 500} top`,
+          onEnter: () => myTimeline1.play(),
+          onLeaveBack: () => myTimeline1.reverse(),
+          once: false,
+        });
+
+        //scroll assist on 4th section
         const myTimeline2 = gsap.timeline({
           paused: true
         })
@@ -189,35 +214,38 @@ export default function Home() {
           trigger: "#wedding-illus",
           // markers: true,
           scrub: 1,
-          start: "500 10%",
-          end: "1500 10%",
-          onEnter: () => myTimeline.play(),
-          onLeaveBack: () => myTimeline.reverse(),
-          once: false,
-        });
-
-        ScrollTrigger.create({
-          trigger: "#wedding-illus",
-          // markers: true,
-          scrub: 1,
-          start: "2200 10%",
-          end: "2700 10%",
-          onEnter: () => myTimeline1.play(),
-          onLeaveBack: () => myTimeline1.reverse(),
-          once: false,
-        });
-
-        ScrollTrigger.create({
-          trigger: "#wedding-illus",
-          // markers: true,
-          scrub: 1,
-          start: "4000 10%",
-          end: "5000 10%",
+          start: `${sections[0].offsetWidth * 3} top`,
+          end: `${sections[0].offsetWidth * 3 + 500} top`,
           onEnter: () => myTimeline2.play(),
           onLeaveBack: () => myTimeline2.reverse(),
           once: false,
         });
 
+        let tween = gsap.fromTo("#now-booking-wed",
+          {
+            x: 200,
+            scale: 0
+          },
+          {
+            x: -50,
+            scale: 1,
+            duration: 1,
+            paused: true,
+            ease: "elastic.out"
+          });
+
+        ScrollTrigger.create({
+          trigger: "#wedding-illus",
+          // scrub: true,
+          //markers: true,
+          start: `${sections[0].offsetWidth * 1} top`,
+          end: `${sections[0].offsetWidth * 1 + 500} top`,
+          onEnter: () => tween.play(),
+          onLeaveBack: () => tween.reverse(),
+          once: false,
+        });
+
+        //section 1
         let tl = gsap.timeline({})
         tl.fromTo(
           document.querySelectorAll(".ofx"),
@@ -244,31 +272,6 @@ export default function Home() {
         tl.fromTo("#scroll-assist", {
           y: 100, opacity: 0, scale: 1.2
         }, { y: -50, opacity: 1, scale: 1, duration: 1, ease: "expo.out" })
-
-        let tween = gsap.fromTo("#now-booking-wed",
-          {
-            x: 200,
-            scale: 0
-          },
-          {
-            x: -50,
-            scale: 1,
-            duration: 1,
-            paused: true,
-            ease: "elastic.out"
-          });
-
-        ScrollTrigger.create({
-          trigger: "#wedding-illus",
-          // scrub: true,
-          // markers: true,
-          start: "1500 40%",
-          end: "2500 40%",
-          onEnter: () => tween.play(),
-          onLeaveBack: () => tween.reverse(),
-          once: false,
-        });
-
 
       });
       return () => ctx.revert();
@@ -301,9 +304,9 @@ export default function Home() {
       </div>
 
       <div id="full-screen-container">
-      <div id="akaar-presents">
-            <h4 className="text-shadow" style={{color:"white"}}>AKAAR Presents MANTO</h4>
-          </div>
+        <div id="akaar-presents">
+          <h4 className="text-shadow" style={{ color: "white" }}>AKAAR Presents MANTO</h4>
+        </div>
         <button className="close-btn" onClick={() => {
           close()
         }}>x</button>
