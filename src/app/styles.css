@@ -62,20 +62,24 @@ body {
 }
 
 #section-1 {
+    overflow: hidden;
     background-color: #FFFFFF;
     position: relative;
 }
 
 #section-2 {
+    overflow: hidden;
     position: relative;
     background-color: #FFFBEC;
 }
 
 #section-3 {
+    overflow: hidden;
     background-color: #FFDBDB;
 }
 
 #section-4 {
+    overflow: hidden;
     background-color: #EBD9F3;
 }
 
@@ -386,11 +390,11 @@ body {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-.close-btn{
+.close-btn {
     position: absolute;
-    top:5px;
-    left:5px;
-    color:white
+    top: 5px;
+    left: 5px;
+    color: white
 }
 
 #fscreen {
@@ -399,11 +403,11 @@ body {
     margin-left: 15%;
     margin-right: 15%;
     margin-top: 85px;
-    
+
 }
 
 
-#fscreen iframe{
+#fscreen iframe {
     height: 100%;
     width: 100%;
 }
@@ -611,4 +615,59 @@ body {
     width: 20px;
     border-radius: 50%;
     animation: fullscreenbtnanim 1.5s infinite ease-in-out;
+}
+
+
+@media screen and (max-width: 1000px) {
+    .cnt-for-h {
+        height: 300px;
+        width: 380px;
+        text-align: center;
+    }
+
+    #sub-script {
+        width: 300px;
+    }
+
+    #section-1 h1 {
+        font-size: 25px;
+    }
+
+    #section-1 sup {
+        font-size: 12px;
+    }
+
+    #section-1 p {
+        font-size: 12px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #section-1 p sup {
+        font-size: 12px;
+    }
+
+    #my-vectors{
+        display: none;
+    }
+
+    #lang-btn {
+        top: 35px;
+        left: 35px;
+    }
+
+    /* #akaar-wed,
+#akaar-wed-shadow {
+    background-color: #FFFBEC;
+    height: 35px;
+}*/
+
+    .akaar-wedstyle {
+        font-size: 30px;
+    }
+    
+    #akaar-presents {
+        font-size: 10px;
+    }
+
 }
