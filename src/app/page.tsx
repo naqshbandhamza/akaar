@@ -73,7 +73,7 @@ export default function Home() {
             onSnapComplete: (self) => {
 
             },
-            end: () => "+=5000"
+            end: () => sections[0].offsetWidth * 4
           }
         });
 
