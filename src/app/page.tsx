@@ -12,6 +12,9 @@ export default function Home() {
 
   const [pageloaded, setPageLoaded] = useState(false);
   const [first, setFirst] = useState(0)
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+  const [screenHeight, setScreenHeight] = useState(window.innerHeight);
+  const ctxRef = useRef(null);
   const lenisRef: any = useRef()
 
   // this useEffect is for page preloader
@@ -42,6 +45,21 @@ export default function Home() {
     return () => window.removeEventListener('load', handlePageLoad);
   }, []);
 
+  const handleResize = () => {
+    setScreenHeight(window.innerHeight)
+    setScreenWidth(window.innerWidth);
+  };
+
+  useEffect(() => {
+    // Attach the resize event listener
+    window.addEventListener('resize', handleResize);
+
+    // Clean up event listener on component unmount
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   useEffect(() => {
 
     if (pageloaded) {
@@ -53,7 +71,7 @@ export default function Home() {
       content.style = "display: block;"
       gsap.fromTo(".slider-container", { opacity: 0 }, { duration: 1, opacity: 1, ease: "power4.inOut" })
 
-      let ctx = gsap.context(() => {
+      ctxRef.current = gsap.context(() => {
         gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
         // horizontal scroll
@@ -70,10 +88,43 @@ export default function Home() {
               snapTo: 1 / (sections.length - 1),
             },
             onSnapComplete: (self) => {
-
+              const currentIndex = Math.round(self.progress * (sections.length - 1));
+              if (currentIndex === 0) {
+                const myTimeline = gsap.timeline()
+                myTimeline.to(
+                  "#scroll-assist, #lang-btn",
+                  { backgroundColor: "#EAEDFE", color: "#2E4BF5", duration: 1, ease: "expo.inOut" }
+                ).to("#scroll-assist :nth-child(1)", {
+                  backgroundColor: "#2E4BF5", duration: 1, ease: "expo.inOut"
+                }, "<");
+              } else if (currentIndex === 1) {
+                const myTimeline = gsap.timeline()
+                myTimeline.to(
+                  "#scroll-assist, #lang-btn",
+                  { backgroundColor: "#FFF5D8", color: "#FFC325", duration: 1, ease: "expo.inOut" }
+                ).to("#scroll-assist :nth-child(1)", {
+                  backgroundColor: "#FFC325", duration: 1, ease: "expo.inOut"
+                }, "<");
+              } else if (currentIndex === 2) {
+                const myTimeline1 = gsap.timeline()
+                myTimeline1.to(
+                  "#scroll-assist, #lang-btn",
+                  { backgroundColor: "#FFC7C7", color: "#FF2424", duration: 1, ease: "expo.inOut" }
+                ).to("#scroll-assist :nth-child(1)", {
+                  backgroundColor: "#FF2424", duration: 1, ease: "expo.inOut"
+                }, "<");
+              } else if (currentIndex === 3) {
+                const myTimeline2 = gsap.timeline()
+                myTimeline2.to(
+                  "#scroll-assist, #lang-btn",
+                  { backgroundColor: "#DFC3EC", color: "#7800B0", duration: 1, ease: "expo.inOut" }
+                ).to("#scroll-assist :nth-child(1)", {
+                  backgroundColor: "#7800B0", duration: 1, ease: "expo.inOut"
+                }, "<");
+              }
             },
             start: "top top",
-            end: () => sections[0].offsetWidth * 4
+            end: () => screenWidth * 4
           }
         });
 
@@ -125,10 +176,10 @@ export default function Home() {
 
         ScrollTrigger.create({
           trigger: "#wedding-illus",
-          scrub: true,
+          scrub: 1,
           // markers: true,
-          start: () => `${sections[0].offsetWidth} 15%`,
-          end: () => `${sections[0].offsetWidth + 500} top`,
+          start: () => `${screenWidth} 15%`,
+          end: () => `${screenWidth + 500} top`,
           onEnter: () => { mytween.play(); mytween1.play(); },
           onLeaveBack: () => { mytween.reverse(); mytween1.reverse(); },
         })
@@ -146,79 +197,79 @@ export default function Home() {
 
         ScrollTrigger.create({
           trigger: "#wedding-illus",
-          // scrub: true,
+          scrub: 1,
           // markers: true,
-          start: () => `${sections[0].offsetWidth} 15%`,
-          end: () => `${sections[0].offsetWidth + 500} top`,
+          start: () => `${screenWidth} 15%`,
+          end: () => `${screenWidth + 500} top`,
           onEnter: () => tl2.play(),
           onLeaveBack: () => tl2.reverse(),
         })
 
         //scroll assist on 2nd section
-        const myTimeline = gsap.timeline({
-          paused: true
-        })
-        myTimeline.to(
-          "#scroll-assist, #lang-btn",
-          { backgroundColor: "#FFF5D8", color: "#FFC325", duration: 1, ease: "expo.inOut" }
-        ).to("#scroll-assist :nth-child(1)", {
-          backgroundColor: "#FFC325", duration: 1, ease: "expo.inOut"
-        }, "<");
+        // const myTimeline = gsap.timeline({
+        //   paused: true
+        // })
+        // myTimeline.to(
+        //   "#scroll-assist, #lang-btn",
+        //   { backgroundColor: "#FFF5D8", color: "#FFC325", duration: 1, ease: "expo.inOut" }
+        // ).to("#scroll-assist :nth-child(1)", {
+        //   backgroundColor: "#FFC325", duration: 1, ease: "expo.inOut"
+        // }, "<");
 
-        ScrollTrigger.create({
-          trigger: "#wedding-illus",
-          // markers: true,
-          scrub: 1,
-          start: () => `${sections[0].offsetWidth} 15%`,
-          end: () => `${sections[0].offsetWidth + 500} top`,
-          onEnter: () => myTimeline.play(),
-          onLeaveBack: () => myTimeline.reverse(),
-          once: false,
-        });
+        // ScrollTrigger.create({
+        //   trigger: "#wedding-illus",
+        //   // markers: true,
+        //   scrub: 1,
+        //   start: () => `${screenWidth} 15%`,
+        //   end: () => `${screenWidth + 500} top`,
+        //   onEnter: () => myTimeline.play(),
+        //   onLeaveBack: () => myTimeline.reverse(),
+        //   once: false,
+        // });
 
         //scroll assist on 3rd section
-        const myTimeline1 = gsap.timeline({
-          paused: true
-        })
-        myTimeline1.to(
-          "#scroll-assist, #lang-btn",
-          { backgroundColor: "#FFC7C7", color: "#FF2424", duration: 1, ease: "expo.inOut" }
-        ).to("#scroll-assist :nth-child(1)", {
-          backgroundColor: "#FF2424", duration: 1, ease: "expo.inOut"
-        }, "<");
+        // const myTimeline1 = gsap.timeline({
+        //   paused: true
+        // })
+        // myTimeline1.to(
+        //   "#scroll-assist, #lang-btn",
+        //   { backgroundColor: "#FFC7C7", color: "#FF2424", duration: 1, ease: "expo.inOut" }
+        // ).to("#scroll-assist :nth-child(1)", {
+        //   backgroundColor: "#FF2424", duration: 1, ease: "expo.inOut"
+        // }, "<");
 
-        ScrollTrigger.create({
-          trigger: "#wedding-illus",
-          // markers: true,
-          scrub: 1,
-          start: () => `${sections[0].offsetWidth * 2} top`,
-          end: () => `${sections[0].offsetWidth * 2 + 500} top`,
-          onEnter: () => myTimeline1.play(),
-          onLeaveBack: () => myTimeline1.reverse(),
-          once: false,
-        });
+        // ScrollTrigger.create({
+        //   trigger: "#wedding-illus",
+        //   // markers: true,
+        //   scrub: 1,
+        //   start: () => `${screenWidth * 2} top`,
+        //   end: () => `${screenWidth * 2 + 500} top`,
+        //   onEnter: () => myTimeline1.play(),
+        //   onLeaveBack: () => myTimeline1.reverse(),
+        //   once: false,
+        // });
 
         //scroll assist on 4th section
-        const myTimeline2 = gsap.timeline({
-          paused: true
-        })
-        myTimeline2.to(
-          "#scroll-assist, #lang-btn",
-          { backgroundColor: "#DFC3EC", color: "#7800B0", duration: 1, ease: "expo.inOut" }
-        ).to("#scroll-assist :nth-child(1)", {
-          backgroundColor: "#7800B0", duration: 1, ease: "expo.inOut"
-        }, "<");
+        // const myTimeline2 = gsap.timeline({
+        //   paused: true
+        // })
+        // myTimeline2.to(
+        //   "#scroll-assist, #lang-btn",
+        //   { backgroundColor: "#DFC3EC", color: "#7800B0", duration: 1, ease: "expo.inOut" }
+        // ).to("#scroll-assist :nth-child(1)", {
+        //   backgroundColor: "#7800B0", duration: 1, ease: "expo.inOut"
+        // }, "<");
 
-        ScrollTrigger.create({
-          trigger: "#wedding-illus",
-          // markers: true,
-          scrub: 1,
-          start: () => `${sections[0].offsetWidth * 3} top`,
-          end: () => `${sections[0].offsetWidth * 3 + 500} top`,
-          onEnter: () => myTimeline2.play(),
-          onLeaveBack: () => myTimeline2.reverse(),
-          once: false,
-        });
+        // ScrollTrigger.create({
+        //   trigger: "#wedding-illus",
+        //   // markers: true,
+        //   scrub: 1,
+        //   start: () => `${screenWidth * 3} top`,
+        //   end: () => `${screenWidth * 3 + 500} top`,
+        //   onEnter: () => myTimeline2.play(),
+        //   onLeaveBack: () => myTimeline2.reverse(),
+        //   once: false,
+        // });
 
         let tween = gsap.fromTo("#now-booking-wed",
           {
@@ -226,19 +277,19 @@ export default function Home() {
             scale: 0
           },
           {
-            x: -50,
+            x: 0,
             scale: 1,
-            duration: 1,
+            duration: 1.5,
             paused: true,
             ease: "elastic.out"
           });
 
         ScrollTrigger.create({
           trigger: "#wedding-illus",
-          // scrub: true,
+          scrub: 1,
           //markers: true,
-          start: () => `${sections[0].offsetWidth * 1} 15%`,
-          end: () => `${sections[0].offsetWidth * 1 + 500} top`,
+          start: () => `${screenWidth * 1} 15%`,
+          end: () => `${screenWidth * 1 + 500} top`,
           onEnter: () => tween.play(),
           onLeaveBack: () => tween.reverse(),
           once: false,
@@ -273,9 +324,12 @@ export default function Home() {
         }, { y: -50, opacity: 1, scale: 1, duration: 1, ease: "expo.out" })
 
       });
-      return () => ctx.revert();
+
+      return () => {
+        ctxRef.current && ctxRef.current.revert(); // This kills the context
+      };
     }
-  }, [pageloaded]);
+  }, [pageloaded, screenWidth]);
 
   const handleClick = (passedValue) => {
     document.getElementById("full-screen-container").style.display = "block"
@@ -285,7 +339,6 @@ export default function Home() {
   };
 
   const close = () => {
-    let myele = document.getElementById("fscreen").innerHTML = "";
     document.getElementById("full-screen-container").style.display = "none";
   }
 
@@ -485,13 +538,13 @@ export default function Home() {
           </div>
           <div id="section-2" className="full-screen panels">
             <div className="akaar-wedstyle">
-              <h1 id="akaar-wed-shadow-1" style={{ color: "#E5E1D4" }}>AKAAR WEDDINGS</h1>
+              <h1 id="akaar-wed-shadow-1" style={{ color: "#E5E1D4" }}>AKAARWEDDINGS</h1>
             </div>
             <div className="akaar-wedstyle">
-              <h1 id="akaar-wed-shadow" style={{ color: "#B2AFA5" }}>AKAAR WEDDINGS</h1>
+              <h1 id="akaar-wed-shadow" style={{ color: "#B2AFA5" }}>AKAARWEDDINGS</h1>
             </div>
             <div id="akaar-wed" className="akaar-wedstyle">
-              <h1>AKAAR WEDDINGS</h1>
+              <h1>AKAARWEDDINGS</h1>
             </div>
             <div id="wedding-illus">
 
@@ -872,12 +925,14 @@ export default function Home() {
                   </g>
                 </g>
               </svg>
-
-              <button id="now-booking-wed">
-                Now Booking
-              </button>
-
             </div>
+            <div id="sub-tag-wed">
+              {/* <p>Be careful, violence tends to escalate</p> */}
+              <p>Your Story Told Like None Other</p>
+            </div>
+            <button id="now-booking-wed">
+              Now Booking
+            </button>
           </div>
           <div id="section-3" className="full-screen panels">
 
