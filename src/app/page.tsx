@@ -72,6 +72,7 @@ export default function Home() {
             onSnapComplete: (self) => {
 
             },
+            start: "top top",
             end: () => sections[0].offsetWidth * 4
           }
         });
@@ -86,7 +87,6 @@ export default function Home() {
             x: 0, opacity: 1,
             duration: 2,
           });
-        //, #my-bulb-svg, #my-globe-svg, #hills
         mytimeline3.fromTo("#my-vectors img",
           {
             x: -50, opacity: 0,
@@ -122,13 +122,13 @@ export default function Home() {
         })
 
         const mytween1 = gsap.to("#akaar-presents", { opacity: 1, duration: 1, paused: true, })
-        console.log(sections[0].offsetWidth)
+
         ScrollTrigger.create({
           trigger: "#wedding-illus",
           scrub: true,
           // markers: true,
-          start: () => `${sections[0].offsetWidth * 1} 100`,
-          end: () => `${sections[0].offsetWidth * 1 + 500} 100`,
+          start: () => `${sections[0].offsetWidth} 15%`,
+          end: () => `${sections[0].offsetWidth + 500} top`,
           onEnter: () => { mytween.play(); mytween1.play(); },
           onLeaveBack: () => { mytween.reverse(); mytween1.reverse(); },
         })
@@ -148,8 +148,8 @@ export default function Home() {
           trigger: "#wedding-illus",
           // scrub: true,
           // markers: true,
-          start: () => `${sections[0].offsetWidth * 1} 100`,
-          end: () => `${sections[0].offsetWidth * 1 + 500} 100`,
+          start: () => `${sections[0].offsetWidth} 15%`,
+          end: () => `${sections[0].offsetWidth + 500} top`,
           onEnter: () => tl2.play(),
           onLeaveBack: () => tl2.reverse(),
         })
@@ -169,8 +169,8 @@ export default function Home() {
           trigger: "#wedding-illus",
           // markers: true,
           scrub: 1,
-          start: () => `${sections[0].offsetWidth * 1} 100`,
-          end: () => `${sections[0].offsetWidth * 1 + 500} 100`,
+          start: () => `${sections[0].offsetWidth} 15%`,
+          end: () => `${sections[0].offsetWidth + 500} top`,
           onEnter: () => myTimeline.play(),
           onLeaveBack: () => myTimeline.reverse(),
           once: false,
@@ -191,8 +191,8 @@ export default function Home() {
           trigger: "#wedding-illus",
           // markers: true,
           scrub: 1,
-          start: () => `${sections[0].offsetWidth * 2} 50`,
-          end: () => `${sections[0].offsetWidth * 2 + 500} 50`,
+          start: () => `${sections[0].offsetWidth * 2} top`,
+          end: () => `${sections[0].offsetWidth * 2 + 500} top`,
           onEnter: () => myTimeline1.play(),
           onLeaveBack: () => myTimeline1.reverse(),
           once: false,
@@ -213,8 +213,8 @@ export default function Home() {
           trigger: "#wedding-illus",
           // markers: true,
           scrub: 1,
-          start: () => `${sections[0].offsetWidth * 3} 50`,
-          end: () => `${sections[0].offsetWidth * 3 + 500} 50`,
+          start: () => `${sections[0].offsetWidth * 3} top`,
+          end: () => `${sections[0].offsetWidth * 3 + 500} top`,
           onEnter: () => myTimeline2.play(),
           onLeaveBack: () => myTimeline2.reverse(),
           once: false,
@@ -237,8 +237,8 @@ export default function Home() {
           trigger: "#wedding-illus",
           // scrub: true,
           //markers: true,
-          start: () => `${sections[0].offsetWidth * 1} 50`,
-          end: () => `${sections[0].offsetWidth * 1 + 500} 50`,
+          start: () => `${sections[0].offsetWidth * 1} 15%`,
+          end: () => `${sections[0].offsetWidth * 1 + 500} top`,
           onEnter: () => tween.play(),
           onLeaveBack: () => tween.reverse(),
           once: false,
