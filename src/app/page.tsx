@@ -12,13 +12,17 @@ export default function Home() {
 
   const [pageloaded, setPageLoaded] = useState(false);
   const [first, setFirst] = useState(0)
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
-  const [screenHeight, setScreenHeight] = useState(window.innerHeight);
+  const [screenWidth, setScreenWidth] = useState(0);
+  const [screenHeight, setScreenHeight] = useState(0);
   const ctxRef = useRef(null);
   const lenisRef: any = useRef()
 
   // this useEffect is for page preloader
   useEffect(() => {
+
+    setScreenHeight(window.innerHeight)
+    setScreenWidth(window.innerWidth);
+
     const textContainer: any = document.querySelector('.text-container');
     const mask = document.createElement('div');
     mask.classList.add('mask');
@@ -52,12 +56,14 @@ export default function Home() {
 
   useEffect(() => {
     // Attach the resize event listener
-    window.addEventListener('resize', handleResize);
+    if (typeof window !== 'undefined') {
+      window.addEventListener('resize', handleResize);
 
-    // Clean up event listener on component unmount
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
+      // Clean up event listener on component unmount
+      return () => {
+        window.removeEventListener('resize', handleResize);
+      };
+    }
   }, []);
 
   useEffect(() => {
