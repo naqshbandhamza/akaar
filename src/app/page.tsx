@@ -46,15 +46,6 @@ export default function Home() {
 
     if (pageloaded) {
 
-      // let resizeTimeout;
-
-      // window.addEventListener('resize', () => {
-      //   clearTimeout(resizeTimeout);
-      //   resizeTimeout = setTimeout(() => {
-      //     location.reload();
-      //   }, 200);
-      // });
-
       let preloader: any = document.getElementById('loading');
       let content: any = document.getElementById('content');
 
@@ -81,7 +72,7 @@ export default function Home() {
             onSnapComplete: (self) => {
 
             },
-            end: () => window.innerWidth * 4
+            end: () => sections[0].offsetWidth * 4
           }
         });
 
@@ -136,8 +127,8 @@ export default function Home() {
           trigger: "#wedding-illus",
           scrub: true,
           // markers: true,
-          start: () => `${window.innerWidth * 1} top`,
-          end: () => `${window.innerWidth * 1 + 500} top`,
+          start: () => `${sections[0].offsetWidth * 1} top`,
+          end: () => `${sections[0].offsetWidth * 1 + 500} top`,
           onEnter: () => { mytween.play(); mytween1.play(); },
           onLeaveBack: () => { mytween.reverse(); mytween1.reverse(); },
         })
@@ -157,8 +148,8 @@ export default function Home() {
           trigger: "#wedding-illus",
           // scrub: true,
           // markers: true,
-          start: () => `${window.innerWidth * 1} top`,
-          end: () => `${window.innerWidth * 1 + 500} top`,
+          start: () => `${sections[0].offsetWidth * 1} top`,
+          end: () => `${sections[0].offsetWidth * 1 + 500} top`,
           onEnter: () => tl2.play(),
           onLeaveBack: () => tl2.reverse(),
         })
@@ -178,8 +169,8 @@ export default function Home() {
           trigger: "#wedding-illus",
           // markers: true,
           scrub: 1,
-          start: () => `${window.innerWidth * 1} top`,
-          end: () => `${window.innerWidth * 1 + 500} top`,
+          start: () => `${sections[0].offsetWidth * 1} top`,
+          end: () => `${sections[0].offsetWidth * 1 + 500} top`,
           onEnter: () => myTimeline.play(),
           onLeaveBack: () => myTimeline.reverse(),
           once: false,
@@ -200,8 +191,8 @@ export default function Home() {
           trigger: "#wedding-illus",
           // markers: true,
           scrub: 1,
-          start: () => `${window.innerWidth * 2} top`,
-          end: () => `${window.innerWidth * 2 + 500} top`,
+          start: () => `${sections[0].offsetWidth * 2} top`,
+          end: () => `${sections[0].offsetWidth * 2 + 500} top`,
           onEnter: () => myTimeline1.play(),
           onLeaveBack: () => myTimeline1.reverse(),
           once: false,
@@ -222,8 +213,8 @@ export default function Home() {
           trigger: "#wedding-illus",
           // markers: true,
           scrub: 1,
-          start: () => `${window.innerWidth * 3} top`,
-          end: () => `${window.innerWidth * 3 + 500} top`,
+          start: () => `${sections[0].offsetWidth * 3} top`,
+          end: () => `${sections[0].offsetWidth * 3 + 500} top`,
           onEnter: () => myTimeline2.play(),
           onLeaveBack: () => myTimeline2.reverse(),
           once: false,
@@ -246,8 +237,8 @@ export default function Home() {
           trigger: "#wedding-illus",
           // scrub: true,
           //markers: true,
-          start: () => `${window.innerWidth * 1} top`,
-          end: () => `${window.innerWidth * 1 + 500} top`,
+          start: () => `${sections[0].offsetWidth * 1} top`,
+          end: () => `${sections[0].offsetWidth * 1 + 500} top`,
           onEnter: () => tween.play(),
           onLeaveBack: () => tween.reverse(),
           once: false,
