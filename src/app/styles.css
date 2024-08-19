@@ -552,21 +552,24 @@ body {
 
 #section-5 {
     width: 100%;
-    min-height: 100vh;
     height: auto;
     background-color: #FFFFFF;
-    overflow: hidden;
+    overflow: auto;
 }
 
 #portfolio-grid {
+    height: 100%;
     display: grid;
-    grid-template-columns: 300px 300px 300px 300px;
-    grid-template-rows: 250px 250px 250px 250px;
+    grid-template-columns: repeat(4, minmax(300px, 1fr));
+    grid-auto-rows: 250px;
     column-gap: 15px;
     row-gap: 15px;
     max-width: fit-content;
     margin-left: auto;
     margin-right: auto;
+    overflow: auto;
+    margin-bottom: 200px;
+    padding: 10px;
 }
 
 .product {
@@ -574,7 +577,7 @@ body {
     background-color: rgb(255, 255, 255);
     border-radius: 5px;
     overflow: hidden;
-    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.129);
 }
 
 .product iframe,
@@ -617,6 +620,17 @@ body {
     animation: fullscreenbtnanim 1.5s infinite ease-in-out;
 }
 
+#wed-main-illus {
+    width: 294px;
+    height: 430px;
+}
+
+@media screen and (max-width:1300px) {
+    #portfolio-grid {
+        grid-template-columns: repeat(3, minmax(300px, 1fr));
+    grid-auto-rows: 250px;
+    }
+}
 
 @media screen and (max-width: 1000px) {
     .cnt-for-h {
@@ -630,7 +644,7 @@ body {
     }
 
     #section-1 h1 {
-        font-size: 25px;
+        font-size: 20px;
     }
 
     #section-1 sup {
@@ -647,7 +661,7 @@ body {
         font-size: 12px;
     }
 
-    #my-vectors{
+    #my-vectors {
         display: none;
     }
 
@@ -659,9 +673,55 @@ body {
     .akaar-wedstyle {
         font-size: 30px;
     }
-    
+
     #akaar-presents {
         font-size: 10px;
     }
 
+    #wed-main-illus {
+        width: 234px;
+        height: 370px;
+    }
+
+    #scroll-assist {
+        width: 200px;
+        height: 35px;
+    }
+
+    #scroll-assist :nth-child(1) {
+        background-color: #2E4BF5;
+        height: 20px;
+        width: 40px;
+        border-radius: 20px;
+    }
+
+    #scroll-assist :nth-child(2),
+    #scroll-assist :nth-child(3),
+    #scroll-assist :nth-child(4) {
+        height: 5px;
+        width: 5px;
+        border-radius: 50%;
+        background-color: white;
+    }
+
+    #now-booking-wed {
+        height: 90px;
+        width: 90px;
+        font-size: 10px;
+    }
+}
+
+@media screen and (max-width:950px) {
+    #portfolio-grid {
+        grid-template-columns: repeat(2, minmax(300px, 1fr));
+    grid-auto-rows: 250px;
+    }
+}
+
+@media screen and (max-width:700px) {
+    #portfolio-grid {
+        grid-template-columns: repeat(1, minmax(300px, 1fr));
+    grid-auto-rows: 250px;
+    row-gap: 25px;
+    }
 }

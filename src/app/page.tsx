@@ -45,6 +45,16 @@ export default function Home() {
   useEffect(() => {
 
     if (pageloaded) {
+
+      // let resizeTimeout;
+
+      // window.addEventListener('resize', () => {
+      //   clearTimeout(resizeTimeout);
+      //   resizeTimeout = setTimeout(() => {
+      //     location.reload();
+      //   }, 200);
+      // });
+
       let preloader: any = document.getElementById('loading');
       let content: any = document.getElementById('content');
 
@@ -548,7 +558,6 @@ export default function Home() {
                 </g>
               </svg>
 
-
               <svg id="wed-clock" width="130" height="164" viewBox="0 0 330 364" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g id="clock">
                   <g id="OBJECTS">
@@ -640,7 +649,6 @@ export default function Home() {
                 </g>
               </svg>
 
-
               <svg id="street-light" width="240" height="473" viewBox="0 0 188 473" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g>
                   <g id="Group">
@@ -682,7 +690,7 @@ export default function Home() {
               </svg>
 
 
-              <svg width="294" height="430" viewBox="0 0 194 330" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <svg id="wed-main-illus" viewBox="0 0 194 330" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g id="OBJECTS">
                   <g id="Group">
                     <g id="Clip path group">
