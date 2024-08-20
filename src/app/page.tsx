@@ -70,8 +70,6 @@ export default function Home() {
 
     if (pageloaded) {
 
-      // alert(screenHeight)
-
       let preloader: any = document.getElementById('loading');
       let content: any = document.getElementById('content');
 
@@ -96,39 +94,39 @@ export default function Home() {
               snap: {
                 snapTo: 1 / (sections.length - 1),
               },
-              onSnapComplete: (self) => {
+              onScrubComplete: (self) => {
                 const currentIndex = Math.round(self.progress * (sections.length - 1));
                 if (currentIndex === 0) {
                   const myTimeline = gsap.timeline()
                   myTimeline.to(
                     "#scroll-assist, #lang-btn",
-                    { backgroundColor: "#EAEDFE", color: "#2E4BF5", duration: 1, ease: "expo.inOut" }
+                    { backgroundColor: "#EAEDFE", color: "#2E4BF5", duration: 0.5, ease: "expo.inOut" }
                   ).to("#scroll-assist :nth-child(1)", {
-                    backgroundColor: "#2E4BF5", duration: 1, ease: "expo.inOut"
+                    backgroundColor: "#2E4BF5", duration: 0.5, ease: "expo.inOut"
                   }, "<");
                 } else if (currentIndex === 1) {
                   const myTimeline = gsap.timeline()
                   myTimeline.to(
                     "#scroll-assist, #lang-btn",
-                    { backgroundColor: "#FFF5D8", color: "#FFC325", duration: 1, ease: "expo.inOut" }
+                    { backgroundColor: "#FFF5D8", color: "#FFC325", duration: 0.5, ease: "expo.inOut" }
                   ).to("#scroll-assist :nth-child(1)", {
-                    backgroundColor: "#FFC325", duration: 1, ease: "expo.inOut"
+                    backgroundColor: "#FFC325", duration: 0.5, ease: "expo.inOut"
                   }, "<");
                 } else if (currentIndex === 2) {
                   const myTimeline1 = gsap.timeline()
                   myTimeline1.to(
                     "#scroll-assist, #lang-btn",
-                    { backgroundColor: "#FFC7C7", color: "#FF2424", duration: 1, ease: "expo.inOut" }
+                    { backgroundColor: "#FFC7C7", color: "#FF2424", duration: 0.5, ease: "expo.inOut" }
                   ).to("#scroll-assist :nth-child(1)", {
-                    backgroundColor: "#FF2424", duration: 1, ease: "expo.inOut"
+                    backgroundColor: "#FF2424", duration: 0.5, ease: "expo.inOut"
                   }, "<");
                 } else if (currentIndex === 3) {
                   const myTimeline2 = gsap.timeline()
                   myTimeline2.to(
                     "#scroll-assist, #lang-btn",
-                    { backgroundColor: "#DFC3EC", color: "#7800B0", duration: 1, ease: "expo.inOut" }
+                    { backgroundColor: "#DFC3EC", color: "#7800B0", duration: 0.5, ease: "expo.inOut" }
                   ).to("#scroll-assist :nth-child(1)", {
-                    backgroundColor: "#7800B0", duration: 1, ease: "expo.inOut"
+                    backgroundColor: "#7800B0", duration: 0.5, ease: "expo.inOut"
                   }, "<");
                 }
               },
@@ -251,6 +249,66 @@ export default function Home() {
             once: false,
           });
 
+          //section 3
+
+          const tl4 = gsap.timeline({
+            paused: true
+          });
+
+          tl4.to("#akaar-fashion-shadow",
+            {
+              y: "+=20", duration: 0.75, delay: 0.5, ease: "power1.easeInOut"
+            }).to("#akaar-fashion-shadow-1", {
+              y: "+=40", duration: 0.75, ease: "power1.easeInOut"
+            });
+
+          ScrollTrigger.create({
+            trigger: "#section-3",
+            scrub: 1,
+            // markers: true,
+            start: () => `${screenWidth * 2} top`,
+            end: () => `${screenWidth * 2 + 500} top`,
+            onEnter: () => tl4.play(),
+            onLeaveBack: () => tl4.reverse(),
+          })
+
+          let tween1 = gsap.fromTo("#now-booking-fashion",
+            {
+              x: 200,
+              scale: 0
+            },
+            {
+              x: 0,
+              scale: 1,
+              duration: 1.5,
+              paused: true,
+              ease: "elastic.out"
+            });
+
+          let tween1t = gsap.fromTo("#sub-tag-fashion",
+            {
+              y: -10,
+              opacity: 0
+            },
+            {
+              y: 0,
+              opacity: 1,
+              duration: 0.5,
+              delay: 1,
+              paused: true,
+            });
+
+          ScrollTrigger.create({
+            trigger: "#section-3",
+            scrub: 1,
+            //markers: true,
+            start: () => `${screenWidth * 2} 15%`,
+            end: () => `${screenWidth * 2 + 500} top`,
+            onEnter: () => { tween1.play(); tween1t.play() },
+            onLeaveBack: () => { tween1.reverse(); tween1t.reverse() },
+            once: false,
+          });
+
           //section 1
           let tl = gsap.timeline({})
           tl.fromTo(
@@ -342,9 +400,9 @@ export default function Home() {
 
           tl2.to("#akaar-wed-shadow",
             {
-              y: "+=20", duration: 0.75, delay: 0.5, ease: "power1.easeInOut"
+              y: "+=10", duration: 0.75, delay: 0.5, ease: "power1.easeInOut"
             }).to("#akaar-wed-shadow-1", {
-              y: "+=40", duration: 0.75, ease: "power1.easeInOut"
+              y: "+=20", duration: 0.75, ease: "power1.easeInOut"
             });
 
           ScrollTrigger.create({
@@ -391,6 +449,80 @@ export default function Home() {
             end: () => `+=500 top`,
             onEnter: () => { tween.play(); tweent.play() },
             onLeaveBack: () => { tween.reverse(); tweent.reverse() },
+            once: false,
+          });
+
+          //section 3
+
+          const tl3 = gsap.timeline({
+            paused: true
+          });
+
+          tl3.to("#akaar-fashion-shadow",
+            {
+              y: "+=10", duration: 0.75, delay: 0.5, ease: "power1.easeInOut"
+            }).to("#akaar-fashion-shadow-1", {
+              y: "+=20", duration: 0.75, ease: "power1.easeInOut"
+            });
+
+          ScrollTrigger.create({
+            trigger: "#section-3",
+            scrub: 1,
+            // markers: true,
+            start: () => `top top`,
+            end: () => `+=500 top`,
+            onEnter: () => tl3.play(),
+            onLeaveBack: () => tl3.reverse(),
+          })
+
+          let tween1 = gsap.fromTo("#now-booking-fashion",
+            {
+              x: 200,
+              scale: 0
+            },
+            {
+              x: 0,
+              scale: 1,
+              duration: 1.5,
+              paused: true,
+              ease: "elastic.out"
+            });
+
+          let tween1t = gsap.fromTo("#sub-tag-fashion",
+            {
+              y: -10,
+              opacity: 0
+            },
+            {
+              y: 0,
+              opacity: 1,
+              duration: 0.5,
+              delay: 1,
+              paused: true,
+            });
+
+          ScrollTrigger.create({
+            trigger: "#section-3",
+            scrub: 1,
+            //markers: true,
+            start: () => `top top`,
+            end: () => `+=500 top`,
+            onEnter: () => { tween1.play(); tween1t.play() },
+            onLeaveBack: () => { tween1.reverse(); tween1t.reverse() },
+            once: false,
+          });
+
+
+          //section 4
+
+          ScrollTrigger.create({
+            trigger: "#section-4",
+            scrub: 1,
+            // markers: true,
+            start: () => `top top`,
+            end: () => `+=500 top`,
+            onEnterBack: () => { mytween1.play() },
+            onLeave: () => { mytween1.reverse() },
             once: false,
           });
 
@@ -854,7 +986,7 @@ export default function Home() {
                           <g id="Group_6">
                             <path id="Vector_8" d="M37.57 130.901C40.343 183.365 44.419 237.58 46.652 293.577C49.733 296.448 64.394 296.436 70.807 294.688C73.89 234.473 69.583 160.832 67.396 128L37.57 130.901Z" fill="#FAFFFF" />
                           </g>
-                          <path id="Vector_9" d="M26.915 40.5C8.734 51.86 13.361 110.939 11.177 135.37C10.899 138.478 53.731 140.011 69.571 137.337C72.588 136.827 78.638 8.18 26.915 40.5Z" fill="#FFF230" fill-opacity="0.37" />
+                          <path id="Vector_9" d="M26.915 40.5C8.734 51.86 13.361 110.939 11.177 135.37C10.899 138.478 53.731 140.011 69.571 137.337C72.588 136.827 78.638 8.18 26.915 40.5Z" fill="#FFF230" fill-opacity="1" />
                           <path id="Vector_10" d="M46.052 26.932C46.167 28.823 46.269 37.222 44.64 38.34C42.952 39.499 38.262 39.183 36.339 38.48C33.752 37.534 34.893 28.93 35.277 26.939" fill="#F2C3B1" />
                           <g id="Group_7">
                             <path id="Vector_11" d="M33.751 17.02C32.889 15.646 30.89 15.14 29.478 15.938C28.066 16.736 27.468 18.709 28.2 20.157C28.932 21.604 30.876 22.292 32.356 21.627" fill="#F4CDC0" />
@@ -1035,7 +1167,116 @@ export default function Home() {
             </button>
           </div>
           <div id="section-3" className="full-screen panels">
+            <div className="akaar-wedstyle">
+              <h1 id="akaar-fashion-shadow-1" style={{ color: "#E5E1D4" }}>AKAARFASHION</h1>
+            </div>
+            <div className="akaar-wedstyle">
+              <h1 id="akaar-fashion-shadow" style={{ color: "#B2AFA5" }}>AKAARFASHION</h1>
+            </div>
+            <div id="akaar-fashion" className="akaar-wedstyle">
+              <h1>AKAARFASHION</h1>
+            </div>
 
+            <div id="fashion-illus">
+              {/* width="750" height="500" */}
+              <svg viewBox="0 0 156 402" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M49.562 46.703C49.562 46.703 49.562 43.736 52.684 37.669C53.757 35.583 52.193 34.114 52.96 29.796C53.728 25.479 57.972 20.526 60.15 15.32C62.328 10.114 64.744 3.89202 71.719 0.971016C78.694 -1.94998 85.739 4.86301 85.739 4.86301C85.739 4.86301 88.04 1.31302 92.529 2.45502C97.018 3.59802 99.223 8.97402 99.223 15.443C99.223 21.674 101.837 22.43 103.825 26.366C105.813 30.302 98.399 34.874 97.968 39.318C97.537 43.762 98.082 43.889 103.268 45.032C108.454 46.175 108.224 49.984 107.432 52.397C107.432 52.397 106.482 47.826 102.743 47.572C102.743 47.572 111.171 56.968 104.06 61.286C96.951 65.605 52.613 76.402 49.562 46.703Z" fill="#332C33" />
+                <path d="M107.215 29.575C107.215 29.575 100.99 29.009 99.329 28.034C98.755 27.697 97.2 24.963 97.159 24.171C97.118 23.379 98.724 22.221 98.724 22.221C98.724 22.221 91.858 18.286 92.343 17.495C92.827 16.704 98.708 18.819 98.708 18.819C98.708 18.819 94.332 14.109 95.144 13.181C96.231 11.939 102.493 18.522 102.493 18.522C102.493 18.522 102.022 18.053 102.429 17.206C102.837 16.359 103.638 16.91 103.638 16.91C103.638 16.91 103.683 15.717 104.468 15.398C105.253 15.08 107.966 16.417 109.668 18.289C110.674 19.395 116.046 29.022 116.046 29.022L110.639 33.27L107.215 29.575Z" fill="#FF9785" />
+                <path d="M98.724 22.222C98.724 22.222 102.929 19.624 103.804 19.779C104.679 19.934 104.626 23.558 101.41 25.046" stroke="#38303B" stroke-width="0.5" stroke-miterlimit="10" />
+                <path d="M103.133 23.761C103.133 23.761 107.031 23.235 108.026 25.092" stroke="#38303B" stroke-width="0.5" stroke-miterlimit="10" />
+                <path d="M104.236 21.563C104.236 21.563 105.414 24.046 106.653 24.013C108.332 23.968 105.059 18.536 105.059 18.536" stroke="#38303B" stroke-width="0.5" stroke-miterlimit="10" />
+                <path d="M106.955 22.488C106.955 22.488 108.038 23.515 108.701 22.611C109.364 21.708 107.226 18.375 107.226 18.375" stroke="#38303B" stroke-width="0.5" stroke-miterlimit="10" />
+                <path d="M107.753 19.269L108.784 19.55" stroke="#38303B" stroke-width="0.5" stroke-miterlimit="10" />
+                <path d="M96.806 49.41C133.113 58.817 139.895 58.745 139.895 58.745C139.895 58.745 161.285 70.628 153.015 79.004C146.724 85.374 113.849 82.771 101.174 78.376C86.564 73.308 80.531 45.193 96.806 49.41Z" fill="#A6CAC8" />
+                <path d="M131.995 70.048C131.995 70.048 116.689 45.977 112.884 43.552C109.078 41.126 109.585 40.38 108.594 39.085C107.604 37.79 104.998 37.269 104.221 36.119C103.444 34.969 114.564 25.692 116.53 25.78C118.495 25.867 118.374 27.654 118.831 28.587C119.288 29.52 120.896 29.676 121.566 30.754C122.237 31.832 156.915 61.915 155.863 73.638C154.436 89.523 131.995 70.048 131.995 70.048Z" fill="#A6CAC8" />
+                <path d="M119.474 29.655C116.145 33.293 112.233 36.398 107.934 38.814" stroke="#38303B" stroke-width="0.5" stroke-miterlimit="10" />
+                <path d="M125.978 60.815C127.906 63.645 129.628 66.615 131.127 69.693C132.094 71.679 133.183 73.912 135.274 74.622" stroke="#38303B" stroke-width="0.5" stroke-miterlimit="10" />
+                <path d="M86.038 38.593C86.038 38.593 93.423 39.427 98.302 42.945C103.365 46.595 121.591 76.046 125.771 90.155C129.951 104.264 130.689 140.659 140.803 150.55C140.803 150.55 130.424 151.737 120.89 157.275C120.89 157.275 112.104 145.279 110.148 131.892C108.192 118.505 108.115 89.991 105.78 76.556C103.445 63.121 98.473 51.674 87.706 49.881L86.038 38.593Z" fill="#C77568" />
+                <path d="M113.42 64.593H102.505" stroke="#A66157" stroke-width="0.5" stroke-miterlimit="10" />
+                <path d="M108.033 55.639H97.84" stroke="#A66157" stroke-width="0.5" stroke-miterlimit="10" />
+                <path d="M101.768 46.685H87.233" stroke="#A66157" stroke-width="0.5" stroke-miterlimit="10" />
+                <path d="M126.184 91.457H107.352" stroke="#A66157" stroke-width="0.5" stroke-miterlimit="10" />
+                <path d="M122.854 82.502H106.585" stroke="#A66157" stroke-width="0.5" stroke-miterlimit="10" />
+                <path d="M118.493 73.548H105.203" stroke="#A66157" stroke-width="0.5" stroke-miterlimit="10" />
+                <path d="M130.386 118.32H108.821" stroke="#A66157" stroke-width="0.5" stroke-miterlimit="10" />
+                <path d="M130.724 119.002V152.926" stroke="#A66157" stroke-width="0.5" stroke-miterlimit="10" />
+                <path d="M121.769 80.124V156.78" stroke="#A66157" stroke-width="0.5" stroke-miterlimit="10" />
+                <path d="M112.815 63.383V141.941" stroke="#A66157" stroke-width="0.5" stroke-miterlimit="10" />
+                <path d="M103.86 49.484V68.191" stroke="#A66157" stroke-width="0.5" stroke-miterlimit="10" />
+                <path d="M94.906 41.034V53.043" stroke="#A66157" stroke-width="0.5" stroke-miterlimit="10" />
+                <path d="M129.205 109.366H108.377" stroke="#A66157" stroke-width="0.5" stroke-miterlimit="10" />
+                <path d="M127.89 100.411H107.899" stroke="#A66157" stroke-width="0.5" stroke-miterlimit="10" />
+                <path d="M137.173 145.184H114.124" stroke="#A66157" stroke-width="0.5" stroke-miterlimit="10" />
+                <path d="M133.998 136.229H111.018" stroke="#A66157" stroke-width="0.5" stroke-miterlimit="10" />
+                <path d="M127.233 154.138H118.826" stroke="#A66157" stroke-width="0.5" stroke-miterlimit="10" />
+                <path d="M131.995 127.275H109.596" stroke="#A66157" stroke-width="0.5" stroke-miterlimit="10" />
+                <path d="M40.98 148.575C40.98 148.575 76.419 157.417 117.69 128.005C117.69 128.005 84.933 121.546 40.98 148.575Z" fill="#332C33" />
+                <path d="M1.1 239.429C1.1 239.429 -3.872 250.506 33.028 250.506C69.928 250.506 142.411 206.244 134.389 191.716C126.368 177.187 47.562 194.066 1.1 239.429Z" fill="#332C33" />
+                <path d="M71.588 168.82C71.588 168.82 77.69 224.132 73.138 243.121C68.585 262.11 82.188 372.231 82.188 372.231L104.817 371.297C104.817 371.297 113.588 275.561 114.488 251.033C115.388 226.506 121.119 168.82 121.119 168.82H71.588Z" fill="#ED705C" />
+                <path d="M117.727 387.467L104.817 371.297L82.188 372.231C82.188 372.231 77.954 378.154 78.636 383.429C78.943 385.807 81.392 401.972 81.392 401.972H91.15L91.488 395.655C91.488 395.655 103.819 402.139 110.469 401.968L145.48 401.971C147.25 396.615 117.727 387.467 117.727 387.467Z" fill="#EBEBEB" />
+                <path d="M104.388 379.011L113.29 375.253L106.97 385.216L117.443 380.235L113.883 390.681L122.784 386.634" stroke="#38303B" stroke-width="0.5" stroke-miterlimit="10" />
+                <path d="M82.188 372.23L78.958 363.726L108.385 357.582L108.821 364.468L82.188 372.23Z" fill="#EBEBEB" />
+                <path d="M48.406 168.82C48.406 168.82 51.008 224.132 45.254 243.121C39.5 262.11 46.134 372.231 46.134 372.231L68.822 371.297C68.822 371.297 83.651 275.561 86.103 251.033C88.555 226.505 97.937 168.82 97.937 168.82H48.406Z" fill="#FF9785" />
+                <path d="M80.709 387.467L68.822 371.297L46.134 372.231C46.134 372.231 41.525 378.154 41.873 383.429C42.03 385.807 43.456 401.972 43.456 401.972H53.214L53.952 395.655C53.952 395.655 65.873 402.139 72.533 401.968L107.544 401.971C109.653 396.615 80.709 387.467 80.709 387.467Z" fill="white" />
+                <path d="M67.84 379.011L76.741 375.253L70.421 385.216L80.895 380.235L77.335 390.681L86.236 386.634" stroke="#38303B" stroke-width="0.5" stroke-miterlimit="10" />
+                <path d="M46.134 372.23L43.442 363.726L73.258 357.582V364.468L46.134 372.23Z" fill="white" />
+                <path d="M50.622 137.018C50.622 137.018 41.716 161.363 29.057 181.934C16.398 202.505 3.73801 225.714 1.10101 239.428C1.10101 239.428 36.423 235.736 72.301 214.109C108.178 192.483 123.68 190.419 134.391 191.714C134.391 191.714 121.381 145.772 110.032 123.237C110.032 123.237 72.715 124.805 50.622 137.018Z" fill="#F9677A" />
+                <path d="M4.52899 228.252C30.813 219.549 57.45 208.059 81.671 194.647C97.269 186.009 113.947 177.312 131.318 181.333" stroke="white" stroke-width="0.5" stroke-miterlimit="10" />
+                <path d="M115 115.045L117.69 128.005C117.69 128.005 107.5 127.605 91.1 130.765C74.7 133.935 40.98 148.575 40.98 148.575C40.98 140.265 47.27 134.325 48.06 129.185C48.85 124.045 50.302 115.185 50.302 115.185C50.302 115.185 47.859 114.16 46.279 111.78C44.699 109.41 46.279 105.645 46.279 105.645C44.369 102.475 35.53 67.474 38.17 62.194C40.81 56.924 69.55 50.404 69.55 50.404L87.71 49.884C87.71 49.884 92.53 50.461 96.851 53.625C99.566 55.614 117.69 74.594 117.69 81.714C117.69 84.964 116.29 88.124 114.77 90.614C112.95 93.574 110.96 95.564 110.96 95.564L115 115.045Z" fill="#BFEDEB" />
+                <path d="M115 115.045C65.7 117.145 53.406 93.711 53.406 93.711L114.65 90.155L114.77 90.615C112.95 93.575 110.96 95.565 110.96 95.565L115 115.045Z" fill="#332C33" />
+                <path d="M49.562 115.091C56.125 117.911 61.996 122.324 66.529 127.844C66.697 128.049 66.873 128.28 66.868 128.545C66.858 129.095 66.141 129.315 65.592 129.269C63.686 129.109 62.137 127.727 60.743 126.417" stroke="#38303B" stroke-width="0.5" stroke-miterlimit="10" />
+                <path d="M116.577 122.643C116.577 122.643 87.242 115.717 42.266 141.969" stroke="white" stroke-width="0.5" stroke-miterlimit="10" />
+                <path d="M87.039 71.692C73.805 75.361 69.553 50.406 69.553 50.406L70.523 30.234L85.116 32.984L87.706 49.881C87.706 49.881 102.258 67.473 87.039 71.692Z" fill="#FF9785" />
+                <path d="M85.121 32.987L73.822 33.587C73.822 33.587 74.77 47.453 87.067 45.717L85.121 32.987Z" fill="#332C33" />
+                <path d="M89.155 40.435C82.777 43.755 73.752 39.34 70.911 33.076C68.082 26.824 68.789 17.434 73.045 11.912C76.171 7.85002 90.216 5.84201 92.339 17.617C92.864 20.503 93.32 23.139 93.605 25.535C93.787 26.973 93.913 28.319 93.959 29.574C94.152 34.775 93.022 38.426 89.155 40.435Z" fill="#FF9785" />
+                <path d="M86.553 10.424C86.57 11.852 86.208 13.335 85.273 14.415C83.929 15.965 81.712 16.399 80.05 17.603C77.422 19.508 76.368 23.191 73.49 24.691C72.162 25.383 70.612 25.505 69.115 25.466C68.168 25.442 67.21 25.356 66.318 25.036C65.426 24.716 64.599 24.14 64.13 23.317C63.676 22.52 63.591 21.567 63.621 20.65C63.754 16.519 66.057 12.633 69.284 10.051C72.511 7.46802 76.579 6.09401 80.678 5.56701C82.057 5.39001 84.127 5.19301 85.332 6.10802C86.456 6.96302 86.538 9.16702 86.553 10.424Z" fill="#332C33" />
+                <path d="M75.087 29.677C75.165 30.799 76.512 31.664 78.097 31.611C79.681 31.557 80.903 30.604 80.825 29.482C80.747 28.36 79.4 27.495 77.815 27.548C76.231 27.602 75.01 28.555 75.087 29.677Z" fill="#FF755C" />
+                <path d="M93.958 29.573C92.44 29.573 91.185 28.729 91.106 27.645C91.038 26.584 92.133 25.671 93.605 25.534C93.787 26.971 93.912 28.317 93.958 29.573Z" fill="#FF755C" />
+                <path d="M80.418 24.086C80.486 24.634 80.875 25.036 81.285 24.984C81.695 24.933 81.973 24.447 81.904 23.9C81.835 23.353 81.447 22.951 81.037 23.002C80.627 23.053 80.35 23.538 80.418 24.086Z" fill="#332C33" />
+                <path d="M89.153 23.36C89.221 23.907 89.61 24.309 90.02 24.258C90.431 24.207 90.708 23.721 90.64 23.174C90.572 22.627 90.183 22.224 89.773 22.276C89.362 22.327 89.085 22.813 89.153 23.36Z" fill="#332C33" />
+                <path d="M81.746 21.592C79.738 19.402 78.612 22.85 79.003 22.073" stroke="#332C33" stroke-width="0.75" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M90.603 20.179C88.595 17.988 87.469 21.437 87.86 20.66" stroke="#332C33" stroke-width="0.75" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M69.934 25.052C65.87 23.276 62.118 22.596 62.309 27.553C62.5 32.509 67.647 34.797 71.269 32.509C74.89 30.221 72.895 26.346 69.934 25.052Z" fill="#FF9785" />
+                <path d="M64.97 26.437C64.97 26.437 69.283 26.128 68.682 30.697" stroke="#332C33" stroke-width="0.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M68.33 28.059L66.62 29.162" stroke="#332C33" stroke-width="0.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M86.417 29.077C86.946 29.058 88.273 28.49 88.337 27.474C88.397 26.516 86.715 27.531 86.223 26.135L85.741 23.555" stroke="#332C33" stroke-width="0.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M81.452 32.551C81.452 32.551 84.214 33.155 89.278 32.223C89.278 32.223 88.538 36.462 84.788 36.237C81.608 36.046 81.452 32.551 81.452 32.551Z" fill="white" />
+                <path d="M70.081 39.427C70.081 39.427 58.744 46.109 58.215 48.219C57.686 50.329 59.008 51.064 58.215 53.334C57.422 55.604 62.28 76.703 69.214 88.835C76.148 100.967 74.251 114.681 73.219 125.494C72.187 136.307 71.664 160.571 71.664 160.571C71.664 160.571 79.508 157.934 85.74 156.615C91.972 155.296 97.511 157.142 97.511 157.142C97.511 157.142 94.874 129.186 95.401 119.428C95.928 109.67 96.969 88.015 92.531 82.769C88.093 77.523 71.395 54.174 69.551 50.405L70.081 39.427Z" fill="#C77568" />
+                <path d="M79.421 64.593H60.068" stroke="#A66157" stroke-width="0.5" stroke-miterlimit="10" />
+                <path d="M93.142 83.67V156.292" stroke="#A66157" stroke-width="0.5" stroke-miterlimit="10" />
+                <path d="M84.188 71.757V156.963" stroke="#A66157" stroke-width="0.5" stroke-miterlimit="10" />
+                <path d="M75.233 58.637V159.432" stroke="#A66157" stroke-width="0.5" stroke-miterlimit="10" />
+                <path d="M66.279 41.773V82.937" stroke="#A66157" stroke-width="0.5" stroke-miterlimit="10" />
+                <path d="M72.84 55.639H58.539" stroke="#A66157" stroke-width="0.5" stroke-miterlimit="10" />
+                <path d="M69.553 46.685H59.443" stroke="#A66157" stroke-width="0.5" stroke-miterlimit="10" />
+                <path d="M95.246 91.457H70.565" stroke="#A66157" stroke-width="0.5" stroke-miterlimit="10" />
+                <path d="M92.307 82.502H66.089" stroke="#A66157" stroke-width="0.5" stroke-miterlimit="10" />
+                <path d="M86.038 73.548H62.301" stroke="#A66157" stroke-width="0.5" stroke-miterlimit="10" />
+                <path d="M95.46 118.32H73.895" stroke="#A66157" stroke-width="0.5" stroke-miterlimit="10" />
+                <path d="M95.854 109.366H74.17" stroke="#A66157" stroke-width="0.5" stroke-miterlimit="10" />
+                <path d="M95.854 100.411H73.399" stroke="#A66157" stroke-width="0.5" stroke-miterlimit="10" />
+                <path d="M96.5 145.184H72.123" stroke="#A66157" stroke-width="0.5" stroke-miterlimit="10" />
+                <path d="M95.872 136.229H72.413" stroke="#A66157" stroke-width="0.5" stroke-miterlimit="10" />
+                <path d="M97.239 154.138H71.831" stroke="#A66157" stroke-width="0.5" stroke-miterlimit="10" />
+                <path d="M95.46 127.275H73.064" stroke="#A66157" stroke-width="0.5" stroke-miterlimit="10" />
+                <path d="M118.135 3.24001L121.942 40.199L140.803 38.51L137.487 1.50601L118.135 3.24001Z" fill="#332C33" />
+                <path d="M124.881 4.88606L120.882 5.24429L121.762 15.0738L125.762 14.7156L124.881 4.88606Z" fill="#524752" />
+                <path d="M124.467 7.50302C124.534 8.24702 123.985 8.90302 123.241 8.97002C122.497 9.03702 121.841 8.48802 121.774 7.74402C121.707 7.00002 122.256 6.34402 123 6.27702C123.744 6.21002 124.401 6.75902 124.467 7.50302Z" fill="white" />
+                <path d="M124.886 12.172C124.953 12.916 124.404 13.572 123.66 13.639C122.916 13.706 122.26 13.157 122.193 12.413C122.126 11.669 122.675 11.013 123.419 10.946C124.163 10.879 124.819 11.428 124.886 12.172Z" fill="white" />
+                <path d="M117.182 47.5C117.182 47.5 116.187 42.812 116.749 40.699C117.311 38.586 118.82 35.416 119.201 33.885C119.583 32.353 120.251 30.986 120.963 31.469C121.675 31.953 121.441 34.824 121.441 34.824C121.441 34.824 123.531 33.148 124.506 31.585C125.481 30.022 126.105 25.472 126.794 25.066C127.482 24.661 128.018 26.983 127.943 29.641C127.868 32.299 127.356 33.528 127.356 33.528C127.356 33.528 130.932 33.063 132.156 33.649C133.38 34.235 132.045 35.639 132.045 35.639C132.045 35.639 133.429 37.343 133.179 37.847C132.929 38.351 132.929 38.351 132.929 38.351C132.929 38.351 134.026 39.891 133.391 40.669C132.756 41.447 130.267 42.417 129.178 43.317C128.089 44.217 125.573 48.218 125.781 51.114L117.182 47.5Z" fill="#FF9785" />
+                <path d="M46.279 60.879C80.254 76.765 103.577 81.978 103.577 81.978C103.577 81.978 111.94 61.053 112.064 56.542C112.188 52.031 113.088 52.081 113.689 50.566C114.29 49.051 113.398 46.548 113.984 45.29C114.571 44.032 128.245 48.799 129.181 50.53C130.117 52.26 128.522 53.075 127.957 53.947C127.392 54.819 128.085 56.278 127.505 57.407C126.925 58.536 122.434 97.572 112.772 104.294C105.423 109.407 56.936 96.794 45.279 90.155C31.84 82.502 31.049 53.758 46.279 60.879Z" fill="#BFEDEB" />
+                <path d="M50.254 60.872C54.519 61.428 56.821 65.689 60.8 67.323C66.279 69.575 78.713 74.311 87.04 77.179C92.3 78.991 96.705 79.452 102.214 80.229" stroke="#38303B" stroke-width="0.5" stroke-miterlimit="10" />
+                <path d="M99.225 85.814C99.225 84.088 100.533 82.022 102.513 80.127C103.68 79.01 104.856 77.883 105.779 76.557C107.249 74.448 108.013 71.938 108.676 69.454C109.203 67.482 109.72 66.105 110.147 64.109" stroke="#38303B" stroke-width="0.5" stroke-miterlimit="10" />
+                <path d="M113.704 49.158C114.651 50.65 115.98 51.852 117.171 53.157C118.363 54.462 119.46 55.954 119.773 57.694C119.296 57.762 118.805 57.732 118.339 57.606" stroke="#38303B" stroke-width="0.5" stroke-miterlimit="10" />
+              </svg>
+            </div>
+            <div id="sub-tag-fashion">
+              {/* <p>Be careful, violence tends to escalate</p> */}
+              <p>Taking your fashion to the next level.</p>
+            </div>
+            <button id="now-booking-fashion">
+              Our Portfolio
+            </button>
           </div>
           <div id="section-4" className="full-screen panels">
 
