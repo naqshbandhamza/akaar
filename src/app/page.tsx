@@ -20,7 +20,7 @@ export default function Home() {
   // this useEffect is for page preloader
   useEffect(() => {
 
-    setScreenHeight(window.innerHeight)
+    setScreenHeight(screen.height)
     setScreenWidth(window.innerWidth);
 
     const textContainer: any = document.querySelector('.text-container');
@@ -70,6 +70,8 @@ export default function Home() {
 
     if (pageloaded) {
 
+      alert(screenHeight)
+
       let preloader: any = document.getElementById('loading');
       let content: any = document.getElementById('content');
 
@@ -80,254 +82,346 @@ export default function Home() {
       ctxRef.current = gsap.context(() => {
         gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
-        // horizontal scroll
-        let sections: any = gsap.utils.toArray(".panels");
-        gsap.to(sections, {
-          xPercent: -100 * (sections.length - 1),
-          ease: "none",
-          scrollTrigger: {
-            trigger: ".slider-container",
-            pin: true,
+        if (screenWidth > 1000) {
+          // horizontal scroll
+          let sections: any = gsap.utils.toArray(".panels");
+          gsap.to(sections, {
+            xPercent: -100 * (sections.length - 1),
+            ease: "none",
+            scrollTrigger: {
+              trigger: ".slider-container",
+              pin: true,
+              scrub: 1,
+              // markers: true,
+              snap: {
+                snapTo: 1 / (sections.length - 1),
+              },
+              onSnapComplete: (self) => {
+                const currentIndex = Math.round(self.progress * (sections.length - 1));
+                if (currentIndex === 0) {
+                  const myTimeline = gsap.timeline()
+                  myTimeline.to(
+                    "#scroll-assist, #lang-btn",
+                    { backgroundColor: "#EAEDFE", color: "#2E4BF5", duration: 1, ease: "expo.inOut" }
+                  ).to("#scroll-assist :nth-child(1)", {
+                    backgroundColor: "#2E4BF5", duration: 1, ease: "expo.inOut"
+                  }, "<");
+                } else if (currentIndex === 1) {
+                  const myTimeline = gsap.timeline()
+                  myTimeline.to(
+                    "#scroll-assist, #lang-btn",
+                    { backgroundColor: "#FFF5D8", color: "#FFC325", duration: 1, ease: "expo.inOut" }
+                  ).to("#scroll-assist :nth-child(1)", {
+                    backgroundColor: "#FFC325", duration: 1, ease: "expo.inOut"
+                  }, "<");
+                } else if (currentIndex === 2) {
+                  const myTimeline1 = gsap.timeline()
+                  myTimeline1.to(
+                    "#scroll-assist, #lang-btn",
+                    { backgroundColor: "#FFC7C7", color: "#FF2424", duration: 1, ease: "expo.inOut" }
+                  ).to("#scroll-assist :nth-child(1)", {
+                    backgroundColor: "#FF2424", duration: 1, ease: "expo.inOut"
+                  }, "<");
+                } else if (currentIndex === 3) {
+                  const myTimeline2 = gsap.timeline()
+                  myTimeline2.to(
+                    "#scroll-assist, #lang-btn",
+                    { backgroundColor: "#DFC3EC", color: "#7800B0", duration: 1, ease: "expo.inOut" }
+                  ).to("#scroll-assist :nth-child(1)", {
+                    backgroundColor: "#7800B0", duration: 1, ease: "expo.inOut"
+                  }, "<");
+                }
+              },
+              start: "top top",
+              end: () => screenWidth * 4
+            }
+          });
+
+          //section 1
+          const mytimeline3 = gsap.timeline({ paused: true })
+          mytimeline3.fromTo("#headings",
+            {
+              x: 40, opacity: 0,
+            },
+            {
+              x: 0, opacity: 1,
+              duration: 2,
+            });
+          mytimeline3.fromTo("#my-vectors img",
+            {
+              x: -50, opacity: 0,
+            },
+            {
+              x: 0, opacity: 1,
+              duration: 2,
+
+            }, "<");
+
+          ScrollTrigger.create({
+            trigger: "#headings",
             scrub: 1,
             // markers: true,
-            snap: {
-              snapTo: 1 / (sections.length - 1),
-            },
-            onSnapComplete: (self) => {
-              const currentIndex = Math.round(self.progress * (sections.length - 1));
-              if (currentIndex === 0) {
-                const myTimeline = gsap.timeline()
-                myTimeline.to(
-                  "#scroll-assist, #lang-btn",
-                  { backgroundColor: "#EAEDFE", color: "#2E4BF5", duration: 1, ease: "expo.inOut" }
-                ).to("#scroll-assist :nth-child(1)", {
-                  backgroundColor: "#2E4BF5", duration: 1, ease: "expo.inOut"
-                }, "<");
-              } else if (currentIndex === 1) {
-                const myTimeline = gsap.timeline()
-                myTimeline.to(
-                  "#scroll-assist, #lang-btn",
-                  { backgroundColor: "#FFF5D8", color: "#FFC325", duration: 1, ease: "expo.inOut" }
-                ).to("#scroll-assist :nth-child(1)", {
-                  backgroundColor: "#FFC325", duration: 1, ease: "expo.inOut"
-                }, "<");
-              } else if (currentIndex === 2) {
-                const myTimeline1 = gsap.timeline()
-                myTimeline1.to(
-                  "#scroll-assist, #lang-btn",
-                  { backgroundColor: "#FFC7C7", color: "#FF2424", duration: 1, ease: "expo.inOut" }
-                ).to("#scroll-assist :nth-child(1)", {
-                  backgroundColor: "#FF2424", duration: 1, ease: "expo.inOut"
-                }, "<");
-              } else if (currentIndex === 3) {
-                const myTimeline2 = gsap.timeline()
-                myTimeline2.to(
-                  "#scroll-assist, #lang-btn",
-                  { backgroundColor: "#DFC3EC", color: "#7800B0", duration: 1, ease: "expo.inOut" }
-                ).to("#scroll-assist :nth-child(1)", {
-                  backgroundColor: "#7800B0", duration: 1, ease: "expo.inOut"
-                }, "<");
-              }
-            },
             start: "top top",
-            end: () => screenWidth * 4
-          }
-        });
-
-        //section 1
-        const mytimeline3 = gsap.timeline({ paused: true })
-        mytimeline3.fromTo("#headings",
-          {
-            x: 40, opacity: 0,
-          },
-          {
-            x: 0, opacity: 1,
-            duration: 2,
+            end: "500 top",
+            onEnter: () => { mytimeline3.reverse() },
+            onLeaveBack: () => { mytimeline3.play() },
+            once: false,
           });
-        mytimeline3.fromTo("#my-vectors img",
-          {
-            x: -50, opacity: 0,
-          },
-          {
-            x: 0, opacity: 1,
-            duration: 2,
 
-          }, "<");
+          if (first === 0) {
+            mytimeline3.play()
+            setFirst(1)
+          }
 
-        ScrollTrigger.create({
-          trigger: "#headings",
-          scrub: 1,
-          // markers: true,
-          start: "top top",
-          end: "500 top",
-          onEnter: () => { mytimeline3.reverse() },
-          onLeaveBack: () => { mytimeline3.play() },
-          once: false,
-        });
+          //section 2
+          const mytween = gsap.to("#street-light, #wed-clock, #wed-plant", {
+            opacity: 1,
+            x: "-=100",
+            duration: 2.5,
+            paused: true
+          })
 
-        if (first === 0) {
-          mytimeline3.play()
-          setFirst(1)
+          const mytween1 = gsap.to("#akaar-presents", { opacity: 1, duration: 1, paused: true, })
+
+          ScrollTrigger.create({
+            trigger: "#wedding-illus",
+            scrub: 1,
+            // markers: true,
+            start: () => `${screenWidth} 15%`,
+            end: () => `${screenWidth + 500} top`,
+            onEnter: () => { mytween.play(); mytween1.play(); },
+            onLeaveBack: () => { mytween.reverse(); mytween1.reverse(); },
+          })
+
+          const tl2 = gsap.timeline({
+            paused: true
+          });
+
+          tl2.to("#akaar-wed-shadow",
+            {
+              y: "+=20", duration: 0.75, delay: 0.5, ease: "power1.easeInOut"
+            }).to("#akaar-wed-shadow-1", {
+              y: "+=40", duration: 0.75, ease: "power1.easeInOut"
+            });
+
+          ScrollTrigger.create({
+            trigger: "#wedding-illus",
+            scrub: 1,
+            // markers: true,
+            start: () => `${screenWidth} 15%`,
+            end: () => `${screenWidth + 500} top`,
+            onEnter: () => tl2.play(),
+            onLeaveBack: () => tl2.reverse(),
+          })
+
+          let tween = gsap.fromTo("#now-booking-wed",
+            {
+              x: 200,
+              scale: 0
+            },
+            {
+              x: 0,
+              scale: 1,
+              duration: 1.5,
+              paused: true,
+              ease: "elastic.out"
+            });
+
+          let tweent = gsap.fromTo("#sub-tag-wed",
+            {
+              y: -10,
+              opacity: 0
+            },
+            {
+              y: 0,
+              opacity: 1,
+              duration: 0.5,
+              delay: 1,
+              paused: true,
+            });
+
+          ScrollTrigger.create({
+            trigger: "#wedding-illus",
+            scrub: 1,
+            //markers: true,
+            start: () => `${screenWidth * 1} 15%`,
+            end: () => `${screenWidth * 1 + 500} top`,
+            onEnter: () => { tween.play(); tweent.play() },
+            onLeaveBack: () => { tween.reverse(); tweent.reverse() },
+            once: false,
+          });
+
+          //section 1
+          let tl = gsap.timeline({})
+          tl.fromTo(
+            document.querySelectorAll(".ofx"),
+            { opacity: 0 },
+            {
+              opacity: 1, duration: 2, ease: "expo.inOut"
+            }
+          );
+          tl.to("#main-heading", {
+            opacity: 1, duration: 3, ease: "expo.inOut",
+          }, "<")
+          tl.fromTo("#sub-script", { y: "0px" }, {
+            opacity: 1, duration: 1.5, y: "0px", ease: "power3.out"
+          }, "-=1.5")
+          tl.fromTo("#my-bulb-svg", {
+            left: "-350px", opacity: 0,
+          }, { left: "-150px", opacity: 1, duration: 2, ease: "expo.out", }, "-=1.5")
+          tl.fromTo("#my-globe-svg", {
+            right: "-250px", opacity: 0,
+          }, { right: "0px", opacity: 1, duration: 2, ease: "expo.out", }, "<")
+          tl.fromTo("#hills", {
+            right: "-250px", opacity: 0,
+          }, { right: "-100px", opacity: 1, duration: 2, ease: "expo.out", }, "<")
+          tl.fromTo("#scroll-assist", {
+            y: 100, opacity: 0, scale: 1.2
+          }, { y: 0, opacity: 1, scale: 1, duration: 1, ease: "expo.out" })
+        } else {
+
+          //section 1
+          const mytimeline3 = gsap.timeline({ paused: true })
+          mytimeline3.fromTo("#headings",
+            {
+              x: 40, opacity: 0,
+            },
+            {
+              x: 0, opacity: 1,
+              duration: 2,
+            });
+          mytimeline3.fromTo("#my-vectors img",
+            {
+              x: -50, opacity: 0,
+            },
+            {
+              x: 0, opacity: 1,
+              duration: 2,
+
+            }, "<");
+
+          ScrollTrigger.create({
+            trigger: "#headings",
+            scrub: 1,
+            // markers: true,
+            start: "top top",
+            end: "500 top",
+            onEnter: () => { mytimeline3.reverse() },
+            onLeaveBack: () => { mytimeline3.play() },
+            once: false,
+          });
+
+          if (first === 0) {
+            mytimeline3.play()
+            setFirst(1)
+          }
+
+          //section 2
+          const mytween = gsap.to("#street-light, #wed-clock, #wed-plant", {
+            opacity: 1,
+            x: "-=100",
+            duration: 2.5,
+            paused: true
+          })
+
+          const mytween1 = gsap.to("#akaar-presents", { opacity: 1, duration: 1, paused: true, })
+
+          ScrollTrigger.create({
+            trigger: "#section-2",
+            scrub: 1,
+            markers: true,
+            start: () => `top top`,
+            end: () => `+=500 top`,
+            onEnter: () => { mytween.play(); mytween1.play(); },
+            onLeaveBack: () => { mytween.reverse(); mytween1.reverse(); },
+          })
+
+          const tl2 = gsap.timeline({
+            paused: true
+          });
+
+          tl2.to("#akaar-wed-shadow",
+            {
+              y: "+=20", duration: 0.75, delay: 0.5, ease: "power1.easeInOut"
+            }).to("#akaar-wed-shadow-1", {
+              y: "+=40", duration: 0.75, ease: "power1.easeInOut"
+            });
+
+          ScrollTrigger.create({
+            trigger: "#section-2",
+            scrub: 1,
+            // markers: true,
+            start: () => `top top`,
+            end: () => `+=500 top`,
+            onEnter: () => tl2.play(),
+            onLeaveBack: () => tl2.reverse(),
+          })
+
+          let tween = gsap.fromTo("#now-booking-wed",
+            {
+              x: 200,
+              scale: 0
+            },
+            {
+              x: 0,
+              scale: 1,
+              duration: 1.5,
+              paused: true,
+              ease: "elastic.out"
+            });
+
+          let tweent = gsap.fromTo("#sub-tag-wed",
+            {
+              y: -10,
+              opacity: 0
+            },
+            {
+              y: 0,
+              opacity: 1,
+              duration: 0.5,
+              delay: 1,
+              paused: true,
+            });
+
+          ScrollTrigger.create({
+            trigger: "#section-2",
+            scrub: 1,
+            //markers: true,
+            start: () => `top top`,
+            end: () => `+=500 top`,
+            onEnter: () => { tween.play(); tweent.play() },
+            onLeaveBack: () => { tween.reverse(); tweent.reverse() },
+            once: false,
+          });
+
+          //section 1
+          let tl = gsap.timeline({})
+          tl.fromTo(
+            document.querySelectorAll(".ofx"),
+            { opacity: 0 },
+            {
+              opacity: 1, duration: 2, ease: "expo.inOut"
+            }
+          );
+          tl.to("#main-heading", {
+            opacity: 1, duration: 3, ease: "expo.inOut",
+          }, "<")
+          tl.fromTo("#sub-script", { y: "0px" }, {
+            opacity: 1, duration: 1.5, y: "0px", ease: "power3.out"
+          }, "-=1.5")
+          tl.fromTo("#my-bulb-svg", {
+            left: "-350px", opacity: 0,
+          }, { left: "-150px", opacity: 1, duration: 2, ease: "expo.out", }, "-=1.5")
+          tl.fromTo("#my-globe-svg", {
+            right: "-250px", opacity: 0,
+          }, { right: "0px", opacity: 1, duration: 2, ease: "expo.out", }, "<")
+          tl.fromTo("#hills", {
+            right: "-250px", opacity: 0,
+          }, { right: "-100px", opacity: 1, duration: 2, ease: "expo.out", }, "<")
+          tl.fromTo("#scroll-assist", {
+            y: 100, opacity: 0, scale: 1.2
+          }, { y: 0, opacity: 1, scale: 1, duration: 1, ease: "expo.out" })
         }
-
-        //section 2
-        const mytween = gsap.to("#street-light, #wed-clock, #wed-plant", {
-          opacity: 1,
-          x: "-=100",
-          duration: 2.5,
-          paused: true
-        })
-
-        const mytween1 = gsap.to("#akaar-presents", { opacity: 1, duration: 1, paused: true, })
-
-        ScrollTrigger.create({
-          trigger: "#wedding-illus",
-          scrub: 1,
-          // markers: true,
-          start: () => `${screenWidth} 15%`,
-          end: () => `${screenWidth + 500} top`,
-          onEnter: () => { mytween.play(); mytween1.play(); },
-          onLeaveBack: () => { mytween.reverse(); mytween1.reverse(); },
-        })
-
-        const tl2 = gsap.timeline({
-          paused: true
-        });
-
-        tl2.to("#akaar-wed-shadow",
-          {
-            y: "+=20", duration: 0.75, delay: 0.5, ease: "power1.easeInOut"
-          }).to("#akaar-wed-shadow-1", {
-            y: "+=40", duration: 0.75, ease: "power1.easeInOut"
-          });
-
-        ScrollTrigger.create({
-          trigger: "#wedding-illus",
-          scrub: 1,
-          // markers: true,
-          start: () => `${screenWidth} 15%`,
-          end: () => `${screenWidth + 500} top`,
-          onEnter: () => tl2.play(),
-          onLeaveBack: () => tl2.reverse(),
-        })
-
-        //scroll assist on 2nd section
-        // const myTimeline = gsap.timeline({
-        //   paused: true
-        // })
-        // myTimeline.to(
-        //   "#scroll-assist, #lang-btn",
-        //   { backgroundColor: "#FFF5D8", color: "#FFC325", duration: 1, ease: "expo.inOut" }
-        // ).to("#scroll-assist :nth-child(1)", {
-        //   backgroundColor: "#FFC325", duration: 1, ease: "expo.inOut"
-        // }, "<");
-
-        // ScrollTrigger.create({
-        //   trigger: "#wedding-illus",
-        //   // markers: true,
-        //   scrub: 1,
-        //   start: () => `${screenWidth} 15%`,
-        //   end: () => `${screenWidth + 500} top`,
-        //   onEnter: () => myTimeline.play(),
-        //   onLeaveBack: () => myTimeline.reverse(),
-        //   once: false,
-        // });
-
-        //scroll assist on 3rd section
-        // const myTimeline1 = gsap.timeline({
-        //   paused: true
-        // })
-        // myTimeline1.to(
-        //   "#scroll-assist, #lang-btn",
-        //   { backgroundColor: "#FFC7C7", color: "#FF2424", duration: 1, ease: "expo.inOut" }
-        // ).to("#scroll-assist :nth-child(1)", {
-        //   backgroundColor: "#FF2424", duration: 1, ease: "expo.inOut"
-        // }, "<");
-
-        // ScrollTrigger.create({
-        //   trigger: "#wedding-illus",
-        //   // markers: true,
-        //   scrub: 1,
-        //   start: () => `${screenWidth * 2} top`,
-        //   end: () => `${screenWidth * 2 + 500} top`,
-        //   onEnter: () => myTimeline1.play(),
-        //   onLeaveBack: () => myTimeline1.reverse(),
-        //   once: false,
-        // });
-
-        //scroll assist on 4th section
-        // const myTimeline2 = gsap.timeline({
-        //   paused: true
-        // })
-        // myTimeline2.to(
-        //   "#scroll-assist, #lang-btn",
-        //   { backgroundColor: "#DFC3EC", color: "#7800B0", duration: 1, ease: "expo.inOut" }
-        // ).to("#scroll-assist :nth-child(1)", {
-        //   backgroundColor: "#7800B0", duration: 1, ease: "expo.inOut"
-        // }, "<");
-
-        // ScrollTrigger.create({
-        //   trigger: "#wedding-illus",
-        //   // markers: true,
-        //   scrub: 1,
-        //   start: () => `${screenWidth * 3} top`,
-        //   end: () => `${screenWidth * 3 + 500} top`,
-        //   onEnter: () => myTimeline2.play(),
-        //   onLeaveBack: () => myTimeline2.reverse(),
-        //   once: false,
-        // });
-
-        let tween = gsap.fromTo("#now-booking-wed",
-          {
-            x: 200,
-            scale: 0
-          },
-          {
-            x: 0,
-            scale: 1,
-            duration: 1.5,
-            paused: true,
-            ease: "elastic.out"
-          });
-
-        ScrollTrigger.create({
-          trigger: "#wedding-illus",
-          scrub: 1,
-          //markers: true,
-          start: () => `${screenWidth * 1} 15%`,
-          end: () => `${screenWidth * 1 + 500} top`,
-          onEnter: () => tween.play(),
-          onLeaveBack: () => tween.reverse(),
-          once: false,
-        });
-
-        //section 1
-        let tl = gsap.timeline({})
-        tl.fromTo(
-          document.querySelectorAll(".ofx"),
-          { opacity: 0 },
-          {
-            opacity: 1, duration: 2, ease: "expo.inOut"
-          }
-        );
-        tl.to("#main-heading", {
-          opacity: 1, duration: 3, ease: "expo.inOut",
-        }, "<")
-        tl.fromTo("#sub-script", { y: "0px" }, {
-          opacity: 1, duration: 1.5, y: "0px", ease: "power3.out"
-        }, "-=1.5")
-        tl.fromTo("#my-bulb-svg", {
-          left: "-350px", opacity: 0,
-        }, { left: "-150px", opacity: 1, duration: 2, ease: "expo.out", }, "-=1.5")
-        tl.fromTo("#my-globe-svg", {
-          right: "-250px", opacity: 0,
-        }, { right: "0px", opacity: 1, duration: 2, ease: "expo.out", }, "<")
-        tl.fromTo("#hills", {
-          right: "-250px", opacity: 0,
-        }, { right: "-100px", opacity: 1, duration: 2, ease: "expo.out", }, "<")
-        tl.fromTo("#scroll-assist", {
-          y: 100, opacity: 0, scale: 1.2
-        }, { y: -50, opacity: 1, scale: 1, duration: 1, ease: "expo.out" })
 
       });
 
@@ -375,7 +469,7 @@ export default function Home() {
 
 
       <div id="content">
-        <div className="slider-container">
+        <div className="slider-container" id="slider-id">
           <div id="section-1" className="full-screen panels">
             <svg id="my-bulb-svg" width="500" height="500" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
               <g id="bulb">
@@ -934,10 +1028,10 @@ export default function Home() {
             </div>
             <div id="sub-tag-wed">
               {/* <p>Be careful, violence tends to escalate</p> */}
-              <p>Your Story Told Like None Other</p>
+              <p>Your Story Told Like None Other.</p>
             </div>
             <button id="now-booking-wed">
-              Now Booking
+              Our Portfolio
             </button>
           </div>
           <div id="section-3" className="full-screen panels">

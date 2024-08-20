@@ -28,6 +28,11 @@
     src: url("./fonts/avenir-55-roman-05173.ttf");
 }
 
+@font-face {
+    font-family: montesrrat;
+    src: url("./fonts/Montserrat-Regular.ttf");
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -42,27 +47,16 @@ body {
 
 
 .full-screen {
-    /* display: block;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden; */
-
     flex: 0 0 100vw;
-    /* Each section takes up 100% of the viewport width */
     height: 100vh;
     display: flex;
 }
 
 .slider-container {
     position: relative;
-    /* height: 100vh;
-    width: 400%;
-    display: flex;
-    flex-direction: row; */
     display: flex;
     flex-wrap: nowrap;
     width: 400vw;
-    /* Assuming 3 sections */
     opacity: 0;
 }
 
@@ -312,7 +306,7 @@ body {
 }
 
 #akaar-presents {
-    position: absolute;
+    position: fixed;
     top: 5%;
     left: calc(50vw);
     transform: translate(-50%, -5%);
@@ -326,9 +320,9 @@ body {
 
 #scroll-assist {
     position: absolute;
-    top: 95%;
+    bottom: 20px;
     left: calc(50vw);
-    transform: translate(-50%, -95%);
+    transform: translateX(-50%);
     border-radius: 25px;
     width: 250px;
     height: 40px;
@@ -452,7 +446,7 @@ body {
 #lang-btn {
     font-family: Protrakt;
     font-size: 12px;
-    position: absolute;
+    position: fixed;
     bottom: 35px;
     left: 35px;
     background-color: #F5F6FF;
@@ -491,16 +485,16 @@ body {
     color: black
 }
 
-#sub-tag-wed{
+#sub-tag-wed {
     text-align: center;
     width: 500px;
-    font-family: avenir;
-    font-size: 14px;
-    color: #464541c2;
+    font-family: montesrrat;
+    font-size: 16px;
+    color:#454440dd;
     position: absolute;
-    bottom: 80px;
+    top: 60%;
     left: 50%;
-    transform: translate(-50%, -62%);
+    transform: translateX(-50%);
 }
 
 /******************* street light ****************/
@@ -647,11 +641,29 @@ body {
 @media screen and (max-width:1300px) {
     #portfolio-grid {
         grid-template-columns: repeat(3, minmax(300px, 1fr));
-    grid-auto-rows: 250px;
+        grid-auto-rows: 250px;
     }
 }
 
 @media screen and (max-width: 1000px) {
+
+    #scroll-assist{
+        display: none;
+    }
+
+    .slider-container {
+        position: relative;
+        display: block;
+        width: 100vw;
+        opacity: 0;
+    }
+
+    .full-screen {
+        /* flex: 0 0 100vw;
+        height: 100vh; */
+        display: block;
+    }
+
     .cnt-for-h {
         height: 300px;
         width: 380px;
@@ -733,14 +745,14 @@ body {
 @media screen and (max-width:950px) {
     #portfolio-grid {
         grid-template-columns: repeat(2, minmax(300px, 1fr));
-    grid-auto-rows: 250px;
+        grid-auto-rows: 250px;
     }
 }
 
 @media screen and (max-width:700px) {
     #portfolio-grid {
         grid-template-columns: repeat(1, minmax(300px, 1fr));
-    grid-auto-rows: 250px;
-    row-gap: 25px;
+        grid-auto-rows: 250px;
+        row-gap: 25px;
     }
 }
