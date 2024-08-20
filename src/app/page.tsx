@@ -70,7 +70,7 @@ export default function Home() {
 
     if (pageloaded) {
 
-      alert(screenHeight)
+      // alert(screenHeight)
 
       let preloader: any = document.getElementById('loading');
       let content: any = document.getElementById('content');
