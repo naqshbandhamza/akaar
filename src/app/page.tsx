@@ -329,7 +329,7 @@ export default function Home() {
           ScrollTrigger.create({
             trigger: "#section-2",
             scrub: 1,
-            markers: true,
+            // markers: true,
             start: () => `top top`,
             end: () => `+=500 top`,
             onEnter: () => { mytween.play(); mytween1.play(); },
