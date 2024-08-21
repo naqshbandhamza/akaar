@@ -671,8 +671,14 @@ body {
 #section-5 {
     width: 100%;
     height: auto;
+    /* background-color: #FFFBEC; */
     background-color: #FFFFFF;
     overflow: auto;
+}
+
+#section-5 h1{
+    text-shadow: 2px 2px 4px rgb(249, 158, 0);
+
 }
 
 #portfolio-grid {
@@ -735,6 +741,7 @@ body {
 #section-6 {
     width: 100%;
     height: auto;
+    /* background-color: #FFDBDB; */
     background-color: #FFFFFF;
     overflow: auto;
 }
@@ -744,6 +751,7 @@ body {
 #section-7 {
     width: 100%;
     height: auto;
+    /* background-color: #EBD9F3; */
     background-color: #FFFFFF;
     overflow: auto;
 }
@@ -753,8 +761,8 @@ body {
     text-align: center;
     font-family: organettoex;
     font-size: 16px;
-    color: rgb(0, 0, 0);
-    text-shadow: 2px 2px 4px #00000007;
+    color: rgb(255, 255, 255);
+    text-shadow: 2px 2px 4px #00000025;
 }
 
 #wed-main-illus {
@@ -831,13 +839,11 @@ body {
 
     #akaar-fashion,
     #akaar-fashion-shadow {
-        background-color: #FFDBDB;
         height: 30px;
     }
 
     #akaar-wed,
     #akaar-wed-shadow {
-        background-color: #FFFBEC;
         height: 30px;
     }
 
