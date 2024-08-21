@@ -41,11 +41,6 @@ body {
     scroll-behavior: smooth;
 }
 
-::-webkit-scrollbar {
-    /* display: none; */
-}
-
-
 .full-screen {
     flex: 0 0 100vw;
     height: 100vh;
@@ -573,18 +568,16 @@ body {
 }
 
 #fashion-illus {
-
-    top: 20%;
-    left: 50%;
-    transform: translate(-50%, -20%);
-
-    width: 164px;
-    height: 200px;
     position: absolute;
-    top: 20%;
+    top: 40%;
     left: 50%;
-    transform: translate(-50%, -20%);
+    transform: translate(-50%, -40%);
     opacity: 0.8;
+}
+
+#fashion-illus svg {
+    width: 294px;
+    height: 430px;
 }
 
 #now-booking-fashion {
@@ -719,8 +712,6 @@ body {
     }
 
     .full-screen {
-        /* flex: 0 0 100vw;
-        height: 100vh; */
         display: block;
     }
 
@@ -789,6 +780,17 @@ body {
         height: 370px;
     }
 
+    /* #fashion-illus {
+        top: 20%;
+        left: 49%;
+        transform: translate(-49%, -20%);
+    } */
+
+    #fashion-illus svg {
+        width: 234px;
+        height: 370px;
+    }
+
     #scroll-assist {
         width: 200px;
         height: 35px;
@@ -821,7 +823,7 @@ body {
         width: 90px;
         font-size: 10px;
     }
-    
+
     #sub-tag-fashion {
         text-align: center;
         width: 500px;
@@ -835,18 +837,6 @@ body {
         transform: translateX(-50%);
         text-shadow: 2px 2px 4px #FF2424;
     }
-
-    #fashion-illus {
-
-        top: 22%;
-        left: 49%;
-        transform: translate(-49%, -22%);
-
-        width: 134px;
-        height: 170px;
-       
-    }
-
 }
 
 @media screen and (max-width:950px) {
