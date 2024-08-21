@@ -6,7 +6,6 @@ import { useRef, useEffect, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
-import { ReactLenis, useLenis } from 'lenis/react'
 
 export default function Home() {
 
@@ -15,11 +14,9 @@ export default function Home() {
   const [screenWidth, setScreenWidth] = useState(0);
   const [screenHeight, setScreenHeight] = useState(0);
   const ctxRef = useRef(null);
-  const lenisRef: any = useRef()
 
   // this useEffect is for page preloader
   useEffect(() => {
-
     setScreenHeight(screen.height)
     setScreenWidth(window.innerWidth);
 
@@ -55,11 +52,8 @@ export default function Home() {
   };
 
   useEffect(() => {
-    // Attach the resize event listener
     if (typeof window !== 'undefined') {
       window.addEventListener('resize', handleResize);
-
-      // Clean up event listener on component unmount
       return () => {
         window.removeEventListener('resize', handleResize);
       };
@@ -155,6 +149,33 @@ export default function Home() {
             mytimeline3.play()
             setFirst(1)
           }
+
+          let tl = gsap.timeline({})
+          tl.fromTo(
+            document.querySelectorAll(".ofx"),
+            { opacity: 0 },
+            {
+              opacity: 1, duration: 2, ease: "expo.inOut"
+            }
+          );
+          tl.to("#main-heading", {
+            opacity: 1, duration: 3, ease: "expo.inOut",
+          }, "<")
+          tl.fromTo("#sub-script", { y: "0px" }, {
+            opacity: 1, duration: 1.5, y: "0px", ease: "power3.out"
+          }, "-=1.5")
+          tl.fromTo("#my-bulb-svg", {
+            left: "-350px", opacity: 0,
+          }, { left: "-150px", opacity: 1, duration: 2, ease: "expo.out", }, "-=1.5")
+          tl.fromTo("#my-globe-svg", {
+            right: "-250px", opacity: 0,
+          }, { right: "0px", opacity: 1, duration: 2, ease: "expo.out", }, "<")
+          tl.fromTo("#hills", {
+            right: "-250px", opacity: 0,
+          }, { right: "-100px", opacity: 1, duration: 2, ease: "expo.out", }, "<")
+          tl.fromTo("#scroll-assist", {
+            y: 100, opacity: 0, scale: 1.2
+          }, { y: 0, opacity: 1, scale: 1, duration: 1, ease: "expo.out" })
 
           //section 2
           const scrollassist1 = gsap.timeline({
@@ -347,33 +368,66 @@ export default function Home() {
             backgroundColor: "#7800B0", duration: 2
           }, "<");
 
-          //section 1
-          let tl = gsap.timeline({})
-          tl.fromTo(
-            document.querySelectorAll(".ofx"),
-            { opacity: 0 },
+          const tl5 = gsap.timeline({
+            paused: true
+          });
+
+          tl5.to("#akaar-commercials-shadow",
             {
-              opacity: 1, duration: 2, ease: "expo.inOut"
-            }
-          );
-          tl.to("#main-heading", {
-            opacity: 1, duration: 3, ease: "expo.inOut",
-          }, "<")
-          tl.fromTo("#sub-script", { y: "0px" }, {
-            opacity: 1, duration: 1.5, y: "0px", ease: "power3.out"
-          }, "-=1.5")
-          tl.fromTo("#my-bulb-svg", {
-            left: "-350px", opacity: 0,
-          }, { left: "-150px", opacity: 1, duration: 2, ease: "expo.out", }, "-=1.5")
-          tl.fromTo("#my-globe-svg", {
-            right: "-250px", opacity: 0,
-          }, { right: "0px", opacity: 1, duration: 2, ease: "expo.out", }, "<")
-          tl.fromTo("#hills", {
-            right: "-250px", opacity: 0,
-          }, { right: "-100px", opacity: 1, duration: 2, ease: "expo.out", }, "<")
-          tl.fromTo("#scroll-assist", {
-            y: 100, opacity: 0, scale: 1.2
-          }, { y: 0, opacity: 1, scale: 1, duration: 1, ease: "expo.out" })
+              y: "+=20", duration: 0.75, delay: 0.5, ease: "power1.easeInOut"
+            }).to("#akaar-commercials-shadow-1", {
+              y: "+=40", duration: 0.75, ease: "power1.easeInOut"
+            });
+
+          ScrollTrigger.create({
+            trigger: "#section-4",
+            scrub: 1,
+            // markers: true,
+            start: () => `${screenWidth * 3 + 900} top`,
+            end: () => `${screenWidth * 3 + 500 + 900} top`,
+            onEnter: () => tl5.play(),
+            onLeaveBack: () => tl5.reverse(),
+          })
+
+          let tween12 = gsap.fromTo("#now-booking-commercials",
+            {
+              x: 200,
+              scale: 0
+            },
+            {
+              x: 0,
+              scale: 1,
+              duration: 1.5,
+              paused: true,
+              ease: "elastic.out"
+            });
+
+          let tween12t = gsap.fromTo("#sub-tag-commercials",
+            {
+              y: -10,
+              opacity: 0
+            },
+            {
+              y: 0,
+              opacity: 1,
+              duration: 0.5,
+              delay: 1,
+              paused: true,
+            });
+
+          ScrollTrigger.create({
+            trigger: "#section-4",
+            scrub: 1,
+            //markers: true,
+            start: () => `${screenWidth * 3 + 900} 15%`,
+            end: () => `${screenWidth * 3 + 900 + 500} top`,
+            onEnter: () => { tween12.play(); tween12t.play() },
+            onLeaveBack: () => { tween12.reverse(); tween12t.reverse() },
+            once: false,
+          });
+
+
+
         } else {
 
           //section 1
@@ -619,16 +673,76 @@ export default function Home() {
             backgroundColor: "#7800B0"
           }, "<");
 
+          const tl445 = gsap.timeline({
+            paused: true
+          });
+
+          tl445.to("#akaar-commercials-shadow",
+            {
+              y: "+=10", duration: 0.75, delay: 0.5, ease: "power1.easeInOut"
+            }).to("#akaar-commercials-shadow-1", {
+              y: "+=20", duration: 0.75, ease: "power1.easeInOut"
+            });
+
           ScrollTrigger.create({
             trigger: "#section-4",
             scrub: 1,
             // markers: true,
             start: () => `top top`,
             end: () => `+=500 top`,
-            onEnterBack: () => { mytween1.play() },
-            onLeave: () => { mytween1.reverse() },
+            onEnterBack: () => { mytween1.play(); },
+            onLeave: () => { mytween1.reverse(); },
             once: false,
           });
+
+          ScrollTrigger.create({
+            trigger: "#section-4",
+            scrub: 1,
+            // markers: true,
+            start: () => `top top`,
+            end: () => `+=500 top`,
+            onEnter: () => { tl445.play(); },
+            onLeaveBack: () => { tl445.reverse() },
+            once: false,
+          });
+
+          let tween12 = gsap.fromTo("#now-booking-commercials",
+            {
+              x: 200,
+              scale: 0
+            },
+            {
+              x: 0,
+              scale: 1,
+              duration: 1.5,
+              paused: true,
+              ease: "elastic.out"
+            });
+
+          let tween12t = gsap.fromTo("#sub-tag-commercials",
+            {
+              y: -10,
+              opacity: 0
+            },
+            {
+              y: 0,
+              opacity: 1,
+              duration: 0.5,
+              delay: 1,
+              paused: true,
+            });
+
+          ScrollTrigger.create({
+            trigger: "#section-4",
+            scrub: 1,
+            //markers: true,
+            start: () => `top top`,
+            end: () => `+=500 top`,
+            onEnter: () => { tween12.play(); tween12t.play() },
+            onLeaveBack: () => { tween12.reverse(); tween12t.reverse() },
+            once: false,
+          });
+
 
           //section 1
           let tl = gsap.timeline({})
@@ -1391,7 +1505,198 @@ export default function Home() {
             </button>
           </div>
           <div id="section-4" className="full-screen panels">
+            <div className="akaar-wedstyle">
+              <h1 id="akaar-commercials-shadow-1" style={{ color: "#E5E1D4" }}>AKAARCOMMERCIAL</h1>
+            </div>
+            <div className="akaar-wedstyle">
+              <h1 id="akaar-commercials-shadow" style={{ color: "#B2AFA5" }}>AKAARCOMMERCIAL</h1>
+            </div>
+            <div id="akaar-commercials" className="akaar-wedstyle">
+              <h1>AKAARCOMMERCIAL</h1>
+            </div>
 
+            <div id="commercials-illus">
+              <svg viewBox="0 0 194 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g id="left">
+                  <g id="Group">
+                    <g id="Group_2">
+                      <path id="Vector" d="M184.627 111.685L249.506 6.83502" stroke="#38303B" stroke-width="2" stroke-miterlimit="10" />
+                      <path id="Vector_2" d="M184.627 111.685L209.544 71.418" stroke="white" stroke-width="4" stroke-miterlimit="10" />
+                    </g>
+                    <g id="Group_3">
+                      <path id="Vector_3" d="M225.435 20.077L262.589 20.445L263.028 1.51502L225.886 0.653015L225.435 20.077Z" fill="#332C33" />
+                      <path id="Vector_4" d="M227.804 13.5576L227.711 17.5724L237.577 17.8013L237.67 13.7866L227.804 13.5576Z" fill="#524752" />
+                      <path id="Vector_5" d="M230.382 14.264C231.128 14.281 231.719 14.9 231.702 15.647C231.685 16.393 231.066 16.984 230.319 16.967C229.573 16.95 228.982 16.331 228.999 15.584C229.017 14.838 229.636 14.247 230.382 14.264Z" fill="white" />
+                      <path id="Vector_6" d="M235.069 14.373C235.815 14.39 236.406 15.009 236.389 15.756C236.372 16.503 235.753 17.093 235.006 17.076C234.26 17.059 233.669 16.44 233.686 15.693C233.703 14.947 234.322 14.355 235.069 14.373Z" fill="white" />
+                    </g>
+                  </g>
+                  <g id="Group_4">
+                    <g id="Group_5">
+                      <path id="Vector_7" d="M161.68 166.665C161.68 166.665 151.65 168.045 151.13 163.995C151.13 163.995 142.68 161.585 133.53 154.175C128.22 149.885 122.68 143.915 118.42 135.755C116.33 131.735 114.74 128.055 113.61 124.705C108.46 109.515 112.64 101.305 121.18 101.115C137.41 100.745 144.8 132.965 161.68 142.765C161.68 142.765 157.46 160.195 161.68 166.665Z" fill="#6F5A7B" />
+                      <path id="Vector_8" d="M133.53 154.175C128.22 149.885 122.68 143.915 118.42 135.755C116.33 131.735 114.74 128.055 113.61 124.705C115.05 122.915 116.88 121.765 119.21 121.975C119.21 121.975 137.24 134.155 133.53 154.175Z" fill="#332C33" />
+                      <path id="Vector_9" d="M149.828 164.172C149.09 160.268 148.893 156.262 149.244 152.305" stroke="#38303B" stroke-width="0.5" stroke-miterlimit="10" />
+                      <path id="Vector_10" d="M152.713 135.163C149.113 129.586 141.935 127.675 136.801 123.468C135.658 122.531 134.522 121.04 135.167 119.71C136.973 120.156 138.67 121.035 140.076 122.252" stroke="#38303B" stroke-width="0.5" stroke-miterlimit="10" />
+                    </g>
+                    <g id="Group_6">
+                      <path id="Vector_11" d="M161.675 142.645C169.872 137.719 195.17 100.098 195.17 100.098L204.928 104.078C204.928 104.078 179.858 171.142 161.675 166.545C151.126 163.878 154.291 147.083 161.675 142.645Z" fill="#FE9E8E" />
+                      <path id="Vector_12" d="M204.928 104.199C204.928 104.199 208.818 94.483 208.818 91.516C208.818 88.549 196.752 80.241 193.983 81.032C191.214 81.823 195.565 86.971 195.565 86.971C195.565 86.971 193.523 87.362 193.061 88.746C192.598 90.131 194.379 91.317 194.379 91.317C194.379 91.317 191.808 91.881 192.005 92.588C192.203 93.295 194.576 94.476 194.576 94.476C194.576 94.476 193.645 98.386 195.169 100.218L204.928 104.199Z" fill="#FE9E8E" />
+                      <path id="Vector_13" d="M206.046 88.509C206.046 88.509 207.656 81.974 208.535 79.45C209.415 76.926 203.167 82.472 202.961 86.291L206.046 88.509Z" fill="#FE9E8E" />
+                    </g>
+                  </g>
+                  <g id="Group_7">
+                    <path id="Vector_14" d="M45.382 201.814C45.382 201.814 108.532 211.583 135.291 179.179C135.291 179.179 83.638 161.913 45.382 201.814Z" fill="#332C33" />
+                  </g>
+                  <g id="Group_8">
+                    <g id="Group_9">
+                      <path id="Vector_15" d="M219.942 412.313C219.942 412.313 197.145 440.116 169.916 431.904C169.916 431.904 183.79 411.483 219.942 412.313Z" fill="#332C33" />
+                    </g>
+                    <g id="Group_10">
+                      <g id="Group_11">
+                        <path id="Vector_16" d="M210.982 425.641L200.313 384.097L171.402 390.554L183.333 433.356L210.982 425.641Z" fill="#FE9E8E" />
+                      </g>
+                      <g id="Group_12">
+                        <path id="Vector_17" d="M258.324 465.971C258.324 465.971 256.798 452.611 248.992 451.44C241.185 450.269 224.551 447.896 219.275 441.029C214 434.161 210.982 425.64 210.982 425.64L183.333 433.355L189.138 465.97L258.324 465.971Z" fill="#FFFFFD" />
+                        <path id="Vector_18" d="M209.138 434.472L219.8 431.352L213.74 442.295L224.902 438.985L220.354 449.216L231.321 444.402" stroke="#38303B" stroke-width="0.5" stroke-miterlimit="10" />
+                      </g>
+                    </g>
+                    <g id="Group_13">
+                      <path id="Vector_19" d="M87.356 421.413C87.356 421.413 106.29 440.284 139.074 423.115C139.074 423.115 104.708 408.726 87.356 421.413Z" fill="#332C33" />
+                    </g>
+                    <g id="Group_14">
+                      <g id="Group_15">
+                        <path id="Vector_20" d="M126.468 425.641L125.192 384.097L94.821 390.554L97.074 433.356L126.468 425.641Z" fill="#FE9E8E" />
+                      </g>
+                      <g id="Group_16">
+                        <path id="Vector_21" d="M164.69 465.971C164.69 465.971 166.185 452.611 158.643 451.44C151.101 450.269 135.003 447.896 131.28 441.029C127.557 434.161 126.467 425.64 126.467 425.64L97.074 433.355L95.505 465.97L164.69 465.971Z" fill="#FFFFFD" />
+                        <path id="Vector_22" d="M122.627 434.472L133.994 431.352L125.46 442.295L137.37 438.985L130.508 449.216L142.564 444.402" stroke="#38303B" stroke-width="0.5" stroke-miterlimit="10" />
+                      </g>
+                    </g>
+                    <g id="Group_17">
+                      <path id="Vector_23s" d="M127.034 178.36L219.941 412.313C219.941 412.313 182.575 415.786 169.915 431.904C169.915 431.904 164.427 426.145 166.819 412.494C169.211 398.843 154.079 395.451 151.574 381.752C149.069 368.053 98.439 239.459 98.439 239.459C98.439 239.459 124.893 364.835 128.003 375.121C131.113 385.406 126.327 392.805 127.282 396.799C128.237 400.793 137.068 412.654 139.075 423.115C139.075 423.115 98.078 412.239 87.357 421.413C87.357 421.413 57.532 260.63 52.353 242.485C47.174 224.34 54.53 193.567 64.062 181.966L127.034 178.36Z" fill="#88BFFF" />
+                      <path id="Vector_24" d="M67.147 182.11C63.988 194.877 58.596 210.833 56.345 223.806C55.184 230.497 54.144 237.341 55.196 244.092C56.46 252.197 60.633 259.563 64.091 267.053C73.909 288.318 78.237 311.516 82.479 334.434C84.08 343.083 85.684 351.759 86.21 360.517C86.55 366.186 86.437 371.872 86.95 377.532C87.602 384.731 85.482 378.71 87.133 385.768C89.675 396.631 96.807 411.286 93.325 418.685" stroke="white" stroke-width="0.5" stroke-miterlimit="10" />
+                      <path id="Vector_25" d="M98.439 239.459C98.439 239.459 105.123 233.494 108.182 222.533C108.182 222.533 120.244 244.098 107.788 263.356L98.439 239.459Z" fill="#332C33" />
+                      <path id="Vector_26" d="M109.934 188.145C111.495 197.165 112.22 206.329 112.097 215.482" stroke="white" stroke-width="0.5" stroke-miterlimit="10" />
+                      <path id="Vector_27" d="M103.273 234.622C110.342 247.794 117.411 260.965 124.48 274.137C133.946 291.775 143.495 309.62 148.564 328.985C154.283 350.836 155.291 376.283 172.326 391.116C174.865 393.326 177.99 395.868 177.613 399.213C177.427 400.867 176.379 402.273 175.6 403.744C172.187 410.193 174.422 419.055 180.485 423.114" stroke="white" stroke-width="0.5" stroke-miterlimit="10" />
+                      <path id="Vector_28" d="M78.682 183.822C78.682 183.822 79.554 206.409 60.222 207.154" stroke="white" stroke-width="0.5" stroke-miterlimit="10" />
+                      <path id="Vector_29" d="M166.71 424.43C166.71 424.43 178.764 406.308 216.505 403.659" stroke="#38303B" stroke-width="0.5" stroke-miterlimit="10" />
+                      <path id="Vector_30" d="M85.146 410.008C85.146 410.008 98.404 399.651 135.602 413.096" stroke="#38303B" stroke-width="0.5" stroke-miterlimit="10" />
+                    </g>
+                  </g>
+                  <g id="Group_18">
+                    <path id="Vector_31" d="M82.548 80.98C69.364 82.553 61.663 87.612 58.642 93.512C55.621 99.412 68.049 101.112 68.049 101.112C68.049 101.112 50.873 107.65 49.06 109.055C47.247 110.46 50.963 157.482 50.661 162.539C50.359 167.596 53.682 170.124 53.682 170.124C53.682 170.124 50.056 173.355 50.963 175.462C51.869 177.569 54.245 182.11 54.245 182.11C54.245 182.11 37.966 197.67 45.382 201.814C45.382 201.814 72.697 178.361 135.291 179.179C135.291 179.179 135.291 173.408 129.376 171.57C129.376 171.57 122.742 163.816 122.906 150.331C123.07 136.846 121.184 101.114 121.184 101.114L104.895 99.379C104.895 99.379 113.859 95.205 109.058 88.558C105.531 83.671 92.626 79.778 82.548 80.98Z" fill="#6F5A7B" />
+                    <path id="Vector_32" d="M60.222 136.484C60.357 137.56 67.52 159.693 50.641 164.176L49.059 141.495L60.222 136.484Z" fill="#332C33" />
+                    <path id="Vector_33" d="M121.811 141.715C116.326 147.279 112.672 154.35 108 160.613C103.328 166.876 97.029 172.641 89.278 173.625C89.133 171.992 89.589 170.313 90.538 168.977" stroke="#38303B" stroke-width="0.5" stroke-miterlimit="10" />
+                    <path id="Vector_34" d="M54.423 182.835C57.987 181.129 61.808 179.96 65.717 179.379C69.221 178.859 72.801 178.807 76.244 177.97" stroke="#38303B" stroke-width="0.5" stroke-miterlimit="10" />
+                    <path id="Vector_35" d="M119.741 172.088C122.73 172.088 125.719 172.088 128.708 172.088" stroke="#38303B" stroke-width="0.5" stroke-miterlimit="10" />
+                    <path id="Vector_36" d="M65.334 130.154L117.368 124.088L118.42 135.755L66.673 143.32L65.334 130.154Z" fill="#886D96" />
+                  </g>
+                  <g id="Group_19">
+                    <g id="Group_20">
+                      <path id="Vector_37" d="M49.06 109.055C33.789 109.923 10.089 162.33 7.02499 161.934C3.96099 161.538 -2.00702 168.314 0.712983 173.366C0.712983 173.366 23.332 166.177 31.053 175.462C31.053 175.462 48.511 157.805 57.235 143.874C65.959 129.943 64.682 108.167 49.06 109.055Z" fill="#6F5A7B" />
+                      <path id="Vector_38" d="M7.02499 161.934C10.15 161.782 13.401 162.281 16.41 163.138C19.51 164.021 22.683 165.441 25.827 164.728C25.98 163.825 25.776 162.867 25.269 162.104" stroke="#38303B" stroke-width="0.5" stroke-miterlimit="10" />
+                    </g>
+                    <g id="Group_21">
+                      <path id="Vector_39" d="M31.053 175.462L63.505 195.488C63.505 195.488 69.432 191.573 75.729 196.846C75.729 196.846 71.839 206.687 60.614 206.835C60.614 206.835 20.575 193.423 9.762 188.557C-1.051 183.692 -0.231004 174.626 0.711996 173.365C3.697 169.376 23.477 166.893 31.053 175.462Z" fill="#FE9E8E" />
+                    </g>
+                  </g>
+                  <g id="Group_22">
+                    <path id="Vector_40" d="M92.77 86.313C91.939 87.193 91.106 88.077 90.147 88.772C87.11 90.974 82.752 91.033 79.295 88.919L80.426 89.576C79.507 91.686 76.827 92.249 74.664 91.394C72.501 90.539 70.781 88.62 69.304 86.654C68.685 85.831 68.053 84.77 68.381 83.855C68.572 83.323 69.046 83 69.363 82.552C70.223 81.337 69.771 79.432 68.909 78.045C68.047 76.658 66.833 75.537 66.003 74.129C64.594 71.738 64.494 68.609 65.756 66.388C67.171 63.899 70.121 62.454 70.545 59.491C70.846 57.394 69.737 55.134 70.065 53.044C70.529 50.092 73.617 48.74 76.419 48.65C79.221 48.56 82.156 49.265 84.803 48.476C85.438 48.287 86.041 48.016 86.63 47.712C88.191 46.907 88.807 45.122 90.338 44.268C91.87 43.415 93.957 43.221 95.53 44.267C96.702 45.046 97.415 46.373 98.576 47.17C100.558 48.53 103.104 47.952 105.435 48.153C107.237 48.308 109.078 49.01 110.41 50.306C111.741 51.602 112.484 53.528 112.076 55.208C111.832 56.211 111.22 57.056 110.721 57.946C110.222 58.836 109.823 59.863 110.054 60.908C110.286 61.953 111.378 62.935 112.407 62.711C112.66 63.643 112.604 65.25 112.186 66.067C111.708 67.001 110.694 67.559 109.631 67.769C108.568 67.979 107.445 67.887 106.339 67.794C107.368 70.222 108.112 72.911 107.856 75.426C107.593 78.007 106.092 80.227 104.282 82.004C101.468 84.768 96.885 87.276 92.77 86.313Z" fill="#8A525F" />
+                    <g id="Group_23">
+                      <g id="Group_24">
+                        <g id="Group_25">
+                          <path id="Vector_41" d="M79.198 79.428L77.92 101.111C77.92 101.111 87.722 111.185 95.18 102.065V80.18L79.198 79.428Z" fill="#FE9E8E" />
+                          <path id="Vector_42" d="M82.548 84.94C82.548 84.94 82.548 101.024 95.18 99.239V85.769L82.548 84.94Z" fill="#332C33" />
+                        </g>
+                        <g id="Group_26">
+                          <g id="Group_27">
+                            <path id="Vector_43" d="M103.711 88.253C102.593 92.207 97.931 93.928 92.117 94.427C86.292 94.913 80.816 92.057 79.202 81.667C78.163 74.994 77.746 70.678 78.457 65.652C79.338 59.478 93.427 57.171 98.112 60.875C101.792 63.781 102.492 70.566 102.718 74.508C102.741 74.882 102.774 75.269 102.819 75.68C102.932 76.603 103.09 77.613 103.271 78.648C103.824 81.929 104.478 85.546 103.711 88.253Z" fill="#FE9E8E" />
+                          </g>
+                          <g id="Group_28">
+                            <path id="Vector_44" d="M104.896 65.592C102.96 67.15 98.404 66.732 96.287 65.876C95.137 65.411 94.162 64.601 93.038 64.08C91.913 63.559 90.5 63.368 89.389 64.121C88.808 64.515 88.381 65.119 87.861 65.603C86.722 66.662 85.177 67.092 83.724 67.09C82.271 67.088 80.878 66.697 79.505 66.309C80.639 67.45 81.872 68.831 82.353 70.432C82.834 72.032 82.389 74.152 80.928 75.072C80.391 75.411 79.721 75.601 79.386 76.158C78.761 77.197 79.563 79.016 78.475 79.423C78.116 79.557 77.746 79.399 77.432 79.221C74.349 77.475 72.788 73.606 72.938 69.784C73.088 65.962 80.013 58.071 82.096 56.815C86.067 54.423 95.098 52.371 98.353 54.365C101.605 56.359 104.565 61.531 104.896 65.592Z" fill="#8A525F" />
+                          </g>
+                          <g id="Group_29">
+                            <path id="Vector_45" d="M78.417 76.141C73.974 74.2 69.873 73.456 70.081 78.875C70.289 84.293 75.916 86.794 79.875 84.293C83.835 81.792 81.655 77.555 78.417 76.141Z" fill="#FE9E8E" />
+                            <path id="Vector_46" d="M72.991 77.654C72.991 77.654 77.706 77.316 77.049 82.311" stroke="#332C33" stroke-width="0.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                            <path id="Vector_47" d="M76.664 79.428L74.795 80.634" stroke="#332C33" stroke-width="0.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                          </g>
+                          <g id="Group_30">
+                            <path id="Vector_48" d="M94.63 73.92C95.064 76.56 96.506 78.727 98.819 80.094C99.055 80.233 99.138 80.579 98.928 80.785C97.75 81.942 96.436 82.783 94.897 83.378" stroke="#332C33" stroke-width="0.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                          </g>
+                          <g id="Group_31">
+                            <g id="Group_32">
+                              <g id="Group_33">
+                                <g id="Group_34">
+                                  <g id="Group_35">
+                                    <g id="Group_36">
+                                      <path id="Vector_49" d="M82.312 79.638C82.486 80.553 83.577 81.113 84.748 80.889C85.919 80.665 86.728 79.741 86.554 78.826C86.38 77.911 85.289 77.351 84.118 77.575C82.946 77.799 82.138 78.723 82.312 79.638Z" fill="#FF755C" />
+                                    </g>
+                                  </g>
+                                </g>
+                              </g>
+                            </g>
+                            <g id="Group_37">
+                              <g id="Group_38">
+                                <g id="Group_39">
+                                  <g id="Group_40">
+                                    <g id="Group_41">
+                                      <g id="Group_42">
+                                        <path id="Vector_50" d="M103.271 78.649C103.011 78.811 102.718 78.924 102.39 78.986C101.216 79.211 100.121 78.649 99.951 77.726C99.77 76.816 100.583 75.892 101.757 75.668C102.13 75.593 102.491 75.606 102.818 75.68C102.932 76.603 103.09 77.614 103.271 78.649Z" fill="#FF755C" />
+                                      </g>
+                                    </g>
+                                  </g>
+                                </g>
+                              </g>
+                            </g>
+                          </g>
+                          <g id="Group_43">
+                            <g id="Group_44">
+                              <g id="Group_45">
+                                <g id="Group_46">
+                                  <g id="Group_47">
+                                    <g id="Group_48">
+                                      <g id="Group_49">
+                                        <path id="Vector_51" d="M88.422 72.716C88.46 73.379 88.894 73.894 89.392 73.865C89.889 73.836 90.262 73.276 90.223 72.612C90.185 71.949 89.751 71.435 89.254 71.463C88.757 71.492 88.384 72.053 88.422 72.716Z" fill="#332C33" />
+                                      </g>
+                                    </g>
+                                  </g>
+                                </g>
+                              </g>
+                            </g>
+                            <g id="Group_50">
+                              <g id="Group_51">
+                                <g id="Group_52">
+                                  <g id="Group_53">
+                                    <g id="Group_54">
+                                      <g id="Group_55">
+                                        <path id="Vector_52" d="M98.975 72.548C99.013 73.211 99.447 73.725 99.945 73.697C100.442 73.668 100.815 73.107 100.777 72.444C100.739 71.781 100.305 71.266 99.807 71.295C99.309 71.324 98.937 71.885 98.975 72.548Z" fill="#332C33" />
+                                      </g>
+                                    </g>
+                                  </g>
+                                </g>
+                              </g>
+                            </g>
+                          </g>
+                          <g id="Group_56">
+                            <path id="Vector_53" d="M90.218 69.827C87.983 67.033 86.351 71.086 86.883 70.183" stroke="#332C33" stroke-width="0.75" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                            <path id="Vector_54" d="M100.974 68.843C98.739 66.049 97.107 70.102 97.639 69.199" stroke="#332C33" stroke-width="0.75" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                          </g>
+                          <g id="Group_57">
+                            <path id="Vector_55" d="M90.226 85.697C90.226 85.697 98.403 83.975 102.213 83.671C102.213 83.671 104.06 88.94 97.537 90.106C90.863 91.298 90.226 85.697 90.226 85.697Z" fill="white" />
+                          </g>
+                        </g>
+                      </g>
+                    </g>
+                  </g>
+                </g>
+              </svg>
+            </div>
+            <div id="sub-tag-commercials">
+              {/* <p>Be careful, violence tends to escalate</p> */}
+              <p>Taking your commercials to the next level.</p>
+            </div>
+            <button id="now-booking-commercials">
+              Our Portfolio
+            </button>
           </div>
           <div id="akaar-presents">
             <h4>AKAAR Presents</h4>

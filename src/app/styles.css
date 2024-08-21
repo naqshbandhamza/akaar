@@ -41,6 +41,10 @@ body {
     scroll-behavior: smooth;
 }
 
+::-webkit-scrollbar {
+    display: none;
+}
+
 .full-screen {
     flex: 0 0 100vw;
     height: 100vh;
@@ -74,6 +78,7 @@ body {
 }
 
 #section-4 {
+    position: relative;
     overflow: hidden;
     background-color: #EBD9F3;
 }
@@ -609,7 +614,57 @@ body {
     text-shadow: 2px 2px 4px #FF2424;
 }
 
+/* #7800B0 */
 
+#now-booking-commercials {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -55%);
+    background-color: #7800B0;
+    height: 110px;
+    width: 110px;
+    border-radius: 50%;
+    font-family: Protrakt;
+    color: white;
+    font-size: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.129);
+}
+
+#sub-tag-commercials {
+    text-align: center;
+    width: 500px;
+    font-family: montesrrat;
+    font-size: 18px;
+    /* color: #454440dd; */
+    color: white;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-shadow: 2px 2px 4px #7800B0;
+}
+
+/***************** section 4************************/
+
+#akaar-commercials,
+#akaar-commercials-shadow {
+    background-color: #EBD9F3;
+    height: 65px;
+}
+
+#commercials-illus {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -40%);
+    opacity: 0.8;
+}
+
+#commercials-illus svg {
+    width: 294px;
+    height: 430px;
+}
 
 /*****************section 5 *************************/
 
@@ -769,6 +824,12 @@ body {
         height: 30px;
     }
 
+    #akaar-commercials,
+    #akaar-commercials-shadow {
+        height: 30px;
+    }
+
+
     #akaar-presents {
         font-size: 8px;
         left: 50%;
@@ -787,6 +848,11 @@ body {
     } */
 
     #fashion-illus svg {
+        width: 234px;
+        height: 370px;
+    }
+
+    #commercials-illus svg {
         width: 234px;
         height: 370px;
     }
@@ -837,6 +903,19 @@ body {
         transform: translateX(-50%);
         text-shadow: 2px 2px 4px #FF2424;
     }
+
+    #now-booking-commercials {
+        height: 90px;
+        width: 90px;
+        font-size: 10px;
+    }
+    
+    /* #sub-tag-commercials {
+        height: 90px;
+        width: 90px;
+        font-size: 10px;
+    } */
+
 }
 
 @media screen and (max-width:950px) {
