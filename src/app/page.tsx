@@ -1385,7 +1385,7 @@ export default function Home() {
               {/* <p>Be careful, violence tends to escalate</p> */}
               <p>Your Story Told Like None Other.</p>
             </div>
-            <button id="now-booking-wed" onClick={() => {
+            <button id="now-booking-wed"  onClick={() => {
               gotowedportfolio("section-5")
             }}>
               Our Portfolio
@@ -1500,7 +1500,9 @@ export default function Home() {
               {/* <p>Be careful, violence tends to escalate</p> */}
               <p>Taking your fashion to the next level.</p>
             </div>
-            <button id="now-booking-fashion">
+            <button id="now-booking-fashion" onClick={() => {
+              gotowedportfolio("section-6")
+            }}>
               Our Portfolio
             </button>
           </div>
@@ -1694,7 +1696,9 @@ export default function Home() {
               {/* <p>Be careful, violence tends to escalate</p> */}
               <p>Taking your commercials to the next level.</p>
             </div>
-            <button id="now-booking-commercials">
+            <button id="now-booking-commercials" onClick={() => {
+              gotowedportfolio("section-7")
+            }}>
               Our Portfolio
             </button>
           </div>
@@ -1713,7 +1717,7 @@ export default function Home() {
         </div>
         <div id="section-5">
           <div style={{ width: "100%", height: "90px", textAlign: "center" }}>
-            <h1>Akaar Weddings</h1>
+            <h1 className="common-h1">AKAAR WEDDINGS</h1>
           </div>
           <div id="portfolio-grid">
             <div className="product">
@@ -1721,6 +1725,36 @@ export default function Home() {
               <iframe id="1-video" width="560" height="315" src="https://www.youtube.com/embed/FJGSqtMzmlo?si=48HwWIVNCRaeELEr" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen={false}>
 
               </iframe>
+            </div>
+            <div className="product"></div>
+            <div className="product"></div>
+            <div className="product"></div>
+            <div className="product"></div>
+            <div className="product"></div>
+          </div>
+        </div>
+        <div id="section-6">
+          <div style={{ width: "100%", height: "90px", textAlign: "center" }}>
+            <h1 className="common-h1">AKAAR FASHION</h1>
+          </div>
+          <div id="portfolio-grid">
+            <div className="product">
+
+            </div>
+            <div className="product"></div>
+            <div className="product"></div>
+            <div className="product"></div>
+            <div className="product"></div>
+            <div className="product"></div>
+          </div>
+        </div>
+        <div id="section-7">
+          <div style={{ width: "100%", height: "90px", textAlign: "center" }}>
+            <h1 className="common-h1">AKAAR COMMERCIAL</h1>
+          </div>
+          <div id="portfolio-grid">
+            <div className="product">
+
             </div>
             <div className="product"></div>
             <div className="product"></div>
