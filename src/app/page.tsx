@@ -93,42 +93,10 @@ export default function Home() {
               // markers: true,
               snap: {
                 snapTo: 1 / (sections.length - 1),
+                // duration: 0.75,
+                // ease:"power1.out"
               },
               onScrubComplete: (self) => {
-                const currentIndex = Math.round(self.progress * (sections.length - 1));
-                if (currentIndex === 0) {
-                  const myTimeline = gsap.timeline()
-                  myTimeline.to(
-                    "#scroll-assist, #lang-btn",
-                    { backgroundColor: "#EAEDFE", color: "#2E4BF5", duration: 0.5, ease: "expo.inOut" }
-                  ).to("#scroll-assist :nth-child(1)", {
-                    backgroundColor: "#2E4BF5", duration: 0.5, ease: "expo.inOut"
-                  }, "<");
-                } else if (currentIndex === 1) {
-                  const myTimeline = gsap.timeline()
-                  myTimeline.to(
-                    "#scroll-assist, #lang-btn",
-                    { backgroundColor: "#FFF5D8", color: "#FFC325", duration: 0.5, ease: "expo.inOut" }
-                  ).to("#scroll-assist :nth-child(1)", {
-                    backgroundColor: "#FFC325", duration: 0.5, ease: "expo.inOut"
-                  }, "<");
-                } else if (currentIndex === 2) {
-                  const myTimeline1 = gsap.timeline()
-                  myTimeline1.to(
-                    "#scroll-assist, #lang-btn",
-                    { backgroundColor: "#FFC7C7", color: "#FF2424", duration: 0.5, ease: "expo.inOut" }
-                  ).to("#scroll-assist :nth-child(1)", {
-                    backgroundColor: "#FF2424", duration: 0.5, ease: "expo.inOut"
-                  }, "<");
-                } else if (currentIndex === 3) {
-                  const myTimeline2 = gsap.timeline()
-                  myTimeline2.to(
-                    "#scroll-assist, #lang-btn",
-                    { backgroundColor: "#DFC3EC", color: "#7800B0", duration: 0.5, ease: "expo.inOut" }
-                  ).to("#scroll-assist :nth-child(1)", {
-                    backgroundColor: "#7800B0", duration: 0.5, ease: "expo.inOut"
-                  }, "<");
-                }
               },
               start: "top top",
               end: () => screenWidth * 4
@@ -136,6 +104,23 @@ export default function Home() {
           });
 
           //section 1
+          const scrollassist0 = gsap.timeline({
+            scrollTrigger: {
+              trigger: "#section-1",
+              // markers: true,
+              start: "top top",
+              end: `${screenWidth} ${screenWidth}`,
+              scrub: 1,
+            }
+          }
+          )
+          scrollassist0.to(
+            "#scroll-assist, #lang-btn",
+            { backgroundColor: "#EAEDFE", color: "#2E4BF5", duration: 2 }
+          ).to("#scroll-assist :nth-child(1)", {
+            backgroundColor: "#2E4BF5", duration: 2
+          }, "<");
+
           const mytimeline3 = gsap.timeline({ paused: true })
           mytimeline3.fromTo("#headings",
             {
@@ -172,6 +157,24 @@ export default function Home() {
           }
 
           //section 2
+          const scrollassist1 = gsap.timeline({
+            scrollTrigger: {
+              trigger: "#section-2",
+              // markers: true,
+              start: `${screenWidth} top`,
+              end: `${screenWidth * 2} ${screenWidth * 2}`,
+              scrub: 1,
+            }
+          }
+          )
+          scrollassist1.to(
+            "#scroll-assist, #lang-btn",
+            { backgroundColor: "#FFF5D8", color: "#FFC325", duration: 2 }
+          ).to("#scroll-assist :nth-child(1)", {
+            backgroundColor: "#FFC325", duration: 2
+          }, "<");
+
+
           const mytween = gsap.to("#street-light, #wed-clock, #wed-plant", {
             opacity: 1,
             x: "-=100",
@@ -250,6 +253,23 @@ export default function Home() {
           });
 
           //section 3
+          const scrollassist2 = gsap.timeline({
+            scrollTrigger: {
+              trigger: "#section-3",
+              // markers: true,
+              start: `${screenWidth * 2+400} top`,
+              end: `${screenWidth * 3} ${screenWidth * 3}`,
+              scrub: 1,
+            }
+          }
+          )
+          scrollassist2.to(
+            "#scroll-assist, #lang-btn",
+            { backgroundColor: "#FFC7C7", color: "#FF2424", duration: 2 }
+          ).to("#scroll-assist :nth-child(1)", {
+            backgroundColor: "#FF2424", duration: 2
+          }, "<");
+
 
           const tl4 = gsap.timeline({
             paused: true
@@ -308,6 +328,24 @@ export default function Home() {
             onLeaveBack: () => { tween1.reverse(); tween1t.reverse() },
             once: false,
           });
+
+          //section 4
+          const scrollassist3 = gsap.timeline({
+            scrollTrigger: {
+              trigger: "#section-4",
+              // markers: true,
+              start: `${screenWidth * 3+900} top`,
+              end: `${screenWidth * 4} ${screenWidth * 4}`,
+              scrub: 1,
+            }
+          }
+          )
+          scrollassist3.to(
+            "#scroll-assist, #lang-btn",
+            { backgroundColor: "#DFC3EC", color: "#7800B0", duration: 2 }
+          ).to("#scroll-assist :nth-child(1)", {
+            backgroundColor: "#7800B0", duration: 2
+          }, "<");
 
           //section 1
           let tl = gsap.timeline({})
@@ -834,7 +872,7 @@ export default function Home() {
                 </g>
               </svg>
 
-              <svg id="wed-clock" width="130" height="164" viewBox="0 0 330 364" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <svg id="wed-clock" width="100" height="134" viewBox="0 0 330 364" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g id="clock">
                   <g id="OBJECTS">
                     <g id="Group">
@@ -925,7 +963,7 @@ export default function Home() {
                 </g>
               </svg>
 
-              <svg id="street-light" width="240" height="473" viewBox="0 0 188 473" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <svg id="street-light" width="215" height="433" viewBox="0 0 188 473" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g>
                   <g id="Group">
                     <g id="Group_2">
