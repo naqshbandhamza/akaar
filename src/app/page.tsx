@@ -257,7 +257,7 @@ export default function Home() {
             scrollTrigger: {
               trigger: "#section-3",
               // markers: true,
-              start: `${screenWidth * 2+400} top`,
+              start: `${screenWidth * 2 + 400} top`,
               end: `${screenWidth * 3} ${screenWidth * 3}`,
               scrub: 1,
             }
@@ -334,7 +334,7 @@ export default function Home() {
             scrollTrigger: {
               trigger: "#section-4",
               // markers: true,
-              start: `${screenWidth * 3+900} top`,
+              start: `${screenWidth * 3 + 900} top`,
               end: `${screenWidth * 4} ${screenWidth * 4}`,
               scrub: 1,
             }
@@ -377,6 +377,23 @@ export default function Home() {
         } else {
 
           //section 1
+          const scrollassist0 = gsap.timeline({
+            scrollTrigger: {
+              trigger: "#section-1",
+              // markers: true,
+              start: "top top",
+              end: "+=10 top",
+              scrub: 1,
+            }
+          }
+          )
+          scrollassist0.to(
+            "#scroll-assist, #lang-btn",
+            { backgroundColor: "#EAEDFE", color: "#2E4BF5" }
+          ).to("#scroll-assist :nth-child(1)", {
+            backgroundColor: "#2E4BF5"
+          }, "<");
+
           const mytimeline3 = gsap.timeline({ paused: true })
           mytimeline3.fromTo("#headings",
             {
@@ -413,6 +430,23 @@ export default function Home() {
           }
 
           //section 2
+          const scrollassist1 = gsap.timeline({
+            scrollTrigger: {
+              trigger: "#section-2",
+              // markers: true,
+              start: () => `top top`,
+              end: () => `+=10 top`,
+              scrub: 1,
+            }
+          }
+          )
+          scrollassist1.to(
+            "#scroll-assist, #lang-btn",
+            { backgroundColor: "#FFF5D8", color: "#FFC325" }
+          ).to("#scroll-assist :nth-child(1)", {
+            backgroundColor: "#FFC325"
+          }, "<");
+
           const mytween = gsap.to("#street-light, #wed-clock, #wed-plant", {
             opacity: 1,
             x: "-=100",
@@ -491,6 +525,22 @@ export default function Home() {
           });
 
           //section 3
+          const scrollassist2 = gsap.timeline({
+            scrollTrigger: {
+              trigger: "#section-3",
+              // markers: true,
+              start: () => `top top`,
+              end: () => `+=10 top`,
+              scrub: 1,
+            }
+          }
+          )
+          scrollassist2.to(
+            "#scroll-assist, #lang-btn",
+            { backgroundColor: "#FFC7C7", color: "#FF2424" }
+          ).to("#scroll-assist :nth-child(1)", {
+            backgroundColor: "#FF2424"
+          }, "<");
 
           const tl3 = gsap.timeline({
             paused: true
@@ -552,6 +602,22 @@ export default function Home() {
 
 
           //section 4
+          const scrollassist3 = gsap.timeline({
+            scrollTrigger: {
+              trigger: "#section-4",
+              // markers: true,
+              start: () => `top top`,
+              end: () => `+=10 top`,
+              scrub: 1,
+            }
+          }
+          )
+          scrollassist3.to(
+            "#scroll-assist, #lang-btn",
+            { backgroundColor: "#DFC3EC", color: "#7800B0" }
+          ).to("#scroll-assist :nth-child(1)", {
+            backgroundColor: "#7800B0"
+          }, "<");
 
           ScrollTrigger.create({
             trigger: "#section-4",
