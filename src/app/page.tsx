@@ -678,6 +678,13 @@ export default function Home() {
     document.getElementById("full-screen-container").style.display = "none";
   }
 
+  const gotowedportfolio = () => {
+    window.scrollTo({
+      top: document.getElementById("section-5").offsetTop - 50, // Adjust for fixed navbar height
+      behavior: 'smooth' // Smooth scroll
+    });
+  }
+
   return (
     <>
       {/* AKAAR CREATIVE AGENCY */}
@@ -1266,7 +1273,9 @@ export default function Home() {
               {/* <p>Be careful, violence tends to escalate</p> */}
               <p>Your Story Told Like None Other.</p>
             </div>
-            <button id="now-booking-wed">
+            <button id="now-booking-wed" onClick={() => {
+              gotowedportfolio()
+            }}>
               Our Portfolio
             </button>
           </div>
@@ -1400,7 +1409,7 @@ export default function Home() {
         </div>
         <div id="section-5">
           <div style={{ width: "100%", height: "90px", textAlign: "center" }}>
-            <h1>Our Portfolio</h1>
+            <h1>Akaar Weddings</h1>
           </div>
           <div id="portfolio-grid">
             <div className="product">
