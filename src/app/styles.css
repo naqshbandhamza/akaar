@@ -76,9 +76,6 @@ body {
 
 .panels {
     transition: background-color 1s ease;
-    margin-right: -1px;
-    transform: translateZ(0);
-    /* Forcing hardware acceleration to prevent gaps */
 }
 
 #section-1 {
@@ -717,20 +714,32 @@ body {
 .sec-p-head {
     position: absolute;
     top: 40%;
-    left: 50%;
-    transform: translate(-50%, -40%);
+    right: 5px;
+}
+
+#section-6 .sec-p-head{
+    left: 5px;
+    right: auto;
 }
 
 #section-5 {
+    position: relative;
     width: 100%;
     min-height: 100vh;
     height: auto;
     /* background-color: #FFFBEC; */
     background-color: #FFFFFF;
+    /* background-image: linear-gradient(180deg, rgba(255, 242, 0, 0.167) 0%, #ffffff 78%); */
     overflow: auto;
 }
 
+#section-5 #wave{
+    position: absolute;
+    top:-5px;
+}
+
 .portfolio-grid {
+    position: relative;
     max-width: 1340px;
     width: 90%;
     margin-left: auto;
@@ -740,6 +749,7 @@ body {
     grid-auto-rows: auto;
     grid-template-areas: "left1 right1";
     margin-top: 90px;
+    margin-bottom: 90px;
 }
 
 .left1 {
@@ -812,12 +822,24 @@ body {
 
 /*****************section 6 *************************/
 
+#section-6 #wave2{
+    position: absolute;
+    top:10%;
+}
+
+#section-6 #wave1{
+    position: absolute;
+    top:40%;
+}
+
+
 #section-6 {
+    position: relative;
     width: 100%;
     min-height: 100vh;
     height: auto;
-    /* background-color: #FFDBDB; */
     background-color: #FFFFFF;
+    /* background-image: linear-gradient(180deg, #ffffff 40%, #ffdbdb 100%); */
     overflow: auto;
 }
 
@@ -827,9 +849,9 @@ body {
     width: 100%;
     min-height: 100vh;
     height: auto;
-    /* background-color: #EBD9F3; */
     background-color: #FFFFFF;
-    overflow: auto;
+    /* background-image: linear-gradient(180deg, #ffdbdb 0%, #ffffff 75%); */
+        overflow: auto;
 }
 
 .common-h1 {
@@ -846,6 +868,10 @@ body {
 }
 
 @media screen and (max-width:1300px) {
+
+    .common-h1{
+        font-size: 32px;
+    }
 
     .left1,
     .right1 {
@@ -867,12 +893,32 @@ body {
 
 @media screen and (max-width: 1000px) {
 
+    .common-h1{
+        font-size: 22px;
+    }
+
+    .sec-p-head{
+        top:0px;
+    }
+
+    #section-6 #wave2{
+        position: absolute;
+        top:10%;
+    }
+    
+    #section-6 #wave1{
+        position: absolute;
+        top:32%;
+    }
+
     .portfolio-grid {
+        
         grid-template-columns: 100%;
         grid-template-rows: auto;
         grid-template-areas: "main";
         overflow-x: hidden;
         width: fit-content;
+        padding-top: 40px;
     }
 
     #section-5 .right1,
@@ -1078,6 +1124,16 @@ body {
 
 @media screen and (max-width:850px) {
 
+    #section-6 #wave2{
+        position: absolute;
+        top:10%;
+    }
+    
+    #section-6 #wave1{
+        position: absolute;
+        top:28%;
+    }
+
     #section-5 .left1,
     #section-7 .left1 {
         grid-area: main;
@@ -1097,6 +1153,33 @@ body {
 
 @media screen and (max-width:600px) {
 
+    .common-h1{
+        font-size: 16px;
+    }
+
+     .sec-p-head{
+        left: 5px;
+    }
+
+    /*
+    #section-6 .sec-p-head{
+        right: auto;
+        left: 50%;
+        transform: translateX(-50%);
+    } */
+
+    #section-6 #wave2{
+        position: absolute;
+        top:10%;
+        display: none;
+    }
+    
+    #section-6 #wave1{
+        position: absolute;
+        top:18%;
+        display: none;
+
+    }
 
     #section-5 .left1,
     #section-7 .left1 {
