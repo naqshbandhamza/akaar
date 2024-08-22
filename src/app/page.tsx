@@ -514,7 +514,7 @@ export default function Home() {
           //   paused: true
           // })
 
-          const mytween1 = gsap.to("#akaar-presents", { opacity: 1, duration: 1, paused: true, })
+          const mytween1 = gsap.to("#akaar-presents", { opacity: 1, duration: 0.5, paused: true, })
 
           ScrollTrigger.create({
             trigger: "#section-2",
@@ -701,7 +701,7 @@ export default function Home() {
             scrub: 1,
             // markers: true,
             start: () => `top top`,
-            end: () => `+=500 top`,
+            end: () => `+=300 top`,
             onEnterBack: () => { mytween1.play(); },
             onLeave: () => { mytween1.reverse(); },
             once: false,
@@ -1967,51 +1967,56 @@ export default function Home() {
           </button>
         </div>
         <div id="section-5">
-          <div style={{ width: "100%", height: "90px", textAlign: "center" }}>
-            <h1 className="common-h1">AKAAR WEDDINGS</h1>
-          </div>
-          <div id="portfolio-grid">
-            <div className="product">
-              <button className="fullscreen-btn" onClick={() => handleClick("1-video")}></button>
-              <iframe id="1-video" width="560" height="315" src="https://www.youtube.com/embed/FJGSqtMzmlo?si=48HwWIVNCRaeELEr" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen={false}>
+          <div className="portfolio-grid">
+            <div className="left1">
+              <div className="product">
+                <button className="fullscreen-btn" onClick={() => handleClick("1-video")}></button>
+                <iframe id="1-video" width="560" height="315" src="https://www.youtube.com/embed/FJGSqtMzmlo?si=48HwWIVNCRaeELEr" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen={false}>
 
-              </iframe>
+                </iframe>
+              </div>
+              <div className="product"></div>
+              <div className="product"></div>
+              <div className="product"></div>
+              {/* <div className="product"></div> */}
             </div>
-            <div className="product"></div>
-            <div className="product"></div>
-            <div className="product"></div>
-            <div className="product"></div>
-            <div className="product"></div>
+            <div className="right1">
+              <div className="sec-p-head">
+                <h1 className="common-h1">Akaar Weddings</h1>
+              </div>
+            </div>
           </div>
         </div>
         <div id="section-6">
-          <div style={{ width: "100%", height: "90px", textAlign: "center" }}>
-            <h1 className="common-h1">AKAAR FASHION</h1>
-          </div>
-          <div id="portfolio-grid">
-            <div className="product">
-
+          <div className="portfolio-grid">
+            <div className="left1">
+              <div className="sec-p-head">
+                <h1 className="common-h1">Akaar Fashion</h1>
+              </div>
             </div>
-            <div className="product"></div>
-            <div className="product"></div>
-            <div className="product"></div>
-            <div className="product"></div>
-            <div className="product"></div>
+            <div className="right1">
+              <div className="product">
+              </div>
+              <div className="product"></div>
+              <div className="product"></div>
+              <div className="product"></div>
+            </div>
           </div>
         </div>
         <div id="section-7">
-          <div style={{ width: "100%", height: "90px", textAlign: "center" }}>
-            <h1 className="common-h1">AKAAR COMMERCIAL</h1>
-          </div>
-          <div id="portfolio-grid">
-            <div className="product">
-
+          <div className="portfolio-grid">
+            <div className="left1">
+              <div className="product">
+              </div>
+              <div className="product"></div>
+              <div className="product"></div>
+              <div className="product"></div>
             </div>
-            <div className="product"></div>
-            <div className="product"></div>
-            <div className="product"></div>
-            <div className="product"></div>
-            <div className="product"></div>
+            <div className="right1">
+              <div className="sec-p-head">
+                <h1 className="common-h1">Akaar Commercial</h1>
+              </div>
+            </div>
           </div>
         </div>
       </div>
