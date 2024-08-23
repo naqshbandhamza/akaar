@@ -412,7 +412,6 @@ body {
 }
 
 .text-shadow {
-    /* font-size: 36px; */
     color: #333;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
@@ -504,7 +503,7 @@ body {
 
 .akaar-wedstyle {
     text-align: center;
-    width: 900px;
+    width: auto;
     font-size: 62px;
     position: absolute;
     top: 35%;
@@ -519,7 +518,6 @@ body {
     width: 500px;
     font-family: montesrrat;
     font-size: 18px;
-    /* color: #454440dd; */
     color: white;
     position: absolute;
     top: 60%;
@@ -531,7 +529,6 @@ body {
 /******************* street light ****************/
 
 #street-light {
-    /* opacity: 0; */
     position: absolute;
     top: -30px;
     right: -400px;
@@ -543,7 +540,6 @@ body {
 #street-light #Vector_9,
 #street-light #Vector_10 {
     fill: #FDC469;
-    /* animation: glow 2s ease infinite; */
 }
 
 @keyframes glow {
@@ -644,7 +640,7 @@ body {
     width: 110px;
     border-radius: 50%;
     font-family: makroreg;
-        color: white;
+    color: white;
     font-size: 10px;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.129);
 }
@@ -654,7 +650,6 @@ body {
     width: 500px;
     font-family: montesrrat;
     font-size: 18px;
-    /* color: #454440dd; */
     color: white;
     position: absolute;
     top: 60%;
@@ -662,8 +657,6 @@ body {
     transform: translateX(-50%);
     text-shadow: 2px 2px 4px #FF2424;
 }
-
-/* #7800B0 */
 
 #now-booking-commercials {
     position: absolute;
@@ -674,7 +667,8 @@ body {
     height: 110px;
     width: 110px;
     border-radius: 50%;
-    font-family: makroreg;    color: white;
+    font-family: makroreg;
+    color: white;
     font-size: 10px;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.129);
 }
@@ -722,7 +716,7 @@ body {
     right: 5px;
 }
 
-.sec-p-head p{
+.sec-p-head p {
     margin-top: 20px;
     font-family: makroreg;
     width: 400px;
@@ -731,40 +725,40 @@ body {
     word-spacing: 3px;
 }
 
-#get-in-touch-fashion{
+#get-in-touch-fashion {
     margin-top: 30px;
     width: 140px;
     border-radius: 40px;
     height: 40px;
-    background-color:#FF2424;
+    background-color: #FF2424;
     color: white;
     font-family: makroreg;
     font-size: 10px;
 }
 
-#get-in-touch-wed{
+#get-in-touch-wed {
     margin-top: 30px;
     width: 140px;
     border-radius: 40px;
     height: 40px;
-    background-color:#EDB62B;
+    background-color: #EDB62B;
     color: white;
     font-family: makroreg;
     font-size: 10px;
 }
 
-#get-in-touch-commercial{
+#get-in-touch-commercial {
     margin-top: 30px;
     width: 140px;
     border-radius: 40px;
     height: 40px;
-    background-color:#7800B0;
+    background-color: #7800B0;
     color: white;
     font-family: makroreg;
     font-size: 10px;
 }
 
-#section-6 .sec-p-head{
+#section-6 .sec-p-head {
     left: 5px;
     right: auto;
 }
@@ -772,17 +766,15 @@ body {
 #section-5 {
     position: relative;
     width: 100%;
-    min-height: 100vh;
+    min-height: 600px;
     height: auto;
-    /* background-color: #FFFBEC; */
     background-color: #FFFFFF;
-    /* background-image: linear-gradient(180deg, rgba(255, 242, 0, 0.167) 0%, #ffffff 78%); */
     overflow: auto;
 }
 
-#section-5 #wave{
+#section-5 #wave {
     position: absolute;
-    top:-5px;
+    top: -5px;
 }
 
 .portfolio-grid {
@@ -869,24 +861,23 @@ body {
 
 /*****************section 6 *************************/
 
-#section-6 #wave2{
+#section-6 #wave2 {
     position: absolute;
-    top:10%;
+    top: 10%;
 }
 
-#section-6 #wave1{
+#section-6 #wave1 {
     position: absolute;
-    top:40%;
+    top: 40%;
 }
 
 
 #section-6 {
     position: relative;
     width: 100%;
-    min-height: 100vh;
+    min-height: 600px;
     height: auto;
     background-color: #FFFFFF;
-    /* background-image: linear-gradient(180deg, #ffffff 40%, #ffdbdb 100%); */
     overflow: auto;
 }
 
@@ -894,18 +885,16 @@ body {
 
 #section-7 {
     width: 100%;
-    min-height: 100vh;
+    min-height: 600px;
     height: auto;
     background-color: #FFFFFF;
-    /* background-image: linear-gradient(180deg, #ffdbdb 0%, #ffffff 75%); */
-        overflow: auto;
+    overflow: auto;
 }
 
 .common-h1 {
     font-family: makromed;
     font-size: 42px;
     color: rgb(0, 0, 0);
-    /* text-shadow: 2px 2px 4px #00000025; */
 }
 
 #wed-main-illus {
@@ -914,9 +903,84 @@ body {
     margin-left: 60px;
 }
 
+@media (min-width: 2000px) {
+    #wed-main-illus {
+        width: 494px;
+        height: 630px;
+    }
+
+    #fashion-illus svg {
+        width: 494px;
+        height: 630px;
+    }
+
+    #commercials-illus svg {
+        width: 494px;
+        height: 630px;
+    }
+
+    .akaar-wedstyle {
+        font-size: 102px;
+    }
+
+
+    #akaar-fashion,
+    #akaar-fashion-shadow {
+        height: 108px;
+    }
+
+    #akaar-wed,
+    #akaar-wed-shadow {
+        height: 108px;
+    }
+
+    #akaar-commercials,
+    #akaar-commercials-shadow {
+        height: 108px;
+    }
+}
+
+@media (min-width: 1400px) {
+
+    #wed-main-illus {
+        width: 394px;
+        height: 530px;
+    }
+
+    #fashion-illus svg {
+        width: 394px;
+        height: 530px;
+    }
+
+    #commercials-illus svg {
+        width: 394px;
+        height: 530px;
+    }
+
+    .akaar-wedstyle {
+        font-size: 82px;
+    }
+
+
+    #akaar-fashion,
+    #akaar-fashion-shadow {
+        height: 88px;
+    }
+
+    #akaar-wed,
+    #akaar-wed-shadow {
+        height: 88px;
+    }
+
+    #akaar-commercials,
+    #akaar-commercials-shadow {
+        height: 88px;
+    }
+}
+
 @media screen and (max-width:1300px) {
 
-    .common-h1{
+    .common-h1 {
         font-size: 32px;
     }
 
@@ -941,30 +1005,30 @@ body {
 @media screen and (max-width: 1000px) {
 
     .sec-p-head p,
-    .sec-p-head button{
+    .sec-p-head button {
         display: none;
     }
 
-    .common-h1{
+    .common-h1 {
         font-size: 22px;
     }
 
-    .sec-p-head{
-        top:0px;
+    .sec-p-head {
+        top: 0px;
     }
 
-    #section-6 #wave2{
+    #section-6 #wave2 {
         position: absolute;
-        top:10%;
+        top: 10%;
     }
-    
-    #section-6 #wave1{
+
+    #section-6 #wave1 {
         position: absolute;
-        top:32%;
+        top: 32%;
     }
 
     .portfolio-grid {
-        
+
         grid-template-columns: 100%;
         grid-template-rows: auto;
         grid-template-areas: "main";
@@ -1176,14 +1240,14 @@ body {
 
 @media screen and (max-width:850px) {
 
-    #section-6 #wave2{
+    #section-6 #wave2 {
         position: absolute;
-        top:10%;
+        top: 10%;
     }
-    
-    #section-6 #wave1{
+
+    #section-6 #wave1 {
         position: absolute;
-        top:28%;
+        top: 28%;
     }
 
     #section-5 .left1,
@@ -1205,30 +1269,23 @@ body {
 
 @media screen and (max-width:600px) {
 
-    .common-h1{
+    .common-h1 {
         font-size: 16px;
     }
 
-     .sec-p-head{
+    .sec-p-head {
         left: 5px;
     }
 
-    /*
-    #section-6 .sec-p-head{
-        right: auto;
-        left: 50%;
-        transform: translateX(-50%);
-    } */
-
-    #section-6 #wave2{
+    #section-6 #wave2 {
         position: absolute;
-        top:10%;
+        top: 10%;
         display: none;
     }
-    
-    #section-6 #wave1{
+
+    #section-6 #wave1 {
         position: absolute;
-        top:18%;
+        top: 18%;
         display: none;
 
     }
