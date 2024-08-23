@@ -87,7 +87,7 @@ export default function Home() {
               // markers: true,
               snap: {
                 snapTo: 1 / (sections.length - 1),
-                // duration: 0.75,
+                // duration: 1,
                 // ease:"power1.out"
               },
               onScrubComplete: (self) => {
@@ -1986,6 +1986,8 @@ export default function Home() {
             </div>
             <div className="sec-p-head">
               <h1 className="common-h1">Akaar Commercial</h1>
+              <p>At Akaar, we don't just make commercials; we craft stories that resonate. Our team of creative visionaries brings your brand to life with stunning videography, immersive animation, and powerful storytelling. Whether you're launching a new product, building brand awareness, or connecting with your audience on a deeper level, we create commercials that captivate, engage, and inspire. Let us turn your vision into a compelling narrative that leaves a lasting impact.</p>
+              <button id="get-in-touch-commercial">Get In Touch</button>
             </div>
           </div>
         </div>
@@ -2004,6 +2006,10 @@ export default function Home() {
             </div>
             <div className="sec-p-head">
               <h1 className="common-h1">Akaar Fashion</h1>
+              <p>
+                Our expertise extends beyond traditional advertising, offering cutting-edge fashion photography and videography that captures the essence of your brand. Whether you're launching a new collection, building brand awareness, or connecting with your audience on a deeper level, we create visuals that captivate, engage, and inspire. Let us turn your vision into a compelling narrative that leaves a lasting impact.
+              </p>
+              <button id="get-in-touch-fashion">Get In Touch</button>
             </div>
           </div>
 
@@ -2021,6 +2027,10 @@ export default function Home() {
             </div>
             <div className="sec-p-head">
               <h1 className="common-h1">Akaar Weddings</h1>
+              <p>
+                Let us be a part of your celebration, ensuring that every detail, every emotion, and every memory is captured in a way that you'll cherish forever. Trust Akaar to turn your wedding day into a masterpiece that you’ll revisit for a lifetime.
+              </p>
+              <button id="get-in-touch-wed">Get In Touch</button>
             </div>
           </div>
         </div>

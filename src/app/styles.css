@@ -38,6 +38,12 @@
     src: url("./fonts/MakroTrial-Semibold.otf");
 }
 
+@font-face {
+    font-family: makroreg;
+    src: url("./fonts/MakroTrial-Regular.otf");
+}
+
+
 * {
     box-sizing: border-box;
 }
@@ -581,7 +587,7 @@ body {
     height: 110px;
     width: 110px;
     border-radius: 50%;
-    font-family: Protrakt;
+    font-family: makroreg;
     color: white;
     font-size: 10px;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.129);
@@ -637,8 +643,8 @@ body {
     height: 110px;
     width: 110px;
     border-radius: 50%;
-    font-family: Protrakt;
-    color: white;
+    font-family: makroreg;
+        color: white;
     font-size: 10px;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.129);
 }
@@ -668,8 +674,7 @@ body {
     height: 110px;
     width: 110px;
     border-radius: 50%;
-    font-family: Protrakt;
-    color: white;
+    font-family: makroreg;    color: white;
     font-size: 10px;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.129);
 }
@@ -713,8 +718,50 @@ body {
 
 .sec-p-head {
     position: absolute;
-    top: 40%;
+    top: 20%;
     right: 5px;
+}
+
+.sec-p-head p{
+    margin-top: 20px;
+    font-family: makroreg;
+    width: 400px;
+    font-size: 12px;
+    color: rgb(99, 99, 99);
+    word-spacing: 3px;
+}
+
+#get-in-touch-fashion{
+    margin-top: 30px;
+    width: 140px;
+    border-radius: 40px;
+    height: 40px;
+    background-color:#FF2424;
+    color: white;
+    font-family: makroreg;
+    font-size: 10px;
+}
+
+#get-in-touch-wed{
+    margin-top: 30px;
+    width: 140px;
+    border-radius: 40px;
+    height: 40px;
+    background-color:#EDB62B;
+    color: white;
+    font-family: makroreg;
+    font-size: 10px;
+}
+
+#get-in-touch-commercial{
+    margin-top: 30px;
+    width: 140px;
+    border-radius: 40px;
+    height: 40px;
+    background-color:#7800B0;
+    color: white;
+    font-family: makroreg;
+    font-size: 10px;
 }
 
 #section-6 .sec-p-head{
@@ -892,6 +939,11 @@ body {
 }
 
 @media screen and (max-width: 1000px) {
+
+    .sec-p-head p,
+    .sec-p-head button{
+        display: none;
+    }
 
     .common-h1{
         font-size: 22px;
