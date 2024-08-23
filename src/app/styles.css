@@ -561,8 +561,9 @@ body {
     position: absolute;
     top: 60px;
     left: 150px;
-    width: 130px;
-    height: 134;
+    width: 90px;
+    height: 94;
+    opacity: 0.6;
 }
 
 /**************** wed plant *****************/
@@ -580,8 +581,8 @@ body {
     left: 50%;
     transform: translate(-50%, -55%);
     background-color: #ffc125db;
-    height: 110px;
-    width: 110px;
+    height: 130px;
+    width: 130px;
     border-radius: 50%;
     font-family: makroreg;
     color: white;
@@ -607,13 +608,22 @@ body {
 
 #cealling-lamp {
     position: absolute;
-    top: -5px;
-    left: 100px;
+    top: -10px;
+    left: 10%;
 }
 
 #cealling-lamp {
-    width: 168px;
-    height: 246px;
+    width: 148px;
+    height: 226px;
+}
+
+#section-2 #cealling-lamp {
+    right: 20%;
+    left: auto;
+}
+
+#section-4 #cealling-lamp {
+    left: 20%;
 }
 
 #fashion-illus svg {
@@ -636,8 +646,8 @@ body {
     left: 50%;
     transform: translate(-50%, -55%);
     background-color: #FF2424;
-    height: 110px;
-    width: 110px;
+    height: 130px;
+    width: 130px;
     border-radius: 50%;
     font-family: makroreg;
     color: white;
@@ -664,8 +674,8 @@ body {
     left: 50%;
     transform: translate(-50%, -55%);
     background-color: #7800B0;
-    height: 110px;
-    width: 110px;
+    height: 130px;
+    width: 130px;
     border-radius: 50%;
     font-family: makroreg;
     color: white;
@@ -942,6 +952,12 @@ body {
 
 @media (min-width: 1400px) {
 
+    #cealling-lamp {
+        top:-5px;
+        width: 168px;
+        height: 246px;
+    }
+
     #wed-main-illus {
         width: 394px;
         height: 530px;
@@ -1035,6 +1051,8 @@ body {
         overflow-x: hidden;
         width: fit-content;
         padding-top: 40px;
+        margin-top: 70px;
+        margin-bottom: 0px;
     }
 
     #section-5 .right1,
