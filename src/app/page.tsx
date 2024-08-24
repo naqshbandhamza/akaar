@@ -75,28 +75,6 @@ export default function Home() {
         gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
         if (screenWidth > 1000) {
-          // horizontal scroll
-          let sections: any = gsap.utils.toArray(".panels");
-          gsap.to(sections, {
-            xPercent: -100 * (sections.length - 1),
-            ease: "none",
-            scrollTrigger: {
-              trigger: ".slider-container",
-              pin: true,
-              scrub: 1,
-              // markers: true,
-              snap: {
-                snapTo: 1 / (sections.length - 1),
-                // duration: 1,
-                // ease:"power1.out"
-              },
-              onScrubComplete: (self) => {
-              },
-              start: "top top",
-              end: () => screenWidth * 4
-            }
-          });
-
           //section 1
           const scrollassist0 = gsap.timeline({
             scrollTrigger: {
@@ -182,7 +160,7 @@ export default function Home() {
             scrollTrigger: {
               trigger: "#section-2",
               // markers: true,
-              start: `${screenWidth} top`,
+              start: `${screenWidth + 200} top`,
               end: `${screenWidth * 2} ${screenWidth * 2}`,
               scrub: 1,
             }
@@ -195,31 +173,7 @@ export default function Home() {
             backgroundColor: "#FFC325", duration: 2
           }, "<");
 
-
-          // const mytween = gsap.to("#street-light, #wed-clock, #wed-plant", {
-          //   opacity: 1,
-          //   x: "-=100",
-          //   duration: 2.5,
-          //   paused: true
-          // })
-
           const mytween1 = gsap.to("#akaar-presents", { opacity: 1, duration: 1, paused: true, })
-
-          ScrollTrigger.create({
-            trigger: "#wedding-illus",
-            scrub: 1,
-            // markers: true,
-            start: () => `${screenWidth} 15%`,
-            end: () => `${screenWidth + 500} top`,
-            onEnter: () => {
-              // mytween.play(); 
-              mytween1.play();
-            },
-            onLeaveBack: () => {
-              // mytween.reverse(); 
-              mytween1.reverse();
-            },
-          })
 
           const tl2 = gsap.timeline({
             paused: true
@@ -230,61 +184,33 @@ export default function Home() {
               y: "+=20", duration: 0.75, delay: 0.5, ease: "power1.easeInOut"
             }).to("#akaar-wed-shadow-1", {
               y: "+=40", duration: 0.75, ease: "power1.easeInOut"
-            });
-
-          ScrollTrigger.create({
-            trigger: "#wedding-illus",
-            scrub: 1,
-            // markers: true,
-            start: () => `${screenWidth} 15%`,
-            end: () => `${screenWidth + 500} top`,
-            onEnter: () => tl2.play(),
-            onLeaveBack: () => tl2.reverse(),
-          })
-
-          let tween = gsap.fromTo("#now-booking-wed",
-            {
-              x: 200,
-              scale: 0
-            },
-            {
-              x: 0,
-              scale: 1,
-              duration: 1.5,
-              paused: true,
-              ease: "elastic.out"
-            });
-
-          let tweent = gsap.fromTo("#sub-tag-wed",
-            {
-              y: -10,
-              opacity: 0
-            },
-            {
-              y: 0,
-              opacity: 1,
-              duration: 0.5,
-              delay: 1,
-              paused: true,
-            });
-
-          ScrollTrigger.create({
-            trigger: "#wedding-illus",
-            scrub: 1,
-            //markers: true,
-            start: () => `${screenWidth * 1} 15%`,
-            end: () => `${screenWidth * 1 + 500} top`,
-            onEnter: () => { tween.play(); tweent.play() },
-            onLeaveBack: () => { tween.reverse(); tweent.reverse() },
-            once: false,
-          });
+            }).fromTo("#now-booking-wed",
+              {
+                x: 200,
+                scale: 0
+              },
+              {
+                x: 0,
+                scale: 1,
+                duration: 1.5,
+                ease: "elastic.out"
+              }).fromTo("#sub-tag-wed",
+                {
+                  y: -10,
+                  opacity: 0
+                },
+                {
+                  y: 0,
+                  opacity: 1,
+                  duration: 0.5,
+                }, "-=0.5");
 
           //section 3
           const scrollassist2 = gsap.timeline({
             scrollTrigger: {
               trigger: "#section-3",
               // markers: true,
-              start: `${screenWidth * 2 + 400} top`,
+              start: `${screenWidth * 2 + 600} top`,
               end: `${screenWidth * 3} ${screenWidth * 3}`,
               scrub: 1,
             }
@@ -309,17 +235,7 @@ export default function Home() {
               y: "+=40", duration: 0.75, ease: "power1.easeInOut"
             });
 
-          ScrollTrigger.create({
-            trigger: "#section-3",
-            scrub: 1,
-            // markers: true,
-            start: () => `${screenWidth * 2} top`,
-            end: () => `${screenWidth * 2 + 500} top`,
-            onEnter: () => tl4.play(),
-            onLeaveBack: () => tl4.reverse(),
-          })
-
-          let tween1 = gsap.fromTo("#now-booking-fashion",
+          tl4.fromTo("#now-booking-fashion",
             {
               x: 200,
               scale: 0
@@ -328,11 +244,10 @@ export default function Home() {
               x: 0,
               scale: 1,
               duration: 1.5,
-              paused: true,
               ease: "elastic.out"
             });
 
-          let tween1t = gsap.fromTo("#sub-tag-fashion",
+          tl4.fromTo("#sub-tag-fashion",
             {
               y: -10,
               opacity: 0
@@ -341,20 +256,7 @@ export default function Home() {
               y: 0,
               opacity: 1,
               duration: 0.5,
-              delay: 1,
-              paused: true,
-            });
-
-          ScrollTrigger.create({
-            trigger: "#section-3",
-            scrub: 1,
-            //markers: true,
-            start: () => `${screenWidth * 2} 15%`,
-            end: () => `${screenWidth * 2 + 500} top`,
-            onEnter: () => { tween1.play(); tween1t.play() },
-            onLeaveBack: () => { tween1.reverse(); tween1t.reverse() },
-            once: false,
-          });
+            }, "-=0.5");
 
           //section 4
           const scrollassist3 = gsap.timeline({
@@ -383,56 +285,64 @@ export default function Home() {
               y: "+=20", duration: 0.75, delay: 0.5, ease: "power1.easeInOut"
             }).to("#akaar-commercials-shadow-1", {
               y: "+=40", duration: 0.75, ease: "power1.easeInOut"
-            });
+            }).fromTo("#now-booking-commercials",
+              {
+                x: 200,
+                scale: 0
+              },
+              {
+                x: 0,
+                scale: 1,
+                duration: 1.5,
+                ease: "elastic.out"
+              }).fromTo("#sub-tag-commercials",
+                {
+                  y: -10,
+                  opacity: 0
+                },
+                {
+                  y: 0,
+                  opacity: 1,
+                  duration: 0.5,
+                }, "-=0.5");
 
-          ScrollTrigger.create({
-            trigger: "#section-4",
-            scrub: 1,
-            // markers: true,
-            start: () => `${screenWidth * 3 + 900} top`,
-            end: () => `${screenWidth * 3 + 500 + 900} top`,
-            onEnter: () => tl5.play(),
-            onLeaveBack: () => tl5.reverse(),
-          })
-
-          let tween12 = gsap.fromTo("#now-booking-commercials",
-            {
-              x: 200,
-              scale: 0
-            },
-            {
-              x: 0,
-              scale: 1,
-              duration: 1.5,
-              paused: true,
-              ease: "elastic.out"
-            });
-
-          let tween12t = gsap.fromTo("#sub-tag-commercials",
-            {
-              y: -10,
-              opacity: 0
-            },
-            {
-              y: 0,
-              opacity: 1,
-              duration: 0.5,
-              delay: 1,
-              paused: true,
-            });
-
-          ScrollTrigger.create({
-            trigger: "#section-4",
-            scrub: 1,
-            //markers: true,
-            start: () => `${screenWidth * 3 + 900} 15%`,
-            end: () => `${screenWidth * 3 + 900 + 500} top`,
-            onEnter: () => { tween12.play(); tween12t.play() },
-            onLeaveBack: () => { tween12.reverse(); tween12t.reverse() },
-            once: false,
+          // horizontal scroll
+          let sections: any = gsap.utils.toArray(".panels");
+          gsap.to(sections, {
+            xPercent: -100 * (sections.length - 1),
+            ease: "none",
+            scrollTrigger: {
+              trigger: ".slider-container",
+              pin: true,
+              scrub: 1,
+              // markers: true,
+              snap: {
+                snapTo: 1 / (sections.length - 1),
+              },
+              onUpdate: (self) => {
+                const currentIndex = (self.progress * (sections.length - 1)).toFixed();
+                if (currentIndex === "0") {
+                  tl4.reverse();
+                  tl2.reverse();
+                  tl5.reverse();
+                } else if (currentIndex === "1") {
+                  tl2.play();
+                  tl4.reverse();
+                  tl5.reverse();
+                } else if (currentIndex === "2") {
+                  tl4.play();
+                  tl2.reverse();
+                  tl5.reverse();
+                } else if (currentIndex === "3") {
+                  tl5.play();
+                  tl2.reverse();
+                  tl4.reverse();
+                }
+              },
+              start: "top top",
+              end: () => screenWidth * 4
+            }
           });
-
-
 
         } else {
 
@@ -507,13 +417,6 @@ export default function Home() {
             backgroundColor: "#FFC325"
           }, "<");
 
-          // const mytween = gsap.to("#street-light, #wed-clock, #wed-plant", {
-          //   opacity: 1,
-          //   x: "-=100",
-          //   duration: 2.5,
-          //   paused: true
-          // })
-
           const mytween1 = gsap.to("#akaar-presents", { opacity: 1, duration: 0.5, paused: true, })
 
           ScrollTrigger.create({
@@ -523,11 +426,9 @@ export default function Home() {
             start: () => `top top`,
             end: () => `+=500 top`,
             onEnter: () => {
-              //  mytween.play();
               mytween1.play();
             },
             onLeaveBack: () => {
-              // mytween.reverse(); 
               mytween1.reverse();
             },
           })
@@ -541,7 +442,26 @@ export default function Home() {
               y: "+=10", duration: 0.75, delay: 0.5, ease: "power1.easeInOut"
             }).to("#akaar-wed-shadow-1", {
               y: "+=20", duration: 0.75, ease: "power1.easeInOut"
-            });
+            }).fromTo("#now-booking-wed",
+              {
+                x: 200,
+                scale: 0
+              },
+              {
+                x: 0,
+                scale: 1,
+                duration: 1.5,
+                ease: "elastic.out"
+              }).fromTo("#sub-tag-wed",
+                {
+                  y: -10,
+                  opacity: 0
+                },
+                {
+                  y: 0,
+                  opacity: 1,
+                  duration: 0.5,
+                }, "-=0.5");
 
           ScrollTrigger.create({
             trigger: "#section-2",
@@ -552,43 +472,6 @@ export default function Home() {
             onEnter: () => tl2.play(),
             onLeaveBack: () => tl2.reverse(),
           })
-
-          let tween = gsap.fromTo("#now-booking-wed",
-            {
-              x: 200,
-              scale: 0
-            },
-            {
-              x: 0,
-              scale: 1,
-              duration: 1.5,
-              paused: true,
-              ease: "elastic.out"
-            });
-
-          let tweent = gsap.fromTo("#sub-tag-wed",
-            {
-              y: -10,
-              opacity: 0
-            },
-            {
-              y: 0,
-              opacity: 1,
-              duration: 0.5,
-              delay: 1,
-              paused: true,
-            });
-
-          ScrollTrigger.create({
-            trigger: "#section-2",
-            scrub: 1,
-            //markers: true,
-            start: () => `top top`,
-            end: () => `+=500 top`,
-            onEnter: () => { tween.play(); tweent.play() },
-            onLeaveBack: () => { tween.reverse(); tweent.reverse() },
-            once: false,
-          });
 
           //section 3
           const scrollassist2 = gsap.timeline({
@@ -617,7 +500,26 @@ export default function Home() {
               y: "+=10", duration: 0.75, delay: 0.5, ease: "power1.easeInOut"
             }).to("#akaar-fashion-shadow-1", {
               y: "+=20", duration: 0.75, ease: "power1.easeInOut"
-            });
+            }).fromTo("#now-booking-fashion",
+              {
+                x: 200,
+                scale: 0
+              },
+              {
+                x: 0,
+                scale: 1,
+                duration: 1.5,
+                ease: "elastic.out"
+              }).fromTo("#sub-tag-fashion",
+                {
+                  y: -10,
+                  opacity: 0
+                },
+                {
+                  y: 0,
+                  opacity: 1,
+                  duration: 0.5,
+                }, "-=0.5");
 
           ScrollTrigger.create({
             trigger: "#section-3",
@@ -628,44 +530,6 @@ export default function Home() {
             onEnter: () => tl3.play(),
             onLeaveBack: () => tl3.reverse(),
           })
-
-          let tween1 = gsap.fromTo("#now-booking-fashion",
-            {
-              x: 200,
-              scale: 0
-            },
-            {
-              x: 0,
-              scale: 1,
-              duration: 1.5,
-              paused: true,
-              ease: "elastic.out"
-            });
-
-          let tween1t = gsap.fromTo("#sub-tag-fashion",
-            {
-              y: -10,
-              opacity: 0
-            },
-            {
-              y: 0,
-              opacity: 1,
-              duration: 0.5,
-              delay: 1,
-              paused: true,
-            });
-
-          ScrollTrigger.create({
-            trigger: "#section-3",
-            scrub: 1,
-            //markers: true,
-            start: () => `top top`,
-            end: () => `+=500 top`,
-            onEnter: () => { tween1.play(); tween1t.play() },
-            onLeaveBack: () => { tween1.reverse(); tween1t.reverse() },
-            once: false,
-          });
-
 
           //section 4
           const scrollassist3 = gsap.timeline({
@@ -694,7 +558,26 @@ export default function Home() {
               y: "+=10", duration: 0.75, delay: 0.5, ease: "power1.easeInOut"
             }).to("#akaar-commercials-shadow-1", {
               y: "+=20", duration: 0.75, ease: "power1.easeInOut"
-            });
+            }).fromTo("#now-booking-commercials",
+              {
+                x: 200,
+                scale: 0
+              },
+              {
+                x: 0,
+                scale: 1,
+                duration: 1.5,
+                ease: "elastic.out"
+              }).fromTo("#sub-tag-commercials",
+                {
+                  y: -10,
+                  opacity: 0
+                },
+                {
+                  y: 0,
+                  opacity: 1,
+                  duration: 0.5,
+                }, "-=0.5");
 
           ScrollTrigger.create({
             trigger: "#section-4",
@@ -717,44 +600,6 @@ export default function Home() {
             onLeaveBack: () => { tl445.reverse() },
             once: false,
           });
-
-          let tween12 = gsap.fromTo("#now-booking-commercials",
-            {
-              x: 200,
-              scale: 0
-            },
-            {
-              x: 0,
-              scale: 1,
-              duration: 1.5,
-              paused: true,
-              ease: "elastic.out"
-            });
-
-          let tween12t = gsap.fromTo("#sub-tag-commercials",
-            {
-              y: -10,
-              opacity: 0
-            },
-            {
-              y: 0,
-              opacity: 1,
-              duration: 0.5,
-              delay: 1,
-              paused: true,
-            });
-
-          ScrollTrigger.create({
-            trigger: "#section-4",
-            scrub: 1,
-            //markers: true,
-            start: () => `top top`,
-            end: () => `+=500 top`,
-            onEnter: () => { tween12.play(); tween12t.play() },
-            onLeaveBack: () => { tween12.reverse(); tween12t.reverse() },
-            once: false,
-          });
-
 
           //section 1
           let tl = gsap.timeline({})

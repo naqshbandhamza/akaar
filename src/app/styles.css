@@ -58,7 +58,7 @@ body {
 }
 
 ::-webkit-scrollbar {
-    display: none;
+    /* display: none; */
 }
 
 .full-screen {
