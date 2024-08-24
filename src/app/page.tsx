@@ -79,22 +79,6 @@ export default function Home() {
 
         if (screenWidth > 1000) {
           //section 1
-          const scrollassist0 = gsap.timeline({
-            scrollTrigger: {
-              trigger: "#section-1",
-              // markers: true,
-              start: "top top",
-              end: `${screenWidth} ${screenWidth}`,
-              scrub: 1,
-            }
-          }
-          )
-          scrollassist0.to(
-            "#scroll-assist, #lang-btn",
-            { backgroundColor: "#EAEDFE", color: "#2E4BF5", duration: 2 }
-          ).to("#scroll-assist :nth-child(1)", {
-            backgroundColor: "#2E4BF5", duration: 2
-          }, "<");
 
           const mytimeline3 = gsap.timeline({ paused: true })
           mytimeline3.fromTo("#headings",
@@ -158,28 +142,91 @@ export default function Home() {
             y: 100, opacity: 0, scale: 1.2
           }, { y: 0, opacity: 1, scale: 1, duration: 1, ease: "expo.out" })
 
+          // horizontal scroll
+          let sections: any = gsap.utils.toArray(".panels");
+          let scrolltween = gsap.to(sections, {
+            xPercent: -100 * (sections.length - 1),
+            ease: "none",
+            scrollTrigger: {
+              trigger: ".slider-container",
+              pin: true,
+              scrub: 1,
+              snap: {
+                snapTo: 1 / (sections.length - 1),
+                // duration: { min: 0.5, max: 0.5 }, // Smoothness and duration of snapping
+                // ease: 'power2.inOut', // Easing for the snapping effect
+              },
+              // onUpdate: (self) => {
+
+              //   const currentIndex = (self.progress * (sections.length - 1)).toFixed();
+              //   if (currentIndex === "0") {
+              //     tl4.reverse();
+              //     tl2.reverse();
+              //     tl5.reverse();
+              //   } else if (currentIndex === "1") {
+              //     tl2.play();
+              //     tl4.reverse();
+              //     tl5.reverse();
+              //   } else if (currentIndex === "2") {
+              //     tl4.play();
+              //     tl2.reverse();
+              //     tl5.reverse();
+              //   } else if (currentIndex === "3") {
+              //     tl5.play();
+              //     tl2.reverse();
+              //     tl4.reverse();
+              //   }
+              // },
+              start: "top top",
+              end: () => screenWidth * 3
+            }
+          });
+
+          const scrollassist0 = gsap.timeline({
+            scrollTrigger: {
+              trigger: "#section-1",
+              containerAnimation: scrolltween,
+              start: "left 10%",
+              toggleActions: "play none none reverse",
+            }
+          }
+          )
+          scrollassist0.to(
+            "#scroll-assist, #lang-btn",
+            { backgroundColor: "#EAEDFE", color: "#2E4BF5", duration: 0.5 }
+          ).to("#scroll-assist :nth-child(1)", {
+            backgroundColor: "#2E4BF5", duration: 0.5
+          }, "<");
+
           //section 2
           const scrollassist1 = gsap.timeline({
             scrollTrigger: {
               trigger: "#section-2",
-              // markers: true,
-              start: `${screenWidth + 200} top`,
-              end: `${screenWidth * 2} ${screenWidth * 2}`,
-              scrub: 1,
+              containerAnimation: scrolltween,
+              start: "left 10%",
+              toggleActions: "play none none reverse",
             }
           }
           )
           scrollassist1.to(
             "#scroll-assist, #lang-btn",
-            { backgroundColor: "#FFF5D8", color: "#FFC325", duration: 2 }
+            { backgroundColor: "#FFF5D8", color: "#FFC325", duration: 0.5 }
           ).to("#scroll-assist :nth-child(1)", {
-            backgroundColor: "#FFC325", duration: 2
+            backgroundColor: "#FFC325", duration: 0.5
           }, "<");
 
           const mytween1 = gsap.to("#akaar-presents", { opacity: 1, duration: 1, paused: true, })
 
           const tl2 = gsap.timeline({
-            paused: true
+            // paused: true,
+            scrollTrigger: {
+              // markers: true,
+              trigger: "#section-2",
+              containerAnimation: scrolltween,
+              start: "left 10%",
+              toggleActions: "play none none reverse",
+              // id: "1",
+            }
           });
 
           tl2.to("#akaar-wed-shadow",
@@ -197,7 +244,7 @@ export default function Home() {
                 scale: 1,
                 duration: 1.5,
                 ease: "elastic.out"
-              }, "-=0.5").fromTo("#sub-tag-wed",
+              }, "<").fromTo("#sub-tag-wed",
                 {
                   y: -10,
                   opacity: 0
@@ -205,30 +252,37 @@ export default function Home() {
                 {
                   y: 0,
                   opacity: 1,
-                  duration: 0.5,
+                  duration: 0.25,
                 }, "-=0.5");
 
           //section 3
           const scrollassist2 = gsap.timeline({
             scrollTrigger: {
               trigger: "#section-3",
-              // markers: true,
-              start: `${screenWidth * 2 + 600} top`,
-              end: `${screenWidth * 3} ${screenWidth * 3}`,
-              scrub: 1,
+              containerAnimation: scrolltween,
+              start: "left 10%",
+              toggleActions: "play none none reverse",
             }
           }
           )
           scrollassist2.to(
             "#scroll-assist, #lang-btn",
-            { backgroundColor: "#FFC7C7", color: "#FF2424", duration: 2 }
+            { backgroundColor: "#FFC7C7", color: "#FF2424", duration: 0.5 }
           ).to("#scroll-assist :nth-child(1)", {
-            backgroundColor: "#FF2424", duration: 2
+            backgroundColor: "#FF2424", duration: 0.5
           }, "<");
 
 
           const tl4 = gsap.timeline({
-            paused: true
+            // paused: true,
+            scrollTrigger: {
+              // markers: true,
+              trigger: "#section-3",
+              containerAnimation: scrolltween,
+              start: "left 10%",
+              toggleActions: "play none none reverse",
+              // id: "1",
+            }
           });
 
           tl4.to("#akaar-fashion-shadow",
@@ -248,7 +302,7 @@ export default function Home() {
               scale: 1,
               duration: 1.5,
               ease: "elastic.out"
-            }, "-=0.5");
+            }, "<");
 
           tl4.fromTo("#sub-tag-fashion",
             {
@@ -258,29 +312,36 @@ export default function Home() {
             {
               y: 0,
               opacity: 1,
-              duration: 0.5,
+              duration: 0.25,
             }, "-=0.5");
 
           //section 4
           const scrollassist3 = gsap.timeline({
             scrollTrigger: {
               trigger: "#section-4",
-              // markers: true,
-              start: `${screenWidth * 3 + 900} top`,
-              end: `${screenWidth * 4} ${screenWidth * 4}`,
-              scrub: 1,
+              containerAnimation: scrolltween,
+              start: "left 10%",
+              toggleActions: "play none none reverse",
             }
           }
           )
           scrollassist3.to(
             "#scroll-assist, #lang-btn",
-            { backgroundColor: "#DFC3EC", color: "#7800B0", duration: 2 }
+            { backgroundColor: "#DFC3EC", color: "#7800B0", duration: 0.5 }
           ).to("#scroll-assist :nth-child(1)", {
-            backgroundColor: "#7800B0", duration: 2
+            backgroundColor: "#7800B0", duration: 0.5
           }, "<");
 
           const tl5 = gsap.timeline({
-            paused: true
+            // paused: true,
+            scrollTrigger: {
+              // markers: true,
+              trigger: "#section-4",
+              containerAnimation: scrolltween,
+              start: "left 10%",
+              toggleActions: "play none none reverse",
+              // id: "1",
+            }
           });
 
           tl5.to("#akaar-commercials-shadow",
@@ -298,7 +359,7 @@ export default function Home() {
                 scale: 1,
                 duration: 1.5,
                 ease: "elastic.out"
-              }, "-=0.5").fromTo("#sub-tag-commercials",
+              }, "<").fromTo("#sub-tag-commercials",
                 {
                   y: -10,
                   opacity: 0
@@ -306,48 +367,8 @@ export default function Home() {
                 {
                   y: 0,
                   opacity: 1,
-                  duration: 0.5,
+                  duration: 0.25,
                 }, "-=0.5");
-
-          // horizontal scroll
-          let sections: any = gsap.utils.toArray(".panels");
-          gsap.to(sections, {
-            xPercent: -100 * (sections.length - 1),
-            ease: "none",
-            scrollTrigger: {
-              trigger: ".slider-container",
-              pin: true,
-              scrub: 1,
-              snap: {
-                snapTo: 1 / (sections.length - 1),
-                // duration: { min: 0.5, max: 0.5 }, // Smoothness and duration of snapping
-                // ease: 'power2.inOut', // Easing for the snapping effect
-              },
-              onUpdate: (self) => {
-
-                const currentIndex = (self.progress * (sections.length - 1)).toFixed();
-                if (currentIndex === "0") {
-                  tl4.reverse();
-                  tl2.reverse();
-                  tl5.reverse();
-                } else if (currentIndex === "1") {
-                  tl2.play();
-                  tl4.reverse();
-                  tl5.reverse();
-                } else if (currentIndex === "2") {
-                  tl4.play();
-                  tl2.reverse();
-                  tl5.reverse();
-                } else if (currentIndex === "3") {
-                  tl5.play();
-                  tl2.reverse();
-                  tl4.reverse();
-                }
-              },
-              start: "top top",
-              end: () => screenWidth * 4
-            }
-          });
 
         } else {
 
@@ -444,9 +465,9 @@ export default function Home() {
 
           tl2.to("#akaar-wed-shadow",
             {
-              y: "+=10", duration: 0.75, ease: "power1.easeInOut"
+              y: "+=10", duration: 0.5, ease: "power1.easeInOut"
             }).to("#akaar-wed-shadow-1", {
-              y: "+=20", duration: 0.75, ease: "power1.easeInOut"
+              y: "+=20", duration: 0.5, ease: "power1.easeInOut"
             }).fromTo("#now-booking-wed",
               {
                 x: 200,
@@ -457,7 +478,7 @@ export default function Home() {
                 scale: 1,
                 duration: 1.5,
                 ease: "elastic.out"
-              }, "-=0.5").fromTo("#sub-tag-wed",
+              }, "<").fromTo("#sub-tag-wed",
                 {
                   y: -10,
                   opacity: 0
@@ -465,7 +486,7 @@ export default function Home() {
                 {
                   y: 0,
                   opacity: 1,
-                  duration: 0.5,
+                  duration: 0.25,
                 }, "-=0.5");
 
           ScrollTrigger.create({
@@ -502,9 +523,9 @@ export default function Home() {
 
           tl3.to("#akaar-fashion-shadow",
             {
-              y: "+=10", duration: 0.75, ease: "power1.easeInOut"
+              y: "+=10", duration: 0.5, ease: "power1.easeInOut"
             }).to("#akaar-fashion-shadow-1", {
-              y: "+=20", duration: 0.75, ease: "power1.easeInOut"
+              y: "+=20", duration: 0.5, ease: "power1.easeInOut"
             }).fromTo("#now-booking-fashion",
               {
                 x: 200,
@@ -515,7 +536,7 @@ export default function Home() {
                 scale: 1,
                 duration: 1.5,
                 ease: "elastic.out"
-              }, "-=0.5").fromTo("#sub-tag-fashion",
+              }, "<").fromTo("#sub-tag-fashion",
                 {
                   y: -10,
                   opacity: 0
@@ -523,7 +544,7 @@ export default function Home() {
                 {
                   y: 0,
                   opacity: 1,
-                  duration: 0.5,
+                  duration: 0.25,
                 }, "-=0.5");
 
           ScrollTrigger.create({
@@ -560,9 +581,9 @@ export default function Home() {
 
           tl445.to("#akaar-commercials-shadow",
             {
-              y: "+=10", duration: 0.75, ease: "power1.easeInOut"
+              y: "+=10", duration: 0.5, ease: "power1.easeInOut"
             }).to("#akaar-commercials-shadow-1", {
-              y: "+=20", duration: 0.75, ease: "power1.easeInOut"
+              y: "+=20", duration: 0.5, ease: "power1.easeInOut"
             }).fromTo("#now-booking-commercials",
               {
                 x: 200,
@@ -573,7 +594,7 @@ export default function Home() {
                 scale: 1,
                 duration: 1.5,
                 ease: "elastic.out"
-              }, "-=0.5").fromTo("#sub-tag-commercials",
+              }, "<").fromTo("#sub-tag-commercials",
                 {
                   y: -10,
                   opacity: 0
@@ -581,7 +602,7 @@ export default function Home() {
                 {
                   y: 0,
                   opacity: 1,
-                  duration: 0.5,
+                  duration: 0.25,
                 }, "-=0.5");
 
           ScrollTrigger.create({
@@ -655,10 +676,11 @@ export default function Home() {
   }
 
   const gotowedportfolio = (id) => {
-    window.scrollTo({
-      top: document.getElementById(id).offsetTop, // Adjust for fixed navbar height
-      behavior: 'smooth' // Smooth scroll
-    });
+    // window.scrollTo({
+    //   top: document.getElementById(id).offsetTop, // Adjust for fixed navbar height
+    //   behavior: 'smooth' // Smooth scroll
+    // });
+    lenis.scrollTo("#" + id, { lerp: 0.05 })
   }
 
   return (
@@ -667,7 +689,11 @@ export default function Home() {
       {/* AKAAR VIDEOGRAPHY & PHOTOGRAPHY */}
       {/* AKAAR  WEDDINGS*/}
       {/* AKAAR  CONTACT*/}
-      <ReactLenis root>
+      <ReactLenis root options={{
+        lerp: 0.1,
+        duration: 1.5,
+        // smoothTouch: true
+      }}>
         <div id="loading">
           <div className="text-container" id="loading-image">
             <h1 className="masked-text">AKAAR <sup>...</sup></h1>
