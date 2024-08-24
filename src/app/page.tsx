@@ -194,7 +194,7 @@ export default function Home() {
                 scale: 1,
                 duration: 1.5,
                 ease: "elastic.out"
-              }).fromTo("#sub-tag-wed",
+              }, "-=0.5").fromTo("#sub-tag-wed",
                 {
                   y: -10,
                   opacity: 0
@@ -245,7 +245,7 @@ export default function Home() {
               scale: 1,
               duration: 1.5,
               ease: "elastic.out"
-            });
+            }, "-=0.5");
 
           tl4.fromTo("#sub-tag-fashion",
             {
@@ -295,7 +295,7 @@ export default function Home() {
                 scale: 1,
                 duration: 1.5,
                 ease: "elastic.out"
-              }).fromTo("#sub-tag-commercials",
+              }, "-=0.5").fromTo("#sub-tag-commercials",
                 {
                   y: -10,
                   opacity: 0
@@ -439,7 +439,7 @@ export default function Home() {
 
           tl2.to("#akaar-wed-shadow",
             {
-              y: "+=10", duration: 0.75, delay: 0.5, ease: "power1.easeInOut"
+              y: "+=10", duration: 0.75, ease: "power1.easeInOut"
             }).to("#akaar-wed-shadow-1", {
               y: "+=20", duration: 0.75, ease: "power1.easeInOut"
             }).fromTo("#now-booking-wed",
@@ -452,7 +452,7 @@ export default function Home() {
                 scale: 1,
                 duration: 1.5,
                 ease: "elastic.out"
-              }).fromTo("#sub-tag-wed",
+              }, "-=0.5").fromTo("#sub-tag-wed",
                 {
                   y: -10,
                   opacity: 0
@@ -497,7 +497,7 @@ export default function Home() {
 
           tl3.to("#akaar-fashion-shadow",
             {
-              y: "+=10", duration: 0.75, delay: 0.5, ease: "power1.easeInOut"
+              y: "+=10", duration: 0.75, ease: "power1.easeInOut"
             }).to("#akaar-fashion-shadow-1", {
               y: "+=20", duration: 0.75, ease: "power1.easeInOut"
             }).fromTo("#now-booking-fashion",
@@ -510,7 +510,7 @@ export default function Home() {
                 scale: 1,
                 duration: 1.5,
                 ease: "elastic.out"
-              }).fromTo("#sub-tag-fashion",
+              }, "-=0.5").fromTo("#sub-tag-fashion",
                 {
                   y: -10,
                   opacity: 0
@@ -555,7 +555,7 @@ export default function Home() {
 
           tl445.to("#akaar-commercials-shadow",
             {
-              y: "+=10", duration: 0.75, delay: 0.5, ease: "power1.easeInOut"
+              y: "+=10", duration: 0.75, ease: "power1.easeInOut"
             }).to("#akaar-commercials-shadow-1", {
               y: "+=20", duration: 0.75, ease: "power1.easeInOut"
             }).fromTo("#now-booking-commercials",
@@ -568,7 +568,7 @@ export default function Home() {
                 scale: 1,
                 duration: 1.5,
                 ease: "elastic.out"
-              }).fromTo("#sub-tag-commercials",
+              }, "-=0.5").fromTo("#sub-tag-commercials",
                 {
                   y: -10,
                   opacity: 0
