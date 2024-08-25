@@ -217,6 +217,69 @@ export default function Home() {
 
           const mytween1 = gsap.to("#akaar-presents", { opacity: 1, duration: 1, paused: true, })
 
+          const lamps = gsap.timeline({
+            // paused: true,
+            scrollTrigger: {
+              // markers: true,
+              trigger: "#section-2 #cealling-lamp",
+              containerAnimation: scrolltween,
+              start: "left right",
+              toggleActions:  "play none none reset",
+              // scrub: 1,
+              // id: "1",
+            }
+          });
+
+          const lamps1 = gsap.timeline({
+            // paused: true,
+            scrollTrigger: {
+              // markers: true,
+              trigger: "#section-3 #cealling-lamp",
+              containerAnimation: scrolltween,
+              start: "left right",
+              toggleActions:  "play none none reset",
+              // scrub: 1,
+              // id: "1",
+            }
+          });
+
+          const lamps2 = gsap.timeline({
+            // paused: true,
+            scrollTrigger: {
+              // markers: true,
+              trigger: "#section-4 #cealling-lamp",
+              containerAnimation: scrolltween,
+              start: "left right",
+              toggleActions:  "play none none reset",
+              // scrub: 1,
+              // id: "1",
+            }
+          });
+
+          lamps.to(["#section-2 #cealling-lamp #Group_2", "#section-2 #cealling-lamp #Group_12"], {
+            rotation: 16, duration: 2,ease:"sine.inOut"
+          }).to(["#section-2 #cealling-lamp #Group_2", "#section-2 #cealling-lamp #Group_12"], {
+            rotation: -4, duration: 1.8,ease:"sine.inOut"
+          }).to(["#section-2 #cealling-lamp #Group_2", "#section-2 #cealling-lamp #Group_12"], {
+            rotation: 0, duration: 1.5,ease:"sine.inOut"
+          })
+
+          lamps1.to(["#section-3 #cealling-lamp #Group_2", "#section-3 #cealling-lamp #Group_12"], {
+            rotation: 16, duration: 2,ease:"sine.inOut"
+          }).to(["#section-3 #cealling-lamp #Group_2", "#section-3 #cealling-lamp #Group_12"], {
+            rotation: -4, duration: 1.8,ease:"sine.inOut"
+          }).to(["#section-3 #cealling-lamp #Group_2", "#section-3 #cealling-lamp #Group_12"], {
+            rotation: 0, duration: 1.5,ease:"sine.inOut"
+          })
+
+          lamps2.to(["#section-4 #cealling-lamp #Group_2", "#section-4 #cealling-lamp #Group_12"], {
+            rotation: 16, duration: 2,ease:"sine.inOut"
+          }).to(["#section-4 #cealling-lamp #Group_2", "#section-4 #cealling-lamp #Group_12"], {
+            rotation: -4, duration: 1.8,ease:"sine.inOut"
+          }).to(["#section-4 #cealling-lamp #Group_2", "#section-4 #cealling-lamp #Group_12"], {
+            rotation: 0, duration: 1.5,ease:"sine.inOut"
+          })
+
           const tl2 = gsap.timeline({
             // paused: true,
             scrollTrigger: {
@@ -252,7 +315,7 @@ export default function Home() {
                 {
                   y: 0,
                   opacity: 1,
-                  duration: 0.25,
+                  duration: 0.5,
                 }, "-=0.5");
 
           //section 3
@@ -312,7 +375,7 @@ export default function Home() {
             {
               y: 0,
               opacity: 1,
-              duration: 0.25,
+              duration: 0.5,
             }, "-=0.5");
 
           //section 4
@@ -367,7 +430,7 @@ export default function Home() {
                 {
                   y: 0,
                   opacity: 1,
-                  duration: 0.25,
+                  duration: 0.5,
                 }, "-=0.5");
 
         } else {
