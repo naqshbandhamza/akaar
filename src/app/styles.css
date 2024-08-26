@@ -57,9 +57,9 @@ body {
     scroll-behavior: smooth;
 }
 
-::-webkit-scrollbar {
-    /* display: none; */
-}
+/* ::-webkit-scrollbar {
+    display: none;
+} */
 
 .full-screen {
     flex: 0 0 100vw;
@@ -526,53 +526,30 @@ body {
     text-shadow: 2px 2px 4px rgb(249, 158, 0);
 }
 
-/******************* street light ****************/
-
-#street-light {
-    position: absolute;
-    top: -30px;
-    right: -400px;
-    width: 190px;
-    height: 408;
-}
-
-#street-light #Vector_8,
-#street-light #Vector_9,
-#street-light #Vector_10 {
-    fill: #FDC469;
-}
-
-@keyframes glow {
-    0% {
-        opacity: 0;
-    }
-
-    100% {
-        opacity: 1;
-        fill: #ffa200;
-        filter: drop-shadow(0px 10px 20px rgba(255, 162, 0, 0.7));
-    }
-}
-
-/**************** wed clock *****************/
-
 #wed-clock {
-    /* opacity: 0; */
     position: absolute;
     top: 60px;
-    left: 150px;
+    left: 450px;
     width: 90px;
     height: 94;
     opacity: 0.6;
 }
 
-/**************** wed plant *****************/
-
-#wed-plant {
-    opacity: 0;
+#floor-lamp {
     position: absolute;
-    top: 220px;
-    right: -480px;
+    top: 40%;
+    right: 50px;
+    width: 108px;
+    height: 364px;
+}
+
+#sofa {
+    position: absolute;
+    top: 50%;
+    left: 250px;
+    width: 184px;
+    height: 182px;
+
 }
 
 #now-booking-wed {
@@ -580,9 +557,9 @@ body {
     top: 55%;
     left: 50%;
     transform: translate(-50%, -55%);
-    background-color: #ffc125db;
-    height: 130px;
-    width: 130px;
+    background-color: #FFBC10;
+    height: 120px;
+    width: 120px;
     border-radius: 50%;
     font-family: makroreg;
     color: white;
@@ -596,6 +573,7 @@ body {
 #akaar-fashion-shadow {
     background-color: #FFDBDB;
     height: 65px;
+    /* inset: calc(0 0 0 0); */
 }
 
 #fashion-illus {
@@ -620,6 +598,15 @@ body {
     top: -10px;
     left: 10%;
     overflow: visible;
+}
+
+#windows {
+    position: absolute;
+    top: 78%;
+    left: 10%;
+    transform: translateY(-78%);
+    width: 177px;
+    height: 303px;
 }
 
 #cealling-lamp {
@@ -728,6 +715,13 @@ body {
     height: 430px;
 }
 
+#sofa-1{
+    position: absolute;
+    top: 45%;
+    left: 30%;
+    width:469px; height:220px;
+}
+
 /*****************section 5 *************************/
 
 .sec-p-head {
@@ -786,7 +780,6 @@ body {
 #section-5 {
     position: relative;
     width: 100%;
-    min-height: 600px;
     height: auto;
     background-color: #FFFFFF;
     overflow: auto;
@@ -798,6 +791,7 @@ body {
 }
 
 .portfolio-grid {
+    overflow: hidden;
     position: relative;
     max-width: 1340px;
     width: 90%;
@@ -807,13 +801,14 @@ body {
     grid-template-columns: 50% 50%;
     grid-auto-rows: auto;
     grid-template-areas: "left1 right1";
-    margin-top: 90px;
-    margin-bottom: 90px;
+    margin-top: 20px;
+    /* margin-top: 90px;
+    margin-bottom: 90px; */
 }
 
 .left1 {
     grid-area: left1;
-    min-height: 500px;
+    min-height: auto;
     height: auto;
     display: grid;
     grid-template-columns: repeat(2, minmax(250px, 1fr));
@@ -826,7 +821,7 @@ body {
 
 .right1 {
     grid-area: right1;
-    min-height: 500px;
+    min-height: auto;
     height: auto;
     display: grid;
     grid-template-columns: repeat(2, minmax(250px, 1fr));
@@ -895,7 +890,6 @@ body {
 #section-6 {
     position: relative;
     width: 100%;
-    min-height: 600px;
     height: auto;
     background-color: #FFFFFF;
     overflow: auto;
@@ -904,8 +898,8 @@ body {
 /*****************section 7 *************************/
 
 #section-7 {
+    
     width: 100%;
-    min-height: 600px;
     height: auto;
     background-color: #FFFFFF;
     overflow: auto;
@@ -913,7 +907,7 @@ body {
 
 .common-h1 {
     font-family: makromed;
-    font-size: 42px;
+    font-size: 38px;
     color: rgb(0, 0, 0);
 }
 
@@ -1030,6 +1024,60 @@ body {
 
 @media screen and (max-width: 1000px) {
 
+    
+
+    #sofa-1{
+        position: absolute;
+        top: 45%;
+        left: 50%;
+        transform: translateX(-50%);
+        width:369px; height:120px;
+    }
+
+    #mirror {
+        position: absolute;
+        right: 10%;
+        top: 46%;
+        width: 48px;
+        height: 185px;
+        transform: rotate(45deg);
+    }
+
+    #windows {
+        position: absolute;
+        top: 78%;
+        left: 10%;
+        transform: translateY(-78%);
+        width: 107px;
+        height: 233px;
+    }
+
+    #wed-clock {
+        position: absolute;
+        top: 60px;
+        left: 50px;
+        width: 50px;
+        height: 54;
+        opacity: 0.6;
+    }
+    
+    #floor-lamp {
+        position: absolute;
+        top: 35%;
+        right: 50px;
+        width: 48px;
+        height: 304px;
+    }
+    
+    #sofa {
+        position: absolute;
+        top: 50%;
+        left: 50px;
+        width: 134px;
+        height: 132px;
+    
+    }
+
     .sec-p-head p,
     .sec-p-head button {
         display: none;
@@ -1054,15 +1102,13 @@ body {
     }
 
     .portfolio-grid {
-
         grid-template-columns: 100%;
         grid-template-rows: auto;
         grid-template-areas: "main";
         overflow-x: hidden;
         width: fit-content;
         padding-top: 40px;
-        margin-top: 70px;
-        margin-bottom: 0px;
+        margin-top: 60px;
     }
 
     #section-5 .right1,
@@ -1110,12 +1156,6 @@ body {
         right: -115px;
         width: 105px;
         height: 323;
-    }
-
-    #wed-clock {
-        left: 50px;
-        width: 60px;
-        height: 64;
     }
 
     #scroll-assist {
@@ -1357,14 +1397,14 @@ body {
 
 #contact {
     position: relative;
-    min-height: 700px;
+    height: auto;
     background-color: #FFFFFF;
     overflow: hidden;
 }
 
 .custom-shape-divider-top-1724479383 {
     position: absolute;
-    top: 0;
+    top: -15px;
     left: 0;
     width: 100%;
     overflow: hidden;
@@ -1385,10 +1425,11 @@ body {
 
 .contact-div {
     position: relative;
-    max-width: 800px;
+    max-width: 600px;
     height: 500px;
     width: 90%;
-    margin-top: 100px;
+    margin-top: 60px;
+    margin-bottom: 60px;
     margin-left: auto;
     margin-right: auto;
     border-radius: 5px;
@@ -1402,15 +1443,13 @@ body {
     font-family: makromed;
     font-size: 28px;
     text-align: center;
-    margin-top: 30px;
+    margin-top: 20px;
 }
 
 #my-rocket-path {
     position: absolute;
     top: 0px;
     left: 0px;
-    width: 100%;
+    width: 120%;
     height: 100%;
 }
-
-#myrocket {}

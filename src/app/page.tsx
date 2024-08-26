@@ -153,30 +153,7 @@ export default function Home() {
               scrub: 1,
               snap: {
                 snapTo: 1 / (sections.length - 1),
-                // duration: { min: 0.5, max: 0.5 }, // Smoothness and duration of snapping
-                // ease: 'power2.inOut', // Easing for the snapping effect
               },
-              // onUpdate: (self) => {
-
-              //   const currentIndex = (self.progress * (sections.length - 1)).toFixed();
-              //   if (currentIndex === "0") {
-              //     tl4.reverse();
-              //     tl2.reverse();
-              //     tl5.reverse();
-              //   } else if (currentIndex === "1") {
-              //     tl2.play();
-              //     tl4.reverse();
-              //     tl5.reverse();
-              //   } else if (currentIndex === "2") {
-              //     tl4.play();
-              //     tl2.reverse();
-              //     tl5.reverse();
-              //   } else if (currentIndex === "3") {
-              //     tl5.play();
-              //     tl2.reverse();
-              //     tl4.reverse();
-              //   }
-              // },
               start: "top top",
               end: () => screenWidth * 3
             }
@@ -215,108 +192,37 @@ export default function Home() {
             backgroundColor: "#FFC325", duration: 0.5
           }, "<");
 
-          const mytween1 = gsap.to("#akaar-presents", { opacity: 1, duration: 1, paused: true, })
+          lamps(scrolltween, "#section-2 #cealling-lamp", ["#section-2 #cealling-lamp #Group_2", "#section-2 #cealling-lamp #Group_12"])
+          lamps(scrolltween, "#section-3 #cealling-lamp", ["#section-3 #cealling-lamp #Group_2", "#section-3 #cealling-lamp #Group_12"])
+          lamps(scrolltween, "#section-4 #cealling-lamp", ["#section-4 #cealling-lamp #Group_2", "#section-4 #cealling-lamp #Group_12"])
 
-          const lamps = gsap.timeline({
-            // paused: true,
-            scrollTrigger: {
-              // markers: true,
-              trigger: "#section-2 #cealling-lamp",
-              containerAnimation: scrolltween,
-              start: "left right",
-              toggleActions:  "play none none reset",
-              // scrub: 1,
-              // id: "1",
-            }
-          });
+          txtanimation(scrolltween, "#section-2", "#wed-main-illus", "#akaar-wed", "#akaar-wed-shadow", "#akaar-wed-shadow-1", "#sub-tag-wed", "#now-booking-wed")
 
-          const lamps1 = gsap.timeline({
-            // paused: true,
-            scrollTrigger: {
-              // markers: true,
-              trigger: "#section-3 #cealling-lamp",
-              containerAnimation: scrolltween,
-              start: "left right",
-              toggleActions:  "play none none reset",
-              // scrub: 1,
-              // id: "1",
-            }
-          });
-
-          const lamps2 = gsap.timeline({
-            // paused: true,
-            scrollTrigger: {
-              // markers: true,
-              trigger: "#section-4 #cealling-lamp",
-              containerAnimation: scrolltween,
-              start: "left right",
-              toggleActions:  "play none none reset",
-              // scrub: 1,
-              // id: "1",
-            }
-          });
-
-          lamps.to(["#section-2 #cealling-lamp #Group_2", "#section-2 #cealling-lamp #Group_12"], {
-            rotation: 16, duration: 2,ease:"sine.inOut"
-          }).to(["#section-2 #cealling-lamp #Group_2", "#section-2 #cealling-lamp #Group_12"], {
-            rotation: -4, duration: 1.8,ease:"sine.inOut"
-          }).to(["#section-2 #cealling-lamp #Group_2", "#section-2 #cealling-lamp #Group_12"], {
-            rotation: 0, duration: 1.5,ease:"sine.inOut"
-          })
-
-          lamps1.to(["#section-3 #cealling-lamp #Group_2", "#section-3 #cealling-lamp #Group_12"], {
-            rotation: 16, duration: 2,ease:"sine.inOut"
-          }).to(["#section-3 #cealling-lamp #Group_2", "#section-3 #cealling-lamp #Group_12"], {
-            rotation: -4, duration: 1.8,ease:"sine.inOut"
-          }).to(["#section-3 #cealling-lamp #Group_2", "#section-3 #cealling-lamp #Group_12"], {
-            rotation: 0, duration: 1.5,ease:"sine.inOut"
-          })
-
-          lamps2.to(["#section-4 #cealling-lamp #Group_2", "#section-4 #cealling-lamp #Group_12"], {
-            rotation: 16, duration: 2,ease:"sine.inOut"
-          }).to(["#section-4 #cealling-lamp #Group_2", "#section-4 #cealling-lamp #Group_12"], {
-            rotation: -4, duration: 1.8,ease:"sine.inOut"
-          }).to(["#section-4 #cealling-lamp #Group_2", "#section-4 #cealling-lamp #Group_12"], {
-            rotation: 0, duration: 1.5,ease:"sine.inOut"
-          })
-
-          const tl2 = gsap.timeline({
-            // paused: true,
+          gsap.to(["#wed-clock", "#floor-lamp,#sofa"], {
+            x: -250,
             scrollTrigger: {
               // markers: true,
               trigger: "#section-2",
               containerAnimation: scrolltween,
-              start: "left 10%",
-              toggleActions: "play none none reverse",
+              start: "+=20% right",
+              end: "left -=1500",
+              scrub: 1,
               // id: "1",
             }
-          });
+          })
 
-          tl2.to("#akaar-wed-shadow",
-            {
-              y: "+=20", duration: 0.75, delay: 0.5, ease: "power1.easeInOut"
-            }).to("#akaar-wed-shadow-1", {
-              y: "+=40", duration: 0.75, ease: "power1.easeInOut"
-            }).fromTo("#now-booking-wed",
-              {
-                x: 200,
-                scale: 0
-              },
-              {
-                x: 0,
-                scale: 1,
-                duration: 1.5,
-                ease: "elastic.out"
-              }, "<").fromTo("#sub-tag-wed",
-                {
-                  y: -10,
-                  opacity: 0
-                },
-                {
-                  y: 0,
-                  opacity: 1,
-                  duration: 0.5,
-                }, "-=0.5");
+          gsap.to(["#mirror", "#windows"], {
+            x: -250,
+            scrollTrigger: {
+              // markers: true,
+              trigger: "#section-3",
+              containerAnimation: scrolltween,
+              start: "+=20% right",
+              end: "left -=1500",
+              scrub: 1,
+              // id: "1",
+            }
+          })
 
           //section 3
           const scrollassist2 = gsap.timeline({
@@ -335,48 +241,7 @@ export default function Home() {
             backgroundColor: "#FF2424", duration: 0.5
           }, "<");
 
-
-          const tl4 = gsap.timeline({
-            // paused: true,
-            scrollTrigger: {
-              // markers: true,
-              trigger: "#section-3",
-              containerAnimation: scrolltween,
-              start: "left 10%",
-              toggleActions: "play none none reverse",
-              // id: "1",
-            }
-          });
-
-          tl4.to("#akaar-fashion-shadow",
-            {
-              y: "+=20", duration: 0.75, delay: 0.5, ease: "power1.easeInOut"
-            }).to("#akaar-fashion-shadow-1", {
-              y: "+=40", duration: 0.75, ease: "power1.easeInOut"
-            });
-
-          tl4.fromTo("#now-booking-fashion",
-            {
-              x: 200,
-              scale: 0
-            },
-            {
-              x: 0,
-              scale: 1,
-              duration: 1.5,
-              ease: "elastic.out"
-            }, "<");
-
-          tl4.fromTo("#sub-tag-fashion",
-            {
-              y: -10,
-              opacity: 0
-            },
-            {
-              y: 0,
-              opacity: 1,
-              duration: 0.5,
-            }, "-=0.5");
+          txtanimation(scrolltween, "#section-3", "#fashion-illus", "#akaar-fashion", "#akaar-fashion-shadow", "#akaar-fashion-shadow-1", "#sub-tag-fashion", "#now-booking-fashion")
 
           //section 4
           const scrollassist3 = gsap.timeline({
@@ -395,43 +260,7 @@ export default function Home() {
             backgroundColor: "#7800B0", duration: 0.5
           }, "<");
 
-          const tl5 = gsap.timeline({
-            // paused: true,
-            scrollTrigger: {
-              // markers: true,
-              trigger: "#section-4",
-              containerAnimation: scrolltween,
-              start: "left 10%",
-              toggleActions: "play none none reverse",
-              // id: "1",
-            }
-          });
-
-          tl5.to("#akaar-commercials-shadow",
-            {
-              y: "+=20", duration: 0.75, delay: 0.5, ease: "power1.easeInOut"
-            }).to("#akaar-commercials-shadow-1", {
-              y: "+=40", duration: 0.75, ease: "power1.easeInOut"
-            }).fromTo("#now-booking-commercials",
-              {
-                x: 200,
-                scale: 0
-              },
-              {
-                x: 0,
-                scale: 1,
-                duration: 1.5,
-                ease: "elastic.out"
-              }, "<").fromTo("#sub-tag-commercials",
-                {
-                  y: -10,
-                  opacity: 0
-                },
-                {
-                  y: 0,
-                  opacity: 1,
-                  duration: 0.5,
-                }, "-=0.5");
+          txtanimation(scrolltween, "#section-4", "#commercials-illus", "#akaar-commercials", "#akaar-commercials-shadow", "#akaar-commercials-shadow-1", "#sub-tag-commercials", "#now-booking-commercials")
 
         } else {
 
@@ -739,11 +568,72 @@ export default function Home() {
   }
 
   const gotowedportfolio = (id) => {
-    // window.scrollTo({
-    //   top: document.getElementById(id).offsetTop, // Adjust for fixed navbar height
-    //   behavior: 'smooth' // Smooth scroll
-    // });
     lenis.scrollTo("#" + id, { lerp: 0.05 })
+  }
+
+  const txtanimation = (scrolltween, trigger, t1, t2, t3, t4, t5, t6) => {
+    const tl2 = gsap.timeline({
+      // paused: true,
+      scrollTrigger: {
+        // markers: true,
+        trigger: trigger,
+        containerAnimation: scrolltween,
+        start: "left 10%",
+        toggleActions: "play none none reverse",
+        // id: "1",
+      }
+    });
+
+    tl2.fromTo(t1, { opacity: 1, x: 25 }, { opacity: 1, x: 0, duration: 1, }).fromTo(t2, {
+      y: "100%"
+    }, { y: "0%", duration: 0.85, }, "<").to(t3,
+      {
+        y: "+=20", duration: 1
+      }).to(t4, {
+        y: "+=40", duration: 1
+      }, "<").fromTo(t5,
+        {
+          y: -15,
+          opacity: 0
+        },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.5,
+        }, "<").fromTo(t6,
+          {
+            x: 200,
+            scale: 0
+          },
+          {
+            x: 0,
+            scale: 1,
+            duration: 1.5,
+            ease: "elastic.out"
+          })
+  }
+
+  const lamps = (scrolltween, trigger, targets) => {
+    const lamps = gsap.timeline({
+      // paused: true,
+      scrollTrigger: {
+        // markers: true,
+        trigger: trigger,
+        containerAnimation: scrolltween,
+        start: "left right",
+        toggleActions: "play none none reset",
+        // scrub: 1,
+        // id: "1",
+      }
+    });
+
+    lamps.to(targets, {
+      rotation: 16, duration: 2, ease: "sine.inOut"
+    }).to(targets, {
+      rotation: -4, duration: 1.8, ease: "sine.inOut"
+    }).to(targets, {
+      rotation: 0, duration: 1.5, ease: "sine.inOut"
+    })
   }
 
   return (
@@ -846,30 +736,6 @@ export default function Home() {
                   </g>
                 </g>
               </svg>
-              <svg id="hills" width="259" height="201" viewBox="0 0 1038 804" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <g id="undraw_art_re_vj2w 1" clipPath="url(#clip0_1_3)">
-                  <path id="Vector" d="M664.01 510.834C662.172 470.173 654.784 429.953 642.05 391.294C642.05 391.294 642.06 391.284 642.05 391.284C639.27 382.814 636.223 374.414 632.91 366.084C631.67 362.954 630.393 359.834 629.08 356.724C618.791 332.349 606.363 308.934 591.94 286.754C586.82 278.854 581.443 271.121 575.81 263.554C562.602 245.812 548.117 229.057 532.47 213.424C526.08 207.034 519.533 200.864 512.83 194.914C511.86 194.044 510.89 193.184 509.91 192.344C485.812 171.268 459.521 152.839 431.49 137.374C431.09 137.134 430.7 136.924 430.3 136.714C424.59 133.574 418.81 130.567 412.96 127.694C412.36 127.394 411.77 127.094 411.17 126.814C406.16 124.364 401.1 122.014 395.99 119.764C395.18 119.394 394.36 119.034 393.54 118.684C393.52 118.674 393.51 118.664 393.49 118.664C392.05 118.034 390.61 117.414 389.17 116.804C388.79 116.644 388.41 116.484 388.03 116.324H388.02C336.208 94.5637 280.762 82.7546 224.58 81.514C220.96 81.424 217.33 81.3806 213.69 81.384H116.15C108.577 81.3781 101.037 82.3837 93.73 84.374C93.58 84.414 93.44 84.4539 93.29 84.494C75.3349 89.5113 59.5122 100.261 48.2325 115.104C36.9529 129.947 30.8346 148.071 30.81 166.714V537.724C30.809 539.737 31.2542 541.726 32.1135 543.547C32.9729 545.367 34.2251 546.975 35.78 548.254C35.8 548.274 35.82 548.284 35.83 548.294C38.2689 550.302 41.3308 551.398 44.49 551.394H645.32C650.408 551.388 655.285 549.364 658.883 545.766C662.48 542.169 664.504 537.292 664.51 532.204C664.51 525.054 664.343 517.931 664.01 510.834Z" fill="#F2F2F2" />
-                  <path id="Vector_2" d="M440.878 454.746C440.927 488.084 433.295 520.986 418.572 550.898H44.49C40.9952 550.898 37.6435 549.51 35.1723 547.038C32.7011 544.567 31.3127 541.216 31.3127 537.721V350.637C88.7894 244.841 221.148 205.67 326.944 263.147C361.418 281.876 390.199 309.561 410.252 343.283C430.304 377.004 440.885 415.512 440.878 454.746Z" fill="#D5DBFD" />
-                  <path id="Vector_3" d="M664.011 419.954V532.204C664.011 537.162 662.041 541.917 658.536 545.423C655.03 548.929 650.275 550.898 645.317 550.898H43.6615C40.1924 550.898 36.8653 549.52 34.412 547.068C31.9586 544.615 30.5798 541.288 30.5788 537.819V537.686C30.5788 444.191 321.378 364.443 404.062 333.476C450.753 316.045 502.003 315.119 549.294 330.851C596.585 346.583 637.067 378.027 664.011 419.954Z" fill="#D5DBFD" />
-                  <path id="Vector_4" d="M618.536 219.028C623.341 189.418 603.233 161.519 573.623 156.714C544.013 151.908 516.114 172.017 511.309 201.627C506.504 231.237 526.612 259.136 556.222 263.941C585.832 268.746 613.731 248.638 618.536 219.028Z" fill="#FF6584" />
-                  <path id="Vector_5" d="M281.36 222.794C281.36 230.334 281.047 237.531 280.42 244.384C272.32 333.814 212.84 365.734 140.68 365.734C138.87 365.734 137.08 365.714 135.29 365.664C131.69 365.594 128.12 365.424 124.6 365.174C92.21 362.884 63.17 353.354 41.28 334.064C37.5426 330.766 34.0438 327.207 30.81 323.414C11.53 300.824 0 268.124 0 222.794C0 149.124 68 61.5239 109.45 14.9739C113.247 10.6941 117.884 7.24169 123.073 4.83142C128.261 2.42116 133.891 1.10466 139.61 0.963888H140.01C146.024 0.855198 151.99 2.05135 157.497 4.46997C163.004 6.88858 167.921 10.4722 171.91 14.9739C190.785 36.0777 208.374 58.2978 224.58 81.5139C254.69 125.064 281.36 176.664 281.36 222.794Z" fill="#6C63FF" />
-                  <path id="Vector_6" d="M135.55 349.524L187.01 277.624L135.42 357.414L135.29 365.664L134.14 436.414L133.72 462.364H119.51L120.49 443.624L124.6 365.174L130.15 259.184L130.1 258.354L130.2 258.204L130.24 257.354L130.72 248.194L79.01 168.214L130.88 240.684L131 242.804L135.19 162.724L93.29 84.494L90.92 80.074L93.73 84.374L135.74 148.654L136.36 124.744L137.5 81.384L139.61 0.963989H140.01L139.57 81.384L139.39 113.544L166.69 81.384L183.46 61.634L169.62 81.384L139.2 124.814L138.04 196.524L179.19 127.714L137.87 207.074L137.22 246.944L196.95 151.154L141.6 252.424L136.99 260.854L135.55 349.524Z" fill="#6A7FF8" />
-                  <path id="Vector_7" d="M510.74 174.234C510.74 180.574 510.463 186.611 509.91 192.344C503.13 263.714 455.42 289.214 397.57 289.214C396.12 289.214 394.67 289.194 393.24 289.164C390.34 289.104 387.473 288.967 384.64 288.754C376.189 288.207 367.803 286.915 359.58 284.894C339.14 279.814 321.42 269.984 308.32 254.134C293.34 236.004 284.41 210.004 284.41 174.234C284.41 147.674 295.4 118.864 310.53 91.7839C327.05 62.2139 348.51 34.7139 365.98 14.4539C369.784 10.0283 374.477 6.45411 379.755 3.96431C385.033 1.47452 390.776 0.125047 396.61 0.00389181H397.01C403.102 -0.0925267 409.141 1.15191 414.698 3.64904C420.256 6.14617 425.197 9.8349 429.17 14.4539C462.65 53.2639 510.74 118.674 510.74 174.234Z" fill="#6C63FF" />
-                  <path id="Vector_8" d="M393.45 276.174L434.84 218.344L393.35 282.524L393.24 289.164L392.77 318.114L392.46 337.674L391.98 366.944H380.55L381.89 341.334L383.66 307.504L384.64 288.754L389.1 203.504L389.07 202.844L389.14 202.724L389.56 194.664L347.97 130.324L389.69 188.624L389.79 190.334L393.16 125.914L388.03 116.324H388.02L357.55 59.434L393.6 114.604L396.61 0.0039978H397.01L396.53 86.354L431.98 44.604L396.39 95.424L395.99 119.764L395.45 153.104L411.17 126.814L428.55 97.754L412.96 127.694L395.31 161.594L394.79 193.664L430.3 136.714L442.84 116.614L431.49 137.374L394.61 204.854L393.45 276.174Z" fill="#6A7FF8" />
-                  <path id="Vector_9" d="M743.87 294.454C743.87 351.834 709.76 371.864 667.68 371.864C666.71 371.864 665.74 371.854 664.77 371.834C662.82 371.784 660.89 371.704 658.98 371.554C650.068 371.028 641.282 369.185 632.91 366.084C608.32 356.634 591.5 334.754 591.5 294.454C591.503 291.881 591.65 289.31 591.94 286.754C593.35 273.884 598.11 260.454 604.61 247.404C608.337 239.988 612.47 232.784 616.99 225.824C622.75 216.884 628.94 208.414 634.95 200.784C638.752 195.938 643.586 192.001 649.101 189.26C654.615 186.518 660.672 185.04 666.83 184.934C666.97 184.934 667.11 184.924 667.26 184.934C673.634 184.847 679.942 186.231 685.694 188.98C691.445 191.73 696.485 195.769 700.42 200.784C721.07 227.014 743.87 263.064 743.87 294.454Z" fill="#6C63FF" />
-                  <path id="Vector_10" d="M664.91 363.084L692.77 324.154L664.84 367.364L664.77 371.834L663.98 419.904L663.91 424.194H656.22L656.98 409.684L658.98 371.554L661.98 314.164L661.95 313.714L662 313.634L662.29 308.214L634.29 264.894L662.37 304.144L662.44 305.294L664.71 261.924L640.74 217.164L665.01 254.324L666.83 184.934C666.97 184.934 667.11 184.924 667.26 184.934L666.98 235.294L690.85 207.184L666.88 241.394L666.25 280.234L688.54 242.964L666.16 285.944L665.81 307.534L698.16 255.664L665.69 315.064L664.91 363.084Z" fill="#6A7FF8" />
-                  <path id="Vector_11" d="M182.228 400.316C178.856 405.694 174.482 405.568 170.537 403.095C166.593 400.623 164.573 396.74 167.945 391.362C171.317 385.984 182.747 383.618 182.747 383.618C182.747 383.618 185.6 394.938 182.228 400.316Z" fill="#6C63FF" />
-                  <path id="Vector_12" d="M77.2676 414.996C73.8959 420.374 69.5212 420.248 65.5771 417.775C61.6329 415.302 59.6128 411.42 62.9845 406.042C66.3562 400.663 77.7871 398.298 77.7871 398.298C77.7871 398.298 80.6393 409.617 77.2676 414.996Z" fill="#6C63FF" />
-                  <path id="Vector_13" d="M449.358 389.123C449.982 395.441 446.444 398.017 441.812 398.475C437.179 398.932 433.206 397.098 432.582 390.78C431.958 384.463 439.552 375.598 439.552 375.598C439.552 375.598 448.734 382.806 449.358 389.123Z" fill="#6C63FF" />
-                  <path id="Vector_14" d="M328.292 310.769C324.92 316.148 320.545 316.021 316.601 313.549C312.657 311.076 310.637 307.194 314.009 301.815C317.38 296.437 328.811 294.072 328.811 294.072C328.811 294.072 331.663 305.391 328.292 310.769Z" fill="#6C63FF" />
-                  <path id="Vector_15" d="M607.207 393.71C603.836 399.088 599.461 398.962 595.517 396.489C591.573 394.017 589.553 390.134 592.924 384.756C596.296 379.378 607.727 377.012 607.727 377.012C607.727 377.012 610.579 388.332 607.207 393.71Z" fill="#6C63FF" />
-                </g>
-                <defs>
-                  <clipPath id="clip0_1_3">
-                    <rect width="1150.08" height="803.243" fill="white" />
-                  </clipPath>
-                </defs>
-              </svg>
 
               <div className="cnt-for-h">
                 <div id="headings">
@@ -951,8 +817,8 @@ export default function Home() {
               <div className="akaar-wedstyle">
                 <h1 id="akaar-wed-shadow" style={{ color: "#B2AFA5" }}>AKAARWEDDINGS</h1>
               </div>
-              <div id="akaar-wed" className="akaar-wedstyle">
-                <h1>AKAARWEDDINGS</h1>
+              <div className="akaar-wedstyle" style={{ overflow: "hidden", backgroundColor: "#FFFBEC" }}>
+                <h1 id="akaar-wed">AKAARWEDDINGS</h1>
               </div>
 
               <svg id="cealling-lamp" width="188" height="266" viewBox="0 0 188 266" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1047,7 +913,6 @@ export default function Home() {
                 </g>
               </svg>
 
-
               <svg id="wed-clock" viewBox="0 0 330 364" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g id="clock">
                   <g id="OBJECTS">
@@ -1139,8 +1004,107 @@ export default function Home() {
                 </g>
               </svg>
 
-              <div id="wedding-illus">
+              <svg id="floor-lamp" viewBox="0 0 138 394" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g id="Group 1">
+                  <g id="Floor_lamp">
+                    <g id="Group">
+                      <g id="Group_2">
+                        <path id="Vector" d="M135.533 89.733H2.30099L5.30099 0H132.533L135.533 89.733Z" fill="#FFBC10" />
+                        <path id="Vector_2" opacity="0.4" d="M121.606 89.733H92.014L89.014 0H118.606L121.606 89.733Z" fill="white" />
+                      </g>
+                      <g id="Group_3">
+                        <g id="Group_4">
+                          <g id="Group_5">
+                            <path id="Vector_3" d="M71.307 393.753H66.526L62.922 117.555H74.912L71.307 393.753Z" fill="#FFE59D" />
 
+                          </g>
+                          <g id="Group_6">
+                            <path id="Vector_6" d="M4.78098 393.753H0L50.932 117.555H62.922L4.78098 393.753Z" fill="#FFE59D" />
+
+                          </g>
+                          <g id="Group_7">
+                            <path id="Vector_9" d="M133.053 393.753H137.834L86.902 117.555H74.912L133.053 393.753Z" fill="#FFE59D" />
+
+                          </g>
+                        </g>
+                        <g id="Group_8">
+                          <path id="Vector_12" d="M88.418 106.18H49.416V117.555H88.418V106.18Z" fill="#FFE59D" />
+
+                        </g>
+                        <g id="Group_9">
+                          <path id="Vector_14" d="M72.893 89.733H64.941V106.18H72.893V89.733Z" fill="#FFE59D" />
+
+                        </g>
+                      </g>
+                    </g>
+                  </g>
+                </g>
+              </svg>
+
+              <svg id="sofa" viewBox="0 0 224 222" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g id="Sofa">
+                  <g id="Group">
+                    <g id="Group_2">
+                      <g id="Group_3">
+                        <path id="Vector" d="M22.628 150.083L0 219.97H6.485L34.226 160.343L22.628 150.083Z" fill="#FFE59D" />
+                      </g>
+                      <path id="Vector_2" d="M185.699 72.324L208.751 219.97L219.281 219.699L201.776 70.561L185.699 72.324Z" fill="#FFE59D" />
+                      <path id="Vector_3" d="M7.832 34.311C7.832 34.311 12.516 148.351 20.601 156.343C34.809 170.387 79.858 162.837 98.603 163.388C117.348 163.939 209.483 163.012 211.137 160.806C212.791 158.601 210.402 148.441 210.402 148.441L136.523 142.928L116.124 26.597C116.124 26.597 7.405 28.404 7.832 34.311Z" fill="#FFE59D" />
+                      <g id="Group_4">
+                        <path id="Vector_4" d="M20.372 5.533C20.372 5.533 29.002 120.983 33.059 125.04C37.116 129.097 162.368 145.685 162.368 145.685L144.158 4.64799C143.815 1.99 141.552 0.00100708 138.872 0.00100708H31.805L20.372 5.533Z" fill="#FFBC10" />
+                        <path id="Vector_5" opacity="0.3" d="M33.059 125.039C33.592 125.572 36.235 126.324 40.397 127.224C44.065 126.558 47.226 125.352 47.226 125.352L31.805 0L20.371 5.532C20.371 5.532 29.002 120.982 33.059 125.039Z" fill="#FFE59D" />
+                      </g>
+                      <g id="Group_5">
+                        <path id="Vector_6" d="M90.12 149.004C90.12 149.004 34.081 149.155 32.953 145.685C31.825 142.215 30.002 120.605 34.797 119.13C39.592 117.655 154.134 113.012 154.199 113.515C154.264 114.018 216.626 114.704 221.052 120.237C225.478 125.769 222.941 147.489 221.052 147.489C220.167 147.488 90.12 149.004 90.12 149.004Z" fill="#FFBC10" />
+                        <g id="Group_6">
+                          <g id="Group_7" opacity="0.3">
+                            <path id="Vector_7" d="M92.577 124.44H92.58C135.543 124.851 178.527 123.575 221.347 120.658C221.251 120.512 221.155 120.365 221.052 120.236C217.491 115.785 176.438 114.471 160.487 113.866L79.406 116.346C64.449 117.051 50.833 117.768 42.645 118.347L92.581 124.424C92.579 124.429 92.578 124.435 92.577 124.44Z" fill="white" fill-opacity="0.7" />
+                          </g>
+                          <g id="Group_8" opacity="0.3">
+                            <path id="Vector_8" d="M92.58 124.424L42.644 118.347C38.29 118.655 35.468 118.923 34.797 119.13C30.002 120.605 31.824 142.215 32.953 145.685C34.081 149.155 90.12 149.004 90.12 149.004C90.12 149.004 91.372 148.99 93.608 148.963C90.279 141.684 91.06 131.082 92.577 124.439C92.578 124.435 92.579 124.429 92.58 124.424Z" fill="#FFE59D" />
+                          </g>
+                        </g>
+                      </g>
+                      <path id="Vector_9" opacity="0.3" d="M72.112 164.335L53.877 164.058L53.546 148.351L72.112 148.825V164.335Z" fill="#FFE59D" />
+                      <path id="Vector_10" d="M53.546 79.056L59.228 221.11H69.718V79.269L53.546 79.056Z" fill="#FFE59D" />
+                      <path id="Vector_11" d="M144.82 150.083L119.173 219.97H125.658L156.418 160.343L144.82 150.083Z" fill="#FFE59D" />
+                      <path id="Vector_12" d="M152.89 71.638L207.462 58.98C210.314 58.289 213.177 60.078 213.806 62.945C214.41 65.698 212.726 68.434 209.997 69.136L154.348 82.939L152.89 71.638Z" fill="#FFE59D" />
+                      <path id="Vector_13" d="M3.242 90.879L81.24 68.921C84.092 68.23 86.955 70.019 87.584 72.886C88.188 75.639 86.504 78.375 83.775 79.077L4.701 102.179L3.242 90.879Z" fill="#FFE59D" />
+                      <path id="Vector_14" opacity="0.3" d="M186.18 75.258L201.858 71.228L202.59 77.175L187.218 81.599L186.369 76.413" fill="#FFE59D" />
+                      <path id="Vector_15" opacity="0.3" d="M53.864 87.817L54.123 94.382L69.718 89.894V83.184L53.864 87.817Z" fill="#FFE59D" />
+                      <path id="Vector_16" opacity="0.3" d="M12.516 99.896L13.325 107.264L54.655 94.382L56.108 87.16L12.516 99.896Z" fill="#FFE59D" />
+                      <path id="Vector_17" opacity="0.3" d="M139.852 163.425L154.927 163.232L151.423 170.026L137.549 170.247L139.852 163.425Z" fill="#FFE59D" />
+                      <path id="Vector_18" opacity="0.3" d="M200.384 161.992L212.953 161.457L213.956 169.616H201.632L200.384 161.992Z" fill="#FFE59D" />
+                    </g>
+                    <g id="Group_9" opacity="0.2">
+                      <path id="Vector_19" d="M136.24 3.92902C106.357 3.92902 66.569 4.92001 36.686 4.92001C36.686 4.92001 44.281 13.01 78.291 10.203C112.301 7.39602 136.24 3.92902 136.24 3.92902Z" fill="white" fill-opacity="0.7" />
+                    </g>
+                    <g id="Group_10">
+                      <g id="Group_11">
+                        <path id="Vector_20" d="M111.9 81.078C109.497 89.869 109.84 99.508 113.539 107.838C114.945 111.004 116.804 113.944 118.657 116.872C118.937 117.314 119.236 117.775 119.698 118.021C120.019 118.193 120.39 118.243 120.751 118.29C134.429 120.063 148.214 120.835 161.985 121.606C164.559 121.75 167.134 121.894 169.708 122.038C173.752 122.264 178.403 122.25 181.071 119.203C182.908 117.104 183.257 114.067 182.933 111.296C182.609 108.525 181.708 105.848 181.371 103.079C180.352 94.704 184.51 86.704 187.146 78.69C188.018 76.039 188.736 73.292 188.675 70.502C188.614 67.712 187.694 64.85 185.69 62.908C182.36 59.68 177.143 59.753 172.511 59.973C167.257 60.223 162 60.399 156.741 60.499C153.392 60.563 150.018 60.595 146.724 59.989C143.225 59.345 139.895 57.995 136.432 57.177C133.48 56.479 129.353 55.859 126.526 57.366C124.175 58.619 122.229 61.647 120.639 63.738C116.698 68.917 113.619 74.787 111.9 81.078Z" fill="#FFBC10" />
+                        <path id="Vector_21" opacity="0.7" d="M111.9 81.078C109.497 89.869 109.84 99.508 113.539 107.838C114.945 111.004 116.804 113.944 118.657 116.872C118.937 117.314 119.236 117.775 119.698 118.021C120.019 118.193 120.39 118.243 120.751 118.29C134.429 120.063 148.214 120.835 161.985 121.606C164.559 121.75 167.134 121.894 169.708 122.038C173.752 122.264 178.403 122.25 181.071 119.203C182.908 117.104 183.257 114.067 182.933 111.296C182.609 108.525 181.708 105.848 181.371 103.079C180.352 94.704 184.51 86.704 187.146 78.69C188.018 76.039 188.736 73.292 188.675 70.502C188.614 67.712 187.694 64.85 185.69 62.908C182.36 59.68 177.143 59.753 172.511 59.973C167.257 60.223 162 60.399 156.741 60.499C153.392 60.563 150.018 60.595 146.724 59.989C143.225 59.345 139.895 57.995 136.432 57.177C133.48 56.479 129.353 55.859 126.526 57.366C124.175 58.619 122.229 61.647 120.639 63.738C116.698 68.917 113.619 74.787 111.9 81.078Z" fill="white" fill-opacity="0.7" />
+                        <g id="Group_12" opacity="0.3">
+                          <g id="Group_13">
+                            <path id="Vector_22" d="M182.421 71.953C174.713 84.986 173.078 101.22 178.05 115.525C178.208 115.978 178.932 115.783 178.773 115.326C173.863 101.202 175.455 85.205 183.068 72.332C183.315 71.915 182.667 71.537 182.421 71.953Z" fill="#FFE59D" />
+                          </g>
+                        </g>
+                        <g id="Group_14" opacity="0.3">
+                          <g id="Group_15">
+                            <path id="Vector_23" d="M160.367 103.737C164.267 109.723 170.181 113.881 175.963 117.886C176.361 118.161 176.736 117.512 176.341 117.238C170.669 113.309 164.841 109.231 161.015 103.358C160.752 102.956 160.102 103.331 160.367 103.737Z" fill="#FFE59D" />
+                          </g>
+                        </g>
+                      </g>
+                      <g id="Group_16">
+                        <g id="Group_17">
+                          <path id="Vector_24" d="M135.311 61.956C148.84 64.964 162.881 65.138 176.481 62.473C176.954 62.38 176.754 61.657 176.282 61.75C162.818 64.389 148.904 64.21 135.511 61.233C135.04 61.128 134.839 61.851 135.311 61.956Z" fill="white" fill-opacity="0.7" />
+                        </g>
+                      </g>
+                    </g>
+                  </g>
+                </g>
+              </svg>
+
+              <div id="wedding-illus">
                 <svg id="wed-main-illus" viewBox="0 0 194 330" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <g id="OBJECTS">
                     <g id="Group">
@@ -1333,10 +1297,12 @@ export default function Home() {
                   </g>
                 </svg>
               </div>
+
               <div id="sub-tag-wed">
                 {/* <p>Be careful, violence tends to escalate</p> */}
                 <p>Your Story Told Like None Other.</p>
               </div>
+
               <button id="now-booking-wed" onClick={() => {
                 gotowedportfolio("section-7")
               }}>
@@ -1345,13 +1311,13 @@ export default function Home() {
             </div>
             <div id="section-3" className="full-screen panels">
               <div className="akaar-wedstyle">
-                <h1 id="akaar-fashion-shadow-1" style={{ color: "#E5E1D4" }}>AKAARFASHION</h1>
+                <h1 id="akaar-fashion-shadow-1" style={{ color: "#E5E1D4", }}>AKAARFASHION</h1>
               </div>
               <div className="akaar-wedstyle">
-                <h1 id="akaar-fashion-shadow" style={{ color: "#B2AFA5" }}>AKAARFASHION</h1>
+                <h1 id="akaar-fashion-shadow" style={{ color: "#B2AFA5", }}>AKAARFASHION</h1>
               </div>
-              <div id="akaar-fashion" className="akaar-wedstyle">
-                <h1>AKAARFASHION</h1>
+              <div className="akaar-wedstyle" style={{ overflow: "hidden", backgroundColor: "#FFDBDB" }}>
+                <h1 id="akaar-fashion">AKAARFASHION</h1>
               </div>
               <svg id="cealling-lamp" viewBox="0 0 188 266" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g id="Lamp_2">
@@ -1646,6 +1612,76 @@ export default function Home() {
                 </g>
               </svg>
 
+              <svg id="windows" viewBox="0 0 279 402" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g id="Background_Complete">
+                  <g id="Group">
+                    <g id="Group_2">
+                      <path id="Vector" d="M214.172 0C249.614 0 278.345 28.731 278.345 64.173V401.381H150V64.172C150 28.731 178.731 0 214.172 0Z" fill="#FF1010" fill-opacity="0.8" />
+                      <g id="Group_3">
+                        <g id="Group_4">
+                          <g id="Group_5">
+                            <path id="Vector_2" d="M211.193 121.015H156.996V227.847H211.193V121.015Z" fill="white" fill-opacity="0.7" />
+                            <path id="Vector_3" d="M271.353 121.015H217.156V227.847H271.353V121.015Z" fill="white" fill-opacity="0.7" />
+                            <path id="Vector_4" d="M211.193 233.81H156.996V393.498H211.193V233.81Z" fill="white" fill-opacity="0.7" />
+                            <path id="Vector_5" d="M271.353 233.81H217.156V393.498H271.353V233.81Z" fill="white" fill-opacity="0.7" />
+                            <path id="Vector_6" d="M211.194 7.80499V115.054H156.995V64.91C156.995 34.33 181.002 9.35999 211.194 7.80499Z" fill="white" fill-opacity="0.7" />
+                            <path id="Vector_7" d="M271.355 64.91V115.054H217.156V7.80499C247.348 9.35999 271.355 34.33 271.355 64.91Z" fill="white" fill-opacity="0.7" />
+                          </g>
+                          <g id="Group_6" opacity="0.3">
+                            <path id="Vector_8" d="M156.992 85.436L211.19 31.238V61.161L157.297 115.054H156.992V85.436Z" fill="#FF1010" fill-opacity="0.8" />
+                            <path id="Vector_9" d="M251.098 21.257L217.157 55.198V25.275L231.896 10.536C239.016 12.841 245.515 16.517 251.098 21.257Z" fill="#FF1010" fill-opacity="0.8" />
+                            <path id="Vector_10" d="M197.645 393.501L211.19 379.956V393.501H197.645Z" fill="#FF1010" fill-opacity="0.8" />
+                            <path id="Vector_11" d="M271.352 319.794V349.718L227.568 393.501H217.153V373.993L271.352 319.794Z" fill="#FF1010" fill-opacity="0.8" />
+                            <path id="Vector_12" d="M156.992 218.119L211.19 163.92V168.456L156.992 222.655V218.119Z" fill="#FF1010" fill-opacity="0.8" />
+                            <path id="Vector_13" d="M258.63 121.016L217.153 162.494V157.958L254.094 121.016H258.63Z" fill="#FF1010" fill-opacity="0.8" />
+                            <path id="Vector_14" d="M271.352 103.759V108.295L264.593 115.054H260.056L271.352 103.759Z" fill="#FF1010" fill-opacity="0.8" />
+                            <path id="Vector_15" d="M181.499 393.501L211.19 363.809V368.346L186.035 393.501H181.499Z" fill="#FF1010" fill-opacity="0.8" />
+                            <path id="Vector_16" d="M271.352 303.648V308.185L217.153 362.383V357.847L271.352 303.648Z" fill="#FF1010" fill-opacity="0.8" />
+                            <path id="Vector_17" d="M199.019 9.767L159.023 49.763C159.671 47.393 160.467 45.078 161.412 42.847L192.113 12.146C194.344 11.202 196.649 10.406 199.019 9.767Z" fill="#FF1010" fill-opacity="0.8" />
+                            <path id="Vector_18" d="M165.287 121.016H180.795L156.992 144.82V129.312L165.287 121.016Z" fill="#FF1010" fill-opacity="0.8" />
+                            <path id="Vector_19" d="M211.19 75.113V90.621L186.757 115.054H171.25L211.19 75.113Z" fill="#FF1010" fill-opacity="0.8" />
+                            <path id="Vector_20" d="M264.356 37.459L217.157 84.658V69.15L258.061 28.246C260.44 31.089 262.551 34.182 264.356 37.459Z" fill="#FF1010" fill-opacity="0.8" />
+                            <path id="Vector_21" d="M156.992 360.976L211.19 306.768V322.285L156.992 376.474V360.976Z" fill="#FF1010" fill-opacity="0.8" />
+                            <path id="Vector_22" d="M271.352 246.607V262.124L217.153 316.323V300.806L271.352 246.607Z" fill="#FF1010" fill-opacity="0.8" />
+                          </g>
+                        </g>
+                      </g>
+                    </g>
+                    <g id="Group_7">
+                      <path id="Vector_23s" d="M64.173 0C99.615 0 128.346 28.731 128.346 64.173V401.381H0V64.172C0 28.731 28.731 0 64.173 0Z" fill="#FF1010" fill-opacity="0.8" />
+                      <g id="Group_8">
+                        <g id="Group_9">
+                          <g id="Group_10">
+                            <path id="Vector_24" d="M61.193 121.015H6.996V227.847H61.193V121.015Z" fill="white" fill-opacity="0.7" />
+                            <path id="Vector_25" d="M121.353 121.015H67.156V227.847H121.353V121.015Z" fill="white" fill-opacity="0.7" />
+                            <path id="Vector_26" d="M61.193 233.81H6.996V393.498H61.193V233.81Z" fill="white" fill-opacity="0.7" />
+                            <path id="Vector_27" d="M121.353 233.81H67.156V393.498H121.353V233.81Z" fill="white" fill-opacity="0.7" />
+                            <path id="Vector_28" d="M61.194 7.80499V115.054H6.996V64.91C6.996 34.33 31.003 9.35999 61.194 7.80499Z" fill="white" fill-opacity="0.7" />
+                            <path id="Vector_29" d="M121.356 64.91V115.054H67.157V7.80499C97.349 9.35999 121.356 34.33 121.356 64.91Z" fill="white" fill-opacity="0.7" />
+                          </g>
+                          <g id="Group_11" opacity="0.3">
+                            <path id="Vector_30" d="M6.992 85.436L61.191 31.238V61.161L7.298 115.054H6.992V85.436Z" fill="#FF1010" fill-opacity="0.8" />
+                            <path id="Vector_31" d="M101.098 21.257L67.157 55.198V25.275L81.896 10.536C89.016 12.841 95.515 16.517 101.098 21.257Z" fill="#FF1010" fill-opacity="0.8" />
+                            <path id="Vector_32" d="M47.646 393.501L61.191 379.956V393.501H47.646Z" fill="#FF1010" fill-opacity="0.8" />
+                            <path id="Vector_33" d="M121.352 319.794V349.718L77.569 393.501H67.153V373.993L121.352 319.794Z" fill="#FF1010" fill-opacity="0.8" />
+                            <path id="Vector_34" d="M6.992 218.119L61.191 163.92V168.456L6.992 222.655V218.119Z" fill="#FF1010" fill-opacity="0.8" />
+                            <path id="Vector_35" d="M108.631 121.016L67.153 162.494V157.958L104.094 121.016H108.631Z" fill="#FF1010" fill-opacity="0.8" />
+                            <path id="Vector_36" d="M121.352 103.759V108.295L114.593 115.054H110.057L121.352 103.759Z" fill="#FF1010" fill-opacity="0.8" />
+                            <path id="Vector_37" d="M31.499 393.501L61.191 363.809V368.346L36.036 393.501H31.499Z" fill="#FF1010" fill-opacity="0.8" />
+                            <path id="Vector_38" d="M121.352 303.648V308.185L67.153 362.383V357.847L121.352 303.648Z" fill="#FF1010" fill-opacity="0.8" />
+                            <path id="Vector_39" d="M49.02 9.767L9.02301 49.764C9.67101 47.394 10.467 45.079 11.412 42.848L42.113 12.147C44.344 11.202 46.65 10.406 49.02 9.767Z" fill="#FF1010" fill-opacity="0.8" />
+                            <path id="Vector_40" d="M15.287 121.016H30.795L6.992 144.82V129.312L15.287 121.016Z" fill="#FF1010" fill-opacity="0.8" />
+                            <path id="Vector_41" d="M61.191 75.113V90.621L36.758 115.054H21.25L61.191 75.113Z" fill="#FF1010" fill-opacity="0.8" />
+                            <path id="Vector_42" d="M114.356 37.459L67.157 84.658V69.15L108.061 28.246C110.44 31.089 112.551 34.182 114.356 37.459Z" fill="#FF1010" fill-opacity="0.8" />
+                            <path id="Vector_43" d="M6.992 360.976L61.191 306.768V322.285L6.992 376.474V360.976Z" fill="#FF1010" fill-opacity="0.8" />
+                            <path id="Vector_44" d="M121.352 246.607V262.124L67.153 316.323V300.806L121.352 246.607Z" fill="#FF1010" fill-opacity="0.8" />
+                          </g>
+                        </g>
+                      </g>
+                    </g>
+                  </g>
+                </g>
+              </svg>
 
               <div id="fashion-illus">
                 {/* viewBox="0 0 156 402" */}
@@ -1758,8 +1794,8 @@ export default function Home() {
               <div className="akaar-wedstyle">
                 <h1 id="akaar-commercials-shadow" style={{ color: "#B2AFA5" }}>AKAARCOMMERCIAL</h1>
               </div>
-              <div id="akaar-commercials" className="akaar-wedstyle">
-                <h1>AKAARCOMMERCIAL</h1>
+              <div className="akaar-wedstyle" style={{ overflow: "hidden", backgroundColor: "#EBD9F3" }}>
+                <h1 id="akaar-commercials">AKAARCOMMERCIAL</h1>
               </div>
 
               <svg id="cealling-lamp" width="188" height="266" viewBox="0 0 188 266" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1851,6 +1887,71 @@ export default function Home() {
                     </g>
                     <path id="Vector_45" d="M165.827 8.79998H23.686L24.686 0.432983H166.827L165.827 8.79998Z" fill="#263238" />
                   </g>
+                </g>
+              </svg>
+
+              <svg id="sofa-1" viewBox="0 0 769 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g id="Group">
+                  <path id="Vector" d="M173.617 368.417L171.47 387.412L157.07 515.077C157.07 515.077 151.872 519.371 145.545 519.597C143.235 519.685 141.076 519.308 139.255 518.806C136.116 517.927 134.02 516.659 134.02 516.659L138.54 393.024L139.444 368.417H173.617Z" fill="#CD9FE2" fill-opacity="0.8" />
+                  <path id="Vector_2" d="M173.617 368.417L170.738 393.906C157.899 391.04 145.245 394.354 138.258 400.836L139.444 368.417H173.617Z" fill="#CD9FE2" fill-opacity="0.8" />
+                  <path id="Vector_3" d="M154.02 421.159C150.694 441.659 147.581 506.26 147.355 510.327C147.129 514.394 151.875 517.784 153.118 508.971C154.361 500.158 160.687 436.815 162.608 418.447C164.528 400.079 157.346 400.659 154.02 421.159Z" fill="#CD9FE2" fill-opacity="0.8" />
+                  <path id="Vector_4" d="M150.693 368.417L139.256 518.806C136.117 517.927 134.021 516.659 134.021 516.659L139.445 368.417H150.693Z" fill="#CD9FE2" fill-opacity="0.8" />
+                  <path id="Vector_5" d="M579.425 370.451C578.546 371.33 576.174 371.995 571.88 372.234C571.767 372.246 571.641 372.259 571.516 372.259C566.996 372.485 562.477 371.129 562.477 371.129L556.124 332.888L553.676 318.124L553.437 316.668L567.322 314.358L576.487 312.826C576.487 312.826 576.625 314.847 576.839 318.124C577.04 321.25 577.329 325.531 577.617 330.302C578.671 347.05 579.99 369.886 579.425 370.451Z" fill="#CD9FE2" fill-opacity="0.8" />
+                  <path id="Vector_6" d="M577.617 330.302C570.75 329.775 562.389 331.231 556.124 332.888L553.676 318.124H576.839C577.039 321.251 577.328 325.532 577.617 330.302Z" fill="#CD9FE2" fill-opacity="0.8" />
+                  <path id="Vector_7" d="M571.88 372.229C571.767 372.241 571.642 372.254 571.516 372.254C566.997 372.48 562.477 371.124 562.477 371.124L553.438 316.663L567.323 314.353L571.88 372.229Z" fill="#CD9FE2" fill-opacity="0.8" />
+                  <path id="Vector_8" d="M744.615 413.161C744.251 413.412 743.799 413.626 743.272 413.789C742.406 414.065 741.326 414.228 740.146 414.304C737.798 414.467 735.024 414.292 732.576 414.053C729.111 413.689 726.311 413.162 726.311 413.162L691.121 325.282L683.764 306.928L681.893 299.27L681.341 297.01L690.895 296.182L697.147 295.642L704.428 295.002L710.04 294.512L710.982 297.739L717.046 318.567L744.615 413.161Z" fill="#CD9FE2" fill-opacity="0.8" />
+                  <path id="Vector_9" d="M716.569 316.927C714.033 316.543 709.588 316.505 706.965 317.522C702.426 319.281 695.013 324.301 692.457 328.623L683.765 306.926L681.894 299.268L710.983 297.737L716.569 316.927Z" fill="#CD9FE2" fill-opacity="0.8" />
+                  <path id="Vector_10" d="M732.576 414.048C729.111 413.684 726.311 413.157 726.311 413.157L683.764 306.922L681.341 297.004L690.895 296.175L732.576 414.048Z" fill="#CD9FE2" fill-opacity="0.8" />
+                  <path id="Vector_11" d="M743.272 413.785C742.406 414.061 741.326 414.225 740.146 414.299C740.146 414.299 716.819 347.2 710.793 330.629C705.299 315.521 714.323 321.265 716.694 328.845C719.066 336.424 743.272 413.785 743.272 413.785Z" fill="#CD9FE2" fill-opacity="0.8" />
+                  <path id="Vector_12" d="M764.05 196.217C764.05 202.997 759.078 268.079 755.011 278.925C750.943 289.772 752.638 295.196 746.373 297.907C740.096 300.619 525.868 326.682 516.829 327.887C507.79 329.093 355.932 350.184 334.841 353.197C315.482 355.959 213.402 369.895 189.286 374.025C187.114 374.402 185.583 374.691 184.792 374.892C175.15 377.302 161.29 377.302 148.636 378.507C135.981 379.712 109.466 371.878 85.965 365.249C62.463 358.621 48 357.416 41.372 338.734C34.743 320.053 24.499 258.587 20.883 233.277C17.267 207.968 1.59901 112.152 1.59901 112.152C0.557008 106.227 -0.220981 97.677 1.27302 88.223C3.63302 73.158 11.756 55.783 33.688 43.002C69.393 22.213 127.243 16.337 139.898 14.077C152.553 11.817 212.663 5.48998 231.645 4.58698C250.627 3.68298 271.417 7.74998 291.303 4.58698C311.189 1.42298 365.424 0.971008 374.915 0.971008C382.498 0.971008 430.795 1.26001 468.797 4.14801C478.351 4.87601 487.239 5.75498 494.684 6.84698C531.745 12.27 591.403 32.609 605.413 41.196C619.424 49.784 637.05 66.957 652.417 70.121C667.784 73.285 711.623 75.544 728.798 79.612C736.444 81.42 744.453 83.504 751.258 85.977C759.745 89.053 766.361 92.732 768.119 97.239C771.281 105.374 764.05 189.438 764.05 196.217Z" fill="#C800E8" />
+                  <path id="Vector_13" d="M184.189 65.376C183.079 66.956 178.314 72.782 180.121 76.197C181.928 79.612 185.511 84.358 188.691 84.81C191.871 85.262 197.63 87.07 199.722 84.81C201.814 82.55 201.362 78.466 198.876 75.649C196.392 72.833 188.03 59.91 184.189 65.376Z" fill="#9D3FE7" fill-opacity="0.7" />
+                  <path id="Vector_14" d="M262.788 61.308C259.318 62.986 256.954 70.105 259.44 72.034C261.926 73.963 264.411 73.511 265.767 76.675C267.123 79.839 269.383 82.55 270.964 83.906C272.546 85.262 279.325 82.776 279.325 81.194C279.325 79.612 279.099 72.364 278.195 72.034C277.292 71.703 268.396 58.596 262.788 61.308Z" fill="#9D3FE7" fill-opacity="0.7" />
+                  <path id="Vector_15" d="M347.119 57.015C343.927 58.488 341.47 65.15 345.763 68.766C350.057 72.382 350.508 75.093 351.864 76.449C353.22 77.805 360.451 78.031 362.711 75.545C364.971 73.059 364.293 66.506 361.129 65.828C357.965 65.15 352.995 54.303 347.119 57.015Z" fill="#9D3FE7" fill-opacity="0.7" />
+                  <path id="Vector_16" d="M424.856 54.981C423.2 55.947 420.336 62.212 423.726 65.376C427.116 68.54 425.76 69.465 428.471 72.618C431.183 75.771 436.929 78.031 438.463 74.415C439.996 70.799 441.352 64.472 437.285 62.212C433.217 59.952 427.568 53.399 424.856 54.981Z" fill="#9D3FE7" fill-opacity="0.7" />
+                  <path id="Vector_17" d="M505.982 49.482C505.553 49.689 500.559 51.556 502.216 54.737C503.873 57.918 502.216 59.877 502.969 62.438C503.722 64.999 506.283 68.464 510.652 67.259C515.021 66.054 517.281 66.458 518.034 65.503C518.787 64.548 518.486 58.982 516.076 58.752C513.666 58.522 509.598 54.002 509.447 52.948C509.297 51.892 507.716 48.646 505.982 49.482Z" fill="#9D3FE7" fill-opacity="0.7" />
+                  <path id="Vector_18" d="M197.296 138.593C196.311 136.733 189.186 133.396 189.286 138.593C189.387 143.791 187.83 146.954 189.286 150.118C190.742 153.282 195.262 153.96 197.296 154.638C199.33 155.316 202.267 155.316 202.945 153.056C203.623 150.796 204.008 147.863 202.007 145.827C200.007 143.79 197.296 138.593 197.296 138.593Z" fill="#9D3FE7" fill-opacity="0.7" />
+                  <path id="Vector_19" d="M282.038 134.749C280.856 132.001 273.677 132.939 273.677 134.749C273.677 136.559 276.163 141.531 276.841 144.468C277.519 147.405 278.389 152.603 284.281 151.247C290.173 149.891 291.192 148.761 291.135 146.727C291.077 144.694 282.038 134.749 282.038 134.749Z" fill="#9D3FE7" fill-opacity="0.7" />
+                  <path id="Vector_20" d="M365.424 127.972C364.449 125.926 359.774 122.77 358.419 125.484C357.063 128.198 353.899 133.622 356.837 134.526C359.775 135.43 361.357 135.656 362.712 139.045C364.068 142.435 365.198 143.791 367.457 144.243C369.717 144.695 372.655 144.695 373.784 140.853C374.914 137.011 367.457 132.142 367.457 132.142L365.424 127.972Z" fill="#9D3FE7" fill-opacity="0.7" />
+                  <path id="Vector_21" d="M442.913 124.431C441.007 121.935 440.624 116.928 438.39 120.303C436.155 123.678 433.896 127.09 435.477 130.468C437.059 133.847 441.579 138.09 444.516 137.776C447.454 137.462 453.513 135.828 452.415 133.021C451.316 130.215 442.913 124.431 442.913 124.431Z" fill="#9D3FE7" fill-opacity="0.7" />
+                  <path id="Vector_22" d="M428.687 26.929C426.556 24.799 433.368 49.482 433.368 55.508C433.368 61.534 449.94 57.316 449.94 57.316C449.94 57.316 447.831 53.7 445.42 52.495C443.01 51.29 443.311 49.181 441.804 47.674C440.297 46.168 440.398 48.277 438.389 45.264C436.381 42.251 433.206 31.448 428.687 26.929Z" fill="#6D00C2" fill-opacity="0.9" />
+                  <path id="Vector_23s" d="M507.467 24.646C507.467 24.646 510.803 45.5649 510.502 52.1939C510.201 58.8229 521.048 54.906 521.048 54.906C521.048 54.906 526.471 49.784 521.048 44.662C515.624 39.54 516.452 40.021 515.548 38.515C514.644 37.007 509.576 24.558 507.467 24.646Z" fill="#6D00C2" fill-opacity="0.9" />
+                  <path id="Vector_24" d="M352.607 31.12C352.607 31.12 356.535 49.038 355.932 58.751C355.329 68.464 364.067 61.09 364.067 58.751C364.067 56.412 364.777 52.34 362.97 51.436C361.162 50.532 358.801 45.634 358.198 40.813C357.596 35.993 354.415 31.723 352.607 31.12Z" fill="#6D00C2" fill-opacity="0.9" />
+                  <path id="Vector_25" d="M268.868 35.802C269.834 43.184 274.581 58.507 274.882 63.636C275.183 68.765 283.62 67.861 284.524 65.451C285.428 63.04 287.715 59.756 286.334 57.925C284.089 54.95 282.472 55.755 279.402 51.892C276.401 48.118 268.868 31.734 268.868 35.802Z" fill="#6D00C2" fill-opacity="0.9" />
+                  <path id="Vector_26" d="M189.539 41.453C190.384 47.703 193.136 59.67 193.333 67.381C193.53 75.092 210.403 69.914 213.114 67.381C215.826 64.848 209.197 66.355 205.883 65.149C202.569 63.944 201.296 64.335 199.723 59.123C198.045 53.563 192.097 41.941 189.539 41.453Z" fill="#6D00C2" fill-opacity="0.9" />
+                  <path id="Vector_27" d="M200.007 135.757C200.007 133.395 200.76 129.775 203.171 129.099C205.582 128.423 206.598 129.779 207.709 131.361C208.82 132.943 210.402 133.39 213.566 134.748C216.73 136.106 220.119 135.428 219.667 139.044C219.215 142.66 211.681 145.754 208.82 145.823C205.959 145.892 204.074 144.241 203.171 143.563C202.267 142.886 200.007 135.757 200.007 135.757Z" fill="#6D00C2" fill-opacity="0.9" />
+                  <path id="Vector_28" d="M284.749 132.265C284.906 129.261 283.619 124.82 284.749 122.441C285.879 120.062 288.817 118.706 290.624 123.678C292.432 128.649 295.822 129.101 297.629 132.265C299.437 135.429 293.994 138.99 290.172 137.374C286.351 135.757 284.749 132.265 284.749 132.265Z" fill="#6D00C2" fill-opacity="0.9" />
+                  <path id="Vector_29" d="M369.039 125.484C368.273 122.759 367.457 118.933 367.457 116.899C367.457 114.865 368.726 110.225 371.223 113.84C373.093 116.547 374.261 120.544 376.961 120.303C379.66 120.062 385.762 122.322 385.762 124.13C385.762 125.938 387.44 127.515 384.68 129.099C381.92 130.683 370.303 130.457 370.303 130.457L369.039 125.484Z" fill="#6D00C2" fill-opacity="0.9" />
+                  <path id="Vector_30" d="M445.194 122.442C444.342 119.24 443.32 116.197 442.934 114.188C442.611 112.504 443.528 107.535 444.402 107.295C446.632 106.685 448.583 109.197 449.939 112.031C451.295 114.865 452.425 115.543 455.137 116.899C457.849 118.255 461.916 120.075 461.916 122.442C461.916 124.809 459.204 126.842 456.718 126.842C454.233 126.842 445.194 122.442 445.194 122.442Z" fill="#6D00C2" fill-opacity="0.9" />
+                  <path id="Vector_31" d="M710.041 232.6C714.277 234.147 718.854 235.826 722.47 233.196C726.086 230.566 725.634 210.276 725.634 206.636C725.634 202.996 733.191 157.801 732.577 154.637C731.962 151.473 732.356 120.739 732.577 112.605C732.866 101.984 744.073 104.8 750.04 97.088C752.991 93.274 693.319 94.255 683.376 92.447C673.433 90.639 649.325 87.641 639.536 85.668C633.365 84.424 612.399 81.765 605.639 73.013C598.88 64.262 574.083 42.501 553.439 37.128C546.225 35.251 533.072 34.144 531.717 38.664C530.362 43.184 531.774 51.862 531.746 61.534C531.717 71.205 521.644 82.262 515.927 92.267C508.865 104.627 503.932 119.384 500.784 132.141C498.893 139.804 479.328 160.154 451.754 166.434C424.18 172.715 543.497 174.07 543.497 174.07L710.041 232.6Z" fill="#6D00C2" fill-opacity="0.9" />
+                  <path id="Vector_32" d="M715.69 207.516C715.69 211.672 715.589 216.467 713.619 220.61C712.652 222.681 711.221 224.59 709.112 226.172C706.714 227.98 703.437 229.373 698.968 230.114C682.698 232.826 625.751 235.538 605.413 238.702C585.075 241.866 525.417 248.193 510.502 248.645C495.587 249.097 414.235 261.3 400.676 262.203C387.117 263.107 327.911 270.791 315.256 273.05C302.601 275.31 233.452 279.829 225.317 280.281C217.182 280.733 200.007 283.445 185.545 282.089C171.082 280.733 160.085 268.53 160.085 268.53V189.802C168.509 188.823 232.398 185.069 244.45 185.069C256.502 185.069 312.545 179.47 331.828 178.352C351.111 177.234 408.962 168.798 421.617 168.798C434.272 168.798 484.288 162.772 493.328 162.169C502.367 161.567 570.161 156.445 588.239 157.348C606.317 158.252 644.282 158.704 656.937 162.319C669.592 165.934 691.738 166.839 699.421 170.002C707.104 173.166 713.431 172.714 715.691 178.137C717.95 183.562 715.69 198.929 715.69 207.516Z" fill="#C800E8" />
+                  <path id="Vector_33" d="M709.112 226.172C706.714 227.98 703.437 229.373 698.968 230.114C682.698 232.826 625.751 235.538 605.413 238.702C585.075 241.866 525.417 248.193 510.502 248.645C495.587 249.097 414.235 261.3 400.676 262.203C387.117 263.107 327.911 270.791 315.256 273.05C302.601 275.31 233.452 279.829 225.317 280.281C217.182 280.733 200.007 283.445 185.545 282.089C171.082 280.733 167.467 270.217 167.467 270.217L160.085 219.204C162.32 220.196 164.592 221.339 166.563 222.43C173.041 226.046 182.834 226.046 193.329 224.238C202.958 222.581 227.515 219.781 228.055 219.781C228.03 219.806 227.866 219.819 227.578 219.856C223.059 220.433 214.471 228.305 208.596 231.921C202.721 235.537 207.24 244.576 208.596 250.903C209.952 257.23 223.963 265.817 233.454 268.078C242.945 270.338 292.66 262.202 307.575 261.75C322.49 261.298 353.223 256.326 373.109 256.326C392.995 256.326 438.191 245.931 454.461 245.931C470.732 245.931 509.148 239.152 522.255 238.248C535.362 237.344 557.508 234.632 567.903 233.728C578.298 232.824 606.319 226.497 619.878 227.426C633.437 228.342 656.939 226.497 681.796 224.689C695.478 223.699 704.228 224.615 709.112 226.172Z" fill="#6D00C2" fill-opacity="0.9" />
+                  <path id="Vector_34" d="M182.381 277.57C177.592 277.159 174.246 280.13 173.643 282.466C173.04 284.801 182.08 295.347 191.42 294.443C200.761 293.539 201.363 294.553 206.184 294.498C211.005 294.443 225.769 288.718 230.288 288.718C234.808 288.718 247.462 286.326 251.982 286.015C256.502 285.704 281.811 285.704 284.523 284.801C287.235 283.897 307.723 279.679 312.846 279.076C317.968 278.473 348.701 275.762 357.74 275.762C366.779 275.762 375.517 273.351 379.133 271.544C382.749 269.736 410.167 266.723 416.796 266.422C423.425 266.121 444.516 263.71 450.843 261.902C457.17 260.094 491.519 257.382 498.75 256.78C505.981 256.177 510.802 254.068 516.828 253.164C522.854 252.26 559.915 249.548 566.845 249.247C573.775 248.946 597.879 245.33 605.111 244.426C612.342 243.522 631.927 242.919 641.268 242.015C650.608 241.111 662.359 241.714 667.783 240.207C673.207 238.701 678.931 237.495 685.861 237.495C692.791 237.495 706.651 235.386 711.171 235.386C715.691 235.386 716.494 229.661 716.695 228.155C716.896 226.648 719.005 210.077 718.704 207.365C718.403 204.653 705.748 210.378 705.748 210.378L182.381 277.57Z" fill="#6D00C2" fill-opacity="0.9" />
+                  <path id="Vector_35" d="M108.259 362.241L100.714 378.097L66.98 449.017C66.98 449.017 60.05 451.277 54.627 450.222C54.275 450.159 53.949 450.084 53.622 450.021C48.939 448.966 47.094 447.51 47.094 447.51L73.421 379.202L82.046 356.818L95.981 359.705L108.259 362.241Z" fill="#CD9FE2" fill-opacity="0.8" />
+                  <path id="Vector_36" d="M108.259 362.241L100.714 378.097C89.767 376.239 79.673 377.733 73.421 379.202L82.046 356.818L95.981 359.705L108.259 362.241Z" fill="#CD9FE2" fill-opacity="0.8" />
+                  <path id="Vector_37" d="M95.981 359.705L53.622 450.021C48.939 448.966 47.094 447.51 47.094 447.51L82.045 356.817L95.981 359.705Z" fill="#CD9FE2" fill-opacity="0.8" />
+                  <path id="Vector_38" d="M710.492 194.138C709.16 189.575 706.198 187.585 700.324 186.01C697.995 185.386 688.875 182.997 682.547 182.997C676.22 182.997 662.058 182.696 643.377 182.997C624.696 183.299 578.304 186.917 569.256 186.312C561.651 185.803 520.445 193.544 504.174 194.146C487.904 194.749 423.424 202.344 407.757 201.867C392.089 201.377 335.444 205.595 314.353 207.403C293.262 209.211 242.04 214.635 235.411 214.032C228.782 213.429 210.102 215.237 200.46 215.84C190.818 216.443 181.177 222.468 172.137 217.648C168.823 215.878 164.391 213.606 160.085 211.308V189.84C168.509 188.861 232.398 185.107 244.45 185.107C256.502 185.107 312.545 179.508 331.828 178.39C351.111 177.272 408.962 168.836 421.617 168.836C434.272 168.836 484.288 162.81 493.328 162.207C502.367 161.605 570.161 156.483 588.239 157.386C606.317 158.29 644.282 158.742 656.937 162.357C669.592 165.972 691.738 166.877 699.421 170.04C707.104 173.204 713.431 172.752 715.691 178.175C716.954 181.206 717.178 187.378 716.428 193.669C714.109 213.12 711.107 196.245 710.492 194.138Z" fill="#9D3FE7" fill-opacity="0.7" />
+                  <path id="Vector_39" d="M193.941 80.076C198.06 80.076 201.399 76.7369 201.399 72.618C201.399 68.499 198.06 65.16 193.941 65.16C189.822 65.16 186.483 68.499 186.483 72.618C186.483 76.7369 189.822 80.076 193.941 80.076Z" fill="#6D00C2" fill-opacity="0.9" />
+                  <path id="Vector_40" d="M273.26 75.403C277.379 75.403 280.718 72.0639 280.718 67.945C280.718 63.8261 277.379 60.487 273.26 60.487C269.141 60.487 265.802 63.8261 265.802 67.945C265.802 72.0639 269.141 75.403 273.26 75.403Z" fill="#6D00C2" fill-opacity="0.9" />
+                  <path id="Vector_41" d="M358.425 70.9738C362.234 69.4048 364.049 65.0458 362.48 61.2374C360.911 57.429 356.552 55.6136 352.744 57.1825C348.935 58.7514 347.12 63.1105 348.689 66.9189C350.258 70.7272 354.617 72.5427 358.425 70.9738Z" fill="#6D00C2" fill-opacity="0.9" />
+                  <path id="Vector_42" d="M425.059 60.848C425.059 56.729 428.398 53.39 432.517 53.39C436.636 53.39 439.975 56.729 439.975 60.848C439.975 64.967 436.636 68.306 432.517 68.306C428.398 68.306 425.059 64.967 425.059 60.848Z" fill="#6D00C2" fill-opacity="0.9" />
+                  <path id="Vector_43" d="M511.388 64.262C515.507 64.262 518.846 60.923 518.846 56.804C518.846 52.6851 515.507 49.346 511.388 49.346C507.269 49.346 503.93 52.6851 503.93 56.804C503.93 60.923 507.269 64.262 511.388 64.262Z" fill="#6D00C2" fill-opacity="0.9" />
+                  <path id="Vector_44" d="M195.35 78.692C199.027 78.692 202.008 75.7111 202.008 72.034C202.008 68.3569 199.027 65.376 195.35 65.376C191.673 65.376 188.692 68.3569 188.692 72.034C188.692 75.7111 191.673 78.692 195.35 78.692Z" fill="#C800E8" />
+                  <path id="Vector_45" d="M274.569 74.164C278.246 74.164 281.227 71.1831 281.227 67.506C281.227 63.8289 278.246 60.848 274.569 60.848C270.892 60.848 267.911 63.8289 267.911 67.506C267.911 71.1831 270.892 74.164 274.569 74.164Z" fill="#C800E8" />
+                  <path id="Vector_46" d="M356.987 70.294C360.664 70.294 363.645 67.3131 363.645 63.636C363.645 59.9589 360.664 56.978 356.987 56.978C353.31 56.978 350.329 59.9589 350.329 63.636C350.329 67.3131 353.31 70.294 356.987 70.294Z" fill="#C800E8" />
+                  <path id="Vector_47" d="M433.645 67.015C437.322 67.015 440.303 64.0341 440.303 60.357C440.303 56.6799 437.322 53.699 433.645 53.699C429.968 53.699 426.987 56.6799 426.987 60.357C426.987 64.0341 429.968 67.015 433.645 67.015Z" fill="#C800E8" />
+                  <path id="Vector_48" d="M444.957 134.3C449.076 134.3 452.415 130.961 452.415 126.842C452.415 122.723 449.076 119.384 444.957 119.384C440.838 119.384 437.499 122.723 437.499 126.842C437.499 130.961 440.838 134.3 444.957 134.3Z" fill="#6D00C2" fill-opacity="0.9" />
+                  <path id="Vector_49" d="M446.633 132.142C450.31 132.142 453.291 129.161 453.291 125.484C453.291 121.807 450.31 118.826 446.633 118.826C442.956 118.826 439.975 121.807 439.975 125.484C439.975 129.161 442.956 132.142 446.633 132.142Z" fill="#C800E8" />
+                  <path id="Vector_50" d="M376.034 131.133C376.692 127.067 373.93 123.238 369.864 122.58C365.798 121.921 361.969 124.684 361.311 128.75C360.652 132.815 363.415 136.645 367.481 137.303C371.546 137.961 375.376 135.199 376.034 131.133Z" fill="#6D00C2" fill-opacity="0.9" />
+                  <path id="Vector_51" d="M370.303 135.757C373.98 135.757 376.961 132.776 376.961 129.099C376.961 125.422 373.98 122.441 370.303 122.441C366.626 122.441 363.645 125.422 363.645 129.099C363.645 132.776 366.626 135.757 370.303 135.757Z" fill="#C800E8" />
+                  <path id="Vector_52" d="M284.28 144.015C288.399 144.015 291.738 140.676 291.738 136.557C291.738 132.438 288.399 129.099 284.28 129.099C280.161 129.099 276.822 132.438 276.822 136.557C276.822 140.676 280.161 144.015 284.28 144.015Z" fill="#6D00C2" fill-opacity="0.9" />
+                  <path id="Vector_53" d="M286.351 142.415C290.028 142.415 293.009 139.434 293.009 135.757C293.009 132.08 290.028 129.099 286.351 129.099C282.674 129.099 279.693 132.08 279.693 135.757C279.693 139.434 282.674 142.415 286.351 142.415Z" fill="#C800E8" />
+                  <path id="Vector_54" d="M199.554 149.854C203.673 149.854 207.012 146.515 207.012 142.396C207.012 138.277 203.673 134.938 199.554 134.938C195.435 134.938 192.096 138.277 192.096 142.396C192.096 146.515 195.435 149.854 199.554 149.854Z" fill="#6D00C2" fill-opacity="0.9" />
+                  <path id="Vector_55" d="M194.393 141.407C194.393 137.73 197.374 134.749 201.051 134.749C204.728 134.749 207.709 137.73 207.709 141.407C207.709 145.084 204.728 148.065 201.051 148.065C197.374 148.065 194.393 145.084 194.393 141.407Z" fill="#C800E8" />
+                  <path id="Vector_56" d="M512.64 62.662C516.317 62.662 519.298 59.6811 519.298 56.004C519.298 52.3269 516.317 49.346 512.64 49.346C508.963 49.346 505.982 52.3269 505.982 56.004C505.982 59.6811 508.963 62.662 512.64 62.662Z" fill="#C800E8" />
+                  <path id="Vector_57" d="M525.057 125.484C528.734 125.484 531.715 122.503 531.715 118.826C531.715 115.149 528.734 112.168 525.057 112.168C521.38 112.168 518.399 115.149 518.399 118.826C518.399 122.503 521.38 125.484 525.057 125.484Z" fill="#C800E8" />
+                  <path id="Vector_58" d="M766.198 94.302C763.875 94.491 748.306 91.273 739.116 88.229C730.359 85.328 722.115 83.876 710.492 82.806C701.041 81.936 672.98 78.311 663.488 77.684C653.997 77.044 630.743 69.004 628.085 66.385C624.679 63.03 605.487 49.06 600.968 45.444C596.448 41.828 580.479 36.104 570.084 32.94C559.689 29.776 530.55 19.168 516.753 15.163C502.956 11.158 479.317 8.204 469.826 6.396C466.725 5.806 466.951 4.97699 468.797 4.14899C478.351 4.87699 487.239 5.75602 494.684 6.84802C531.745 12.271 591.403 32.61 605.413 41.197C619.424 49.785 637.05 66.958 652.417 70.122C667.784 73.286 711.623 75.545 728.798 79.613C736.443 81.42 759.906 87.024 766.198 94.302Z" fill="#9D3FE7" fill-opacity="0.7" />
+                  <path id="Vector_59" d="M189.286 374.024C187.114 374.401 185.583 374.69 184.792 374.891C175.15 377.301 161.29 377.301 148.636 378.506C135.981 379.711 109.466 371.877 85.965 365.248C62.463 358.62 48 357.415 41.372 338.733C34.743 320.052 24.499 258.586 20.883 233.276C17.267 207.967 1.59901 112.151 1.59901 112.151C0.557008 106.226 -0.220981 97.676 1.27302 88.222L10.562 68.642C11.918 65.591 16.965 66.918 16.965 78.694C16.965 90.458 22.614 107.209 30.524 113.959C34.064 116.98 41.823 124.354 49.958 125.258C58.093 126.162 84.307 127.97 90.634 129.1C96.961 130.23 112.391 134.749 113.031 145.597C113.684 156.444 114.851 216.103 116.521 229.209C118.203 242.316 120.915 277.631 122.271 290.034C123.627 302.425 126.79 332.707 136.281 344.457C145.772 356.208 155.929 368.637 176.706 370.67C182.368 371.225 186.411 372.493 189.286 374.024Z" fill="#6D00C2" fill-opacity="0.9" />
+                  <path id="Vector_60" d="M69.09 82.625C69.407 89.246 69.693 104.922 87.771 110.345C105.849 115.768 138.993 119.384 148.635 126.013C158.277 132.642 163.7 146.502 164.905 157.349C166.11 168.196 170.328 205.558 172.136 217.61C173.944 229.662 175.149 268.229 176.957 274.255C178.765 280.281 178.162 294.744 185.996 296.552C193.83 298.36 196.24 314.63 189.009 315.233C181.778 315.836 169.123 303.181 165.507 285.705C161.891 268.229 155.865 194.108 153.455 177.838C151.045 161.568 148.217 133.997 140.8 130.835C133.383 127.673 114.888 123.001 107.656 121.796C100.425 120.591 90.592 117.675 75.491 115.498C56.885 112.816 35.719 89.737 46.114 67.243C50.594 57.55 60.878 53.579 69.314 51.169C77.751 48.758 84.154 45.858 95.001 44.059C105.848 42.26 132.137 39.422 133.342 43.682C134.547 47.942 128.87 51.409 120.311 53.098C109.062 55.318 73.307 68.766 72.102 72.382C70.898 75.997 68.832 77.228 69.09 82.625Z" fill="#9D3FE7" fill-opacity="0.7" />
                 </g>
               </svg>
 
@@ -2140,7 +2241,7 @@ export default function Home() {
                 <g id="rocket-path">
                   <path id="vector-1-rocket" d="M1 443C179.5 681 417.5 231 588.5 340.5C725.3 428.1 821 184.5 953 164" stroke="black" strokeWidth="1" strokeDasharray="20 20" />
                   <g id="136482588_8223fe61-4935-4507-9a6e-2decc3debd46 1">
-                    <path id="Vector" d="M1024.08 74.6622C1024.07 74.592 1024.06 74.5217 1024.05 74.4517C1023.58 72.2489 1021.21 70.7712 1019 70.9168C1018.29 69.5993 1017.28 68.4367 1016.08 67.5243C1014.62 64.8431 1011.97 62.7775 1008.94 62.232C1004.72 61.471 1000.16 63.7382 998.162 67.5028C998.065 67.446 997.967 67.3898 997.867 67.3364C997.449 65.1349 995.005 63.6851 992.74 63.0745C988.875 62.033 984.54 62.2549 981.134 64.3441C978.212 66.1372 976.169 69.4497 976.166 72.8172C973.685 72.0392 971.131 71.4273 968.518 70.992C966.385 70.6368 964.214 70.3961 962.008 70.2845C964.735 65.5683 967.192 60.731 969.29 55.8002C971.816 49.8623 973.976 43.4119 974.008 36.8904C974.065 25.6391 967.932 17.7144 959.412 13.293C947.989 7.36484 932.275 7.73741 921.421 14.8589C914.404 19.4633 909.65 26.8252 909.367 35.3392C909.09 43.6893 911.825 52.0205 915.179 59.5528C917.947 65.7685 921.351 71.6926 925.059 77.3904C925.314 77.7822 926.019 78.7536 926.999 80.0775C911.925 90.3451 902.025 107.646 902.025 127.26C902.025 136.243 904.108 144.736 907.806 152.295C906.944 151.735 905.944 151.319 904.975 151.058C901.111 150.017 896.776 150.238 893.37 152.328C889.971 154.413 887.755 158.554 888.563 162.446L888.56 162.465C886.042 160.389 881.794 161.01 879.913 163.668C878.884 165.122 878.655 167.01 879.093 168.731C879.455 170.159 880.275 171.471 881.489 172.321C884.292 174.284 887.995 173.42 890.319 171.208C893.403 176.237 899.174 179.871 905.284 179.551C909.696 179.321 913.95 176.989 916.501 173.401C919.184 174.854 922.548 174.611 925.211 173.165C925.949 173.711 926.696 174.244 927.461 174.754C929.682 176.235 932.011 177.566 934.437 178.729C936.305 179.625 938.229 180.422 940.203 181.114C946.11 183.184 952.462 184.309 959.076 184.309C960.369 184.309 961.651 184.266 962.923 184.18H962.924C965.868 183.985 968.751 183.567 971.556 182.938C984.571 180.036 995.908 172.685 1003.89 162.565C1011.55 152.853 1016.13 140.59 1016.13 127.26C1016.13 115.943 1012.83 105.394 1007.14 96.5225C1005.35 93.72 1003.31 91.0875 1001.07 88.6487C1002.29 87.7434 1003.38 86.6573 1004.26 85.4165C1008.69 87.8149 1014.98 85.5992 1016.9 80.9631C1017.03 80.6578 1017.15 80.3303 1017.41 80.1233C1017.86 79.7614 1018.51 79.907 1019.08 79.9648C1021.89 80.246 1024.51 77.4096 1024.08 74.6622Z" fill="#13757B" />
+                    {/* <path id="Vector" d="M1024.08 74.6622C1024.07 74.592 1024.06 74.5217 1024.05 74.4517C1023.58 72.2489 1021.21 70.7712 1019 70.9168C1018.29 69.5993 1017.28 68.4367 1016.08 67.5243C1014.62 64.8431 1011.97 62.7775 1008.94 62.232C1004.72 61.471 1000.16 63.7382 998.162 67.5028C998.065 67.446 997.967 67.3898 997.867 67.3364C997.449 65.1349 995.005 63.6851 992.74 63.0745C988.875 62.033 984.54 62.2549 981.134 64.3441C978.212 66.1372 976.169 69.4497 976.166 72.8172C973.685 72.0392 971.131 71.4273 968.518 70.992C966.385 70.6368 964.214 70.3961 962.008 70.2845C964.735 65.5683 967.192 60.731 969.29 55.8002C971.816 49.8623 973.976 43.4119 974.008 36.8904C974.065 25.6391 967.932 17.7144 959.412 13.293C947.989 7.36484 932.275 7.73741 921.421 14.8589C914.404 19.4633 909.65 26.8252 909.367 35.3392C909.09 43.6893 911.825 52.0205 915.179 59.5528C917.947 65.7685 921.351 71.6926 925.059 77.3904C925.314 77.7822 926.019 78.7536 926.999 80.0775C911.925 90.3451 902.025 107.646 902.025 127.26C902.025 136.243 904.108 144.736 907.806 152.295C906.944 151.735 905.944 151.319 904.975 151.058C901.111 150.017 896.776 150.238 893.37 152.328C889.971 154.413 887.755 158.554 888.563 162.446L888.56 162.465C886.042 160.389 881.794 161.01 879.913 163.668C878.884 165.122 878.655 167.01 879.093 168.731C879.455 170.159 880.275 171.471 881.489 172.321C884.292 174.284 887.995 173.42 890.319 171.208C893.403 176.237 899.174 179.871 905.284 179.551C909.696 179.321 913.95 176.989 916.501 173.401C919.184 174.854 922.548 174.611 925.211 173.165C925.949 173.711 926.696 174.244 927.461 174.754C929.682 176.235 932.011 177.566 934.437 178.729C936.305 179.625 938.229 180.422 940.203 181.114C946.11 183.184 952.462 184.309 959.076 184.309C960.369 184.309 961.651 184.266 962.923 184.18H962.924C965.868 183.985 968.751 183.567 971.556 182.938C984.571 180.036 995.908 172.685 1003.89 162.565C1011.55 152.853 1016.13 140.59 1016.13 127.26C1016.13 115.943 1012.83 105.394 1007.14 96.5225C1005.35 93.72 1003.31 91.0875 1001.07 88.6487C1002.29 87.7434 1003.38 86.6573 1004.26 85.4165C1008.69 87.8149 1014.98 85.5992 1016.9 80.9631C1017.03 80.6578 1017.15 80.3303 1017.41 80.1233C1017.86 79.7614 1018.51 79.907 1019.08 79.9648C1021.89 80.246 1024.51 77.4096 1024.08 74.6622Z" fill="#13757B" />
                     <path id="Vector_2" d="M959.412 13.2932C947.99 7.36504 932.275 7.73761 921.421 14.8591C914.404 19.4635 909.65 26.8254 909.367 35.3394C909.09 43.6895 911.825 52.0206 915.18 59.553C917.948 65.7687 921.351 71.6928 925.059 77.3906C925.314 77.7824 926.019 78.7538 926.999 80.0777C927.847 81.2231 928.901 82.6325 930.051 84.1631C934.843 90.5428 941.282 99.0058 941.253 99.039C947.085 92.2858 952.681 85.0148 957.65 77.3682C959.164 75.0399 960.624 72.6796 962.008 70.2846C964.735 65.5685 967.192 60.7312 969.29 55.8004C971.816 49.8625 973.976 43.4121 974.008 36.8906C974.065 25.6393 967.932 17.7146 959.412 13.2932Z" fill="#E84531" />
                     <path id="Vector_3" d="M956.962 31.126C953.99 25.4329 948.035 21.5442 941.167 21.5442C931.331 21.5442 923.356 29.5186 923.356 39.3551C923.356 44.0572 925.181 48.3307 928.158 51.5142C931.13 57.2075 937.086 61.0963 943.953 61.0963C953.79 61.0963 961.764 53.1219 961.764 43.2854C961.764 38.5831 959.939 34.3094 956.962 31.126Z" fill="#CD3327" />
                     <path id="Vector_4" d="M1007.14 96.5229C1007.04 99.4721 1006.71 102.428 1006.16 105.37C1004.89 112.293 1002.56 118.965 999.625 125.377C998.015 128.901 996.219 132.347 994.314 135.715C989.76 143.763 984.443 151.541 977.96 158.085C974.858 161.218 971.487 164.068 967.805 166.527C962.988 169.745 957.803 172.199 952.389 174.12C946.61 176.171 940.57 177.613 934.437 178.729C936.305 179.625 938.229 180.422 940.203 181.114C946.11 183.184 952.462 184.31 959.076 184.31C960.37 184.31 961.651 184.267 962.923 184.18H962.924C965.868 183.986 968.751 183.567 971.556 182.939C984.571 180.036 995.908 172.685 1003.89 162.565C1011.55 152.853 1016.13 140.59 1016.13 127.26C1016.13 115.943 1012.83 105.394 1007.14 96.5229Z" fill="#005A58" />
@@ -2152,7 +2253,7 @@ export default function Home() {
                     <path id="Vector_10" d="M909.125 132.468C908.345 126.582 908.487 120.603 909.59 114.765C910.099 112.073 910.818 109.43 911.706 106.84C912.681 103.993 914.141 101.358 915.148 98.5394C915.46 97.6628 914.238 97.3308 913.765 97.9563C910.323 102.504 908.585 109.116 907.563 114.63C906.469 120.534 906.38 126.522 907.177 132.468C907.341 133.692 909.289 133.71 909.125 132.468Z" fill="#289B9B" />
                     <path id="Vector_11" d="M908.521 137.846C908.592 138.985 908.797 140.056 909.04 141.171C909.27 142.228 909.332 143.5 909.997 144.375C910.324 144.806 911.137 144.859 911.273 144.209C911.49 143.169 911.11 142.189 910.87 141.172C910.587 139.972 910.314 138.812 909.851 137.666C909.59 137.019 908.469 137.016 908.521 137.846Z" fill="#289B9B" />
                     <path id="Vector_12" d="M936.514 162.386C936.274 161.268 935.579 160.333 934.674 159.68C933.769 159.026 932.652 158.648 931.54 158.648C930.904 158.648 930.271 158.782 929.684 159.053C929.19 154.654 925.606 150.78 921.222 149.984C920.658 149.883 920.089 149.834 919.521 149.834C915.807 149.836 912.13 151.918 910.305 155.15C910.187 154.632 909.973 154.152 909.673 153.721C909.229 153.084 908.621 152.545 907.934 152.098C907.047 151.522 906.027 151.098 905.037 150.831C903.557 150.433 902.008 150.217 900.467 150.217C897.93 150.217 895.409 150.801 893.247 152.128C890.257 153.965 888.165 157.342 888.162 160.808C888.162 161.188 888.197 161.568 888.249 161.947C887.264 161.299 886.095 160.991 884.922 160.991C882.922 160.992 880.895 161.877 879.721 163.532C878.988 164.568 878.647 165.81 878.647 167.056C878.647 167.638 878.721 168.222 878.865 168.788C879.24 170.264 880.087 171.627 881.354 172.514C882.478 173.301 883.745 173.651 885.008 173.651C886.923 173.65 888.824 172.848 890.271 171.562C893.298 176.328 898.704 179.803 904.536 179.806C904.789 179.806 905.042 179.8 905.296 179.786C909.716 179.555 913.964 177.254 916.571 173.698C917.794 174.32 919.14 174.613 920.493 174.613C922.166 174.612 923.848 174.172 925.323 173.372C927.097 172.409 928.574 170.922 929.356 169.037C929.482 168.724 929.599 168.44 929.79 168.291C929.959 168.154 930.177 168.106 930.448 168.106C930.709 168.106 931.004 168.153 931.297 168.183C931.434 168.197 931.571 168.203 931.707 168.203C933.007 168.203 934.227 167.594 935.124 166.677C936.021 165.76 936.603 164.526 936.604 163.245C936.604 162.959 936.575 162.672 936.514 162.386Z" fill="#FDEFEE" />
-                    <path id="Vector_13" d="M1024.31 74.6263C1024.3 74.5718 1024.3 74.4965 1024.28 74.4021C1024.04 73.2847 1023.34 72.3514 1022.44 71.6999C1021.53 71.0483 1020.42 70.6722 1019.31 70.6716C1019.2 70.6716 1019.09 70.6749 1018.99 70.6822C1018.46 70.7166 1017.94 70.8404 1017.45 71.0637C1017.31 69.78 1016.9 68.5413 1016.29 67.4118C1014.79 64.6714 1012.09 62.5618 1008.99 62.0006C1008.42 61.8992 1007.85 61.8501 1007.29 61.8501C1003.57 61.8526 999.896 63.9478 998.072 67.189C997.824 66.0604 997.085 65.1353 996.138 64.4214C995.16 63.6842 993.958 63.16 992.801 62.8477C991.32 62.4487 989.772 62.2326 988.23 62.2326C985.694 62.2326 983.173 62.8176 981.011 64.1439C978.024 65.9791 975.939 69.3501 975.931 72.8121H975.931V72.8168V72.8172V72.825C975.931 73.2038 975.964 73.5839 976.014 73.9639C975.029 73.3156 973.86 73.0068 972.686 73.0069C970.686 73.0078 968.658 73.8933 967.485 75.5483C966.75 76.5864 966.407 77.8317 966.407 79.0814C966.408 81.1779 967.368 83.3026 969.118 84.5304C970.242 85.3173 971.509 85.6673 972.772 85.6668C974.688 85.6657 976.588 84.8637 978.034 83.5781C981.062 88.3433 986.467 91.8195 992.299 91.8222C992.552 91.8222 992.805 91.8157 993.06 91.8025C994.575 91.7236 996.067 91.3959 997.481 90.8644C998.81 90.3648 1000.07 89.681 1001.21 88.8382C1002.4 87.9589 1003.46 86.907 1004.33 85.713C1005.56 86.3364 1006.91 86.6295 1008.26 86.6294C1011.94 86.627 1015.68 84.5036 1017.12 81.0535C1017.25 80.7396 1017.36 80.4554 1017.55 80.3069C1017.72 80.1703 1017.94 80.1224 1018.21 80.122C1018.47 80.1215 1018.77 80.169 1019.06 80.1992C1019.2 80.2129 1019.33 80.2195 1019.47 80.2194C1020.77 80.2187 1021.99 79.6106 1022.88 78.6941C1023.78 77.7768 1024.36 76.5438 1024.36 75.263C1024.36 75.0515 1024.34 74.8386 1024.31 74.6263Z" fill="#FDEFEE" />
+                    <path id="Vector_13" d="M1024.31 74.6263C1024.3 74.5718 1024.3 74.4965 1024.28 74.4021C1024.04 73.2847 1023.34 72.3514 1022.44 71.6999C1021.53 71.0483 1020.42 70.6722 1019.31 70.6716C1019.2 70.6716 1019.09 70.6749 1018.99 70.6822C1018.46 70.7166 1017.94 70.8404 1017.45 71.0637C1017.31 69.78 1016.9 68.5413 1016.29 67.4118C1014.79 64.6714 1012.09 62.5618 1008.99 62.0006C1008.42 61.8992 1007.85 61.8501 1007.29 61.8501C1003.57 61.8526 999.896 63.9478 998.072 67.189C997.824 66.0604 997.085 65.1353 996.138 64.4214C995.16 63.6842 993.958 63.16 992.801 62.8477C991.32 62.4487 989.772 62.2326 988.23 62.2326C985.694 62.2326 983.173 62.8176 981.011 64.1439C978.024 65.9791 975.939 69.3501 975.931 72.8121H975.931V72.8168V72.8172V72.825C975.931 73.2038 975.964 73.5839 976.014 73.9639C975.029 73.3156 973.86 73.0068 972.686 73.0069C970.686 73.0078 968.658 73.8933 967.485 75.5483C966.75 76.5864 966.407 77.8317 966.407 79.0814C966.408 81.1779 967.368 83.3026 969.118 84.5304C970.242 85.3173 971.509 85.6673 972.772 85.6668C974.688 85.6657 976.588 84.8637 978.034 83.5781C981.062 88.3433 986.467 91.8195 992.299 91.8222C992.552 91.8222 992.805 91.8157 993.06 91.8025C994.575 91.7236 996.067 91.3959 997.481 90.8644C998.81 90.3648 1000.07 89.681 1001.21 88.8382C1002.4 87.9589 1003.46 86.907 1004.33 85.713C1005.56 86.3364 1006.91 86.6295 1008.26 86.6294C1011.94 86.627 1015.68 84.5036 1017.12 81.0535C1017.25 80.7396 1017.36 80.4554 1017.55 80.3069C1017.72 80.1703 1017.94 80.1224 1018.21 80.122C1018.47 80.1215 1018.77 80.169 1019.06 80.1992C1019.2 80.2129 1019.33 80.2195 1019.47 80.2194C1020.77 80.2187 1021.99 79.6106 1022.88 78.6941C1023.78 77.7768 1024.36 76.5438 1024.36 75.263C1024.36 75.0515 1024.34 74.8386 1024.31 74.6263Z" fill="#FDEFEE" /> */}
                   </g>
                 </g>
 
@@ -2198,10 +2299,14 @@ export default function Home() {
               <div className="heading">
                 <p >Contact Us</p>
               </div>
+
+              <button id="get-in-touch-fashion" style={{ position: "absolute", bottom: "20px", left: "50%", transform: "translateX(-50%)", backgroundColor: "#2E4BF5" }}>
+                Send
+              </button>
             </div>
           </div>
         </div >
-      </ReactLenis>
+      </ReactLenis >
     </>
   );
 }
