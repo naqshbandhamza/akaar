@@ -518,7 +518,7 @@ body {
 #akaar-wed,
 #akaar-wed-shadow {
     background-color: #FFFFFF;
-    height: 113px;
+    height: 8.4vw;
 }
 
 .akaar-wedstyle {
@@ -594,7 +594,7 @@ body {
 #akaar-fashion,
 #akaar-fashion-shadow {
     background-color: #FFFFFF;
-    height: 113px;
+     height: 8.4vw;
     /* inset: calc(0 0 0 0); */
 }
 
@@ -721,7 +721,7 @@ body {
 #akaar-commercials,
 #akaar-commercials-shadow {
     background-color: #FFFFFF;
-    height: 113px;
+     height: 8.4vw;
 }
 
 #commercials-illus {
