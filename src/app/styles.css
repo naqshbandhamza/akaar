@@ -34,13 +34,38 @@
 }
 
 @font-face {
+    font-family: montesrratlight;
+    src: url("./fonts/Montserrat-VariableFont_wght.ttf");
+}
+
+@font-face {
     font-family: makromed;
     src: url("./fonts/MakroTrial-Semibold.otf");
 }
 
 @font-face {
     font-family: makroreg;
-    src: url("./fonts/MakroTrial-Regular.otf");
+    src: url("./fonts/MakroTrial-Light.otf");
+}
+
+@font-face {
+    font-family: ttcommonpro;
+    src: url("./fonts/tt_commons_pro_regular.otf");
+}
+
+@font-face {
+    font-family: dmsans;
+    src: url("./fonts/DMSans_24pt-Light.ttf");
+}
+
+@font-face {
+    font-family: redhat;
+    src: url("./fonts/RedHatDisplay-Regular.ttf");
+}
+
+@font-face {
+    font-family: naville;
+    src: url("./fonts/Naville-Regular.ttf");
 }
 
 
@@ -85,47 +110,61 @@ body {
 }
 
 #section-1 {
-    overflow: hidden;
+    overflow: visible;
     background-color: #FFFFFF;
     position: relative;
 }
 
 #section-2 {
-    overflow: hidden;
+    overflow: visible;
     position: relative;
-    background-color: #FFFBEC;
+    background-color: #FFFFFF;
 }
 
 #section-3 {
     position: relative;
-    overflow: hidden;
-    background-color: #FFDBDB;
+    overflow: visible;
+    background-color: #FFFFFF;
 }
 
 #section-4 {
     position: relative;
-    overflow: hidden;
-    background-color: #EBD9F3;
+    overflow: visible;
+    background-color: #FFFFFF;
 }
 
 .cnt-for-h {
     position: absolute;
-    top: 45%;
+    top: 50%;
     left: 50%;
     height: 300px;
     width: 780px;
-    transform: translate(-50%, -45%);
+    transform: translate(-50%, -50%);
+}
+
+.sec-1-btn {
+    height: 50px;
+    width: 200px;
+    background-color: #2E4BF5;
+    color: #FFFFFF;
+    font-size: 10px;
+    font-family: montesrratlight;
+    border-radius: 50px;
+    text-transform: uppercase;
+    font-weight: bold;
 }
 
 #sub-script {
+    font-family: ttcommonpro;
+    font-size: 22px;
     width: 800px;
 }
 
 #section-1 h1 {
     font-family: organetto;
-    font-size: 45px;
-    font-weight: bold;
-    letter-spacing: 20px;
+    font-size: 32px;
+    font-weight: bolder;
+    letter-spacing: 15px;
     opacity: 0;
 }
 
@@ -137,9 +176,10 @@ body {
 
 #section-1 p {
     margin-top: 50px;
-    font-family: maison;
-    color: #9b9a9a;
-    font-size: 14px;
+    font-family: makroreg;
+    color: #646161dd;
+    font-size: 13px;
+    letter-spacing: 1.6px;
     opacity: 0;
 }
 
@@ -149,56 +189,50 @@ body {
 
 #section-1 p span {
     font-family: organetto;
+    font-weight: lighter;
 }
 
-/**************bulb *************/
+#bench {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Maintain aspect ratio */
+}
 
-#my-bulb-svg {
+.bench-container{
     position: absolute;
-    opacity: 0;
-    left: -350px;
-    bottom: -330px;
+    left: -50px;
+    bottom: 0px;
+    width: 300px;
+    height: 150px;
 }
 
-#bulb {
-    transform: rotate(20deg);
-    transform-box: fill-box;
+.birds{
+    position: absolute;
+    left: 50px;
+    top: 50px;
+    width: 60px;
+    height: 30px;
 }
 
-#bulb_2 {
-    animation: bulbanim 3s ease-in-out infinite;
+.birds svg{
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Maintain aspect ratio */
 }
 
-#Vector_23 {
-    animation: bulbstringanim 3s ease-in-out infinite;
+.clouds{
+    position: absolute;
+    right: 20px;
+    top: 60px;
+    width: 371px;
+    height: 50px;
 }
 
-@keyframes bulbanim {
-
-    0%,
-    100% {
-        fill: #EDB62B;
-    }
-
-    50% {
-        fill: #ffa200;
-        filter: drop-shadow(0px 10px 20px rgba(255, 162, 0, 0.7));
-    }
+.clouds svg{
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Maintain aspect ratio */
 }
-
-@keyframes bulbstringanim {
-
-    0%,
-    100% {
-        stroke: #FEFEFE;
-    }
-
-    50% {
-        stroke: #ff4400;
-        filter: drop-shadow(0px 10px 20px rgba(255, 162, 0, 0.7));
-    }
-}
-
 
 /******** THE GLOBE START ***********/
 
@@ -350,20 +384,6 @@ body {
     bottom: 20px;
     left: calc(50vw);
     transform: translateX(-50%);
-    border-radius: 25px;
-    width: 250px;
-    height: 40px;
-    background-color: #EAEDFE;
-    padding: 5px;
-    display: flex;
-    align-items: center;
-    /* Vertically center the items */
-    flex-direction: row;
-    column-gap: 40px;
-    /* Space items evenly with space between */
-    transform-origin: center center;
-    opacity: 0;
-    display: none;
 }
 
 #scroll-assist :nth-child(1) {
@@ -497,19 +517,21 @@ body {
 
 #akaar-wed,
 #akaar-wed-shadow {
-    background-color: #FFFBEC;
-    height: 65px;
+    background-color: #FFFFFF;
+    height: 100px;
 }
 
 .akaar-wedstyle {
     text-align: center;
     width: auto;
-    font-size: 62px;
+    font-size: 92px;
+    letter-spacing: 5px;
+    font-weight:bolder;
     position: absolute;
-    top: 35%;
+    top: 40%;
     left: 50%;
-    transform: translate(-50%, -35%);
-    font-family: Protrakt;
+    transform: translate(-50%, -40%);
+    font-family: naville;
     color: black
 }
 
@@ -561,9 +583,9 @@ body {
     height: 120px;
     width: 120px;
     border-radius: 50%;
-    font-family: makroreg;
+    font-family: montesrratlight;
     color: white;
-    font-size: 10px;
+    font-size: 12px;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.129);
 }
 
@@ -571,8 +593,8 @@ body {
 
 #akaar-fashion,
 #akaar-fashion-shadow {
-    background-color: #FFDBDB;
-    height: 65px;
+    background-color: #FFFFFF;
+    height: 100px;
     /* inset: calc(0 0 0 0); */
 }
 
@@ -646,9 +668,9 @@ body {
     height: 130px;
     width: 130px;
     border-radius: 50%;
-    font-family: makroreg;
+    font-family: montesrratlight;
     color: white;
-    font-size: 10px;
+    font-size: 12px;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.129);
 }
 
@@ -674,9 +696,9 @@ body {
     height: 130px;
     width: 130px;
     border-radius: 50%;
-    font-family: makroreg;
+    font-family: montesrratlight;
     color: white;
-    font-size: 10px;
+    font-size: 12px;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.129);
 }
 
@@ -698,8 +720,8 @@ body {
 
 #akaar-commercials,
 #akaar-commercials-shadow {
-    background-color: #EBD9F3;
-    height: 65px;
+    background-color: #FFFFFF;
+    height: 100px;
 }
 
 #commercials-illus {
@@ -715,11 +737,12 @@ body {
     height: 430px;
 }
 
-#sofa-1{
+#sofa-1 {
     position: absolute;
     top: 45%;
     left: 30%;
-    width:469px; height:220px;
+    width: 469px;
+    height: 220px;
 }
 
 /*****************section 5 *************************/
@@ -732,9 +755,9 @@ body {
 
 .sec-p-head p {
     margin-top: 20px;
-    font-family: makroreg;
+    font-family: montesrratlight;
     width: 400px;
-    font-size: 12px;
+    font-size: 14px;
     color: rgb(99, 99, 99);
     word-spacing: 3px;
 }
@@ -746,7 +769,7 @@ body {
     height: 40px;
     background-color: #FF2424;
     color: white;
-    font-family: makroreg;
+    font-family: montesrratlight;
     font-size: 10px;
 }
 
@@ -757,7 +780,7 @@ body {
     height: 40px;
     background-color: #EDB62B;
     color: white;
-    font-family: makroreg;
+    font-family: montesrratlight;
     font-size: 10px;
 }
 
@@ -768,7 +791,7 @@ body {
     height: 40px;
     background-color: #7800B0;
     color: white;
-    font-family: makroreg;
+    font-family: montesrratlight;
     font-size: 10px;
 }
 
@@ -898,7 +921,7 @@ body {
 /*****************section 7 *************************/
 
 #section-7 {
-    
+
     width: 100%;
     height: auto;
     background-color: #FFFFFF;
@@ -1024,14 +1047,15 @@ body {
 
 @media screen and (max-width: 1000px) {
 
-    
 
-    #sofa-1{
+
+    #sofa-1 {
         position: absolute;
         top: 45%;
         left: 50%;
         transform: translateX(-50%);
-        width:369px; height:120px;
+        width: 369px;
+        height: 120px;
     }
 
     #mirror {
@@ -1060,7 +1084,7 @@ body {
         height: 54;
         opacity: 0.6;
     }
-    
+
     #floor-lamp {
         position: absolute;
         top: 35%;
@@ -1068,14 +1092,14 @@ body {
         width: 48px;
         height: 304px;
     }
-    
+
     #sofa {
         position: absolute;
         top: 50%;
         left: 50px;
         width: 134px;
         height: 132px;
-    
+
     }
 
     .sec-p-head p,
@@ -1174,7 +1198,7 @@ body {
     }
 
     .cnt-for-h {
-        height: 300px;
+        height: 250px;
         width: 380px;
         text-align: center;
     }
@@ -1211,23 +1235,24 @@ body {
     }
 
     .akaar-wedstyle {
-        font-size: 26px;
+        font-size: 42px;
+        font-weight: bolder;
     }
 
 
     #akaar-fashion,
     #akaar-fashion-shadow {
-        height: 28px;
+        height: 48px;
     }
 
     #akaar-wed,
     #akaar-wed-shadow {
-        height: 28px;
+        height: 48px;
     }
 
     #akaar-commercials,
     #akaar-commercials-shadow {
-        height: 28px;
+        height: 48px;
     }
 
 
@@ -1392,7 +1417,7 @@ body {
 }
 
 .custom-shape-divider-bottom-1724479153 .shape-fill {
-    fill: #FFDBDB;
+    fill: #FFFFFF;
 }
 
 #contact {
@@ -1420,7 +1445,7 @@ body {
 }
 
 .custom-shape-divider-top-1724479383 .shape-fill {
-    fill: #FFDBDB;
+    fill: #FFFFFF;
 }
 
 .contact-div {
