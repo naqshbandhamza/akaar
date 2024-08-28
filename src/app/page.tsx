@@ -601,7 +601,7 @@ export default function Home() {
       {
         y: "+=28", duration: 1
       }).to(t4, {
-        y: "+=60", duration: 1
+        y: "+=65", duration: 1
       }, "<").fromTo(t5,
         {
           y: -15,

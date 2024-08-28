@@ -518,13 +518,13 @@ body {
 #akaar-wed,
 #akaar-wed-shadow {
     background-color: #FFFFFF;
-    height: 100px;
+    height: 113px;
 }
 
 .akaar-wedstyle {
     text-align: center;
     width: auto;
-    font-size: 92px;
+    font-size: 7.8vw;
     letter-spacing: 5px;
     font-weight:bolder;
     position: absolute;
@@ -594,7 +594,7 @@ body {
 #akaar-fashion,
 #akaar-fashion-shadow {
     background-color: #FFFFFF;
-    height: 100px;
+    height: 113px;
     /* inset: calc(0 0 0 0); */
 }
 
@@ -721,7 +721,7 @@ body {
 #akaar-commercials,
 #akaar-commercials-shadow {
     background-color: #FFFFFF;
-    height: 100px;
+    height: 113px;
 }
 
 #commercials-illus {
