@@ -118,19 +118,19 @@ body {
 #section-2 {
     overflow: visible;
     position: relative;
-    background-color: #FFFFFF;
+   
 }
 
 #section-3 {
     position: relative;
     overflow: visible;
-    background-color: #FFFFFF;
+   
 }
 
 #section-4 {
     position: relative;
     overflow: visible;
-    background-color: #FFFFFF;
+   
 }
 
 .cnt-for-h {
@@ -195,10 +195,11 @@ body {
 #bench {
     width: 100%;
     height: 100%;
-    object-fit: contain; /* Maintain aspect ratio */
+    object-fit: contain;
+    /* Maintain aspect ratio */
 }
 
-.bench-container{
+.bench-container {
     position: absolute;
     left: -50px;
     bottom: 0px;
@@ -206,7 +207,7 @@ body {
     height: 150px;
 }
 
-.birds{
+.birds {
     position: absolute;
     left: 50px;
     top: 50px;
@@ -214,13 +215,14 @@ body {
     height: 30px;
 }
 
-.birds svg{
+.birds svg {
     width: 100%;
     height: 100%;
-    object-fit: contain; /* Maintain aspect ratio */
+    object-fit: contain;
+    /* Maintain aspect ratio */
 }
 
-.clouds{
+.clouds {
     position: absolute;
     right: 20px;
     top: 60px;
@@ -228,10 +230,11 @@ body {
     height: 50px;
 }
 
-.clouds svg{
+.clouds svg {
     width: 100%;
     height: 100%;
-    object-fit: contain; /* Maintain aspect ratio */
+    object-fit: contain;
+    /* Maintain aspect ratio */
 }
 
 /******** THE GLOBE START ***********/
@@ -515,24 +518,37 @@ body {
     opacity: 0.9;
 }
 
-#akaar-wed,
-#akaar-wed-shadow {
-    background-color: #FFFFFF;
-    height: 8.4vw;
-}
-
 .akaar-wedstyle {
     text-align: center;
     width: auto;
-    font-size: 7.8vw;
+    font-size: 18vw;
     letter-spacing: 5px;
-    font-weight:bolder;
+    font-weight: bolder;
     position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -40%);
     font-family: naville;
-    color: black
+    color: black;
+    overflow: visible;
+}
+
+#section-2 .akaar-wedstyle {
+    overflow: visible;
+    left: 50px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#section-4 .akaar-wedstyle {
+    overflow: visible;
+    left: -42%;
+    top: 50%;
+    transform: translate(0%, -50%);
+}
+
+#section-3 .akaar-wedstyle {
+    top: auto;
+    left: 10px;
+    transform: translate(0%, 0%);
+    bottom: -60px;
 }
 
 #sub-tag-wed {
@@ -590,13 +606,6 @@ body {
 }
 
 /*************** section 3*****************/
-
-#akaar-fashion,
-#akaar-fashion-shadow {
-    background-color: #FFFFFF;
-     height: 8.4vw;
-    /* inset: calc(0 0 0 0); */
-}
 
 #fashion-illus {
     position: absolute;
@@ -656,7 +665,7 @@ body {
     top: 46%;
     width: 128px;
     height: 265px;
-    transform: rotate(45deg);
+    transform: rotate(0deg);
 }
 
 #now-booking-fashion {
@@ -717,12 +726,6 @@ body {
 }
 
 /***************** section 4************************/
-
-#akaar-commercials,
-#akaar-commercials-shadow {
-    background-color: #FFFFFF;
-     height: 8.4vw;
-}
 
 #commercials-illus {
     position: absolute;
@@ -955,26 +958,6 @@ body {
         width: 494px;
         height: 630px;
     }
-
-    .akaar-wedstyle {
-        font-size: 102px;
-    }
-
-
-    #akaar-fashion,
-    #akaar-fashion-shadow {
-        height: 108px;
-    }
-
-    #akaar-wed,
-    #akaar-wed-shadow {
-        height: 108px;
-    }
-
-    #akaar-commercials,
-    #akaar-commercials-shadow {
-        height: 108px;
-    }
 }
 
 @media (min-width: 1400px) {
@@ -1000,25 +983,7 @@ body {
         height: 530px;
     }
 
-    .akaar-wedstyle {
-        font-size: 82px;
-    }
-
-
-    #akaar-fashion,
-    #akaar-fashion-shadow {
-        height: 88px;
-    }
-
-    #akaar-wed,
-    #akaar-wed-shadow {
-        height: 88px;
-    }
-
-    #akaar-commercials,
-    #akaar-commercials-shadow {
-        height: 88px;
-    }
+   
 }
 
 @media screen and (max-width:1300px) {
@@ -1064,7 +1029,7 @@ body {
         top: 46%;
         width: 48px;
         height: 185px;
-        transform: rotate(45deg);
+        transform: rotate(0deg);
     }
 
     #windows {
@@ -1166,7 +1131,7 @@ body {
         top: 46%;
         width: 88px;
         height: 225px;
-        transform: rotate(45deg);
+        transform: rotate(0deg);
     }
 
     #cealling-lamp {
