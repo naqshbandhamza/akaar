@@ -555,9 +555,9 @@ export default function Home() {
     //     document.getElementById("full-screen-container").style.display = "none";
     // }
 
-    // const gotowedportfolio = (id) => {
-    //     lenis.scrollTo("#" + id, { lerp: 0.05 })
-    // }
+    const gotowedportfolio = (id) => {
+        lenis.scrollTo("#" + id, { lerp: 0.05 })
+    }
 
     const txtanimation = (scrolltween, trigger, t1, t2, t3, t4, t5, t6) => {
         const tl2 = gsap.timeline({
