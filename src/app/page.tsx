@@ -544,20 +544,20 @@ export default function Home() {
         }
     }, [pageloaded, screenWidth]);
 
-    const handleClick = (passedValue) => {
-        document.getElementById("full-screen-container").style.display = "block"
-        let myele = document.getElementById("fscreen")
-        const iframe: any = document.getElementById(passedValue);
-        myele.appendChild(iframe.cloneNode(true));
-    };
+    // const handleClick = (passedValue) => {
+    //     document.getElementById("full-screen-container").style.display = "block"
+    //     let myele = document.getElementById("fscreen")
+    //     const iframe: any = document.getElementById(passedValue);
+    //     myele.appendChild(iframe.cloneNode(true));
+    // };
 
-    const close = () => {
-        document.getElementById("full-screen-container").style.display = "none";
-    }
+    // const close = () => {
+    //     document.getElementById("full-screen-container").style.display = "none";
+    // }
 
-    const gotowedportfolio = (id) => {
-        lenis.scrollTo("#" + id, { lerp: 0.05 })
-    }
+    // const gotowedportfolio = (id) => {
+    //     lenis.scrollTo("#" + id, { lerp: 0.05 })
+    // }
 
     const txtanimation = (scrolltween, trigger, t1, t2, t3, t4, t5, t6) => {
         const tl2 = gsap.timeline({
