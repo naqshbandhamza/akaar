@@ -17,7 +17,7 @@ export default function Home() {
     const [first, setFirst] = useState(0)
     const [screenWidth, setScreenWidth] = useState(0);
     const [screenHeight, setScreenHeight] = useState(0);
-    const ctxRef = useRef(null);
+    const ctxRef:any = useRef(null);
 
     // this useEffect is for page preloader
     useEffect(() => {
