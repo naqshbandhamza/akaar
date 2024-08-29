@@ -295,72 +295,6 @@ body {
     }
 }
 
-/******************************/
-
-#afx {
-    position: absolute;
-    top: -140px;
-    left: -100px;
-    transform-origin: center center;
-    opacity: 0;
-}
-
-#photofx {
-    position: absolute;
-    top: 215px;
-    right: 120px;
-    transform-origin: center center;
-    opacity: 0;
-}
-
-#photofx-2 {
-    position: absolute;
-    top: -120px;
-    left: 150px;
-    transform-origin: center center;
-    opacity: 0;
-}
-
-#photofx-3 {
-    position: absolute;
-    top: -120px;
-    right: 0px;
-    transform-origin: center center;
-    opacity: 0;
-}
-
-#photofx-4 {
-    position: absolute;
-    top: 120px;
-    right: -150px;
-    transform-origin: center center;
-    opacity: 0;
-}
-
-#photofx-5 {
-    position: absolute;
-    top: 80px;
-    left: -120px;
-    transform-origin: center center;
-    opacity: 0;
-}
-
-#photofx-6 {
-    position: absolute;
-    top: 245px;
-    left: 120px;
-    transform-origin: center center;
-    opacity: 0;
-}
-
-#photofx-1 {
-    position: absolute;
-    top: 200px;
-    left: -140px;
-    transform-origin: center center;
-    opacity: 0;
-}
-
 #hills {
     position: absolute;
     bottom: -80px;
@@ -612,7 +546,7 @@ body {
     top: 40%;
     left: 50%;
     transform: translate(-50%, -40%);
-    opacity: 0.8;
+    opacity: 0.9;
 }
 
 #cealling-lamp * {
@@ -663,8 +597,8 @@ body {
     position: absolute;
     right: 10%;
     top: 46%;
-    width: 128px;
-    height: 265px;
+    width: 168px;
+    height: 305px;
     transform: rotate(0deg);
 }
 
@@ -732,7 +666,7 @@ body {
     top: 40%;
     left: 50%;
     transform: translate(-50%, -40%);
-    opacity: 0.8;
+    opacity: 0.9;
 }
 
 #commercials-illus svg {
@@ -1199,25 +1133,14 @@ body {
         left: 35px;
     }
 
-    .akaar-wedstyle {
-        font-size: 42px;
+    #section-2 .akaar-wedstyle,
+    #section-3 .akaar-wedstyle,
+    #section-4 .akaar-wedstyle {
+        font-size: 10vw;
         font-weight: bolder;
-    }
-
-
-    #akaar-fashion,
-    #akaar-fashion-shadow {
-        height: 48px;
-    }
-
-    #akaar-wed,
-    #akaar-wed-shadow {
-        height: 48px;
-    }
-
-    #akaar-commercials,
-    #akaar-commercials-shadow {
-        height: 48px;
+        top:50%;
+        left:50%;
+        transform: translate(-50%,-50%);
     }
 
 
