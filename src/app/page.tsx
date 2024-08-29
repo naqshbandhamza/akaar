@@ -9,7 +9,7 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { ReactLenis, useLenis } from '@studio-freight/react-lenis'
 
 export default function Home() {
-    const lenis = useLenis(({ scroll }) => {
+    const lenis:any = useLenis(({ scroll }) => {
         // called every scroll
     })
     const [pageloaded, setPageLoaded] = useState(false);
