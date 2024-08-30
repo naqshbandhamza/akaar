@@ -502,8 +502,8 @@ body {
     position: absolute;
     top: 60px;
     left: 450px;
-    width: 90px;
-    height: 94;
+    width: 10.5vw;
+    height: 16.2vh;
     opacity: 0.6;
 }
 
@@ -511,16 +511,16 @@ body {
     position: absolute;
     top: 40%;
     right: 50px;
-    width: 108px;
-    height: 364px;
+    width: 7.9vw;
+    height: 47.3vh;
 }
 
 #sofa {
     position: absolute;
     top: 50%;
     left: 250px;
-    width: 184px;
-    height: 182px;
+    width: 15.4vw;
+    height: 25.6vh;
 
 }
 
@@ -560,7 +560,7 @@ body {
 
 #cealling-lamp {
     position: absolute;
-    top: -10px;
+    top: -2px;
     left: 10%;
     overflow: visible;
 }
@@ -570,13 +570,13 @@ body {
     top: 78%;
     left: 10%;
     transform: translateY(-78%);
-    width: 177px;
-    height: 303px;
+    width: 12.9vw;
+    height: 39.4vh;
 }
 
 #cealling-lamp {
-    width: 148px;
-    height: 226px;
+    width: 12.8vw;
+    height: 31.4vh;
 }
 
 #section-2 #cealling-lamp {
@@ -589,16 +589,16 @@ body {
 }
 
 #fashion-illus svg {
-    width: 294px;
-    height: 430px;
+    width: 21.5vw;
+    height: 55.9vh;
 }
 
 #mirror {
     position: absolute;
     right: 10%;
     top: 46%;
-    width: 168px;
-    height: 305px;
+    width: 12.2vw;
+    height: 39.7vh;
     transform: rotate(0deg);
 }
 
@@ -670,16 +670,16 @@ body {
 }
 
 #commercials-illus svg {
-    width: 294px;
-    height: 430px;
+    width: 21.5vw;
+    height: 55.9vh;
 }
 
 #sofa-1 {
     position: absolute;
     top: 45%;
     left: 30%;
-    width: 469px;
-    height: 220px;
+    width: 34.3vw;
+    height: 28.6vh;
 }
 
 /*****************section 5 *************************/
@@ -882,16 +882,6 @@ body {
         width: 494px;
         height: 630px;
     }
-
-    #fashion-illus svg {
-        width: 494px;
-        height: 630px;
-    }
-
-    #commercials-illus svg {
-        width: 494px;
-        height: 630px;
-    }
 }
 
 @media (min-width: 1400px) {
@@ -907,15 +897,6 @@ body {
         height: 530px;
     }
 
-    #fashion-illus svg {
-        width: 394px;
-        height: 530px;
-    }
-
-    #commercials-illus svg {
-        width: 394px;
-        height: 530px;
-    }
 
    
 }
@@ -1155,15 +1136,7 @@ body {
         height: 370px;
     }
 
-    #fashion-illus svg {
-        width: 234px;
-        height: 370px;
-    }
-
-    #commercials-illus svg {
-        width: 234px;
-        height: 370px;
-    }
+  
 
     #scroll-assist {
         width: 200px;
