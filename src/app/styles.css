@@ -560,7 +560,7 @@ body {
 
 #cealling-lamp {
     position: absolute;
-    top: -2px;
+    top: -10px;
     left: 10%;
     overflow: visible;
 }
@@ -575,8 +575,10 @@ body {
 }
 
 #cealling-lamp {
-    width: 12.8vw;
-    height: 31.4vh;
+    /* width: 12.8vw;
+    height: 31.4vh; */
+    width: 148px;
+    height: 226px;
 }
 
 #section-2 #cealling-lamp {
