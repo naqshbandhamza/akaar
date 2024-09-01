@@ -594,14 +594,16 @@ export default function Home() {
     }, [pageloaded, screenWidth]);
 
     const handleClick = (passedValue) => {
-        document.getElementById("full-screen-container").style.display = "block"
-        let myele = document.getElementById("fscreen")
+        const ele:any = document.getElementById("full-screen-container");
+        ele.style.display = "block"
+        let myele:any = document.getElementById("fscreen")
         const iframe: any = document.getElementById(passedValue);
         myele.appendChild(iframe.cloneNode(true));
     };
 
     const close = () => {
-        document.getElementById("full-screen-container").style.display = "none";
+        const ele:any = document.getElementById("full-screen-container");
+        ele.style.display = "none";
     }
 
     const gotowedportfolio = (id) => {
