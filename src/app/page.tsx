@@ -5,20 +5,18 @@ import Head from 'next/head';
 import { useRef, useEffect, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-// import { ScrollToPlugin } from "gsap/all";
 import { ReactLenis, useLenis } from '@studio-freight/react-lenis'
 
 export default function Home() {
-    const lenis:any = useLenis(({ scroll }) => {
-        // called every scroll
+    const lenis: any = useLenis(({ scroll }) => {
     })
     const [pageloaded, setPageLoaded] = useState(false);
     const [first, setFirst] = useState(0)
     const [screenWidth, setScreenWidth] = useState(0);
     const [screenHeight, setScreenHeight] = useState(0);
-    const ctxRef:any = useRef(null);
+    const ctxRef: any = useRef(null);
 
-    // this useEffect is for page preloader
+    // useEffect for page preloader
     useEffect(() => {
         setScreenHeight(screen.height)
         setScreenWidth(window.innerWidth);
@@ -121,7 +119,7 @@ export default function Home() {
                                 snapTo: 1 / (sections.length - 1),
                             },
                             start: "top top",
-                            end: () => screenWidth * 3
+                            end: () => screenWidth * 4
                         }
                     });
 
@@ -142,17 +140,17 @@ export default function Home() {
                             // markers:true,
                             trigger: "#section-1",
                             containerAnimation: scrolltween,
-                            start: "left 10%",
+                            start: "left 50%",
                             toggleActions: "play none none reverse",
                         }
                     }
                     )
                     scrollassist0.to(
                         "#lang-btn",
-                        { backgroundColor: "#EAEDFE", color: "#2E4BF5", duration: 0.5 }
+                        { backgroundColor: "#EAEDFE", color: "#2E4BF5" }
                     ).to(
                         "#scroll-assist",
-                        { backgroundColor: "#2E4BF5", color: "#EAEDFE", duration: 0.5 }
+                        { backgroundColor: "#2E4BF5", color: "#EAEDFE" }
                     );
 
                     //section 2
@@ -161,17 +159,17 @@ export default function Home() {
                             // markers:true,
                             trigger: "#section-2",
                             containerAnimation: scrolltween,
-                            start: "left 10%",
+                            start: "left 50%",
                             toggleActions: "play none none reverse",
                         }
                     }
                     )
                     scrollassist1.to(
                         "#lang-btn",
-                        { backgroundColor: "#FFF5D8", color: "#FFC325", duration: 0.5 }
+                        { backgroundColor: "#FFF5D8", color: "#FFC325" }
                     ).to(
                         "#scroll-assist",
-                        { backgroundColor: "#FFC325", color: "#FFF5D8", duration: 0.5 }
+                        { backgroundColor: "#FFC325", color: "#FFF5D8" }
                     );
 
                     lamps(scrolltween, "#section-2 #cealling-lamp", ["#section-2 #cealling-lamp #Group_2", "#section-2 #cealling-lamp #Group_12"])
@@ -212,7 +210,7 @@ export default function Home() {
                             // markers:true,
                             trigger: "#section-3",
                             containerAnimation: scrolltween,
-                            start: "left 10%",
+                            start: "left 50%",
                             toggleActions: "play none none reverse",
                         }
                     }
@@ -220,10 +218,10 @@ export default function Home() {
 
                     scrollassist2.to(
                         "#lang-btn",
-                        { backgroundColor: "#FFC7C7", color: "#FF2424", duration: 0.5 }
+                        { backgroundColor: "#FFC7C7", color: "#FF2424" }
                     ).to(
                         "#scroll-assist",
-                        { backgroundColor: "#FF2424", color: "#FFC7C7", duration: 0.5 }
+                        { backgroundColor: "#FF2424", color: "#FFC7C7" }
                     );
 
                     // txtanimation(scrolltween, "#section-3", "#fashion-illus", "#akaar-fashion", "#akaar-fashion-shadow", "#akaar-fashion-shadow-1", "#sub-tag-fashion", "#now-booking-fashion")
@@ -234,7 +232,7 @@ export default function Home() {
                             // markers:true,
                             trigger: "#section-4",
                             containerAnimation: scrolltween,
-                            start: "left 10%",
+                            start: "left 50%",
                             toggleActions: "play none none reverse",
                         }
                     }
@@ -242,13 +240,64 @@ export default function Home() {
 
                     scrollassist3.to(
                         "#lang-btn",
-                        { backgroundColor: "#DFC3EC", color: "#7800B0", duration: 0.5 }
+                        { backgroundColor: "#DFC3EC", color: "#7800B0" }
                     ).to(
                         "#scroll-assist",
-                        { backgroundColor: "#7800B0", color: "#DFC3EC", duration: 0.5 }
+                        { backgroundColor: "#7800B0", color: "#DFC3EC" }
                     );
 
-                    // txtanimation(scrolltween, "#section-4", "#commercials-illus", "#akaar-commercials", "#akaar-commercials-shadow", "#akaar-commercials-shadow-1", "#sub-tag-commercials", "#now-booking-commercials")
+                    // section 5
+                    gsap.to([".p1", ".p2", ".p3"], {
+                        y: "-=2100",
+                        scrollTrigger: {
+                            // markers:true,
+                            trigger: "#section-5",
+                            start: "center center",
+                            end: "+=2000",
+                            pin: true,
+                            scrub: 1
+                        }
+                    })
+
+                    //section 7
+
+                    gsap.to("#section-7 div", {
+                        xPercent: "-600",
+                        scrollTrigger: {
+                            // markers:true,
+                            trigger: "#section-7",
+                            start: "top top",
+                            end: "+=3000",
+                            pin: true,
+                            scrub: 1
+                        }
+                    })
+
+                    //section 6
+                    const letdive = gsap.timeline({
+                        scrollTrigger: {
+                            // markers: true,
+                            trigger: "#section-6",
+                            start: "top top",
+                            end: "bottom+=4000 bottom",
+                            pin: true,
+                            scrub: 0.8,
+                        },
+                        defaults: {
+                            ease: "expo.in"     // Apply easing to all tweens in the timeline
+                        }
+                    });
+                    letdive.fromTo("#section-6 .s2", { scale: 1, }, {
+                        scale: window.innerWidth / 14,
+                    });
+                    letdive.to("#section-6 .s1", {
+                        scale: 10,
+                        x: "-=750", y: "-=750",
+                    }, "<").to("#section-6 .s3", {
+                        scale: 10,
+                        x: "+=750", y: "+=750",
+                    }, "<");
+
 
                 } else {
 
@@ -544,56 +593,22 @@ export default function Home() {
         }
     }, [pageloaded, screenWidth]);
 
-    // const handleClick = (passedValue) => {
-    //     document.getElementById("full-screen-container").style.display = "block"
-    //     let myele = document.getElementById("fscreen")
-    //     const iframe: any = document.getElementById(passedValue);
-    //     myele.appendChild(iframe.cloneNode(true));
-    // };
+    const handleClick = (passedValue) => {
+        document.getElementById("full-screen-container").style.display = "block"
+        let myele = document.getElementById("fscreen")
+        const iframe: any = document.getElementById(passedValue);
+        myele.appendChild(iframe.cloneNode(true));
+    };
 
-    // const close = () => {
-    //     document.getElementById("full-screen-container").style.display = "none";
-    // }
-
-    const gotowedportfolio = (id) => {
-        lenis.scrollTo("#" + id, { lerp: 0.05 })
+    const close = () => {
+        document.getElementById("full-screen-container").style.display = "none";
     }
 
-    const txtanimation = (scrolltween, trigger, t1, t2, t3, t4, t5, t6) => {
-        const tl2 = gsap.timeline({
-            // paused: true,
-            scrollTrigger: {
-                // markers: true,
-                trigger: trigger,
-                containerAnimation: scrolltween,
-                start: "left 10%",
-                toggleActions: "play none none reverse",
-                // id: "1",
-            }
-        });
-
-        tl2.fromTo(t1, { opacity: 1, x: 25 }, { opacity: 1, x: 0, duration: 1, }).fromTo(t2, {
-            y: "100%"
-        }, { y: "0%", duration: 0.85, }, "<").fromTo(t5,
-            {
-                y: -15,
-                opacity: 0
-            },
-            {
-                y: 0,
-                opacity: 1,
-                duration: 0.5,
-            }, "<").fromTo(t6,
-                {
-                    x: 200,
-                    scale: 0
-                },
-                {
-                    x: 0,
-                    scale: 1,
-                    duration: 1.5,
-                    ease: "elastic.out"
-                })
+    const gotowedportfolio = (id) => {
+        lenis.scrollTo("#" + id, {
+            duration: 9,
+            easing: (t) => t
+        })
     }
 
     const lamps = (scrolltween, trigger, targets) => {
@@ -626,8 +641,7 @@ export default function Home() {
             {/* AKAAR  WEDDINGS*/}
             {/* AKAAR  CONTACT*/}
             <ReactLenis root options={{
-                lerp: 0.1,
-                duration: 1.5,
+                lerp: 0.05,
                 // smoothTouch: true
             }}>
                 <div id="loading">
@@ -1769,12 +1783,182 @@ export default function Home() {
                         <div id="akaar-presents">
                             <h4>AKAAR Presents</h4>
                         </div>
-                        <button id="scroll-assist" className="sec-1-btn">
+                        <button id="scroll-assist" className="sec-1-btn" onClick={() => {
+                            gotowedportfolio("contact")
+                        }}>
                             Get In Touch
                         </button>
                         <button id="lang-btn">
                             EN
                         </button>
+                    </div>
+                    <div id="section-5">
+                        {/* <div className="portfolio-grid">
+                            <div className="left1">
+                                <div className="product">
+                                    <button className="fullscreen-btn" onClick={() => handleClick("1-video")}></button>
+                                    <iframe id="1-video" width="560" height="315" src="https://www.youtube.com/embed/FJGSqtMzmlo?si=48HwWIVNCRaeELEr" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen={false}>
+
+                                    </iframe>
+                                </div>
+                                <div className="product"></div>
+                                <div className="product"></div>
+                                <div className="product"></div>
+                                
+                            </div>
+                            <div className="right1">
+
+                            </div>
+                            <div className="sec-p-head">
+                                <h1 className="common-h1">Akaar Commercial</h1>
+                                <p>At Akaar, we don't just make commercials; we craft stories that resonate. Our team of creative visionaries brings your brand to life with stunning videography, immersive animation, and powerful storytelling. Whether you're launching a new product, building brand awareness, or connecting with your audience on a deeper level, we create commercials that captivate, engage, and inspire. Let us turn your vision into a compelling narrative that leaves a lasting impact.</p>
+                                <button id="get-in-touch-commercial" onClick={() => {
+                                    gotowedportfolio("contact")
+                                }}>Get In Touch</button>
+                            </div>
+                        </div> */}
+                        <p className="sec-5-side-h">
+                            WHY AKAAR?
+                        </p>
+                        <div className="para-para">
+                            <p className="p1">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non urna eu orci facilisis commodo. Sed vitae purus nec justo egestas aliquet. Cras sagittis ligula at arcu malesuada, a pellentesque lectus vestibulum. Curabitur luctus, risus eu vestibulum malesuada, erat nisl posuere magna, nec feugiat lorem libero sit amet eros. Aenean fermentum arcu non metus iaculis, non hendrerit libero interdum. In ut purus non libero tempus dictum. Nam id eros vel mi ultricies tincidunt.
+                            </p>
+                            <p className="p2">
+                                Praesent euismod, ligula at sollicitudin scelerisque, justo ante interdum risus, at auctor mi dolor ac felis. Suspendisse et justo vitae lectus lacinia viverra. Duis malesuada turpis non nunc hendrerit, ac sagittis lacus convallis. Donec vehicula risus sed risus tincidunt, id tincidunt nulla suscipit. Proin ac augue a orci varius posuere a ac lectus. Integer eget magna at nisl elementum vestibulum. Nulla facilisi. Phasellus a orci libero. Morbi id ante vel ipsum malesuada varius.
+                            </p>
+                            <p className="p3">
+                                Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Duis finibus lorem non orci consectetur, a bibendum urna malesuada. Ut vehicula, dolor nec gravida hendrerit, neque metus dictum neque, vel tincidunt turpis magna nec purus. Nulla dignissim urna id sapien sollicitudin, nec tincidunt felis interdum. Cras malesuada neque vitae ante elementum, et sodales nulla auctor. Quisque tincidunt quam a nunc ultricies, id aliquam metus vehicula. Vivamus eget lacus sit amet arcu euismod tincidunt.
+                            </p>
+                        </div>
+                    </div>
+                    <div id="section-7">
+                        <div style={{ marginLeft: "10%" }} >
+                            {/* <button className="fullscreen-btn" onClick={() => handleClick("1-video")}></button>
+                            <iframe id="1-video" src="https://www.youtube.com/embed/FJGSqtMzmlo?si=48HwWIVNCRaeELEr" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen={false}>
+
+                            </iframe> */}
+                        </div>
+                        <div>
+
+                        </div>
+                        <div>
+
+                        </div>
+                        <div>
+
+                        </div>
+                        <div>
+
+                        </div>
+                        <div>
+
+                        </div>
+                        {/* <div className="portfolio-grid">
+                            <div className="left1">
+                                <div className="product">
+                                </div>
+                                <div className="product"></div>
+                                <div className="product"></div>
+                                <div className="product"></div>
+                            </div>
+                            <div className="right1">
+                            </div>
+                            <div className="sec-p-head">
+                                <h1 className="common-h1">Akaar Weddings</h1>
+                                <p>
+                                    Let us be a part of your celebration, ensuring that every detail, every emotion, and every memory is captured in a way that you'll cherish forever. Trust Akaar to turn your wedding day into a masterpiece that you’ll revisit for a lifetime.
+                                </p>
+                                <button id="get-in-touch-wed" onClick={() => {
+                                    gotowedportfolio("contact")
+                                }}>Get In Touch</button>
+                            </div>
+                        </div> */}
+                    </div>
+                    <div id="section-6">
+                        {/* <div className="portfolio-grid">
+                            <div className="left1">
+                            </div>
+                            <div className="right1">
+                                <div className="product">
+                                </div>
+                                <div className="product"></div>
+                                <div className="product"></div>
+                                <div className="product"></div>
+                            </div>
+                            <div className="sec-p-head">
+                                <h1 className="common-h1">Akaar Fashion</h1>
+                                <p>
+                                    Our expertise extends beyond traditional advertising, offering cutting-edge fashion photography and videography that captures the essence of your brand. Whether you're launching a new collection, building brand awareness, or connecting with your audience on a deeper level, we create visuals that captivate, engage, and inspire. Let us turn your vision into a compelling narrative that leaves a lasting impact.
+                                </p>
+                                <button id="get-in-touch-fashion" onClick={() => {
+                                    gotowedportfolio("contact")
+                                }}>Get In Touch</button>
+                            </div>
+                        </div> */}
+                        <p className="s1">
+                            LETS START
+                        </p>
+                        <p className="s3">
+                            YOUR JOURNEY
+                        </p>
+                        <p className="s2">
+                            ENTER
+                        </p>
+                    </div>
+                    <div id="contact">
+                        <p className="c1">
+                            LETS <span>GET IN TOUCH</span> TO START YOUR JOURNEY
+                        </p>
+                        {/* <div className="contact-div">
+                            <svg id="my-rocket-path" viewBox="0 0 1022 515" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <g id="rocket-path">
+                                    <path id="vector-1-rocket" d="M1 443C179.5 681 417.5 231 588.5 340.5C725.3 428.1 821 184.5 953 164" stroke="black" strokeWidth="1" strokeDasharray="20 20" />
+                                    
+                                </g>
+
+                                <g id="myrocket">
+                                    <rect x="0" y="-50" width="100" height="100" fill="transparent" />
+                                    <g transform="translate(-150, -50)">
+                                        <g id="Group_2">
+                                            <g id="Group_3">
+                                                <path id="Vector_2" d="M83.8205 44.0577C125.585 15.5632 145.06 33.4697 145.06 33.4697V44.0577V44.1572V55.7462C145.06 55.7462 126.759 72.6527 84.9945 44.1572H84.843C84.8685 44.1407 84.895 44.1257 84.918 44.1077C84.8945 44.0907 84.868 44.0752 84.843 44.0572H83.8205V44.0577Z" fill="#FFC500" />
+                                                <path id="Vector_3" d="M105.121 44.3467C137.118 22.2092 144.817 38.9997 144.817 38.9997V44.9742V45.0307C144.817 45.0307 146.07 49.8392 144.817 51.0062C129.273 65.4622 105.121 44.3467 105.121 44.3467Z" fill="#FDEBA1" />
+                                            </g>
+                                            <g id="Group_4">
+                                                <g id="rocket_2_">
+                                                    <path id="Vector_4" d="M144.516 57.7232L144.857 31.7022L153.036 31.8207L152.698 57.8402L144.516 57.7232Z" fill="#DF3428" />
+                                                    <path id="Vector_5" d="M187.752 46.0607C187.423 71.1527 167.768 91.2177 143.846 90.8772C138.288 90.7962 132.994 89.6097 128.14 87.5382C144.356 81.1582 156.002 64.8722 156.253 45.6092C156.503 26.3452 145.288 9.73065 129.245 2.89265C134.15 0.960153 139.471 -0.073848 145.031 0.00465205C168.953 0.347152 188.08 20.9672 187.752 46.0607Z" fill="#FF7748" />
+                                                    <path id="Vector_6" d="M154.947 33.9872C151.591 19.8567 141.943 8.30815 129.245 2.89215C134.15 0.959649 139.472 -0.0743362 145.032 0.00416383C165.13 0.293664 181.837 14.8987 186.47 34.4397L154.947 33.9872Z" fill="#DF3428" />
+                                                    <path id="Vector_7" d="M201.477 74.3332C181.062 74.0402 162.439 69.2422 148.052 61.5257C149.646 56.4917 150.553 51.1172 150.624 45.5287C150.698 39.9402 149.933 34.5442 148.47 29.4622C163.052 22.1662 181.792 17.9017 202.207 18.1947C234.636 18.6597 262.567 30.4747 276.122 47.3282C262.132 63.7862 233.906 74.7982 201.477 74.3332Z" fill="#E2E2E2" />
+                                                    <path id="Vector_8" d="M275.551 47.3452C261.376 63.4437 233.478 74.7927 201.477 74.3337C181.061 74.0407 162.438 69.2427 148.051 61.5262C149.412 57.2302 150.266 50.1762 150.534 45.4627L275.551 47.3452Z" fill="white" />
+                                                    <path id="Vector_9" d="M244.488 67.5962L240.721 68.8327C240.721 68.8327 243.626 44.8532 240.87 24.2347L245.026 26.1632C245.026 26.1622 247.935 53.8567 244.488 67.5962Z" fill="#FFAE00" />
+                                                    <path id="Vector_10" d="M159.403 50.9622C145.915 50.7687 134.272 48.1537 128.585 44.4972C134.364 41.0067 146.072 38.7227 159.56 38.9162C173.047 39.1097 184.692 41.7282 190.378 45.3817C184.598 48.8737 172.89 51.1567 159.403 50.9622Z" fill="#FF7748" />
+                                                    <path id="Vector_11" d="M128.865 44.6632C128.775 44.6052 128.674 44.5522 128.585 44.4972C134.364 41.0067 146.071 38.7227 159.559 38.9162C173.047 39.1097 184.692 41.7282 190.378 45.3817C190.288 45.4342 190.182 45.4852 190.095 45.5407L128.865 44.6632Z" fill="#DF3428" />
+                                                    <path id="Vector_12" d="M244.488 67.5962C245.003 60.8567 245.33 53.9457 245.421 46.8882C245.513 39.8322 245.369 32.9142 245.026 26.1627C258.301 31.3072 269.134 38.6402 276.122 47.3282C268.91 55.8137 257.891 62.8332 244.488 67.5962Z" fill="#FF7748" />
+                                                    <path id="Vector_13" d="M245.425 46.2032C245.497 39.3852 245.357 32.6942 245.026 26.1622C258.301 31.3067 269.134 38.6397 276.122 47.3277C275.992 47.4807 275.851 47.6297 275.719 47.7812L245.425 46.2032Z" fill="#DF3428" />
+                                                    <path id="Vector_14" d="M228.744 46.4746L228.743 46.6482C228.7 49.9687 227.425 53.0766 225.151 55.3986C222.877 57.7201 219.881 58.9741 216.716 58.9291C210.263 58.8346 205.012 53.2517 205.011 46.4817L205.013 46.3077C205.102 39.4442 210.498 33.9356 217.041 34.0301C223.495 34.1241 228.744 39.7061 228.744 46.4746Z" fill="#FFAE00" />
+                                                    <path id="Vector_15" d="M225.861 46.6077C225.795 51.8052 221.709 55.9757 216.756 55.9052C211.799 55.8327 207.828 51.5482 207.896 46.3502C207.963 41.1542 212.045 36.9827 217.002 37.0542C221.954 37.1252 225.929 41.4122 225.861 46.6077Z" fill="#C0F6FF" />
+                                                </g>
+                                            </g>
+                                        </g>
+
+                                    </g>
+                                   
+                                    <animateMotion dur="5s" repeatCount="indefinite">
+                                        <mpath href="#vector-1-rocket" />
+                                    </animateMotion>
+                                </g>
+
+                            </svg>
+                            <div className="heading">
+                                <p >Contact Us</p>
+                            </div>
+
+                            <button id="get-in-touch-fashion" style={{ position: "absolute", bottom: "20px", left: "50%", transform: "translateX(-50%)", backgroundColor: "#2E4BF5" }}>
+                                Send
+                            </button>
+                        </div> */}
                     </div>
                 </div >
             </ReactLenis >
