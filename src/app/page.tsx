@@ -213,7 +213,7 @@ export default function Home() {
                             start: "+=20% right",
                             end: "left -=1000",
                             scrub: 1,
-                            
+
                         }
                     })
 
@@ -279,18 +279,19 @@ export default function Home() {
                         scrollTrigger: {
                             // markers: true,
                             trigger: "#section-7",
-                            start: "top-=350 top",
-                            end: "+=3000",
+                            start: "top-=20% top",
+                            end: "+=200%",
                             scrub: 1
-                        }
+                        },
                     })
 
                     gsap.to("#section-7 div", {
+
                         scrollTrigger: {
                             // markers: true,
                             trigger: "#section-7",
                             start: "top top",
-                            end: "+=2900",
+                            end: "+=200%",
                             scrub: 1,
                             pin: true,
                         }
@@ -1919,7 +1920,7 @@ export default function Home() {
                         </div>
                     </div>
                     <div id="section-7">
-                        <div style={{ marginLeft: "22%" }} >
+                        <div style={{ marginLeft: "20%" }} >
                             {/* <button className="fullscreen-btn" onClick={() => handleClick("1-video")}></button>
                             <iframe id="1-video" src="https://www.youtube.com/embed/FJGSqtMzmlo?si=48HwWIVNCRaeELEr" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen={false}>
 

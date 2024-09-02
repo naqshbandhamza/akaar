@@ -555,6 +555,7 @@ body {
     left: 50%;
     transform: translate(-50%, -40%);
     opacity: 0.9;
+    display: none;
 }
 
 #cealling-lamp * {
@@ -677,6 +678,7 @@ body {
     left: 50%;
     transform: translate(-50%, -40%);
     opacity: 0.9;
+    display: none;
 }
 
 #commercials-illus svg {
