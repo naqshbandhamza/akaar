@@ -115,9 +115,9 @@ export default function Home() {
                             trigger: ".slider-container",
                             pin: true,
                             scrub: 1,
-                            snap: {
-                                snapTo: 1 / (sections.length - 1),
-                            },
+                            // snap: {
+                            //     snapTo: 1 / (sections.length - 1),
+                            // },
                             start: "top top",
                             end: () => screenWidth * 4
                         }
@@ -191,7 +191,7 @@ export default function Home() {
                         }
                     })
 
-                    gsap.to(["#mirror", "#windows"], {
+                    gsap.to(["#windows"], {
                         x: "-20vw",
                         scrollTrigger: {
                             // markers: true,
@@ -201,6 +201,19 @@ export default function Home() {
                             end: "left -=1000",
                             scrub: 1,
                             // id: "1",
+                        }
+                    })
+
+                    gsap.to(["#mirror"], {
+                        x: "-40vw",
+                        scrollTrigger: {
+                            // markers: true,
+                            trigger: "#section-3",
+                            containerAnimation: scrolltween,
+                            start: "+=20% right",
+                            end: "left -=1000",
+                            scrub: 1,
+                            
                         }
                     })
 
@@ -262,14 +275,24 @@ export default function Home() {
                     //section 7
 
                     gsap.to("#section-7 div", {
-                        xPercent: "-600",
+                        xPercent: "-680",
                         scrollTrigger: {
-                            // markers:true,
+                            // markers: true,
+                            trigger: "#section-7",
+                            start: "top-=350 top",
+                            end: "+=3000",
+                            scrub: 1
+                        }
+                    })
+
+                    gsap.to("#section-7 div", {
+                        scrollTrigger: {
+                            // markers: true,
                             trigger: "#section-7",
                             start: "top top",
-                            end: "+=3000",
+                            end: "+=2900",
+                            scrub: 1,
                             pin: true,
-                            scrub: 1
                         }
                     })
 
@@ -279,23 +302,23 @@ export default function Home() {
                             // markers: true,
                             trigger: "#section-6",
                             start: "top top",
-                            end: "bottom+=4000 bottom",
+                            end: "bottom+=3000 bottom",
                             pin: true,
                             scrub: 0.8,
                         },
                         defaults: {
-                            ease: "expo.in"     // Apply easing to all tweens in the timeline
+                            ease: "sine.inOut"     // Apply easing to all tweens in the timeline
                         }
                     });
                     letdive.fromTo("#section-6 .s2", { scale: 1, }, {
                         scale: window.innerWidth / 14,
                     });
                     letdive.to("#section-6 .s1", {
-                        scale: 10,
-                        x: "-=750", y: "-=750",
+                        // scale: 5,
+                        x: -900, y: -900,
                     }, "<").to("#section-6 .s3", {
-                        scale: 10,
-                        x: "+=750", y: "+=750",
+                        // scale: 5,
+                        x: 900, y: 900,
                     }, "<");
 
 
@@ -594,15 +617,15 @@ export default function Home() {
     }, [pageloaded, screenWidth]);
 
     const handleClick = (passedValue) => {
-        const ele:any = document.getElementById("full-screen-container");
+        const ele: any = document.getElementById("full-screen-container");
         ele.style.display = "block"
-        let myele:any = document.getElementById("fscreen")
+        let myele: any = document.getElementById("fscreen")
         const iframe: any = document.getElementById(passedValue);
         myele.appendChild(iframe.cloneNode(true));
     };
 
     const close = () => {
-        const ele:any = document.getElementById("full-screen-container");
+        const ele: any = document.getElementById("full-screen-container");
         ele.style.display = "none";
     }
 
@@ -675,7 +698,7 @@ export default function Home() {
                                 </div>
 
                             </div>
-                            <div className="clouds">
+                            {/* <div className="clouds">
                                 <svg viewBox="0 0 411 90" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <g id="Group">
                                         <g id="Group_2">
@@ -698,8 +721,8 @@ export default function Home() {
                                     </g>
                                 </svg>
 
-                            </div>
-                            <div className="bench-container">
+                            </div> */}
+                            {/* <div className="bench-container">
                                 <svg id="bench" viewBox="0 0 2556 1512" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <g id="Group">
                                         <path id="Vector" d="M161.321 1511.52L737.585 1510.66L776.584 1510.53L2043.52 1506.39L2461.41 1505.02C2461.41 1505.02 2619.4 1226.97 2525.23 947.133C2515.94 919.507 2504.2 891.881 2489.61 864.501C2479.9 846.281 2468.93 828.167 2456.58 810.242C2455.31 808.405 2454.03 806.576 2452.74 804.739C2435.03 779.664 2414.57 754.957 2391.07 730.874C2211.76 547.047 2046.4 522.102 1910.73 534.607C1802.47 544.561 1713.13 578.371 1650.69 574.287C1510 565.111 1464.88 275.643 1048.68 188.33C965.643 170.913 872.434 160.786 779.339 160.687C519.112 160.384 259.722 238.259 225.561 453.28C220.633 484.308 220.395 518.166 225.52 555.066C229.12 581.142 235.416 608.718 244.633 637.886C261.706 692.022 288.832 751.578 327.511 816.965C451.003 1025.7 349.983 1120.94 203.967 1203.72C197.964 1207.12 191.987 1210.61 186.058 1214.18C81.8591 1277.01 161.321 1511.51 161.321 1511.52Z" fill="#EBF3FA" />
@@ -782,7 +805,7 @@ export default function Home() {
                                         </g>
                                     </g>
                                 </svg>
-                            </div>
+                            </div> */}
                         </div>
                         <div id="section-2" className="full-screen panels">
 
@@ -1181,7 +1204,7 @@ export default function Home() {
                                 </g>
                             </svg>
 
-                            <svg id="mirror" viewBox="0 0 77 107" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            {/* <svg id="mirror" viewBox="0 0 77 107" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <g id="table">
                                     <g id="Group">
                                         <g id="Group_2">
@@ -1238,7 +1261,8 @@ export default function Home() {
                                         </g>
                                     </g>
                                 </g>
-                            </svg>
+                            </svg> */}
+
 
 
                             <svg id="windows" viewBox="0 0 99 164" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1596,6 +1620,66 @@ export default function Home() {
                                 </g>
                             </svg>
 
+                            <svg id="mirror" viewBox="0 0 384 411" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <g id="Lamp">
+                                    <g id="Group">
+                                        <g id="Group_2">
+                                            <path id="Vector" d="M182.021 6.34101C182.021 24.699 182.021 43.057 182.021 61.416C182.021 88.982 182.021 116.548 182.021 144.115C182.021 174.824 182.021 205.534 182.021 236.243C182.021 264.517 182.021 292.791 182.021 321.065C182.021 340.84 182.021 360.616 182.021 380.391C182.021 381.912 182.021 383.433 182.021 384.955C182.021 386.88 185.013 386.884 185.013 384.955C185.013 366.597 185.013 348.238 185.013 329.88C185.013 302.314 185.013 274.748 185.013 247.181C185.013 216.472 185.013 185.762 185.013 155.053C185.013 126.779 185.013 98.505 185.013 70.231C185.013 50.456 185.013 30.68 185.013 10.905C185.013 9.38401 185.013 7.86301 185.013 6.34101C185.013 4.41501 182.021 4.41201 182.021 6.34101Z" fill="#713342" />
+                                        </g>
+                                        <g id="Group_3" opacity="0.5">
+                                            <path id="Vector_2" d="M182.021 6.34101C182.021 24.699 182.021 43.057 182.021 61.416C182.021 88.982 182.021 116.548 182.021 144.115C182.021 174.824 182.021 205.534 182.021 236.243C182.021 264.517 182.021 292.791 182.021 321.065C182.021 340.84 182.021 360.616 182.021 380.391C182.021 381.912 182.021 383.433 182.021 384.955C182.021 386.88 185.013 386.884 185.013 384.955C185.013 366.597 185.013 348.238 185.013 329.88C185.013 302.314 185.013 274.748 185.013 247.181C185.013 216.472 185.013 185.762 185.013 155.053C185.013 126.779 185.013 98.505 185.013 70.231C185.013 50.456 185.013 30.68 185.013 10.905C185.013 9.38401 185.013 7.86301 185.013 6.34101C185.013 4.41501 182.021 4.41201 182.021 6.34101Z" fill="white" />
+                                        </g>
+                                        <path id="Vector_3" opacity="0.3" d="M185.013 25.852H182.021V31.013H185.013V25.852Z" fill="#713342" />
+                                        <path id="Vector_4" d="M205.96 393.875H161.824V393.801C161.824 386.4 167.824 380.4 175.225 380.4H192.484C199.927 380.399 205.96 386.433 205.96 393.875Z" fill="#713342" />
+                                        <path id="Vector_5" opacity="0.5" d="M205.96 393.875H161.824V393.801C161.824 386.4 167.824 380.4 175.225 380.4H192.484C199.927 380.399 205.96 386.433 205.96 393.875Z" fill="white" />
+                                        <path id="Vector_6" d="M222.79 404.242H141.252V397.347C141.252 395.429 142.807 393.874 144.725 393.874H219.208C221.186 393.874 222.79 395.478 222.79 397.456V404.242Z" fill="#713342" />
+                                        <path id="Vector_7" opacity="0.3" d="M222.79 404.242H141.252V397.347C141.252 395.429 142.807 393.874 144.725 393.874H219.208C221.186 393.874 222.79 395.478 222.79 397.456V404.242Z" fill="white" />
+                                        <path id="Vector_8" d="M162.578 32.435C164.746 32.435 166.503 30.6777 166.503 28.51C166.503 26.3423 164.746 24.585 162.578 24.585C160.41 24.585 158.653 26.3423 158.653 28.51C158.653 30.6777 160.41 32.435 162.578 32.435Z" fill="#713342" />
+                                        <path id="Vector_9" d="M187.47 3.925C187.47 6.093 185.713 7.85 183.545 7.85C181.377 7.85 179.62 6.092 179.62 3.925C179.62 1.757 181.377 0 183.545 0C185.713 0 187.47 1.758 187.47 3.925Z" fill="#713342" />
+                                        <path id="Vector_10" opacity="0.5" d="M162.578 32.435C164.746 32.435 166.503 30.6777 166.503 28.51C166.503 26.3423 164.746 24.585 162.578 24.585C160.41 24.585 158.653 26.3423 158.653 28.51C158.653 30.6777 160.41 32.435 162.578 32.435Z" fill="white" />
+                                        <path id="Vector_11" opacity="0.5" d="M187.47 3.925C187.47 6.093 185.713 7.85 183.545 7.85C181.377 7.85 179.62 6.092 179.62 3.925C179.62 1.757 181.377 0 183.545 0C185.713 0 187.47 1.758 187.47 3.925Z" fill="white" />
+                                        <g id="Group_4">
+                                            <path id="Vector_12" d="M163.925 30.006C182.053 30.006 200.181 30.006 218.309 30.006C220.234 30.006 220.238 27.014 218.309 27.014C200.181 27.014 182.053 27.014 163.925 27.014C162 27.014 161.996 30.006 163.925 30.006Z" fill="#713342" />
+                                        </g>
+                                        <g id="Group_5" opacity="0.5">
+                                            <path id="Vector_13" d="M163.925 30.006C182.053 30.006 200.181 30.006 218.309 30.006C220.234 30.006 220.238 27.014 218.309 27.014C200.181 27.014 182.053 27.014 163.925 27.014C162 27.014 161.996 30.006 163.925 30.006Z" fill="white" />
+                                        </g>
+                                        <g id="Group_6">
+                                            <path id="Vector_14" opacity="0.1" d="M261.688 40.406L383.364 402.375C320.668 409.981 261.393 414.982 222.789 404.243L212.695 64.83L261.688 40.406Z" fill="#FFBDBD" />
+                                            <g id="Group_7">
+                                                <path id="Vector_15" d="M261.803 40.36C261.803 40.36 252.756 29.58 247.366 26.885C241.976 24.19 235.624 24.96 235.624 24.96C235.624 24.96 227.924 7.44298 216.182 11.678C205.789 18.592 215.906 34.627 215.906 34.627C215.906 34.627 211.506 39.273 210.463 45.208C209.42 51.143 212.696 64.83 212.696 64.83L235.746 52.34L235.817 52.487L261.803 40.36Z" fill="#FFBDBD" />
+                                                <path id="Vector_16" d="M212.62 64.676C213.831 67.125 225.798 63.678 239.348 56.976C252.898 50.274 262.9 42.855 261.689 40.406C260.477 37.957 248.511 41.404 234.961 48.106C221.411 54.808 211.409 62.227 212.62 64.676Z" fill="#FFBDBD" />
+                                                <path id="Vector_17" opacity="0.5" d="M212.62 64.676C213.831 67.125 225.798 63.678 239.348 56.976C252.898 50.274 262.9 42.855 261.689 40.406C260.477 37.957 248.511 41.404 234.961 48.106C221.411 54.808 211.409 62.227 212.62 64.676Z" fill="white" />
+                                            </g>
+                                            <path id="Vector_18" opacity="0.2" d="M257.242 37.543C257.242 37.543 249.878 27.865 240.199 26.707H235.149C235.149 26.707 228.07 13.06 222.525 13.095C216.98 13.13 235.465 45.327 235.465 45.327C235.465 45.327 246.091 38.7 257.242 37.543Z" fill="white" />
+                                        </g>
+                                        <path id="Vector_19" opacity="0.3" d="M185.013 78.462H182.021V85.011H185.013V78.462Z" fill="#713342" />
+                                        <g id="Group_8">
+                                            <g id="Group_9">
+                                                <path id="Vector_20" d="M138.292 83.005C155.715 83.005 173.137 83.005 190.56 83.005C195.538 83.005 200.516 83.005 205.494 83.005C207.419 83.005 207.422 80.013 205.494 80.013C188.071 80.013 170.649 80.013 153.226 80.013C148.248 80.013 143.27 80.013 138.292 80.013C136.366 80.013 136.363 83.005 138.292 83.005Z" fill="#713342" />
+                                            </g>
+                                            <g id="Group_10" opacity="0.5">
+                                                <path id="Vector_21" d="M138.292 83.005C155.715 83.005 173.137 83.005 190.56 83.005C195.538 83.005 200.516 83.005 205.494 83.005C207.419 83.005 207.422 80.013 205.494 80.013C188.071 80.013 170.649 80.013 153.226 80.013C148.248 80.013 143.27 80.013 138.292 80.013C136.366 80.013 136.363 83.005 138.292 83.005Z" fill="white" />
+                                            </g>
+                                            <path id="Vector_22" d="M209.418 81.547C209.418 83.715 207.661 85.472 205.493 85.472C203.325 85.472 201.568 83.715 201.568 81.547C201.568 79.379 203.325 77.622 205.493 77.622C207.661 77.622 209.418 79.379 209.418 81.547Z" fill="#713342" />
+                                            <path id="Vector_23" opacity="0.5" d="M209.418 81.547C209.418 83.715 207.661 85.472 205.493 85.472C203.325 85.472 201.568 83.715 201.568 81.547C201.568 79.379 203.325 77.622 205.493 77.622C207.661 77.622 209.418 79.379 209.418 81.547Z" fill="white" />
+                                        </g>
+                                        <path id="Vector_24" opacity="0.1" d="M104.992 102.651L0 404.242C49.8 413.006 105.178 411.933 164.272 404.307L158.412 113.288L104.992 102.651Z" fill="#FFBDBD" />
+                                        <g id="Group_11">
+                                            <path id="Vector_25" d="M155.793 94.502C153.3 89.016 147.879 85.617 147.879 85.617C147.879 85.617 153.668 67.563 141.878 63.465C129.45 62.298 126.371 81.184 126.371 81.184C126.371 81.184 120.028 82.026 115.482 85.982C110.936 89.938 104.869 102.637 104.869 102.637L133.062 107.887L133.094 107.727L158.533 114.062C158.532 114.06 158.285 99.989 155.793 94.502Z" fill="#FFBDBD" />
+                                            <path id="Vector_26" d="M158.568 113.892C158.007 116.566 145.559 116.218 130.764 113.114C115.969 110.01 104.431 105.326 104.992 102.651C105.553 99.977 118.001 100.325 132.796 103.429C147.59 106.533 159.129 111.217 158.568 113.892Z" fill="#FFBDBD" />
+                                            <path id="Vector_27" opacity="0.5" d="M158.568 113.892C158.007 116.566 145.559 116.218 130.764 113.114C115.969 110.01 104.431 105.326 104.992 102.651C105.553 99.977 118.001 100.325 132.796 103.429C147.59 106.533 159.129 111.217 158.568 113.892Z" fill="white" />
+                                        </g>
+                                        <path id="Vector_28" opacity="0.2" d="M108.582 98.768C108.582 98.768 113.294 87.557 122.377 84.018L127.266 82.756C127.266 82.756 130.711 67.773 136.089 66.421C141.467 65.069 131.613 100.864 131.613 100.864C131.613 100.864 119.668 97.103 108.582 98.768Z" fill="white" />
+                                        <g id="Group_12">
+                                            <g id="Group_13">
+                                                <path id="Vector_29" d="M239.233 23.384C246.62 23.083 253.787 27.403 256.983 34.066C257.192 34.501 257.838 34.121 257.631 33.687C254.328 26.801 246.862 22.322 239.233 22.633C238.752 22.653 238.75 23.403 239.233 23.384Z" fill="#FFBDBD" />
+                                            </g>
+                                        </g>
+                                    </g>
+                                </g>
+                            </svg>
+
 
                             <div id="commercials-illus">
                                 <svg viewBox="0 0 194 500" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1817,7 +1901,7 @@ export default function Home() {
                                 <button id="get-in-touch-commercial" onClick={() => {
                                     gotowedportfolio("contact")
                                 }}>Get In Touch</button>
-                            </div>
+                            </div>   
                         </div> */}
                         <p className="sec-5-side-h">
                             WHY AKAAR?
@@ -1835,7 +1919,7 @@ export default function Home() {
                         </div>
                     </div>
                     <div id="section-7">
-                        <div style={{ marginLeft: "10%" }} >
+                        <div style={{ marginLeft: "22%" }} >
                             {/* <button className="fullscreen-btn" onClick={() => handleClick("1-video")}></button>
                             <iframe id="1-video" src="https://www.youtube.com/embed/FJGSqtMzmlo?si=48HwWIVNCRaeELEr" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen={false}>
 
