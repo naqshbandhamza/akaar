@@ -85,7 +85,7 @@ export default function Home() {
                     tl.fromTo("#main-heading", {
                         xPercent: 100, opacity: 1,
                     }, { xPercent: 0, opacity: 1, duration: 4, ease: "power2.inOut" }, "<")
-                    tl.to("#sub-script", { opacity: 1, duration: 2.5, ease: "expo.inOut" }, "-=2")
+                    tl.to("#sub-script", { opacity: 1, duration: 2, ease: "expo.inOut" }, "-=2")
                     tl.fromTo("#scroll-assist", {
                         y: 100, opacity: 0, scale: 1.2
                     }, { y: 0, opacity: 1, scale: 1, duration: 1, ease: "expo.out" })
@@ -255,7 +255,7 @@ export default function Home() {
                             // markers: true,
                             trigger: ".sec-5-side-h",
                             start: "top-=400 top",
-                            end: "+=450",
+                            end: "+=250",
                             scrub: 0.5
                         }
                     }
