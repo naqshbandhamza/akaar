@@ -141,8 +141,11 @@ body {
     position: absolute;
     top: 50%;
     left: 50%;
-   
     transform: translate(-50%, -50%);
+}
+
+#headings {
+    overflow: hidden;
 }
 
 .sec-1-btn {
@@ -159,16 +162,20 @@ body {
 
 #sub-script {
     font-family: ttcommonpro;
-    font-size: 22px;
+    font-size: 1.6vw;
     width: 800px;
     text-align: center;
     margin-left: auto;
     margin-right: auto;
 }
 
+#main-heading {
+    text-align: center;
+}
+
 #section-1 h1 {
     font-family: organetto;
-    font-size: 6vw;
+    font-size: 4vw;
     font-weight: bolder;
     letter-spacing: 15px;
     opacity: 0;
@@ -497,7 +504,7 @@ body {
     text-align: center;
     width: 500px;
     font-family: montesrrat;
-    font-size: 18px;
+    font-size: 1.3vw;
     color: white;
     position: absolute;
     top: 60%;
@@ -538,8 +545,8 @@ body {
     left: 50%;
     transform: translate(-50%, -55%);
     background-color: #FFBC10;
-    height: 120px;
-    width: 120px;
+    height: 8.7vw;
+    width: 8.7vw;
     border-radius: 50%;
     font-family: montesrratlight;
     color: white;
@@ -562,16 +569,26 @@ body {
     transform-box: fill-box;
 }
 
-#cealling-lamp #Group_2,
-#cealling-lamp #Group_12 {
-    transform-origin: top;
-}
-
 #cealling-lamp {
     position: absolute;
-    top: -10px;
+    top: -0.5%;
     left: 10%;
+    width: 12.8vw;
+    height: 31.4vh;
     overflow: visible;
+}
+
+#cealling-lamp svg {
+    position: absolute;
+    top: 0%;
+    width: auto;
+    height: auto;
+    overflow: visible;
+}
+
+#cealling-lamp #Group_2,
+#cealling-lamp #Group_12  {
+    transform-origin: top;
 }
 
 #windows {
@@ -581,13 +598,6 @@ body {
     transform: translateY(-78%);
     width: 12.9vw;
     height: 39.4vh;
-}
-
-#cealling-lamp {
-    /* width: 12.8vw;
-    height: 31.4vh; */
-    width: 148px;
-    height: 226px;
 }
 
 #section-2 #cealling-lamp {
@@ -619,8 +629,8 @@ body {
     left: 50%;
     transform: translate(-50%, -55%);
     background-color: #FF2424;
-    height: 130px;
-    width: 130px;
+    height: 8.7vw;
+    width: 8.7vw;
     border-radius: 50%;
     font-family: montesrratlight;
     color: white;
@@ -632,7 +642,7 @@ body {
     text-align: center;
     width: 500px;
     font-family: montesrrat;
-    font-size: 18px;
+    font-size: 1.3vw;
     color: white;
     position: absolute;
     top: 60%;
@@ -647,8 +657,8 @@ body {
     left: 50%;
     transform: translate(-50%, -55%);
     background-color: #7800B0;
-    height: 130px;
-    width: 130px;
+    height: 8.7vw;
+    width: 8.7vw;
     border-radius: 50%;
     font-family: montesrratlight;
     color: white;
@@ -660,7 +670,7 @@ body {
     text-align: center;
     width: 500px;
     font-family: montesrrat;
-    font-size: 18px;
+    font-size: 1.3vw;
     /* color: #454440dd; */
     color: white;
     position: absolute;
@@ -696,21 +706,30 @@ body {
 
 /*****************section 5 *************************/
 
+.cs5{
+    position: absolute;
+    width: 80%;
+    left: 10%;
+    right: 10%;
+    top:50%;
+}
+
 .sec-5-side-h {
     font-family: podium;
     color: rgb(92, 92, 92);
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    left: 10%;
-    font-size: 92px;
+    left: 0%;
+    font-size: 6.7vw;
     font-weight: bolder;
-    width: 200px;
+    width: auto;
     border-left-style: solid;
     border-left-width: 5px;
     border-left-color: #7800B0;
     padding-left: 30px;
     line-height: 1;
+    overflow: hidden;
 }
 
 #section-5 .p1,
@@ -718,34 +737,26 @@ body {
 #section-5 .p3 {
     font-family: montesrrat;
     color: rgb(92, 92, 92);
+    font-size: 16px;
 }
 
-.para-para{
+.para-para {
     position: absolute;
     top: 50%;
-    right: 20%;
+    right: 0%;
 }
 
 #section-5 .p1 {
-    /* position: absolute;
-    top: 400px;
-    right: 20%; */
     width: 400px;
-
+    margin-top: 100px;
 }
 
 #section-5 .p2 {
-    /* position: absolute;
-    top: 1100px;
-    right: 20%; */
     width: 400px;
     margin-top: 700px;
 }
 
 #section-5 .p3 {
-    /* position: absolute;
-    top: 1600px;
-    right: 20%; */
     width: 400px;
     margin-top: 700px;
 }
@@ -859,15 +870,16 @@ body {
 }
 
 .product {
-   
-   
+    height: auto;
+    width: auto;
 }
 
 .product iframe,
 .product video {
-    width: inherit;
-    height: inherit;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
+    pointer-events: none;
 }
 
 @keyframes fullscreenbtnanim {
@@ -928,9 +940,9 @@ body {
 
 #section-6 .s2 {
     position: absolute;
-    top:50%;
-    left:50%;
-    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     font-family: podium;
     color: #111111;
     font-size: 82px;
@@ -964,10 +976,11 @@ body {
 #section-7 div {
     height: 65vh;
     width: 45vw;
-    border-width: 5px;
-    border-color: #7800B0;
+    /* border-width: 5px; */
+    /* border-color: #7800B0; */
     margin: 60px;
-    margin-top: 1.5%;
+    margin-top: 1.8%;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.129);
 }
 
 .common-h1 {
@@ -991,11 +1004,7 @@ body {
 
 @media (min-width: 1400px) {
 
-    #cealling-lamp {
-        top: -5px;
-        width: 168px;
-        height: 246px;
-    }
+
 
     #wed-main-illus {
         width: 394px;
@@ -1154,11 +1163,7 @@ body {
         transform: rotate(0deg);
     }
 
-    #cealling-lamp {
-        top: -18px;
-        width: 108px;
-        height: 186px;
-    }
+
 
     #street-light {
         top: -10px;
@@ -1389,7 +1394,7 @@ body {
 #contact {
     position: relative;
     height: 100vh;
-    background-color:#111111;
+    background-color: #111111;
     overflow: hidden;
     width: 100%;
 }
@@ -1446,15 +1451,16 @@ body {
     height: 100%;
 }
 
-#contact .c1{
+#contact .c1 {
     position: absolute;
-    top:5px;
-    left:5px;
+    top: 5px;
+    left: 5px;
     font-size: 92px;
     color: white;
     font-family: naville;
     font-weight: bold;
 }
-#contact .c1 span{
+
+#contact .c1 span {
     color: #7800B0;
 }
