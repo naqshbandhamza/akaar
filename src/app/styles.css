@@ -175,7 +175,7 @@ body {
 
 #section-1 h1 {
     font-family: organetto;
-    font-size: 4vw;
+    font-size: 6vw;
     font-weight: bolder;
     letter-spacing: 15px;
     opacity: 0;
@@ -728,7 +728,7 @@ body {
     border-left-width: 5px;
     border-left-color: #7800B0;
     padding-left: 30px;
-    line-height: 1;
+    /* line-height: 1; */
     overflow: hidden;
 }
 
@@ -753,12 +753,12 @@ body {
 
 #section-5 .p2 {
     width: 400px;
-    margin-top: 700px;
+    margin-top: 605px;
 }
 
 #section-5 .p3 {
     width: 400px;
-    margin-top: 700px;
+    margin-top: 605px;
 }
 
 .sec-p-head {
@@ -1455,7 +1455,7 @@ body {
     position: absolute;
     top: 5px;
     left: 5px;
-    font-size: 92px;
+    font-size: 102px;
     color: white;
     font-family: naville;
     font-weight: bold;

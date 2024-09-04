@@ -238,6 +238,7 @@ export default function Home() {
                     // section 5
                     gsap.to([".p1", ".p2", ".p3"], {
                         y: "-=2100",
+                        delay:1,
                         scrollTrigger: {
                             // markers:true,
                             trigger: "#section-5",
@@ -248,40 +249,77 @@ export default function Home() {
                         }
                     })
 
-                    gsap.fromTo([".sec-5-side-h p"],
+                    gsap.fromTo([".sec-5-side-h"],
                         { y: "100%" }, {
                         y: "0%",
                         scrollTrigger: {
                             // markers: true,
                             trigger: ".sec-5-side-h",
                             start: "top-=400 top",
-                            end: "+=250",
-                            scrub: 0.5
+                            end: "+=600",
+                            scrub: 1
+                        }
+                    }
+                    )
+
+                    gsap.fromTo([".sec-5-side-h p"],
+                        { y: "-100%" }, {
+                        y: "0%",
+                        scrollTrigger: {
+                            // markers: true,
+                            trigger: ".sec-5-side-h",
+                            start: "top-=400 top",
+                            end: "+=600",
+                            scrub: 1
                         }
                     }
                     )
 
                     //section 7
 
-                    gsap.to("#section-7 div", {
-                        xPercent: -350,
-                        scrollTrigger: {
-                            // markers: true,
-                            trigger: "#section-7",
-                            start: "top-=20% top+=35%",
-                            end: "+=200%",
-                            scrub: 1
-                        },
-                    })
+                    let delSections = document.querySelectorAll("#section-7 .product");
+
+                    delSections.forEach((section: any) => {
+
+                        let imageAnim = gsap.to(section, {
+                            xPercent: -400,
+                            paused: true
+                        });
+
+                        let progressTo = gsap.quickTo(imageAnim, "progress", { ease: "power3", duration: parseFloat(section.dataset.scrub) || 0.1 });
+
+                        gsap.to(section, {
+                            scrollTrigger: {
+                                scrub: true,
+                                // markers: true,
+                                trigger: "#section-7",
+                                start: "top-=30% top+=40%",
+                                end: "+=200%",
+                                onUpdate: self => progressTo(self.progress)
+                            }
+                        });
+
+                    });
+
+                    // gsap.to("#section-7 div", {
+                    //     xPercent: -380,
+                    //     scrollTrigger: {
+                    //         // markers: true,
+                    //         trigger: "#section-7",
+                    //         start: "top-=30% top+=60%",
+                    //         end: "+=200%",
+                    //         scrub: 1
+                    //     },
+                    // })
 
                     gsap.to("#section-7 div", {
 
                         scrollTrigger: {
                             // markers: true,
                             trigger: "#section-7",
-                            start: "top top",
+                            start: "top top+=5%",
                             end: "+=200%",
-                            scrub: 1,
+                            scrub: true,
                             pin: true,
                         }
                     })
@@ -617,8 +655,9 @@ export default function Home() {
     };
 
     const close = () => {
-        const ele: any = document.getElementById("full-screen-container");
-        ele.style.display = "none";
+        const ele: any = document.getElementById("fscreen");
+        ele.innerHTML = "";
+        document.getElementById("full-screen-container").style.display = "none"
     }
 
     const gotowedportfolio = (id) => {
@@ -636,7 +675,7 @@ export default function Home() {
                     trigger: trigger,
                     containerAnimation: scrolltween,
                     start: "left right",
-                    toggleActions: "play none reverse reverse",
+                    toggleActions: "play pause resume reverse",
                 }
             });
 
@@ -659,7 +698,7 @@ export default function Home() {
                     trigger: trigger,
                     containerAnimation: scrolltween,
                     start: "left right",
-                    toggleActions: "play none reverse reverse",
+                    toggleActions: "play pause resume reverse",
                 }
             });
 
@@ -1749,24 +1788,24 @@ export default function Home() {
                         </div>
                     </div>
                     <div id="section-7">
-                        <div style={{ marginLeft: "20%" }} className="product">
+                        <div style={{ marginLeft: "30%" }} className="product" data-scrub="0.7">
                             <button className="fullscreen-btn" onClick={() => handleClick("1-video")}></button>
                             <iframe id="1-video" src="https://www.youtube.com/embed/FJGSqtMzmlo?si=48HwWIVNCRaeELEr" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen={false}>
 
                             </iframe>
                         </div>
-                        <div>
+                        <div className="product" data-scrub="0.5">
+                            <button className="fullscreen-btn" onClick={() => handleClick("2-video")}></button>
+                            <iframe id="2-video" src="https://www.youtube.com/embed/f9Jxv6RaSNM?si=wdkx0hHeChsf1hUJ" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen={false}>
 
+                            </iframe>
                         </div>
-                        <div>
+                        <div className="product" data-scrub="0.25">
+                            <button className="fullscreen-btn" onClick={() => handleClick("3-video")}></button>
+                            <iframe id="3-video" src="https://www.youtube.com/embed/7O_0_r8jG6o?si=i9oFBACcu3wF7obl" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen={false}>
 
+                            </iframe>
                         </div>
-                        {/* <div>
-
-                        </div>
-                        <div>
-
-                        </div> */}
 
                     </div>
                     <div id="section-6">
@@ -1802,7 +1841,7 @@ export default function Home() {
                     </div>
                     <div id="contact">
                         <p className="c1">
-                            LETS <span>GET IN TOUCH</span> TO START YOUR JOURNEY
+                            CINEMATIC <span>MODE</span>
                         </p>
                         {/* <div className="contact-div">
                             <svg id="my-rocket-path" viewBox="0 0 1022 515" fill="none" xmlns="http://www.w3.org/2000/svg">
