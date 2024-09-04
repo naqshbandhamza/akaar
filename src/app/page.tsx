@@ -238,7 +238,7 @@ export default function Home() {
                     // section 5
                     gsap.to([".p1", ".p2", ".p3"], {
                         y: "-=2100",
-                        delay:1,
+                        delay: 1,
                         scrollTrigger: {
                             // markers:true,
                             trigger: "#section-5",
@@ -657,7 +657,8 @@ export default function Home() {
     const close = () => {
         const ele: any = document.getElementById("fscreen");
         ele.innerHTML = "";
-        document.getElementById("full-screen-container").style.display = "none"
+        let elex: any = document.getElementById("full-screen-container");
+        elex.style.display = "none"
     }
 
     const gotowedportfolio = (id) => {
