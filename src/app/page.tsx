@@ -62,7 +62,7 @@ export default function Home() {
     }, []);
 
     useEffect(() => {
-
+        window.scrollTo(0, 0);
         if (pageloaded) {
 
             let preloader: any = document.getElementById('loading');
@@ -79,13 +79,10 @@ export default function Home() {
 
                     //section 1
                     let tl = gsap.timeline({})
-                    tl.fromTo("#headings", {
-                        xPercent: -100, opacity: 1,
-                    }, { xPercent: 0, opacity: 1, duration: 4, delay: 1, ease: "power2.inOut" })
                     tl.fromTo("#main-heading", {
-                        xPercent: 100, opacity: 1,
-                    }, { xPercent: 0, opacity: 1, duration: 4, ease: "power2.inOut" }, "<")
-                    tl.to("#sub-script", { opacity: 1, duration: 2, ease: "expo.inOut" }, "-=2")
+                        yPercent: 100, opacity: 1,
+                    }, { yPercent: 0, opacity: 1, duration: 2.2, delay: 1, ease: "expo.out" }, "<")
+                    tl.to("#sub-script", { opacity: 1, duration: 1.5, ease: "expo.in" }, "<")
                     tl.fromTo("#scroll-assist", {
                         y: 100, opacity: 0, scale: 1.2
                     }, { y: 0, opacity: 1, scale: 1, duration: 1, ease: "expo.out" })
@@ -107,23 +104,35 @@ export default function Home() {
                         }
                     });
 
+                    // gsap.to(["#bg-stars svg"], {
+                    //     y: "-100vh",
+                    //     repeat: -1,
+                    //     scrollTrigger: {
+                    //         markers: true,
+                    //         trigger: ".slider-container",
+                    //         scrub: 1,
+                    //         start: "top top",
+                    //         end: () => screenWidth * 4 + 100
+                    //     }
+                    // })
+
                     const scrollassist0 = gsap.timeline({
                         scrollTrigger: {
                             // markers:true,
                             trigger: "#section-1",
                             containerAnimation: scrolltween,
-                            start: "left 50%",
+                            start: "left 10%",
                             toggleActions: "play none none reverse",
                         }
                     }
                     )
                     scrollassist0.to(
                         "#lang-btn",
-                        { backgroundColor: "#EAEDFE", color: "#2E4BF5" }
+                        { backgroundColor: "#EAEDFE", color: "#2E4BF5", duration: 0.25 }
                     ).to(
                         "#scroll-assist",
-                        { backgroundColor: "#2E4BF5", color: "#EAEDFE" }
-                    );
+                        { backgroundColor: "#2E4BF5", color: "#EAEDFE", duration: 0.25 }
+                        , "<");
 
                     //section 2
                     const scrollassist1 = gsap.timeline({
@@ -138,11 +147,11 @@ export default function Home() {
                     )
                     scrollassist1.to(
                         "#lang-btn",
-                        { backgroundColor: "#FFF5D8", color: "#FFC325" }
+                        { backgroundColor: "#FFF5D8", color: "#FFC325", duration: 0.25 }
                     ).to(
                         "#scroll-assist",
-                        { backgroundColor: "#FFC325", color: "#FFF5D8" }
-                    );
+                        { backgroundColor: "#FFC325", color: "#FFF5D8", duration: 0.25 }
+                        , "<");
 
                     lamps(scrolltween, "#section-2 #cealling-lamp", ["#section-2 #cealling-lamp #Group_2", "#section-2 #cealling-lamp #Group_12"])
                     lamps(scrolltween, "#section-3 #cealling-lamp", ["#section-3 #cealling-lamp #Group_2", "#section-3 #cealling-lamp #Group_12"])
@@ -207,11 +216,11 @@ export default function Home() {
 
                     scrollassist2.to(
                         "#lang-btn",
-                        { backgroundColor: "#FFC7C7", color: "#FF2424" }
+                        { backgroundColor: "#FFC7C7", color: "#FF2424", duration: 0.25 }
                     ).to(
                         "#scroll-assist",
-                        { backgroundColor: "#FF2424", color: "#FFC7C7" }
-                    );
+                        { backgroundColor: "#FF2424", color: "#FFC7C7", duration: 0.25 }
+                        , "<");
 
                     // txtanimation(scrolltween, "#section-3", "#fashion-illus", "#akaar-fashion", "#akaar-fashion-shadow", "#akaar-fashion-shadow-1", "#sub-tag-fashion", "#now-booking-fashion")
 
@@ -229,16 +238,15 @@ export default function Home() {
 
                     scrollassist3.to(
                         "#lang-btn",
-                        { backgroundColor: "#DFC3EC", color: "#7800B0" }
+                        { backgroundColor: "#DFC3EC", color: "#7800B0", duration: 0.25 }
                     ).to(
                         "#scroll-assist",
-                        { backgroundColor: "#7800B0", color: "#DFC3EC" }
-                    );
+                        { backgroundColor: "#7800B0", color: "#DFC3EC", duration: 0.25 }
+                        , "<");
 
                     // section 5
                     gsap.to([".p1", ".p2", ".p3"], {
-                        y: "-=2100",
-                        delay: 1,
+                        y: "-=1900",
                         scrollTrigger: {
                             // markers:true,
                             trigger: "#section-5",
@@ -250,13 +258,13 @@ export default function Home() {
                     })
 
                     gsap.fromTo([".sec-5-side-h"],
-                        { y: "100%" }, {
-                        y: "0%",
+                        { y: "100%", opacity: 1 }, {
+                        y: "0%", opacity: 1, duration: 1,
                         scrollTrigger: {
                             // markers: true,
                             trigger: ".sec-5-side-h",
-                            start: "top-=400 top",
-                            end: "+=600",
+                            start: "top-=500 top",
+                            end: "+=400",
                             scrub: 1
                         }
                     }
@@ -264,12 +272,12 @@ export default function Home() {
 
                     gsap.fromTo([".sec-5-side-h p"],
                         { y: "-100%" }, {
-                        y: "0%",
+                        y: "0%", duration: 1,
                         scrollTrigger: {
                             // markers: true,
                             trigger: ".sec-5-side-h",
-                            start: "top-=400 top",
-                            end: "+=600",
+                            start: "top-=500 top",
+                            end: "+=400",
                             scrub: 1
                         }
                     }
@@ -293,8 +301,8 @@ export default function Home() {
                                 scrub: true,
                                 // markers: true,
                                 trigger: "#section-7",
-                                start: "top-=30% top+=40%",
-                                end: "+=200%",
+                                start: "top top",
+                                end: "+=100%",
                                 onUpdate: self => progressTo(self.progress)
                             }
                         });
@@ -315,10 +323,12 @@ export default function Home() {
                     gsap.to("#section-7 div", {
 
                         scrollTrigger: {
-                            // markers: true,
+                            //markers: true,
                             trigger: "#section-7",
-                            start: "top top+=5%",
-                            end: "+=200%",
+                            // start: "top top+=5%",
+                            // end: "+=200%",
+                            start: "top top",
+                            end: "+=100%",
                             scrub: true,
                             pin: true,
                         }
@@ -681,7 +691,7 @@ export default function Home() {
             });
 
             t.to(targets[0], {
-                rotation: 16, duration: 2, ease: "sine.inOut"
+                rotation: 16.5, duration: 2, ease: "sine.inOut"
             }).to(targets[0], {
                 rotation: -4, duration: 1.8, ease: "sine.inOut"
             }).to(targets[0], {
@@ -731,7 +741,7 @@ export default function Home() {
             }}>
                 <div id="loading">
                     <div className="text-container" id="loading-image">
-                        <h1 className="masked-text">AKAAR <sup>...</sup></h1>
+                        <Image src={"/static/infinity.gif"} height={60} width={80} alt="infinity" />
                     </div>
                 </div>
 
@@ -754,7 +764,10 @@ export default function Home() {
                             <div className="cnt-for-h">
                                 <div id="headings">
                                     <h1 id="main-heading">AKAAR<sup>Creative Agency</sup></h1>
-                                    <p id="sub-script"><span>AKAAR</span> - is a dynamic force in the world of visual storytelling, specializing in creative videography, photography, illustration and animation that captivates and inspires. We blend artistic vision with strategic marketing to craft compelling content that resonates with your audience.</p>
+                                </div>
+                                <p id="sub-script"><span>AKAAR</span> - is a dynamic force in the world of visual storytelling, specializing in creative videography, photography, illustration and animation that captivates and inspires. We blend artistic vision with strategic marketing to craft compelling content that resonates with your audience.</p>
+                                <div className="my-btns">
+                                    <button>GET IN TOUCH</button>
                                 </div>
                             </div>
                         </div>
@@ -1764,6 +1777,9 @@ export default function Home() {
                                 Our Portfolio
                             </button>
                         </div>
+
+                        <button id="scroll-assist">Get In Touch</button>
+
                         <button id="lang-btn">
                             EN
                         </button>

@@ -78,13 +78,21 @@
     box-sizing: border-box;
 }
 
-
 body {
     margin: 0;
     padding: 0;
     overflow-y: auto;
     overflow-x: hidden;
     scroll-behavior: smooth;
+    position: relative;
+    /* background-image: url("./images/stars.png");
+    background-size: contain; */
+}
+
+#content {
+    display: block;
+    height: auto;
+    width: auto;
 }
 
 ::-webkit-scrollbar {
@@ -108,6 +116,20 @@ body {
     flex-wrap: nowrap;
     width: 400vw;
     opacity: 0;
+
+}
+
+#bg-stars {
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+#bg-stars svg {
+    width: 100%;
+    height: 100%;
 }
 
 .panels {
@@ -116,25 +138,26 @@ body {
 
 #section-1 {
     overflow: visible;
-    background-color: #FFFFFF;
     position: relative;
+    /* background-color: #FFFFFF; */
 }
 
 #section-2 {
     overflow: visible;
     position: relative;
-
+    /* background-color: #FFFFFF; */
 }
 
 #section-3 {
     position: relative;
     overflow: visible;
-
+    /* background-color: #FFFFFF; */
 }
 
 #section-4 {
     position: relative;
     overflow: visible;
+    /* background-color: #FFFFFF; */
 }
 
 .cnt-for-h {
@@ -142,6 +165,25 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+.cnt-for-h button {
+    background-color: #2E4BF5;
+    height: 40px;
+    width: 130px;
+    font-family: montesrratlight;
+    color: white;
+    font-size: 12px;
+    border-radius: 20px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.129);
+}
+
+.cnt-for-h .my-btns {
+    /* background-color: #7800B0; */
+    margin-top: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 #headings {
@@ -161,21 +203,22 @@ body {
 }
 
 #sub-script {
-    font-family: ttcommonpro;
     font-size: 1.6vw;
     width: 800px;
     text-align: center;
     margin-left: auto;
     margin-right: auto;
+    opacity: 0;
 }
 
 #main-heading {
     text-align: center;
+    line-height: 1;
 }
 
 #section-1 h1 {
     font-family: organetto;
-    font-size: 6vw;
+    font-size: 3vw;
     font-weight: bolder;
     letter-spacing: 15px;
     opacity: 0;
@@ -189,10 +232,10 @@ body {
 
 #section-1 p {
     margin-top: 50px;
-    font-family: montesrratlight;
-    color: #646161dd;
-    font-size: 12px;
-    letter-spacing: 1.6px;
+    font-family: dmsans;
+    color: #000000;
+    font-size: 13px;
+    letter-spacing: 1px;
     opacity: 0;
 }
 
@@ -203,6 +246,7 @@ body {
 #section-1 p span {
     font-family: organetto;
     font-weight: lighter;
+    font-size: 8px;
 }
 
 #bench {
@@ -286,28 +330,6 @@ body {
     animation: globe 4s linear infinite;
 }
 
-@keyframes globestars {
-
-    0%,
-    100% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(0);
-    }
-}
-
-@keyframes globe {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
 #hills {
     position: absolute;
     bottom: -80px;
@@ -331,29 +353,18 @@ body {
 
 #scroll-assist {
     position: absolute;
-    bottom: 20px;
+    bottom: 30px;
     left: calc(50vw);
     transform: translateX(-50%);
+    background-color: #2E4BF5;
+    border-radius: 26px;
+    height: 40px;
+    width: 160px;
+    font-family: montesrrat;
+    color: white;
+    font-size: 13px;
     display: none;
 }
-
-#scroll-assist :nth-child(1) {
-    background-color: #2E4BF5;
-    height: 30px;
-    width: 50px;
-    border-radius: 20px;
-}
-
-#scroll-assist :nth-child(2),
-#scroll-assist :nth-child(3),
-#scroll-assist :nth-child(4) {
-    height: 10px;
-    width: 10px;
-    border-radius: 50%;
-    background-color: white;
-}
-
-
 
 #loading {
     position: fixed;
@@ -445,7 +456,7 @@ body {
     font-family: Protrakt;
     font-size: 12px;
     position: fixed;
-    bottom: 35px;
+    top: 25px;
     left: 35px;
     background-color: #F5F6FF;
     height: 50px;
@@ -497,7 +508,8 @@ body {
     top: auto;
     left: 10px;
     transform: translate(0%, 0%);
-    bottom: -60px;
+    /*bottom: -60px;*/
+    top: 55%;
 }
 
 #sub-tag-wed {
@@ -507,10 +519,11 @@ body {
     font-size: 1.3vw;
     color: white;
     position: absolute;
-    top: 60%;
+    top: 62%;
     left: 50%;
     transform: translateX(-50%);
-    text-shadow: 2px 2px 4px rgb(249, 158, 0);
+    text-shadow: 2px 2px 2px rgb(249, 158, 0);
+    display: none;
 }
 
 #wed-clock {
@@ -520,14 +533,15 @@ body {
     width: 10.5vw;
     height: 16.2vh;
     opacity: 0.6;
+    /* display: none; */
 }
 
 #floor-lamp {
     position: absolute;
     top: 40%;
     right: 50px;
-    width: 7.9vw;
-    height: 47.3vh;
+    width: 6.9vw;
+    height: 46.3vh;
 }
 
 #sofa {
@@ -547,6 +561,8 @@ body {
     background-color: #FFBC10;
     height: 8.7vw;
     width: 8.7vw;
+    min-width: 120px;
+    min-height: 120px;
     border-radius: 50%;
     font-family: montesrratlight;
     color: white;
@@ -562,7 +578,7 @@ body {
     left: 50%;
     transform: translate(-50%, -40%);
     opacity: 0.9;
-    display: none;
+    /* display: none; */
 }
 
 #cealling-lamp * {
@@ -573,8 +589,8 @@ body {
     position: absolute;
     top: -0.5%;
     left: 10%;
-    width: 12.8vw;
-    height: 31.4vh;
+    width: 11.8vw;
+    height: 30.4vh;
     overflow: visible;
 }
 
@@ -587,7 +603,7 @@ body {
 }
 
 #cealling-lamp #Group_2,
-#cealling-lamp #Group_12  {
+#cealling-lamp #Group_12 {
     transform-origin: top;
 }
 
@@ -610,16 +626,16 @@ body {
 }
 
 #fashion-illus svg {
-    width: 21.5vw;
-    height: 55.9vh;
+    width: 22.5vw;
+    height: 56.9vh;
 }
 
 #mirror {
     position: absolute;
     left: 0%;
     top: 15%;
-    width: 38.1vw;
-    height: 63.5vh;
+    width: 30.1vw;
+    height: 55.5vh;
     transform: rotate(0deg);
 }
 
@@ -631,6 +647,8 @@ body {
     background-color: #FF2424;
     height: 8.7vw;
     width: 8.7vw;
+    min-width: 120px;
+    min-height: 120px;
     border-radius: 50%;
     font-family: montesrratlight;
     color: white;
@@ -645,10 +663,11 @@ body {
     font-size: 1.3vw;
     color: white;
     position: absolute;
-    top: 60%;
+    top: 62%;
     left: 50%;
     transform: translateX(-50%);
-    text-shadow: 2px 2px 4px #FF2424;
+    text-shadow: 2px 2px 2px #FF2424;
+    display: none;
 }
 
 #now-booking-commercials {
@@ -659,6 +678,8 @@ body {
     background-color: #7800B0;
     height: 8.7vw;
     width: 8.7vw;
+    min-width: 120px;
+    min-height: 120px;
     border-radius: 50%;
     font-family: montesrratlight;
     color: white;
@@ -674,10 +695,11 @@ body {
     /* color: #454440dd; */
     color: white;
     position: absolute;
-    top: 60%;
+    top: 62%;
     left: 50%;
     transform: translateX(-50%);
-    text-shadow: 2px 2px 4px #7800B0;
+    text-shadow: 2px 2px 2px #7800B0;
+    display: none;
 }
 
 /***************** section 4************************/
@@ -688,12 +710,12 @@ body {
     left: 50%;
     transform: translate(-50%, -40%);
     opacity: 0.9;
-    display: none;
+    /* display: none; */
 }
 
 #commercials-illus svg {
-    width: 21.5vw;
-    height: 55.9vh;
+    width: 22.5vw;
+    height: 56.9vh;
 }
 
 #sofa-1 {
@@ -706,38 +728,41 @@ body {
 
 /*****************section 5 *************************/
 
-.cs5{
-    position: absolute;
-    width: 80%;
-    left: 10%;
-    right: 10%;
-    top:50%;
+.cs5 {
+    position: relative;
+    max-width: 1600px;
+    width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100%;
+    /* background-color: #FF2424; */
 }
 
 .sec-5-side-h {
     font-family: podium;
     color: rgb(92, 92, 92);
+    font-size: 6.7vw;
     position: absolute;
     top: 50%;
-    transform: translateY(-50%);
     left: 0%;
-    font-size: 6.7vw;
+    transform: translateY(-50%);
     font-weight: bolder;
     width: auto;
-    border-left-style: solid;
-    border-left-width: 5px;
-    border-left-color: #7800B0;
-    padding-left: 30px;
-    /* line-height: 1; */
+    /* background-color: #2E4BF5; */
+    border-bottom-style: solid;
+    /* border-bottom-width: 5px; */
+    border-bottom-color: #7800B0;
+    /* padding-bottom: 30px; */
+    line-height: 1;
     overflow: hidden;
 }
 
 #section-5 .p1,
 #section-5 .p2,
 #section-5 .p3 {
-    font-family: montesrrat;
+    font-family: montesrratlight;
     color: rgb(92, 92, 92);
-    font-size: 16px;
+    font-size: 14px;
 }
 
 .para-para {
@@ -748,7 +773,7 @@ body {
 
 #section-5 .p1 {
     width: 400px;
-    margin-top: 100px;
+    margin-top: 120px;
 }
 
 #section-5 .p2 {
@@ -817,9 +842,9 @@ body {
 #section-5 {
     position: relative;
     width: 100%;
-    height: 85vh;
-    background-color: #FFFFFF;
+    height: 100vh;
     overflow: visible;
+    /* background-color: #2E4BF5; */
 }
 
 #section-5 #wave {
@@ -882,18 +907,6 @@ body {
     pointer-events: none;
 }
 
-@keyframes fullscreenbtnanim {
-
-    0%,
-    100% {
-        opacity: 1;
-    }
-
-    50% {
-        opacity: 0;
-    }
-}
-
 .fullscreen-btn {
     position: absolute;
     bottom: 5px;
@@ -924,9 +937,9 @@ body {
     position: relative;
     width: 100%;
     height: 100vh;
-    background-color: #FFFFFF;
     overflow: hidden;
     font-size: 142px;
+    /* background-color: #7800B0; */
 }
 
 #section-6 .s1 {
@@ -964,23 +977,24 @@ body {
 /*****************section 7 *************************/
 
 #section-7 {
+    position: relative;
     width: 400%;
-    height: 100vh;
-    background-color: #FFFFFF;
+    height: 80vh;
     display: flex;
     flex-direction: row;
     overflow: hidden;
     margin-bottom: 200px;
+    /* background-color: #EDB62B; */
 }
 
 #section-7 div {
-    height: 65vh;
-    width: 45vw;
+    height: 52vh;
+    width: 43.92vw;
     /* border-width: 5px; */
     /* border-color: #7800B0; */
     margin: 60px;
-    margin-top: 1.8%;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.129);
+    margin-top: 2%;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.244);
 }
 
 .common-h1 {
@@ -1172,10 +1186,6 @@ body {
         height: 323;
     }
 
-    #scroll-assist {
-        display: none;
-    }
-
     .slider-container {
         position: relative;
         display: block;
@@ -1246,28 +1256,6 @@ body {
         height: 370px;
     }
 
-
-
-    #scroll-assist {
-        width: 200px;
-        height: 35px;
-    }
-
-    #scroll-assist :nth-child(1) {
-        background-color: #2E4BF5;
-        height: 20px;
-        width: 40px;
-        border-radius: 20px;
-    }
-
-    #scroll-assist :nth-child(2),
-    #scroll-assist :nth-child(3),
-    #scroll-assist :nth-child(4) {
-        height: 5px;
-        width: 5px;
-        border-radius: 50%;
-        background-color: white;
-    }
 
     #now-booking-wed {
         height: 90px;
@@ -1394,7 +1382,6 @@ body {
 #contact {
     position: relative;
     height: 100vh;
-    background-color: #111111;
     overflow: hidden;
     width: 100%;
 }
@@ -1430,7 +1417,6 @@ body {
     margin-left: auto;
     margin-right: auto;
     border-radius: 5px;
-    background-color: #ffffff;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.129);
     z-index: 6;
     overflow: hidden;
@@ -1463,4 +1449,61 @@ body {
 
 #contact .c1 span {
     color: #7800B0;
+}
+
+
+
+
+@keyframes float1 {
+    0% {
+        transform: translate(0, 0)
+    }
+
+    50% {
+        transform: translate(-10px, 0)
+    }
+
+    100% {
+        transform: translate(0, 0)
+    }
+}
+
+.triangle-float1 {
+    animation: float1 5s infinite;
+}
+
+@keyframes float2 {
+    0% {
+        transform: translate(0, 0)
+    }
+
+    50% {
+        transform: translate(-5px, -5px)
+    }
+
+    100% {
+        transform: translate(0, 0)
+    }
+}
+
+.triangle-float2 {
+    animation: float2 4s infinite;
+}
+
+@keyframes float3 {
+    0% {
+        transform: translate(0, 0)
+    }
+
+    50% {
+        transform: translate(0, -10px)
+    }
+
+    100% {
+        transform: translate(0, 0)
+    }
+}
+
+.triangle-float3 {
+    animation: float3 6s infinite;
 }
