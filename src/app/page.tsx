@@ -148,14 +148,14 @@ export default function Home() {
                     let myanim = gsap.timeline({ paused: true })
                     myanim
                         .to(".bgsss",
-                            { left: "0", top: "0", right: "-10vw", bottom: "100vh", fill: "#FFFBEC", duration: 1, }
+                            { left: "0", top: "0", right: "-10vw", bottom: "100vh", fill: "#FFFBEC", }
                         )
                         .to(".bgsss",
-                            { left: "-10vw", top: "100vh", right: "0", bottom: "0", fill: "#FFDBDB", duration: 1, }
+                            { left: "-10vw", top: "140vh", right: "0", bottom: "0", fill: "#FDEFEF", }
                         )
                         .to(".bgsss",
 
-                            { left: "0", top: "0", right: "-10vw", bottom: "100vh", fill: "#EBD9F3", duration: 1, }
+                            { left: "0", top: "0", right: "-20vw", bottom: "100vh", fill: "#ECECEC", }
                         );
 
                     let bgstimeline = gsap.timeline({
