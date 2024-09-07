@@ -139,7 +139,7 @@ body {
 #section-1 {
     overflow: visible;
     position: relative;
-    /* background-color: #FFFFFF; */
+    
 }
 
 #section-2 {
@@ -170,12 +170,16 @@ body {
 .cnt-for-h button {
     background-color: #2E4BF5;
     height: 40px;
-    width: 130px;
+    width: 156px;
     font-family: montesrratlight;
     color: white;
     font-size: 12px;
     border-radius: 20px;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.129);
+}
+
+.cnt-for-h button svg {
+    margin-left: 6px;
 }
 
 .cnt-for-h .my-btns {
@@ -515,15 +519,15 @@ body {
 #sub-tag-wed {
     text-align: center;
     width: 500px;
-    font-family: montesrrat;
+    font-family: montesrratlight;
     font-size: 1.3vw;
     color: white;
     position: absolute;
     top: 62%;
     left: 50%;
     transform: translateX(-50%);
-    text-shadow: 2px 2px 2px rgb(249, 158, 0);
-    display: none;
+    text-shadow: 2px 2px 6px rgb(255, 137, 11);
+    /* display: none; */
 }
 
 #wed-clock {
@@ -589,8 +593,8 @@ body {
     position: absolute;
     top: -0.5%;
     left: 10%;
-    width: 11.8vw;
-    height: 30.4vh;
+    width: 10.8vw;
+    height: 29.4vh;
     overflow: visible;
 }
 
@@ -659,15 +663,15 @@ body {
 #sub-tag-fashion {
     text-align: center;
     width: 500px;
-    font-family: montesrrat;
+    font-family: montesrratlight;
     font-size: 1.3vw;
     color: white;
     position: absolute;
     top: 62%;
     left: 50%;
     transform: translateX(-50%);
-    text-shadow: 2px 2px 2px #FF2424;
-    display: none;
+    text-shadow: 2px 2px 6px #FF2424;
+    /* display: none; */
 }
 
 #now-booking-commercials {
@@ -690,7 +694,7 @@ body {
 #sub-tag-commercials {
     text-align: center;
     width: 500px;
-    font-family: montesrrat;
+    font-family: montesrratlight;
     font-size: 1.3vw;
     /* color: #454440dd; */
     color: white;
@@ -698,8 +702,8 @@ body {
     top: 62%;
     left: 50%;
     transform: translateX(-50%);
-    text-shadow: 2px 2px 2px #7800B0;
-    display: none;
+    text-shadow: 2px 2px 6px #7800B0;
+    /* display: none; */
 }
 
 /***************** section 4************************/
@@ -1506,4 +1510,21 @@ body {
 
 .triangle-float3 {
     animation: float3 6s infinite;
+}
+
+.bgsss{
+    position: absolute;
+    left:-10vw;
+    top: 100vh;
+    width: 60vw;
+    height: 80vh;
+    fill:#F5F6FF;
+    /* background-color: #7800B0; */
+}
+
+.bgsss svg{
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    /* fill:#F5F6FF; */
 }
