@@ -139,7 +139,7 @@ body {
 #section-1 {
     overflow: visible;
     position: relative;
-    
+
 }
 
 #section-2 {
@@ -479,7 +479,8 @@ body {
     top: 40%;
     left: 50%;
     transform: translate(-50%, -40%);
-    opacity: 0.9;
+    opacity: 1;
+    display: none;
 }
 
 .akaar-wedstyle {
@@ -518,15 +519,17 @@ body {
 
 #sub-tag-wed {
     text-align: center;
-    width: 500px;
-    font-family: montesrratlight;
-    font-size: 1.3vw;
-    color: white;
+    width: auto;
+    font-family: naville;
+    font-size: 0.8vw;
+    font-weight: bolder;
+    color: rgb(29, 29, 29);
+    color: #ffffff;
     position: absolute;
-    top: 62%;
+    top: 62.8%;
     left: 50%;
     transform: translateX(-50%);
-    text-shadow: 2px 2px 6px rgb(255, 137, 11);
+    text-shadow: 2px 2px 4px rgb(255, 137, 11);
     /* display: none; */
 }
 
@@ -534,8 +537,8 @@ body {
     position: absolute;
     top: 60px;
     left: 450px;
-    width: 10.5vw;
-    height: 16.2vh;
+    width: 5.5vw;
+    height: 11.2vh;
     opacity: 0.6;
     /* display: none; */
 }
@@ -572,6 +575,7 @@ body {
     color: white;
     font-size: 12px;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.129);
+    /* display: none; */
 }
 
 /*************** section 3*****************/
@@ -582,7 +586,7 @@ body {
     left: 50%;
     transform: translate(-50%, -40%);
     opacity: 0.9;
-    /* display: none; */
+    display: none;
 }
 
 #cealling-lamp * {
@@ -593,8 +597,8 @@ body {
     position: absolute;
     top: -0.5%;
     left: 10%;
-    width: 10.8vw;
-    height: 29.4vh;
+    width: 9.8vw;
+    height: 28.4vh;
     overflow: visible;
 }
 
@@ -634,12 +638,18 @@ body {
     height: 56.9vh;
 }
 
+#wedding-illus svg {
+    width: 22.5vw;
+    height: 56.9vh;
+}
+
+
 #mirror {
     position: absolute;
     left: 0%;
     top: 15%;
-    width: 30.1vw;
-    height: 55.5vh;
+    width: 28.1vw;
+    height: 53.5vh;
     transform: rotate(0deg);
 }
 
@@ -658,19 +668,22 @@ body {
     color: white;
     font-size: 12px;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.129);
+    /* display: none; */
 }
 
 #sub-tag-fashion {
     text-align: center;
-    width: 500px;
-    font-family: montesrratlight;
-    font-size: 1.3vw;
-    color: white;
+    width: auto;
+    font-family: naville;
+    font-weight: bolder;
+    font-size: 0.8vw;
+    color: rgb(29, 29, 29);
+    color: #ffffff;
     position: absolute;
-    top: 62%;
+    top: 62.8%;
     left: 50%;
     transform: translateX(-50%);
-    text-shadow: 2px 2px 6px #FF2424;
+    text-shadow: 2px 2px 4px #FF2424;
     /* display: none; */
 }
 
@@ -689,20 +702,23 @@ body {
     color: white;
     font-size: 12px;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.129);
+    /* display: none; */
 }
 
 #sub-tag-commercials {
     text-align: center;
-    width: 500px;
-    font-family: montesrratlight;
-    font-size: 1.3vw;
+    width: auto;
+    font-family: naville;
+    font-weight: bolder;
+    font-size: 0.8vw;
     /* color: #454440dd; */
-    color: white;
+    color: rgb(29, 29, 29);
+    color: #ffffff;
     position: absolute;
-    top: 62%;
+    top: 62.8%;
     left: 50%;
     transform: translateX(-50%);
-    text-shadow: 2px 2px 6px #7800B0;
+    text-shadow: 2px 2px 4px #7800B0;
     /* display: none; */
 }
 
@@ -714,7 +730,7 @@ body {
     left: 50%;
     transform: translate(-50%, -40%);
     opacity: 0.9;
-    /* display: none; */
+    display: none;
 }
 
 #commercials-illus svg {
@@ -1011,6 +1027,7 @@ body {
     width: 294px;
     height: 430px;
     margin-left: 60px;
+    display: none;
 }
 
 @media (min-width: 2000px) {
@@ -1273,19 +1290,6 @@ body {
         font-size: 10px;
     }
 
-    #sub-tag-fashion {
-        text-align: center;
-        width: 500px;
-        font-family: montesrrat;
-        font-size: 18px;
-        /* color: #454440dd; */
-        color: white;
-        position: absolute;
-        top: 60%;
-        left: 50%;
-        transform: translateX(-50%);
-        text-shadow: 2px 2px 4px #FF2424;
-    }
 
     #now-booking-commercials {
         height: 90px;
@@ -1512,19 +1516,47 @@ body {
     animation: float3 6s infinite;
 }
 
-.bgsss{
+.bgsss {
     position: absolute;
-    left:-10vw;
-    top: 100vh;
-    width: 60vw;
-    height: 80vh;
-    fill:#F5F6FF;
+    /* left:-10vw;
+    top: 100vh; */
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    fill: #F5F6FF;
+    background-color: #FFFFFF;
+    /* display: none; */
     /* background-color: #7800B0; */
 }
 
-.bgsss svg{
-    width: 100%;
-    height: 100%;
+.bgsss svg {
+    position: absolute;
+    left:-10vw;
+    top: 100vh;
+    width: 70vw;
+    height: 70vh;
     overflow: visible;
     /* fill:#F5F6FF; */
+}
+
+.custom-shape-divider-bottom-1725962990 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(0deg);
+}
+
+.custom-shape-divider-bottom-1725962990 svg {
+    position: relative;
+    display: block;
+    width: calc(137% + 1.3px);
+    height: 169px;
+}
+
+.custom-shape-divider-bottom-1725962990 .shape-fill {
+    fill: #ECECEC;
 }
