@@ -481,7 +481,7 @@ body {
     transform: translate(-50%, -40%);
     opacity: 1;
     margin-left: 30px;
-    /* display: none; */
+    display: none;
 }
 
 .akaar-wedstyle {
@@ -577,7 +577,7 @@ body {
     font-weight: bolder;
     letter-spacing: 0.9px;
     color: white;
-    font-size: 10px;
+    font-size: 9px;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.129);
     /* display: none; */
 }
@@ -590,7 +590,7 @@ body {
     left: 50%;
     transform: translate(-50%, -40%);
     opacity: 0.9;
-    /* display: none; */
+    display: none;
 }
 
 #cealling-lamp * {
@@ -672,7 +672,7 @@ body {
     font-weight: bolder;
     letter-spacing: 0.9px;
     color: white;
-    font-size: 10px;
+    font-size: 9px;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.129);
     /* display: none; */
 }
@@ -709,7 +709,7 @@ body {
     letter-spacing: 0.9px;
     font-weight: bolder;
     color: white;
-    font-size: 10px;
+    font-size: 9px;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.129);
     /* display: none; */
 }
@@ -740,7 +740,7 @@ body {
     left: 50%;
     transform: translate(-50%, -40%);
     opacity: 0.9;
-    /* display: none; */
+    display: none;
 }
 
 #commercials-illus svg {
@@ -1549,7 +1549,7 @@ body {
 
 
 #about{
-    margin-top: 120px;
+    margin-top: 0px;
     font-family: maison;
 }
 

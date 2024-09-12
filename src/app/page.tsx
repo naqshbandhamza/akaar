@@ -147,31 +147,31 @@ export default function Home() {
 
                     let myanim = gsap.timeline({ paused: true })
 
-                    myanim
-                        .to(".bgsss",
-                            { left: "0", top: "0", fill: "#FFFBEC", backgroundColor: "#FFFBEC" }
-                        )
-                        .to(".bgsss",
-                            { left: "0", top: "0", fill: "#FDEFEF", backgroundColor: "#FFEEEE" }
-                        )
-                        .to(".bgsss",
+                    // myanim
+                    //     .to(".bgsss",
+                    //         { left: "0", top: "0", fill: "#FFFBEC", backgroundColor: "#FFFBEC" }
+                    //     )
+                    //     .to(".bgsss",
+                    //         { left: "0", top: "0", fill: "#FDEFEF", backgroundColor: "#FFEEEE" }
+                    //     )
+                    //     .to(".bgsss",
 
-                            { left: "0", top: "0", fill: "#ECECEC", backgroundColor: "#F9F9F9" }
-                        );
+                    //         { left: "0", top: "0", fill: "#ECECEC", backgroundColor: "#F9F9F9" }
+                    //     );
 
-                    gsap.timeline({
-                        scrollTrigger: {
-                            trigger: "#section-1",
-                            containerAnimation: scrolltween,
-                            start: "top+=10 top",
-                            end: `left+=${screenWidth * 3} left`,
-                            scrub: true,
-                            // markers: true, // For debugging
-                            onUpdate: (self) => {
-                                myanim.progress(self.progress);
-                            },
-                        }
-                    });
+                    // gsap.timeline({
+                    //     scrollTrigger: {
+                    //         trigger: "#section-1",
+                    //         containerAnimation: scrolltween,
+                    //         start: "top+=10 top",
+                    //         end: `left+=${screenWidth * 3} left`,
+                    //         scrub: true,
+                    //         // markers: true, // For debugging
+                    //         onUpdate: (self) => {
+                    //             myanim.progress(self.progress);
+                    //         },
+                    //     }
+                    // });
 
                     gsap.to(["#wed-clock", "#floor-lamp,#sofa"], {
                         x: "-20vw",
@@ -731,13 +731,13 @@ export default function Home() {
 
                     <div id="content">
                         <div className="slider-container" id="slider-id">
-                            <div className="bgsss">
-                                {/* <svg viewBox="0 0 284.13 505.12" xmlns="http://www.w3.org/2000/svg"><circle cx="0" cy="0" r="505.12" stroke="none" strokeWidth="10"></circle></svg> */}
-                            </div>
+                            {/* <div className="bgsss">
+                            </div> */}
                             <div id="section-1" className="full-screen panels">
-                                <div className="bgsss">
+                                {/* <div className="bgsss">
                                     <svg viewBox="0 0 284.13 505.12" xmlns="http://www.w3.org/2000/svg"><circle cx="0" cy="0" r="505.12" stroke="none" strokeWidth="10"></circle></svg>
-                                </div>                            <div className="cnt-for-h">
+                                </div>                             */}
+                                <div className="cnt-for-h">
                                     <div id="headings">
                                         <h1 id="main-heading">AKAAR<sup>Creative Agency</sup></h1>
                                     </div>
@@ -1963,11 +1963,11 @@ export default function Home() {
                             </button>
                         </div>
                         <div id="section-5">
-                            <div className="custom-shape-divider-bottom-1725962990">
+                            {/* <div className="custom-shape-divider-bottom-1725962990">
                                 <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
                                     <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" className="shape-fill"></path>
                                 </svg>
-                            </div>
+                            </div> */}
 
                             <section className="section_all " id="about">
                                 <div className="container">
