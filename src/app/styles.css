@@ -146,6 +146,25 @@ body {
 
 }
 
+#studio-1{
+    position: absolute;
+    top:90%;
+    transform: translateY(-90%);
+    right:-30px;
+    width: 42vw;
+    height: 42vh;
+    opacity: 0.9;
+}
+
+#studio-2{
+    position: absolute;
+    top:6%;
+    left:-120px;
+    width: 42vw;
+    height: 42vh;
+    opacity: 0.9;
+}
+
 #section-2 {
     overflow: visible;
     position: relative;
@@ -230,6 +249,8 @@ body {
     font-weight: bolder;
     letter-spacing: 15px;
     opacity: 0;
+   
+
 }
 
 #section-1 sup {
@@ -347,12 +368,12 @@ body {
 
 #akaar-presents {
     position: fixed;
-    top: 5%;
+    top: 6%;
     left: calc(50vw);
-    transform: translate(-50%, -5%);
-    font-family: organettoex;
+    transform: translateX(-50%);
+    font-family: organetto;
     color: black;
-    font-size: 14px;
+    font-size: 10px;
     letter-spacing: 2px;
     font-weight: bolder;
     opacity: 0;
