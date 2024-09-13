@@ -6,6 +6,7 @@ import { useRef, useEffect, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { ReactLenis, useLenis } from '@studio-freight/react-lenis'
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 export default function Home() {
     const lenis: any = useLenis(({ scroll }) => {
@@ -96,9 +97,9 @@ export default function Home() {
                             trigger: ".slider-container",
                             pin: true,
                             scrub: 1,
-                             snap: {
-                                 snapTo: 1 / (sections.length - 1)
-                             },
+                            snap: {
+                                snapTo: 1 / (sections.length - 1)
+                            },
                             start: "top top",
                             end: () => screenWidth * 4 + 100
                         }
@@ -115,8 +116,8 @@ export default function Home() {
                     }
                     )
                     scrollassist0.to(
-                        "#lang-btn",
-                        { backgroundColor: "#EAEDFE", color: "#2E4BF5", duration: 0.25 }
+                        ["#lang-btn", "#e-btn"],
+                        { backgroundColor: "#FFFFFF", color: "#2E4BF5", duration: 0.25 }
                     ).to(
                         "#scroll-assist",
                         { backgroundColor: "#2E4BF5", color: "#EAEDFE", duration: 0.25 }
@@ -134,8 +135,8 @@ export default function Home() {
                     }
                     )
                     scrollassist1.to(
-                        "#lang-btn",
-                        { backgroundColor: "#FFF5D8", color: "#FFC325", duration: 0.25 }
+                        ["#lang-btn", "#e-btn"],
+                        { backgroundColor: "#FFFFFF", color: "#FFC325", duration: 0.25 }
                     ).to(
                         "#scroll-assist",
                         { backgroundColor: "#FFC325", color: "#FFF5D8", duration: 0.25 }
@@ -225,8 +226,8 @@ export default function Home() {
                     )
 
                     scrollassist2.to(
-                        "#lang-btn",
-                        { backgroundColor: "#FFC7C7", color: "#FF2424", duration: 0.25 }
+                        ["#lang-btn", "#e-btn"],
+                        { backgroundColor: "#FFFFFF", color: "#FF2424", duration: 0.25 }
                     ).to(
                         "#scroll-assist",
                         { backgroundColor: "#FF2424", color: "#FFC7C7", duration: 0.25 }
@@ -247,8 +248,8 @@ export default function Home() {
                     )
 
                     scrollassist3.to(
-                        "#lang-btn",
-                        { backgroundColor: "#DFC3EC", color: "#7800B0", duration: 0.25 }
+                        ["#lang-btn", "#e-btn"],
+                        { backgroundColor: "#FFFFFF", color: "#7800B0", duration: 0.25 }
                     ).to(
                         "#scroll-assist",
                         { backgroundColor: "#7800B0", color: "#DFC3EC", duration: 0.25 }
@@ -1237,16 +1238,16 @@ export default function Home() {
 
                                 </div>
 
+                                <div id="sub-tag-wed">
+                                    {/* <p>Be careful, violence tends to escalate</p> */}
+                                    <p>Your Story Told Like None Other</p>
+                                </div>
+
                                 <button id="now-booking-wed" onClick={() => {
                                     gotowedportfolio("section-7")
                                 }}>
                                     PORTFOLIO
                                 </button>
-
-                                <div id="sub-tag-wed">
-                                    {/* <p>Be careful, violence tends to escalate</p> */}
-                                    <p>Your Story Told Like None Other</p>
-                                </div>
                             </div>
                             <div id="section-3" className="full-screen panels">
 
@@ -1532,15 +1533,16 @@ export default function Home() {
                                         <path d="M113.704 49.158C114.651 50.65 115.98 51.852 117.171 53.157C118.363 54.462 119.46 55.954 119.773 57.694C119.296 57.762 118.805 57.732 118.339 57.606" stroke="#38303B" strokeWidth="0.5" strokeMiterlimit="10" />
                                     </svg>
                                 </div>
+                                <div id="sub-tag-fashion">
+                                    {/* <p>Be careful, violence tends to escalate</p> */}
+                                    <p>Taking your fashion to the next level</p>
+                                </div>
                                 <button id="now-booking-fashion" onClick={() => {
                                     gotowedportfolio("section-6")
                                 }}>
                                     PORTFOLIO
                                 </button>
-                                <div id="sub-tag-fashion">
-                                    {/* <p>Be careful, violence tends to escalate</p> */}
-                                    <p>Taking your fashion to the next level</p>
-                                </div>
+
                             </div>
                             <div id="section-4" className="full-screen panels">
 
@@ -1945,24 +1947,28 @@ export default function Home() {
                                     </svg>
                                 </div>
 
+                                <div id="sub-tag-commercials">
+                                    {/* <p>Be careful, violence tends to escalate</p> */}
+                                    <p>Building commercials that communicate</p>
+                                </div>
+
                                 <button id="now-booking-commercials" onClick={() => {
                                     gotowedportfolio("section-5")
                                 }}>
                                     PORTFOLIO
                                 </button>
-
-                                <div id="sub-tag-commercials">
-                                    {/* <p>Be careful, violence tends to escalate</p> */}
-                                    <p>Taking your commercials to the next level</p>
-                                </div>
                             </div>
                             <button id="scroll-assist">Get In Touch</button>
+
+                            <button id="e-btn">
+                                <i className="fa-solid fa-bars"></i>
+                            </button>
 
                             <button id="lang-btn">
                                 EN
                             </button>
                         </div>
-                        
+
                         <div id="section-7">
                             <div style={{ marginLeft: "10%" }} className="product" data-scrub="0.7">
                                 <button className="fullscreen-btn" onClick={() => handleClick("1-video")}></button>
