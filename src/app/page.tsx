@@ -96,9 +96,9 @@ export default function Home() {
                             trigger: ".slider-container",
                             pin: true,
                             scrub: 1,
-                            // snap: {
-                            //     snapTo: 1 / (sections.length - 1)
-                            // },
+                             snap: {
+                                 snapTo: 1 / (sections.length - 1)
+                             },
                             start: "top top",
                             end: () => screenWidth * 4 + 100
                         }
@@ -147,31 +147,31 @@ export default function Home() {
 
                     let myanim = gsap.timeline({ paused: true })
 
-                    // myanim
-                    //     .to(".bgsss",
-                    //         { left: "0", top: "0", fill: "#FFFBEC", backgroundColor: "#FFFBEC" }
-                    //     )
-                    //     .to(".bgsss",
-                    //         { left: "0", top: "0", fill: "#FDEFEF", backgroundColor: "#FFEEEE" }
-                    //     )
-                    //     .to(".bgsss",
+                    myanim
+                        .to(".bgsss",
+                            { left: "0", top: "0", fill: "#FFFBEC", backgroundColor: "#FFFBEC" }
+                        )
+                        .to(".bgsss",
+                            { left: "0", top: "0", fill: "#FFECEC", backgroundColor: "#FFECEC" }
+                        )
+                        .to(".bgsss",
 
-                    //         { left: "0", top: "0", fill: "#ECECEC", backgroundColor: "#F9F9F9" }
-                    //     );
+                            { left: "0", top: "0", fill: "#EBD9F3", backgroundColor: "#EBD9F3" }
+                        );
 
-                    // gsap.timeline({
-                    //     scrollTrigger: {
-                    //         trigger: "#section-1",
-                    //         containerAnimation: scrolltween,
-                    //         start: "top+=10 top",
-                    //         end: `left+=${screenWidth * 3} left`,
-                    //         scrub: true,
-                    //         // markers: true, // For debugging
-                    //         onUpdate: (self) => {
-                    //             myanim.progress(self.progress);
-                    //         },
-                    //     }
-                    // });
+                    gsap.timeline({
+                        scrollTrigger: {
+                            trigger: "#section-1",
+                            containerAnimation: scrolltween,
+                            start: "top+=10 top",
+                            end: `left+=${screenWidth * 3} left`,
+                            scrub: true,
+                            // markers: true, // For debugging
+                            onUpdate: (self) => {
+                                myanim.progress(self.progress);
+                            },
+                        }
+                    });
 
                     gsap.to(["#wed-clock", "#floor-lamp,#sofa"], {
                         x: "-20vw",
@@ -731,8 +731,8 @@ export default function Home() {
 
                     <div id="content">
                         <div className="slider-container" id="slider-id">
-                            {/* <div className="bgsss">
-                            </div> */}
+                            <div className="bgsss">
+                            </div>
                             <div id="section-1" className="full-screen panels">
                                 {/* <div className="bgsss">
                                     <svg viewBox="0 0 284.13 505.12" xmlns="http://www.w3.org/2000/svg"><circle cx="0" cy="0" r="505.12" stroke="none" strokeWidth="10"></circle></svg>
@@ -1962,69 +1962,7 @@ export default function Home() {
                                 EN
                             </button>
                         </div>
-                        <div id="section-5">
-                            {/* <div className="custom-shape-divider-bottom-1725962990">
-                                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-                                    <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" className="shape-fill"></path>
-                                </svg>
-                            </div> */}
-
-                            <section className="section_all " id="about">
-                                <div className="container">
-                                    <div className="row">
-                                        <div className="col-lg-12">
-                                            <div className="section_title_all text-center">
-                                                <h3 className="font-weight-bold">Welcome To <span className="text-custom">Akaar Creative Agency</span></h3>
-                                                <p className="section_subtitle mx-auto text-muted">At AKAAR, we merge artistic vision with strategic marketing to create captivating videography, photography, illustration, and animation that inspires and resonates with your audience.</p>
-                                                <div className="">
-                                                    <i className=""></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-
-                                    <div className="row mt-3">
-                                        <div className="col-lg-4">
-                                            <div className="about_content_box_all mt-3">
-                                                <div className="about_detail text-center">
-                                                    <div className="about_icon">
-                                                        <i className="fas fa-pencil-alt"></i>
-                                                    </div>
-                                                    <h5 className="text-dark text-capitalize mt-3 font-weight-bold">Creativity</h5>
-                                                    <p className="edu_desc mt-3 mb-0 text-muted">Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div className="col-lg-4">
-                                            <div className="about_content_box_all mt-3">
-                                                <div className="about_detail text-center">
-                                                    <div className="about_icon">
-                                                        <i className="fab fa-angellist"></i>
-                                                    </div>
-                                                    <h5 className="text-dark text-capitalize mt-3 font-weight-bold">We make Best Result</h5>
-                                                    <p className="edu_desc mb-0 mt-3 text-muted">Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div className="col-lg-4">
-                                            <div className="about_content_box_all mt-3">
-                                                <div className="about_detail text-center">
-                                                    <div className="about_icon">
-                                                        <i className="fas fa-paper-plane"></i>
-                                                    </div>
-                                                    <h5 className="text-dark text-capitalize mt-3 font-weight-bold">best platform </h5>
-                                                    <p className="edu_desc mb-0 mt-3 text-muted">Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </section>
-                        </div>
+                        
                         <div id="section-7">
                             <div style={{ marginLeft: "10%" }} className="product" data-scrub="0.7">
                                 <button className="fullscreen-btn" onClick={() => handleClick("1-video")}></button>

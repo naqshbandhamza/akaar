@@ -487,7 +487,7 @@ body {
 .akaar-wedstyle {
     text-align: center;
     width: auto;
-    font-size: 18vw;
+    font-size: 12vw;
     letter-spacing: 5px;
     font-weight: bolder;
     position: absolute;
@@ -498,24 +498,23 @@ body {
 
 #section-2 .akaar-wedstyle {
     overflow: visible;
-    left: 50px;
+    left: 50%;
     top: 50%;
-    transform: translateY(-50%);
+    transform: translate(-50%, -50%);
 }
 
 #section-4 .akaar-wedstyle {
     overflow: visible;
-    left: -42%;
+    left: 50%;
     top: 50%;
-    transform: translate(0%, -50%);
+    transform: translate(-50%, -50%);
 }
 
 #section-3 .akaar-wedstyle {
     top: auto;
-    left: 10px;
-    transform: translate(0%, 0%);
-    /*bottom: -60px;*/
-    top: 55%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
 
 #sub-tag-wed {
@@ -548,7 +547,7 @@ body {
 #floor-lamp {
     position: absolute;
     top: 40%;
-    right: 50px;
+    right: 0%;
     width: 6.9vw;
     height: 46.3vh;
 }
@@ -556,7 +555,7 @@ body {
 #sofa {
     position: absolute;
     top: 50%;
-    left: 250px;
+    left: 20%;
     width: 15.4vw;
     height: 25.6vh;
 
@@ -622,7 +621,7 @@ body {
 #windows {
     position: absolute;
     top: 78%;
-    left: 10%;
+    left: 30%;
     transform: translateY(-78%);
     width: 12.9vw;
     height: 39.4vh;
@@ -659,9 +658,9 @@ body {
 
 #now-booking-fashion {
     position: absolute;
-    top: 82%;
-    left: 30%;
-    transform: translate(-30%, -82%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     background-color: #FF2424;
     height: 8.7vw;
     width: 8.7vw;
@@ -1548,7 +1547,7 @@ body {
 /************about section**********************/
 
 
-#about{
+#about {
     margin-top: 0px;
     font-family: maison;
 }
