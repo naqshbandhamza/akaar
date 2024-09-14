@@ -6,7 +6,6 @@ import { useRef, useEffect, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { ReactLenis, useLenis } from '@studio-freight/react-lenis'
-import '@fortawesome/fontawesome-free/css/all.min.css';
 
 export default function Home() {
     const lenis: any = useLenis(({ scroll }) => {
@@ -2575,7 +2574,11 @@ export default function Home() {
                             <button id="scroll-assist">Get In Touch</button>
 
                             <button id="e-btn">
-                                <i className="fa-solid fa-bars"></i>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width={20} height={20}>
+                                    <path d="M4 5L16 5" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+                                    <path d="M4 12L20 12" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+                                    <path d="M4 19L12 19" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+                                </svg>
                             </button>
 
                             <button id="lang-btn">
