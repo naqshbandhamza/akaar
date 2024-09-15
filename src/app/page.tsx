@@ -360,6 +360,7 @@ export default function Home() {
                         }
                     }
                     )
+
                     
                     scrollassist0.to(
                         "#scroll-assist, #lang-btn,#e-btn",
