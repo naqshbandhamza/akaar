@@ -10,7 +10,6 @@ export default function LandingPage() {
     const lenis: any = useLenis(({ scroll }) => {
     })
     const [pageloaded, setPageLoaded] = useState(false);
-    const [first, setFirst] = useState(0)
     const [screenWidth, setScreenWidth] = useState(0);
     const ctxRef: any = useRef(null);
 
@@ -304,10 +303,7 @@ export default function LandingPage() {
                         once: false,
                     });
 
-                    if (first === 0) {
-                        mytimeline3.play()
-                        setFirst(1)
-                    }
+
 
                     //section 2
                     const scrollassist1 = gsap.timeline({
