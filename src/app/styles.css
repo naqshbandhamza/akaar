@@ -146,22 +146,22 @@ body {
 
 }
 
-#studio-1{
+#studio-1 {
     position: absolute;
-    top:90%;
+    top: 90%;
     transform: translateY(-90%);
-    right:-30px;
-    width: 42vw;
-    height: 42vh;
+    right: 5px;
+    width: 25vw;
+    height: 35vh;
     opacity: 0.9;
 }
 
-#studio-2{
+#studio-2 {
     position: absolute;
-    top:6%;
-    left:-120px;
-    width: 42vw;
-    height: 42vh;
+    top: 6%;
+    left: 5px;
+    width: 20vw;
+    height: 35vh;
     opacity: 0.9;
 }
 
@@ -249,7 +249,7 @@ body {
     font-weight: bolder;
     letter-spacing: 15px;
     opacity: 0;
-   
+
 
 }
 
@@ -1103,11 +1103,31 @@ body {
 
 @media screen and (max-width: 1000px) {
 
+    #cealling-lamp{
+        display: none;
+    }
 
+    #studio-1 {
+
+        width: 30vw;
+        height: 30vh;
+        right: 5px;
+    }
+
+    #studio-2 {
+        top: 5px;
+        width: 30vw;
+        height: 30vh;
+        left: 5px;
+    }
+
+    #main-heading {
+        line-height: normal;
+    }
 
     #sofa-1 {
         position: absolute;
-        top: 45%;
+        top: 50%;
         left: 50%;
         transform: translateX(-50%);
         width: 369px;
@@ -1121,24 +1141,20 @@ body {
         width: 48px;
         height: 185px;
         transform: rotate(0deg);
+        display: none;
     }
 
     #windows {
         position: absolute;
-        top: 78%;
+        top: 70%;
         left: 10%;
         transform: translateY(-78%);
-        width: 107px;
-        height: 233px;
+        /* width: 107px;
+        height: 233px; */
     }
 
     #wed-clock {
-        position: absolute;
-        top: 60px;
-        left: 50px;
-        width: 50px;
-        height: 54;
-        opacity: 0.6;
+        display: none;
     }
 
     #floor-lamp {
@@ -1153,8 +1169,8 @@ body {
         position: absolute;
         top: 50%;
         left: 50px;
-        width: 134px;
-        height: 132px;
+        width: 114px;
+        height: 112px;
 
     }
 
@@ -1306,21 +1322,21 @@ body {
 
 
     #now-booking-wed {
-        height: 90px;
-        width: 90px;
+        height: 40px;
+        width: 40px;
         font-size: 10px;
     }
 
     #now-booking-fashion {
-        height: 90px;
-        width: 90px;
+        height: 40px;
+        width: 40px;
         font-size: 10px;
     }
 
 
     #now-booking-commercials {
-        height: 90px;
-        width: 90px;
+        height: 40px;
+        width: 40px;
         font-size: 10px;
     }
 }

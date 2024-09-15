@@ -361,8 +361,8 @@ export default function Home() {
                     }
                     )
                     scrollassist0.to(
-                        "#scroll-assist, #lang-btn",
-                        { backgroundColor: "#EAEDFE", color: "#2E4BF5" }
+                        "#scroll-assist, #lang-btn,#e-btn",
+                        { backgroundColor: "#FFFFFF", color: "#2E4BF5" }
                     ).to("#scroll-assist :nth-child(1)", {
                         backgroundColor: "#2E4BF5"
                     }, "<");
@@ -414,8 +414,8 @@ export default function Home() {
                     }
                     )
                     scrollassist1.to(
-                        "#scroll-assist, #lang-btn",
-                        { backgroundColor: "#FFF5D8", color: "#FFC325" }
+                        "#scroll-assist, #lang-btn,#e-btn",
+                        { backgroundColor: "#FFFFFF", color: "#FFC325" }
                     ).to("#scroll-assist :nth-child(1)", {
                         backgroundColor: "#FFC325"
                     }, "<");
@@ -488,8 +488,8 @@ export default function Home() {
                     }
                     )
                     scrollassist2.to(
-                        "#scroll-assist, #lang-btn",
-                        { backgroundColor: "#FFC7C7", color: "#FF2424" }
+                        "#scroll-assist, #lang-btn,#e-btn",
+                        { backgroundColor: "#FFFFFF", color: "#FF2424" }
                     ).to("#scroll-assist :nth-child(1)", {
                         backgroundColor: "#FF2424"
                     }, "<");
@@ -546,8 +546,8 @@ export default function Home() {
                     }
                     )
                     scrollassist3.to(
-                        "#scroll-assist, #lang-btn",
-                        { backgroundColor: "#DFC3EC", color: "#7800B0" }
+                        "#scroll-assist, #lang-btn, #e-btn",
+                        { backgroundColor: "#FFFFFF", color: "#7800B0" }
                     ).to("#scroll-assist :nth-child(1)", {
                         backgroundColor: "#7800B0"
                     }, "<");
