@@ -39,6 +39,7 @@ body {
     padding: 0;
     flex-wrap: nowrap;
     width: 400vw;
+    height: auto;
     opacity: 0;
 
 }
@@ -56,14 +57,9 @@ body {
     height: 100%;
 }
 
-.panels {
-    transition: background-color 1s ease;
-}
-
 #section-1 {
     overflow: visible;
     position: relative;
-
 }
 
 #studio-1 {
@@ -87,20 +83,26 @@ body {
 
 #section-2 {
     overflow: visible;
+    /* overflow-y: hidden; */
     position: relative;
-    /* background-color: #FFFFFF; */
+    width: 100vw;
+    height: auto;
 }
 
 #section-3 {
-    position: relative;
     overflow: visible;
-    /* background-color: #FFFFFF; */
+    /* overflow-y: hidden; */
+    position: relative;
+    width: 100vw;
+    height: auto;
 }
 
 #section-4 {
-    position: relative;
     overflow: visible;
-    /* background-color: #FFFFFF; */
+    /* overflow-y: hidden; */
+    position: relative;
+    width: 100vw;
+    height: auto;
 }
 
 .cnt-for-h {
@@ -198,95 +200,7 @@ body {
     font-size: 8px;
 }
 
-#bench {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    /* Maintain aspect ratio */
-}
-
-.bench-container {
-    position: absolute;
-    left: -50px;
-    bottom: 0px;
-    width: 300px;
-    height: 150px;
-}
-
-.birds {
-    position: absolute;
-    left: 50px;
-    top: 50px;
-    width: 60px;
-    height: 30px;
-}
-
-.birds svg {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    /* Maintain aspect ratio */
-}
-
-.clouds {
-    position: absolute;
-    right: 20px;
-    top: 60px;
-    width: 371px;
-    height: 50px;
-}
-
-.clouds svg {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    /* Maintain aspect ratio */
-}
-
-/******** THE GLOBE START ***********/
-
-#my-globe-svg * {
-    transform-box: fill-box;
-}
-
-#my-globe-svg {
-    position: absolute;
-    opacity: 1;
-    right: 0px;
-    top: -170px;
-    opacity: 0;
-}
-
-[id^="star"] {
-    transform-origin: center;
-    animation: globestars 3s ease-in-out infinite;
-}
-
-#star_2 {
-    animation-delay: 0.5s;
-}
-
-#star_3 {
-    animation-delay: 1s;
-}
-
-#star_4 {
-    animation-delay: 1.5s;
-}
-
-#Globe {
-    transform-origin: center;
-    animation: globe 4s linear infinite;
-}
-
-#hills {
-    position: absolute;
-    bottom: -80px;
-    right: -100px;
-    opacity: 0;
-}
-
-#akaar-presents {
+#akaar-presents{  
     position: fixed;
     top: 6%;
     left: calc(50vw);
@@ -544,6 +458,27 @@ body {
     font-size: 9px;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.129);
     /* display: none; */
+}
+
+.custom-shape-divider-bottom-1726444224 {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(0deg);
+}
+
+.custom-shape-divider-bottom-1726444224 svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 150px;
+}
+
+.custom-shape-divider-bottom-1726444224 .shape-fill {
+    fill: #FFFBEC;
 }
 
 /*************** section 3*****************/
@@ -1023,7 +958,7 @@ body {
 
 @media screen and (max-width: 1000px) {
 
-    #cealling-lamp{
+    #cealling-lamp {
         display: none;
     }
 
@@ -1617,4 +1552,17 @@ body {
 
 .about_content_box_all {
     padding: 28px;
+}
+
+.sec-top{
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+}
+
+.sec-top1{
+    height: 100vh;
+    width: 100vw;
+    background-color: #686660;
+    opacity: 0.6;
 }
