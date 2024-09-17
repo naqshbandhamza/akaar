@@ -85,7 +85,7 @@ export default function LandingPage() {
                             start: "top top",
                             end: "bottom bottom",
                             scrub: true,
-                            pin: true,
+                            // pin: true,
                             id: "vertical"
                         }
                     });
@@ -93,25 +93,32 @@ export default function LandingPage() {
                     // Initially disable vertical scroll
                     ScrollTrigger.getById("vertical").disable();
 
-                    const toggleButton = document.getElementById("now-booking-wed");
+                    const ids = ['now-booking-wed', 'okays-back'];
+
                     let isHorizontal = true;
 
-                    toggleButton.addEventListener("click", function () {
-                        if (isHorizontal) {
-                            // Disable horizontal scroll and enable vertical scroll
-                            scrolltween.scrollTrigger.disable();
-                            verticalScroll.scrollTrigger.enable();
-                            gsap.to(window, { scrollTo: { y: ".vertical-section", autoKill: false } });
-                            toggleButton.textContent = "Switch to Horizontal Scroll";
-                        } else {
-                            // Disable vertical scroll and enable horizontal scroll
-                            verticalScroll.scrollTrigger.disable();
-                            scrolltween.scrollTrigger.enable();
-                            gsap.to(window, { scrollTo: { x: 0, autoKill: false } });
-                            toggleButton.textContent = "Switch to Vertical Scroll";
-                        }
-                        isHorizontal = !isHorizontal;
-                    });
+                    ids.forEach(id => {
+
+                        const toggleButton = document.getElementById(id);
+
+                        toggleButton.addEventListener("click", function () {
+                            if (isHorizontal) {
+                                // Disable horizontal scroll and enable vertical scroll
+                                scrolltween.scrollTrigger.disable();
+                                verticalScroll.scrollTrigger.enable();
+                                gsap.to(window, { scrollTo: { y: ".vertical-section", autoKill: false } });
+                                // toggleButton.textContent = "Switch to Horizontal Scroll";
+                            } else {
+                                // Disable vertical scroll and enable horizontal scroll
+                                verticalScroll.scrollTrigger.disable();
+                                scrolltween.scrollTrigger.enable();
+                                gsap.to(window, { scrollTo: { x: 0, autoKill: false } });
+                                // toggleButton.textContent = "Switch to Vertical Scroll";
+                            }
+                            isHorizontal = !isHorizontal;
+                        });
+
+                    })
 
                     //section 1
                     let tl = gsap.timeline({})
@@ -1265,6 +1272,14 @@ export default function LandingPage() {
                                 </div>
                             </div>
                         </div>
+                        <div className="vertical-section sec-top1">
+                            <div className="panel  ">
+                                <button id="okays-back">back to horizontal</button>
+                                <p>hello wedding</p>
+                            </div>
+                        </div>
+
+
                     </div>
                     <div id="section-2" className="panels">
                         <div className="sec-top">
@@ -1771,11 +1786,12 @@ export default function LandingPage() {
                                 </svg>
                             </div>
                         </div>
-                        <div className="vertical-section sec-top1">
+                        {/*<div className="vertical-section sec-top1">
                             <div className="panel  ">
+                                <button id="okays-back">back to horizontal</button>
                                 <p>hello wedding</p>
                             </div>
-                        </div>
+                        </div>*/}
                     </div>
                     <div id="section-3" className="panels">
                         <div className="sec-top">
