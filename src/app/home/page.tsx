@@ -60,16 +60,6 @@ export default function LandingPage() {
 
                 if (screenWidth > 1000) {
 
-                    //section 1
-                    let tl = gsap.timeline({})
-                    tl.fromTo("#main-heading", {
-                        yPercent: 100, opacity: 1,
-                    }, { yPercent: 0, opacity: 1, duration: 2.2, delay: 1, ease: "expo.out" }, "<")
-                    tl.to("#sub-script", { opacity: 1, duration: 1.5, ease: "expo.in" }, "<")
-                    tl.fromTo("#scroll-assist", {
-                        y: 100, opacity: 0, scale: 1.2
-                    }, { y: 0, opacity: 1, scale: 1, duration: 1, ease: "expo.out" })
-
                     // horizontal scroll
                     let sections: any = gsap.utils.toArray(".panels");
                     let scrolltween = gsap.to(sections, {
@@ -87,6 +77,31 @@ export default function LandingPage() {
                         }
                     });
 
+                    // Vertical scroll
+                    let verticalScroll = gsap.timeline({
+                        scrollTrigger: {
+                            trigger: ".vertical-section",
+                            start: "top top",
+                            end: "bottom bottom",
+                            scrub: true,
+                            pin: true,
+                            id: "vertical"
+                        }
+                    });
+
+                    // Initially disable vertical scroll
+                    ScrollTrigger.getById("vertical").disable();
+
+                    //section 1
+                    let tl = gsap.timeline({})
+                    tl.fromTo("#main-heading", {
+                        yPercent: 100, opacity: 1,
+                    }, { yPercent: 0, opacity: 1, duration: 2.2, delay: 1, ease: "expo.out" }, "<")
+                    tl.to("#sub-script", { opacity: 1, duration: 1.5, ease: "expo.in" }, "<")
+                    tl.fromTo("#scroll-assist", {
+                        y: 100, opacity: 0, scale: 1.2
+                    }, { y: 0, opacity: 1, scale: 1, duration: 1, ease: "expo.out" })
+
                     const scrollassist0 = gsap.timeline({
                         scrollTrigger: {
                             // markers:true,
@@ -100,10 +115,7 @@ export default function LandingPage() {
                     scrollassist0.to(
                         ["#lang-btn", "#e-btn"],
                         { backgroundColor: "#FFFFFF", color: "#2E4BF5", duration: 0.25 }
-                    ).to(
-                        "#scroll-assist",
-                        { backgroundColor: "#2E4BF5", color: "#EAEDFE", duration: 0.25 }
-                        , "<");
+                    );
 
                     //section 2
                     const scrollassist1 = gsap.timeline({
@@ -119,10 +131,7 @@ export default function LandingPage() {
                     scrollassist1.to(
                         ["#lang-btn", "#e-btn"],
                         { backgroundColor: "#FFFFFF", color: "#FFC325", duration: 0.25 }
-                    ).to(
-                        "#scroll-assist",
-                        { backgroundColor: "#FFC325", color: "#FFF5D8", duration: 0.25 }
-                        , "<");
+                    );
 
                     lamps(scrolltween, "#section-2 #cealling-lamp", ["#section-2 #cealling-lamp #Group_2", "#section-2 #cealling-lamp #Group_12"])
                     lamps(scrolltween, "#section-3 #cealling-lamp", ["#section-3 #cealling-lamp #Group_2", "#section-3 #cealling-lamp #Group_12"])
@@ -226,10 +235,7 @@ export default function LandingPage() {
                     scrollassist2.to(
                         ["#lang-btn", "#e-btn"],
                         { backgroundColor: "#FFFFFF", color: "#FF2424", duration: 0.25 }
-                    ).to(
-                        "#scroll-assist",
-                        { backgroundColor: "#FF2424", color: "#FFC7C7", duration: 0.25 }
-                        , "<");
+                    );
 
                     //section 4
                     const scrollassist3 = gsap.timeline({
@@ -246,10 +252,7 @@ export default function LandingPage() {
                     scrollassist3.to(
                         ["#lang-btn", "#e-btn"],
                         { backgroundColor: "#FFFFFF", color: "#7800B0", duration: 0.25 }
-                    ).to(
-                        "#scroll-assist",
-                        { backgroundColor: "#7800B0", color: "#DFC3EC", duration: 0.25 }
-                        , "<");
+                    );
 
                 } else {
 
@@ -1745,9 +1748,11 @@ export default function LandingPage() {
                                 </svg>
                             </div>
                         </div>
-                         <div className="sec-top1">
-                            <p>hello wedding</p>
-                        </div> 
+                        <div className="vertical-section sec-top1">
+                            <div>
+                                <p>hello wedding</p>
+                            </div>
+                        </div>
                     </div>
                     <div id="section-3" className="panels">
                         <div className="sec-top">

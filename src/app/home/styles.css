@@ -23,15 +23,6 @@ body {
     display: none;
 }
 
-.full-screen {
-    flex: 0 0 100vw;
-    /* Makes each section take up 100% of the container width */
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    display: flex;
-}
-
 .slider-container {
     position: relative;
     display: flex;
@@ -41,7 +32,6 @@ body {
     width: 400vw;
     height: auto;
     opacity: 0;
-
 }
 
 #bg-stars {
@@ -83,7 +73,6 @@ body {
 
 #section-2 {
     overflow: visible;
-    /* overflow-y: hidden; */
     position: relative;
     width: 100vw;
     height: auto;
@@ -202,7 +191,7 @@ body {
 
 #akaar-presents{  
     position: fixed;
-    top: 6%;
+    top: 4%;
     left: calc(50vw);
     transform: translateX(-50%);
     font-family: organetto;
@@ -319,7 +308,7 @@ body {
     font-family: Protrakt;
     font-size: 12px;
     position: fixed;
-    bottom: 25px;
+    top: calc(100vh - 75px);
     left: 25px;
     background-color: #ffffff;
     height: 50px;
@@ -335,7 +324,7 @@ body {
     font-family: Protrakt;
     font-size: 12px;
     position: fixed;
-    top: 25px;
+    top: 20px;
     left: calc(100vw - 65px);
     background-color: #ffffff;
     height: 42px;
@@ -1560,9 +1549,17 @@ body {
     height: 100vh;
 }
 
-.sec-top1{
+.vertical-section .panel {
     height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+}
+
+.sec-top1{
+    /* height: 100vh;
     width: 100vw;
     background-color: #686660;
-    opacity: 0.6;
+    opacity: 0.6; */
 }
