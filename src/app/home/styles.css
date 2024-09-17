@@ -1549,8 +1549,11 @@ body {
     height: 100vh;
 }
 
+
+
 .vertical-section{
     background-color: #00bd2a;
+    display: none;
 }
 
 .vertical-section .panel {

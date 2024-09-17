@@ -104,12 +104,14 @@ export default function LandingPage() {
                         toggleButton.addEventListener("click", function () {
                             if (isHorizontal) {
                                 // Disable horizontal scroll and enable vertical scroll
+                                document.getElementById("v-id").style.display = "block"
                                 scrolltween.scrollTrigger.disable();
                                 verticalScroll.scrollTrigger.enable();
                                 gsap.to(window, { scrollTo: { y: ".vertical-section", autoKill: false } });
                                 // toggleButton.textContent = "Switch to Horizontal Scroll";
                             } else {
                                 // Disable vertical scroll and enable horizontal scroll
+                                document.getElementById("v-id").style.display = "none"
                                 verticalScroll.scrollTrigger.disable();
                                 scrolltween.scrollTrigger.enable();
                                 gsap.to(window, { scrollTo: { x: 0, autoKill: false } });
@@ -1272,7 +1274,7 @@ export default function LandingPage() {
                                 </div>
                             </div>
                         </div>
-                        <div className="vertical-section sec-top1">
+                        <div className="vertical-section sec-top1" id="v-id">
                             <div className="panel  ">
                                 <button id="okays-back">back to horizontal</button>
                                 <p>hello wedding</p>
