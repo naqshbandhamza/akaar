@@ -1549,6 +1549,10 @@ body {
     height: 100vh;
 }
 
+.vertical-section{
+    background-color: #00bd2a;
+}
+
 .vertical-section .panel {
     height: 100vh;
     display: flex;

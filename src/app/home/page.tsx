@@ -1772,7 +1772,7 @@ export default function LandingPage() {
                             </div>
                         </div>
                         <div className="vertical-section sec-top1">
-                            <div>
+                            <div className="panel  ">
                                 <p>hello wedding</p>
                             </div>
                         </div>
