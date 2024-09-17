@@ -4,6 +4,7 @@ import "./styles.css";
 import { useRef, useEffect, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { ScrollToPlugin } from "gsap/all";
 import { ReactLenis, useLenis } from '@studio-freight/react-lenis'
 
 export default function LandingPage() {
@@ -56,7 +57,7 @@ export default function LandingPage() {
             gsap.fromTo(".slider-container", { opacity: 0 }, { opacity: 1 })
 
             ctxRef.current = gsap.context(() => {
-                gsap.registerPlugin(ScrollTrigger);
+                gsap.registerPlugin(ScrollToPlugin, ScrollTrigger);
 
                 if (screenWidth > 1000) {
 
@@ -91,6 +92,26 @@ export default function LandingPage() {
 
                     // Initially disable vertical scroll
                     ScrollTrigger.getById("vertical").disable();
+
+                    const toggleButton = document.getElementById("now-booking-wed");
+                    let isHorizontal = true;
+
+                    toggleButton.addEventListener("click", function () {
+                        if (isHorizontal) {
+                            // Disable horizontal scroll and enable vertical scroll
+                            scrolltween.scrollTrigger.disable();
+                            verticalScroll.scrollTrigger.enable();
+                            gsap.to(window, { scrollTo: { y: ".vertical-section", autoKill: false } });
+                            toggleButton.textContent = "Switch to Horizontal Scroll";
+                        } else {
+                            // Disable vertical scroll and enable horizontal scroll
+                            verticalScroll.scrollTrigger.disable();
+                            scrolltween.scrollTrigger.enable();
+                            gsap.to(window, { scrollTo: { x: 0, autoKill: false } });
+                            toggleButton.textContent = "Switch to Vertical Scroll";
+                        }
+                        isHorizontal = !isHorizontal;
+                    });
 
                     //section 1
                     let tl = gsap.timeline({})
@@ -1737,9 +1758,11 @@ export default function LandingPage() {
                                 <p>Your Story Told Like None Other</p>
                             </div>
 
-                            <button id="now-booking-wed" onClick={() => {
-                                goToPortfolio("section-7")
-                            }}>
+                            <button id="now-booking-wed"
+                            // onClick={() => {
+                            //     goToPortfolio("section-7")
+                            // }}
+                            >
                                 PORTFOLIO
                             </button>
                             <div className="custom-shape-divider-bottom-1726444224">
