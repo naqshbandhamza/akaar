@@ -59,7 +59,7 @@ export default function LandingPage() {
             ctxRef.current = gsap.context(() => {
                 gsap.registerPlugin(ScrollToPlugin, ScrollTrigger);
 
-                if (screenWidth > 1000) {
+                if (screenWidth > 1000 || true) {
 
                     // horizontal scroll
                     let sections: any = gsap.utils.toArray(".panels");
@@ -78,59 +78,15 @@ export default function LandingPage() {
                         }
                     });
 
-                    // Vertical scroll
-                    let verticalScroll = gsap.timeline({
-                        scrollTrigger: {
-                            trigger: ".vertical-section",
-                            start: "top top",
-                            end: "bottom bottom",
-                            scrub: true,
-                            // pin: true,
-                            id: "vertical"
-                        }
-                    });
-
-                    // Initially disable vertical scroll
-                    ScrollTrigger.getById("vertical").disable();
-
-                    const ids = ['now-booking-wed', 'okays-back'];
-
-                    let isHorizontal = true;
-
-                    ids.forEach(id => {
-
-                        const toggleButton = document.getElementById(id);
-
-                        toggleButton.addEventListener("click", function () {
-                            if (isHorizontal) {
-                                // Disable horizontal scroll and enable vertical scroll
-                                document.getElementById("v-id").style.display = "block"
-                                scrolltween.scrollTrigger.disable();
-                                verticalScroll.scrollTrigger.enable();
-                                gsap.to(window, { scrollTo: { y: ".vertical-section", autoKill: false } });
-                                // toggleButton.textContent = "Switch to Horizontal Scroll";
-                            } else {
-                                // Disable vertical scroll and enable horizontal scroll
-                                document.getElementById("v-id").style.display = "none"
-                                verticalScroll.scrollTrigger.disable();
-                                scrolltween.scrollTrigger.enable();
-                                gsap.to(window, { scrollTo: { x: 0, autoKill: false } });
-                                // toggleButton.textContent = "Switch to Vertical Scroll";
-                            }
-                            isHorizontal = !isHorizontal;
-                        });
-
-                    })
-
                     //section 1
                     let tl = gsap.timeline({})
                     tl.fromTo("#main-heading", {
                         yPercent: 100, opacity: 1,
-                    }, { yPercent: 0, opacity: 1, duration: 2.2, delay: 1, ease: "expo.out" }, "<")
-                    tl.to("#sub-script", { opacity: 1, duration: 1.5, ease: "expo.in" }, "<")
-                    tl.fromTo("#scroll-assist", {
-                        y: 100, opacity: 0, scale: 1.2
-                    }, { y: 0, opacity: 1, scale: 1, duration: 1, ease: "expo.out" })
+                    }, { yPercent: 0, opacity: 1, duration: 2.2, delay: 1, ease: "expo.out" })
+                    tl.to(["#ca"], { opacity: 1, duration: 1.2, ease: "expo.in" }, "-=1.5")
+                    tl.to(
+                        "#sub-script", { opacity: 1, duration: 1.2, ease: "expo.in" }, "-=1"
+                    );
 
                     const scrollassist0 = gsap.timeline({
                         scrollTrigger: {
@@ -196,6 +152,19 @@ export default function LandingPage() {
                     });
 
                     const mytween1 = gsap.to("#akaar-presents", { opacity: 1, duration: 0.5, paused: true, })
+
+                    gsap.to(["#studio-1", "#studio-2"], {
+                        x: "-5vw",
+                        scrollTrigger: {
+                            // markers: true,
+                            trigger: "#section-1",
+                            containerAnimation: scrolltween,
+                            start: "right right",
+                            end: "left -=1000",
+                            scrub: 1,
+                            // id: "1",
+                        }
+                    })
 
                     ScrollTrigger.create({
                         // markers:true,
@@ -284,290 +253,291 @@ export default function LandingPage() {
                         { backgroundColor: "#FFFFFF", color: "#7800B0", duration: 0.25 }
                     );
 
-                } else {
-
-                    //section 1
-                    const scrollassist0 = gsap.timeline({
-                        scrollTrigger: {
-                            trigger: "#section-1",
-                            // markers: true,
-                            start: "top top",
-                            end: "+=10 top",
-                            scrub: 1,
-                        }
-                    }
-                    )
-
-
-                    scrollassist0.to(
-                        "#scroll-assist, #lang-btn,#e-btn",
-                        { backgroundColor: "#FFFFFF", color: "#2E4BF5" }
-                    ).to("#scroll-assist :nth-child(1)", {
-                        backgroundColor: "#2E4BF5"
-                    }, "<");
-
-                    const mytimeline3 = gsap.timeline({ paused: true })
-                    mytimeline3.fromTo("#headings",
-                        {
-                            x: 40, opacity: 0,
-                        },
-                        {
-                            x: 0, opacity: 1,
-                            duration: 2,
-                        });
-                    mytimeline3.fromTo("#my-vectors img",
-                        {
-                            x: -50, opacity: 0,
-                        },
-                        {
-                            x: 0, opacity: 1,
-                            duration: 2,
-
-                        }, "<");
-
-                    ScrollTrigger.create({
-                        trigger: "#headings",
-                        scrub: 1,
-                        // markers: true,
-                        start: "top top",
-                        end: "500 top",
-                        onEnter: () => { mytimeline3.reverse() },
-                        onLeaveBack: () => { mytimeline3.play() },
-                        once: false,
-                    });
-
-
-
-                    //section 2
-                    const scrollassist1 = gsap.timeline({
-                        scrollTrigger: {
-                            trigger: "#section-2",
-                            // markers: true,
-                            start: () => `-=20 top`,
-                            end: () => `+=10 top`,
-                            scrub: 1,
-                        }
-                    }
-                    )
-                    scrollassist1.to(
-                        "#scroll-assist, #lang-btn,#e-btn",
-                        { backgroundColor: "#FFFFFF", color: "#FFC325" }
-                    ).to("#scroll-assist :nth-child(1)", {
-                        backgroundColor: "#FFC325"
-                    }, "<");
-
-                    const mytween1 = gsap.to("#akaar-presents", { opacity: 1, duration: 0.5, paused: true, })
-
-                    ScrollTrigger.create({
-                        trigger: "#section-2",
-                        scrub: 1,
-                        // markers: true,
-                        start: () => `top top`,
-                        end: () => `+=500 top`,
-                        onEnter: () => {
-                            mytween1.play();
-                        },
-                        onLeaveBack: () => {
-                            mytween1.reverse();
-                        },
-                    })
-
-                    const tl2 = gsap.timeline({
-                        paused: true
-                    });
-
-                    tl2.to("#akaar-wed-shadow",
-                        {
-                            y: "+=10", duration: 0.5, ease: "power1.easeInOut"
-                        }).to("#akaar-wed-shadow-1", {
-                            y: "+=25", duration: 0.5, ease: "power1.easeInOut"
-                        }).fromTo("#now-booking-wed",
-                            {
-                                x: 200,
-                                scale: 0
-                            },
-                            {
-                                x: 0,
-                                scale: 1,
-                                duration: 1.5,
-                                ease: "elastic.out"
-                            }, "<").fromTo("#sub-tag-wed",
-                                {
-                                    y: -10,
-                                    opacity: 0
-                                },
-                                {
-                                    y: 0,
-                                    opacity: 1,
-                                    duration: 0.25,
-                                }, "-=0.5");
-
-                    ScrollTrigger.create({
-                        trigger: "#section-2",
-                        scrub: 1,
-                        // markers: true,
-                        start: () => `-=30 top`,
-                        end: () => `+=500 top`,
-                        onEnter: () => tl2.play(),
-                        onLeaveBack: () => tl2.reverse(),
-                    })
-
-                    //section 3
-                    const scrollassist2 = gsap.timeline({
-                        scrollTrigger: {
-                            trigger: "#section-3",
-                            // markers: true,
-                            start: () => `-=20 top`,
-                            end: () => `+=10 top`,
-                            scrub: 1,
-                        }
-                    }
-                    )
-                    scrollassist2.to(
-                        "#scroll-assist, #lang-btn,#e-btn",
-                        { backgroundColor: "#FFFFFF", color: "#FF2424" }
-                    ).to("#scroll-assist :nth-child(1)", {
-                        backgroundColor: "#FF2424"
-                    }, "<");
-
-                    const tl3 = gsap.timeline({
-                        paused: true
-                    });
-
-                    tl3.to("#akaar-fashion-shadow",
-                        {
-                            y: "+=10", duration: 0.5, ease: "power1.easeInOut"
-                        }).to("#akaar-fashion-shadow-1", {
-                            y: "+=25", duration: 0.5, ease: "power1.easeInOut"
-                        }).fromTo("#now-booking-fashion",
-                            {
-                                x: 200,
-                                scale: 0
-                            },
-                            {
-                                x: 0,
-                                scale: 1,
-                                duration: 1.5,
-                                ease: "elastic.out"
-                            }, "<").fromTo("#sub-tag-fashion",
-                                {
-                                    y: -10,
-                                    opacity: 0
-                                },
-                                {
-                                    y: 0,
-                                    opacity: 1,
-                                    duration: 0.25,
-                                }, "-=0.5");
-
-                    ScrollTrigger.create({
-                        trigger: "#section-3",
-                        scrub: 1,
-                        // markers: true,
-                        start: () => `-=30 top`,
-                        end: () => `+=500 top`,
-                        onEnter: () => tl3.play(),
-                        onLeaveBack: () => tl3.reverse(),
-                    })
-
-                    //section 4
-                    const scrollassist3 = gsap.timeline({
-                        scrollTrigger: {
-                            trigger: "#section-4",
-                            // markers: true,
-                            start: () => `-=20 top`,
-                            end: () => `+=10 top`,
-                            scrub: 1,
-                        }
-                    }
-                    )
-                    scrollassist3.to(
-                        "#scroll-assist, #lang-btn, #e-btn",
-                        { backgroundColor: "#FFFFFF", color: "#7800B0" }
-                    ).to("#scroll-assist :nth-child(1)", {
-                        backgroundColor: "#7800B0"
-                    }, "<");
-
-                    const tl445 = gsap.timeline({
-                        paused: true
-                    });
-
-                    tl445.to("#akaar-commercials-shadow",
-                        {
-                            y: "+=10", duration: 0.5, ease: "power1.easeInOut"
-                        }).to("#akaar-commercials-shadow-1", {
-                            y: "+=25", duration: 0.5, ease: "power1.easeInOut"
-                        }).fromTo("#now-booking-commercials",
-                            {
-                                x: 200,
-                                scale: 0
-                            },
-                            {
-                                x: 0,
-                                scale: 1,
-                                duration: 1.5,
-                                ease: "elastic.out"
-                            }, "<").fromTo("#sub-tag-commercials",
-                                {
-                                    y: -10,
-                                    opacity: 0
-                                },
-                                {
-                                    y: 0,
-                                    opacity: 1,
-                                    duration: 0.25,
-                                }, "-=0.5");
-
-                    ScrollTrigger.create({
-                        trigger: "#section-4",
-                        scrub: 1,
-                        // markers: true,
-                        start: () => `top top`,
-                        end: () => `+=300 top`,
-                        onEnterBack: () => { mytween1.play(); },
-                        onLeave: () => { mytween1.reverse(); },
-                        once: false,
-                    });
-
-                    ScrollTrigger.create({
-                        trigger: "#section-4",
-                        scrub: 1,
-                        // markers: true,
-                        start: () => `-=20 top`,
-                        end: () => `+=500 top`,
-                        onEnter: () => { tl445.play(); },
-                        onLeaveBack: () => { tl445.reverse() },
-                        once: false,
-                    });
-
-                    //section 1
-                    let tl = gsap.timeline({})
-                    tl.fromTo(
-                        document.querySelectorAll(".ofx"),
-                        { opacity: 0 },
-                        {
-                            opacity: 1, duration: 2, ease: "expo.inOut"
-                        }
-                    );
-                    tl.to("#main-heading", {
-                        opacity: 1, duration: 3, ease: "expo.inOut",
-                    }, "<")
-                    tl.fromTo("#sub-script", { y: "0px" }, {
-                        opacity: 1, duration: 1.5, y: "0px", ease: "power3.out"
-                    }, "-=1.5")
-                    tl.fromTo("#my-bulb-svg", {
-                        left: "-350px", opacity: 0,
-                    }, { left: "-150px", opacity: 1, duration: 2, ease: "expo.out", }, "-=1.5")
-                    tl.fromTo("#my-globe-svg", {
-                        right: "-250px", opacity: 0,
-                    }, { right: "0px", opacity: 1, duration: 2, ease: "expo.out", }, "<")
-                    tl.fromTo("#hills", {
-                        right: "-250px", opacity: 0,
-                    }, { right: "-100px", opacity: 1, duration: 2, ease: "expo.out", }, "<")
-                    tl.fromTo("#scroll-assist", {
-                        y: 100, opacity: 0, scale: 1.2
-                    }, { y: 0, opacity: 1, scale: 1, duration: 1, ease: "expo.out" })
                 }
+                // else {
+
+                //     //section 1
+                //     const scrollassist0 = gsap.timeline({
+                //         scrollTrigger: {
+                //             trigger: "#section-1",
+                //             // markers: true,
+                //             start: "top top",
+                //             end: "+=10 top",
+                //             scrub: 1,
+                //         }
+                //     }
+                //     )
+
+
+                //     scrollassist0.to(
+                //         "#scroll-assist, #lang-btn,#e-btn",
+                //         { backgroundColor: "#FFFFFF", color: "#2E4BF5" }
+                //     ).to("#scroll-assist :nth-child(1)", {
+                //         backgroundColor: "#2E4BF5"
+                //     }, "<");
+
+                //     const mytimeline3 = gsap.timeline({ paused: true })
+                //     mytimeline3.fromTo("#headings",
+                //         {
+                //             x: 40, opacity: 0,
+                //         },
+                //         {
+                //             x: 0, opacity: 1,
+                //             duration: 2,
+                //         });
+                //     mytimeline3.fromTo("#my-vectors img",
+                //         {
+                //             x: -50, opacity: 0,
+                //         },
+                //         {
+                //             x: 0, opacity: 1,
+                //             duration: 2,
+
+                //         }, "<");
+
+                //     ScrollTrigger.create({
+                //         trigger: "#headings",
+                //         scrub: 1,
+                //         // markers: true,
+                //         start: "top top",
+                //         end: "500 top",
+                //         onEnter: () => { mytimeline3.reverse() },
+                //         onLeaveBack: () => { mytimeline3.play() },
+                //         once: false,
+                //     });
+
+
+
+                //     //section 2
+                //     const scrollassist1 = gsap.timeline({
+                //         scrollTrigger: {
+                //             trigger: "#section-2",
+                //             // markers: true,
+                //             start: () => `-=20 top`,
+                //             end: () => `+=10 top`,
+                //             scrub: 1,
+                //         }
+                //     }
+                //     )
+                //     scrollassist1.to(
+                //         "#scroll-assist, #lang-btn,#e-btn",
+                //         { backgroundColor: "#FFFFFF", color: "#FFC325" }
+                //     ).to("#scroll-assist :nth-child(1)", {
+                //         backgroundColor: "#FFC325"
+                //     }, "<");
+
+                //     const mytween1 = gsap.to("#akaar-presents", { opacity: 1, duration: 0.5, paused: true, })
+
+                //     ScrollTrigger.create({
+                //         trigger: "#section-2",
+                //         scrub: 1,
+                //         // markers: true,
+                //         start: () => `top top`,
+                //         end: () => `+=500 top`,
+                //         onEnter: () => {
+                //             mytween1.play();
+                //         },
+                //         onLeaveBack: () => {
+                //             mytween1.reverse();
+                //         },
+                //     })
+
+                //     const tl2 = gsap.timeline({
+                //         paused: true
+                //     });
+
+                //     tl2.to("#akaar-wed-shadow",
+                //         {
+                //             y: "+=10", duration: 0.5, ease: "power1.easeInOut"
+                //         }).to("#akaar-wed-shadow-1", {
+                //             y: "+=25", duration: 0.5, ease: "power1.easeInOut"
+                //         }).fromTo("#now-booking-wed",
+                //             {
+                //                 x: 200,
+                //                 scale: 0
+                //             },
+                //             {
+                //                 x: 0,
+                //                 scale: 1,
+                //                 duration: 1.5,
+                //                 ease: "elastic.out"
+                //             }, "<").fromTo("#sub-tag-wed",
+                //                 {
+                //                     y: -10,
+                //                     opacity: 0
+                //                 },
+                //                 {
+                //                     y: 0,
+                //                     opacity: 1,
+                //                     duration: 0.25,
+                //                 }, "-=0.5");
+
+                //     ScrollTrigger.create({
+                //         trigger: "#section-2",
+                //         scrub: 1,
+                //         // markers: true,
+                //         start: () => `-=30 top`,
+                //         end: () => `+=500 top`,
+                //         onEnter: () => tl2.play(),
+                //         onLeaveBack: () => tl2.reverse(),
+                //     })
+
+                //     //section 3
+                //     const scrollassist2 = gsap.timeline({
+                //         scrollTrigger: {
+                //             trigger: "#section-3",
+                //             // markers: true,
+                //             start: () => `-=20 top`,
+                //             end: () => `+=10 top`,
+                //             scrub: 1,
+                //         }
+                //     }
+                //     )
+                //     scrollassist2.to(
+                //         "#scroll-assist, #lang-btn,#e-btn",
+                //         { backgroundColor: "#FFFFFF", color: "#FF2424" }
+                //     ).to("#scroll-assist :nth-child(1)", {
+                //         backgroundColor: "#FF2424"
+                //     }, "<");
+
+                //     const tl3 = gsap.timeline({
+                //         paused: true
+                //     });
+
+                //     tl3.to("#akaar-fashion-shadow",
+                //         {
+                //             y: "+=10", duration: 0.5, ease: "power1.easeInOut"
+                //         }).to("#akaar-fashion-shadow-1", {
+                //             y: "+=25", duration: 0.5, ease: "power1.easeInOut"
+                //         }).fromTo("#now-booking-fashion",
+                //             {
+                //                 x: 200,
+                //                 scale: 0
+                //             },
+                //             {
+                //                 x: 0,
+                //                 scale: 1,
+                //                 duration: 1.5,
+                //                 ease: "elastic.out"
+                //             }, "<").fromTo("#sub-tag-fashion",
+                //                 {
+                //                     y: -10,
+                //                     opacity: 0
+                //                 },
+                //                 {
+                //                     y: 0,
+                //                     opacity: 1,
+                //                     duration: 0.25,
+                //                 }, "-=0.5");
+
+                //     ScrollTrigger.create({
+                //         trigger: "#section-3",
+                //         scrub: 1,
+                //         // markers: true,
+                //         start: () => `-=30 top`,
+                //         end: () => `+=500 top`,
+                //         onEnter: () => tl3.play(),
+                //         onLeaveBack: () => tl3.reverse(),
+                //     })
+
+                //     //section 4
+                //     const scrollassist3 = gsap.timeline({
+                //         scrollTrigger: {
+                //             trigger: "#section-4",
+                //             // markers: true,
+                //             start: () => `-=20 top`,
+                //             end: () => `+=10 top`,
+                //             scrub: 1,
+                //         }
+                //     }
+                //     )
+                //     scrollassist3.to(
+                //         "#scroll-assist, #lang-btn, #e-btn",
+                //         { backgroundColor: "#FFFFFF", color: "#7800B0" }
+                //     ).to("#scroll-assist :nth-child(1)", {
+                //         backgroundColor: "#7800B0"
+                //     }, "<");
+
+                //     const tl445 = gsap.timeline({
+                //         paused: true
+                //     });
+
+                //     tl445.to("#akaar-commercials-shadow",
+                //         {
+                //             y: "+=10", duration: 0.5, ease: "power1.easeInOut"
+                //         }).to("#akaar-commercials-shadow-1", {
+                //             y: "+=25", duration: 0.5, ease: "power1.easeInOut"
+                //         }).fromTo("#now-booking-commercials",
+                //             {
+                //                 x: 200,
+                //                 scale: 0
+                //             },
+                //             {
+                //                 x: 0,
+                //                 scale: 1,
+                //                 duration: 1.5,
+                //                 ease: "elastic.out"
+                //             }, "<").fromTo("#sub-tag-commercials",
+                //                 {
+                //                     y: -10,
+                //                     opacity: 0
+                //                 },
+                //                 {
+                //                     y: 0,
+                //                     opacity: 1,
+                //                     duration: 0.25,
+                //                 }, "-=0.5");
+
+                //     ScrollTrigger.create({
+                //         trigger: "#section-4",
+                //         scrub: 1,
+                //         // markers: true,
+                //         start: () => `top top`,
+                //         end: () => `+=300 top`,
+                //         onEnterBack: () => { mytween1.play(); },
+                //         onLeave: () => { mytween1.reverse(); },
+                //         once: false,
+                //     });
+
+                //     ScrollTrigger.create({
+                //         trigger: "#section-4",
+                //         scrub: 1,
+                //         // markers: true,
+                //         start: () => `-=20 top`,
+                //         end: () => `+=500 top`,
+                //         onEnter: () => { tl445.play(); },
+                //         onLeaveBack: () => { tl445.reverse() },
+                //         once: false,
+                //     });
+
+                //     //section 1
+                //     let tl = gsap.timeline({})
+                //     tl.fromTo(
+                //         document.querySelectorAll(".ofx"),
+                //         { opacity: 0 },
+                //         {
+                //             opacity: 1, duration: 2, ease: "expo.inOut"
+                //         }
+                //     );
+                //     tl.to("#main-heading", {
+                //         opacity: 1, duration: 3, ease: "expo.inOut",
+                //     }, "<")
+                //     tl.fromTo("#sub-script", { y: "0px" }, {
+                //         opacity: 1, duration: 1.5, y: "0px", ease: "power3.out"
+                //     }, "-=1.5")
+                //     tl.fromTo("#my-bulb-svg", {
+                //         left: "-350px", opacity: 0,
+                //     }, { left: "-150px", opacity: 1, duration: 2, ease: "expo.out", }, "-=1.5")
+                //     tl.fromTo("#my-globe-svg", {
+                //         right: "-250px", opacity: 0,
+                //     }, { right: "0px", opacity: 1, duration: 2, ease: "expo.out", }, "<")
+                //     tl.fromTo("#hills", {
+                //         right: "-250px", opacity: 0,
+                //     }, { right: "-100px", opacity: 1, duration: 2, ease: "expo.out", }, "<")
+                //     tl.fromTo("#scroll-assist", {
+                //         y: 100, opacity: 0, scale: 1.2
+                //     }, { y: 0, opacity: 1, scale: 1, duration: 1, ease: "expo.out" })
+                // }
 
             });
 
@@ -579,7 +549,7 @@ export default function LandingPage() {
 
     const goToPortfolio = (id) => {
         lenis.scrollTo("#" + id, {
-            duration: 9,
+            duration: 4,
             easing: (t) => t
         })
     }
@@ -591,8 +561,8 @@ export default function LandingPage() {
                     // markers: true,
                     trigger: trigger,
                     containerAnimation: scrolltween,
-                    start: "left right",
-                    toggleActions: "play none none reverse",
+                    start: "left-=10 right",
+                    toggleActions: "play pause resume reset",
                 }
             });
 
@@ -601,7 +571,9 @@ export default function LandingPage() {
             }).to(targets[0], {
                 rotation: -5, duration: 1.8, ease: "sine.inOut"
             }).to(targets[0], {
-                rotation: 0, duration: 1.5, ease: "sine.inOut"
+                rotation: 2, duration: 1.5, ease: "sine.inOut"
+            }).to(targets[0], {
+                rotation: 0, duration: 0.9, ease: "sine.inOut"
             })
 
             return t;
@@ -614,8 +586,8 @@ export default function LandingPage() {
                     // markers: true,
                     trigger: trigger,
                     containerAnimation: scrolltween,
-                    start: "left right",
-                    toggleActions: "play none none reverse",
+                    start: "left-=10 right",
+                    toggleActions: "play pause resume reset",
                 }
             });
 
@@ -624,7 +596,9 @@ export default function LandingPage() {
             }).to(targets[1], {
                 rotation: -5, duration: 1.8, ease: "sine.inOut"
             }).to(targets[1], {
-                rotation: 0, duration: 1.5, ease: "sine.inOut"
+                rotation: 1, duration: 1.5, ease: "sine.inOut"
+            }).to(targets[1], {
+                rotation: 0, duration: 0.9, ease: "sine.inOut"
             })
 
             return t;
@@ -664,7 +638,7 @@ export default function LandingPage() {
                     </div>
                     <div id="section-1" className="panels">
                         <div className="sec-top">
-                            <svg id="studio-2" viewBox="0 0 128 136" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            {/* <svg id="studio-2" viewBox="0 0 128 136" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <g >
                                     <g id="Group">
                                         <g id="Group_2">
@@ -1260,10 +1234,17 @@ export default function LandingPage() {
                                         </g>
                                     </g>
                                 </g>
+                            </svg> */}
+
+                            {/* <button style={{ position: "absolute", top: "26px", right: "190px" }} className="get-intouch">GET IN TOUCH <svg style={{ display: "inline" }} width="15" height="15" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path id="Vector" d="M58.688 320H-1.15032e-05V298.667C-0.322962 268.755 7.59879 239.332 22.8962 213.625C38.1937 187.919 60.2757 166.922 86.72 152.939C112.771 140.094 140.984 132.209 169.92 129.685C157.276 145.33 144.597 161.956 131.883 179.563C103.245 224.041 78.7444 271.05 58.688 320ZM332.437 380.011C287.963 408.685 240.954 433.222 192 453.312V512H213.333C243.245 512.323 272.668 504.401 298.375 489.104C324.081 473.806 345.078 451.724 359.061 425.28C371.906 399.229 379.791 371.016 382.315 342.08C366.741 354.667 350.116 367.31 332.437 380.011ZM512 63.808C509.163 156.672 442.304 248.768 307.584 345.408C270.923 369.174 232.247 389.676 192 406.677V394.667C191.905 374.893 184.007 355.957 170.025 341.975C156.043 327.993 137.107 320.095 117.333 320H105.323C122.345 279.754 142.875 241.084 166.677 204.437C263.083 69.9307 355.029 3.072 447.744 0C493.952 0 512 18.88 512 63.808ZM384 181.333C384 167.188 378.381 153.623 368.379 143.621C358.377 133.619 344.812 128 330.667 128C316.522 128 302.956 133.619 292.954 143.621C282.952 153.623 277.333 167.188 277.333 181.333C277.333 195.478 282.952 209.044 292.954 219.046C302.956 229.048 316.522 234.667 330.667 234.667C344.812 234.667 358.377 229.048 368.379 219.046C378.381 209.044 384 195.478 384 181.333ZM29.312 507.413C53.3333 503.147 111.253 491.243 130.603 471.915C136.546 465.971 141.261 458.915 144.477 451.15C147.694 443.384 149.349 435.061 149.349 426.656C149.349 418.251 147.694 409.928 144.477 402.162C141.261 394.397 136.546 387.341 130.603 381.397C124.659 375.454 117.603 370.739 109.838 367.523C102.072 364.306 93.7493 362.651 85.344 362.651C68.3687 362.651 52.0887 369.394 40.0853 381.397C20.7573 400.747 8.83199 458.667 4.58666 482.688L-0.682678 512.683L29.312 507.413Z" fill="white" />
                             </svg>
+                            </button> */}
+
                             <div className="cnt-for-h">
                                 <div id="headings">
-                                    <h1 id="main-heading">AKAAR<sup>Creative Agency</sup></h1>
+                                    <h1 id="main-heading">AKAAR</h1>
+                                    <p id="ca"><sup>Creative Agency</sup></p>
                                 </div>
                                 <p id="sub-script"><span>AKAAR</span> - is a dynamic force in the world of visual storytelling, specializing in creative videography, photography, illustration and animation that captivates and inspires. We blend artistic vision with strategic marketing to craft compelling content that resonates with your audience.</p>
                                 <div className="my-btns">
@@ -1273,15 +1254,72 @@ export default function LandingPage() {
                                     </button>
                                 </div>
                             </div>
-                        </div>
-                        <div className="vertical-section sec-top1" id="v-id">
-                            <div className="panel  ">
-                                <button id="okays-back">back to horizontal</button>
-                                <p>hello wedding</p>
-                            </div>
-                        </div>
+                            <svg id="studio-1" viewBox="0 0 506 499" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <g id="plights">
+                                    <path id="Vector" d="M445.841 498.375H449.532V157.826L445.841 157.347V498.375Z" fill="#0B2EF7" fill-opacity="0.89" />
+                                    <path id="Vector_2" d="M445.65 414.108L433.443 420.82H464.735L451.456 414.108H445.65Z" fill="#0B2EF7" fill-opacity="0.89" />
+                                    <path id="Vector_3" d="M438.859 420.82C438.016 420.82 392.237 498.375 392.237 498.375H397.012L444.327 420.82H438.859Z" fill="#0B2EF7" fill-opacity="0.89" />
+                                    <path id="Vector_4" d="M458.703 420.82C459.546 420.82 505.325 498.375 505.325 498.375H500.55L453.235 420.82H458.703Z" fill="#0B2EF7" fill-opacity="0.89" />
+                                    <g id="Group">
+                                        <path id="Vector_5" d="M474.676 450.254C474.664 450.241 474.468 450.392 474.106 450.692C473.709 451.03 473.188 451.472 472.54 452.023C471.15 453.235 469.216 454.923 466.845 456.992C462.031 461.26 455.454 467.091 448.187 473.532C448.065 473.641 447.942 473.75 447.83 473.851L448.168 473.844C440.722 467.774 434.002 462.295 429.087 458.289C426.669 456.349 424.697 454.768 423.281 453.632C422.621 453.117 422.092 452.704 421.687 452.387C421.319 452.107 421.121 451.967 421.109 451.98C421.098 451.994 421.274 452.161 421.621 452.467C422.01 452.802 422.519 453.241 423.153 453.787C424.544 454.954 426.48 456.579 428.855 458.572C433.744 462.609 440.431 468.131 447.838 474.247L448.01 474.389L448.177 474.24C448.29 474.139 448.412 474.03 448.534 473.921C455.761 467.435 462.302 461.564 467.09 457.267C469.415 455.147 471.312 453.417 472.675 452.174C473.296 451.593 473.795 451.126 474.176 450.77C474.515 450.445 474.688 450.267 474.676 450.254Z" fill="#0B2EF7" fill-opacity="0.89" />
+                                    </g>
+                                    <g id="Group_2">
+                                        <path id="Vector_6" d="M431.713 434.786C431.713 434.93 439.204 435.046 448.443 435.046C457.685 435.046 465.174 434.929 465.174 434.786C465.174 434.643 457.684 434.526 448.443 434.526C439.204 434.526 431.713 434.642 431.713 434.786Z" fill="#0B2EF7" fill-opacity="0.89" />
+                                    </g>
+                                    <path id="Vector_7" opacity="0.1" d="M342.949 94.7468L22.9999 273C35.9999 319 86 367 120 381L355.5 108L342.949 94.7468Z" fill="#C3CCFE" fill-opacity="0.7" />
+                                    <path id="Vector_8" d="M381.666 94.7076L472.454 227.959C473.094 228.898 474.374 229.141 475.313 228.501C476.252 227.861 476.495 226.581 475.855 225.642L385.067 92.3906C384.427 91.4516 383.147 91.2086 382.208 91.8486C381.269 92.4886 381.027 93.7686 381.666 94.7076Z" fill="#0B2EF7" fill-opacity="0.89" />
+                                    <path id="Vector_9" d="M391.612 87.3536C383.198 94.4056 372.677 103.135 372.677 103.135L355.777 82.8216L374.209 66.9066C379.857 62.0296 388.399 62.6946 393.223 68.3876C398.038 74.0656 397.316 82.5716 391.612 87.3536Z" fill="#0B2EF7" fill-opacity="0.89" />
+                                    <path id="Vector_10" d="M373.81 102.031C374.199 103.215 384.102 126.243 384.102 126.243L383.361 175.166L377.898 180.235L276.543 69.4816L282.006 64.4126L331.229 69.7836L356.911 81.7176L373.81 102.031Z" fill="#0B2EF7" fill-opacity="0.89" />
+                                    <path id="Vector_11" d="M457.534 195.888C457.048 196.511 445.128 206.482 438.099 195.391C431.07 184.299 445.862 177.911 445.862 177.911L457.534 195.888Z" fill="#0B2EF7" fill-opacity="0.89" />
+                                    <g id="Group_3">
+                                        <path id="Vector_12" d="M442.619 189.068C442.661 189.088 442.793 188.802 443.149 188.389C443.499 187.984 444.132 187.453 445.07 187.253C445.984 187.04 447.222 187.254 448.111 188.134C449.006 188.977 449.415 190.51 448.819 191.82C448.247 193.141 446.835 193.866 445.609 193.767C444.36 193.697 443.372 192.922 442.916 192.101C442.436 191.272 442.405 190.446 442.471 189.915C442.539 189.376 442.663 189.086 442.619 189.068C442.598 189.056 442.407 189.319 442.271 189.881C442.139 190.432 442.105 191.333 442.593 192.279C443.054 193.213 444.143 194.137 445.575 194.246C446.978 194.39 448.631 193.566 449.295 192.031C449.988 190.51 449.491 188.732 448.443 187.787C447.402 186.798 445.986 186.609 444.984 186.893C443.955 187.165 443.309 187.795 442.989 188.262C442.664 188.743 442.596 189.06 442.619 189.068Z" fill="#0B2EF7" fill-opacity="0.89" />
+                                    </g>
+                                    <g id="Group_4">
+                                        <path id="Vector_13" d="M281.704 64.6926C281.599 64.7906 304.387 89.5196 332.597 119.921C360.817 150.332 383.771 174.897 383.876 174.799C383.981 174.701 361.198 149.977 332.978 119.566C304.769 89.1656 281.81 64.5946 281.704 64.6926Z" fill="#0B2EF7" fill-opacity="0.89" />
+                                    </g>
+                                    <g id="Group_5">
+                                        <path id="Vector_14" d="M356.642 82.0716C356.616 82.0956 356.835 82.3866 357.254 82.8906C357.756 83.4776 358.357 84.1806 359.059 85.0006C360.685 86.8686 362.767 89.2606 365.068 91.9056C367.361 94.5596 369.435 96.9586 371.054 98.8326C371.766 99.6426 372.377 100.338 372.887 100.918C373.327 101.404 373.584 101.663 373.611 101.64C373.639 101.617 373.435 101.316 373.043 100.789C372.651 100.262 372.068 99.5126 371.336 98.5966C369.872 96.7636 367.805 94.2686 365.46 91.5636C363.115 88.8606 360.937 86.4606 359.33 84.7526C358.527 83.8986 357.868 83.2156 357.402 82.7526C356.938 82.2916 356.668 82.0466 356.642 82.0716Z" fill="#0B2EF7" fill-opacity="0.89" />
+                                    </g>
+                                    <g id="Group_6">
+                                        <path id="Vector_15" d="M333.656 72.0756C333.643 72.0886 333.809 72.2786 334.135 72.6306C334.501 73.0156 334.981 73.5196 335.579 74.1496C336.883 75.5016 338.701 77.3866 340.93 79.6976C345.445 84.3846 351.64 90.8986 358.356 98.2106C365.071 105.528 371.034 112.258 375.318 117.156C377.43 119.574 379.153 121.546 380.389 122.96C380.966 123.61 381.428 124.132 381.78 124.528C382.102 124.883 382.278 125.064 382.292 125.052C382.306 125.04 382.157 124.837 381.86 124.46C381.527 124.047 381.09 123.505 380.544 122.828C379.394 121.416 377.705 119.395 375.597 116.914C371.382 111.952 365.459 105.18 358.739 97.8576C352.019 90.5406 345.777 84.0626 341.193 79.4396C338.901 77.1276 337.031 75.2716 335.722 74.0066C335.094 73.4046 334.591 72.9226 334.208 72.5556C333.859 72.2286 333.669 72.0626 333.656 72.0756Z" fill="#0B2EF7" fill-opacity="0.89" />
+                                    </g>
+                                </g>
+                            </svg>
+
+                            <svg id="studio-2" viewBox="0 0 506 499" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <g id="plights">
+                                    <path id="Vector" d="M445.841 498.375H449.532V157.826L445.841 157.347V498.375Z" fill="#0B2EF7" fill-opacity="0.89" />
+                                    <path id="Vector_2" d="M445.65 414.108L433.443 420.82H464.735L451.456 414.108H445.65Z" fill="#0B2EF7" fill-opacity="0.89" />
+                                    <path id="Vector_3" d="M438.859 420.82C438.016 420.82 392.237 498.375 392.237 498.375H397.012L444.327 420.82H438.859Z" fill="#0B2EF7" fill-opacity="0.89" />
+                                    <path id="Vector_4" d="M458.703 420.82C459.546 420.82 505.325 498.375 505.325 498.375H500.55L453.235 420.82H458.703Z" fill="#0B2EF7" fill-opacity="0.89" />
+                                    <g id="Group">
+                                        <path id="Vector_5" d="M474.676 450.254C474.664 450.241 474.468 450.392 474.106 450.692C473.709 451.03 473.188 451.472 472.54 452.023C471.15 453.235 469.216 454.923 466.845 456.992C462.031 461.26 455.454 467.091 448.187 473.532C448.065 473.641 447.942 473.75 447.83 473.851L448.168 473.844C440.722 467.774 434.002 462.295 429.087 458.289C426.669 456.349 424.697 454.768 423.281 453.632C422.621 453.117 422.092 452.704 421.687 452.387C421.319 452.107 421.121 451.967 421.109 451.98C421.098 451.994 421.274 452.161 421.621 452.467C422.01 452.802 422.519 453.241 423.153 453.787C424.544 454.954 426.48 456.579 428.855 458.572C433.744 462.609 440.431 468.131 447.838 474.247L448.01 474.389L448.177 474.24C448.29 474.139 448.412 474.03 448.534 473.921C455.761 467.435 462.302 461.564 467.09 457.267C469.415 455.147 471.312 453.417 472.675 452.174C473.296 451.593 473.795 451.126 474.176 450.77C474.515 450.445 474.688 450.267 474.676 450.254Z" fill="#0B2EF7" fill-opacity="0.89" />
+                                    </g>
+                                    <g id="Group_2">
+                                        <path id="Vector_6" d="M431.713 434.786C431.713 434.93 439.204 435.046 448.443 435.046C457.685 435.046 465.174 434.929 465.174 434.786C465.174 434.643 457.684 434.526 448.443 434.526C439.204 434.526 431.713 434.642 431.713 434.786Z" fill="#0B2EF7" fill-opacity="0.89" />
+                                    </g>
+                                    <path id="Vector_7" opacity="0.1" d="M342.949 94.7468L22.9999 273C35.9999 319 86 367 120 381L355.5 108L342.949 94.7468Z" fill="#C3CCFE" fill-opacity="0.7" />
+                                    <path id="Vector_8" d="M381.666 94.7076L472.454 227.959C473.094 228.898 474.374 229.141 475.313 228.501C476.252 227.861 476.495 226.581 475.855 225.642L385.067 92.3906C384.427 91.4516 383.147 91.2086 382.208 91.8486C381.269 92.4886 381.027 93.7686 381.666 94.7076Z" fill="#0B2EF7" fill-opacity="0.89" />
+                                    <path id="Vector_9" d="M391.612 87.3536C383.198 94.4056 372.677 103.135 372.677 103.135L355.777 82.8216L374.209 66.9066C379.857 62.0296 388.399 62.6946 393.223 68.3876C398.038 74.0656 397.316 82.5716 391.612 87.3536Z" fill="#0B2EF7" fill-opacity="0.89" />
+                                    <path id="Vector_10" d="M373.81 102.031C374.199 103.215 384.102 126.243 384.102 126.243L383.361 175.166L377.898 180.235L276.543 69.4816L282.006 64.4126L331.229 69.7836L356.911 81.7176L373.81 102.031Z" fill="#0B2EF7" fill-opacity="0.89" />
+                                    <path id="Vector_11" d="M457.534 195.888C457.048 196.511 445.128 206.482 438.099 195.391C431.07 184.299 445.862 177.911 445.862 177.911L457.534 195.888Z" fill="#0B2EF7" fill-opacity="0.89" />
+                                    <g id="Group_3">
+                                        <path id="Vector_12" d="M442.619 189.068C442.661 189.088 442.793 188.802 443.149 188.389C443.499 187.984 444.132 187.453 445.07 187.253C445.984 187.04 447.222 187.254 448.111 188.134C449.006 188.977 449.415 190.51 448.819 191.82C448.247 193.141 446.835 193.866 445.609 193.767C444.36 193.697 443.372 192.922 442.916 192.101C442.436 191.272 442.405 190.446 442.471 189.915C442.539 189.376 442.663 189.086 442.619 189.068C442.598 189.056 442.407 189.319 442.271 189.881C442.139 190.432 442.105 191.333 442.593 192.279C443.054 193.213 444.143 194.137 445.575 194.246C446.978 194.39 448.631 193.566 449.295 192.031C449.988 190.51 449.491 188.732 448.443 187.787C447.402 186.798 445.986 186.609 444.984 186.893C443.955 187.165 443.309 187.795 442.989 188.262C442.664 188.743 442.596 189.06 442.619 189.068Z" fill="#0B2EF7" fill-opacity="0.89" />
+                                    </g>
+                                    <g id="Group_4">
+                                        <path id="Vector_13" d="M281.704 64.6926C281.599 64.7906 304.387 89.5196 332.597 119.921C360.817 150.332 383.771 174.897 383.876 174.799C383.981 174.701 361.198 149.977 332.978 119.566C304.769 89.1656 281.81 64.5946 281.704 64.6926Z" fill="#0B2EF7" fill-opacity="0.89" />
+                                    </g>
+                                    <g id="Group_5">
+                                        <path id="Vector_14" d="M356.642 82.0716C356.616 82.0956 356.835 82.3866 357.254 82.8906C357.756 83.4776 358.357 84.1806 359.059 85.0006C360.685 86.8686 362.767 89.2606 365.068 91.9056C367.361 94.5596 369.435 96.9586 371.054 98.8326C371.766 99.6426 372.377 100.338 372.887 100.918C373.327 101.404 373.584 101.663 373.611 101.64C373.639 101.617 373.435 101.316 373.043 100.789C372.651 100.262 372.068 99.5126 371.336 98.5966C369.872 96.7636 367.805 94.2686 365.46 91.5636C363.115 88.8606 360.937 86.4606 359.33 84.7526C358.527 83.8986 357.868 83.2156 357.402 82.7526C356.938 82.2916 356.668 82.0466 356.642 82.0716Z" fill="#0B2EF7" fill-opacity="0.89" />
+                                    </g>
+                                    <g id="Group_6">
+                                        <path id="Vector_15" d="M333.656 72.0756C333.643 72.0886 333.809 72.2786 334.135 72.6306C334.501 73.0156 334.981 73.5196 335.579 74.1496C336.883 75.5016 338.701 77.3866 340.93 79.6976C345.445 84.3846 351.64 90.8986 358.356 98.2106C365.071 105.528 371.034 112.258 375.318 117.156C377.43 119.574 379.153 121.546 380.389 122.96C380.966 123.61 381.428 124.132 381.78 124.528C382.102 124.883 382.278 125.064 382.292 125.052C382.306 125.04 382.157 124.837 381.86 124.46C381.527 124.047 381.09 123.505 380.544 122.828C379.394 121.416 377.705 119.395 375.597 116.914C371.382 111.952 365.459 105.18 358.739 97.8576C352.019 90.5406 345.777 84.0626 341.193 79.4396C338.901 77.1276 337.031 75.2716 335.722 74.0066C335.094 73.4046 334.591 72.9226 334.208 72.5556C333.859 72.2286 333.669 72.0626 333.656 72.0756Z" fill="#0B2EF7" fill-opacity="0.89" />
+                                    </g>
+                                </g>
+                            </svg>
 
 
+                        </div>
                     </div>
                     <div id="section-2" className="panels">
                         <div className="sec-top">
@@ -1776,9 +1814,9 @@ export default function LandingPage() {
                             </div>
 
                             <button id="now-booking-wed"
-                            // onClick={() => {
-                            //     goToPortfolio("section-7")
-                            // }}
+                                onClick={() => {
+                                    goToPortfolio("v-id")
+                                }}
                             >
                                 PORTFOLIO
                             </button>
@@ -2518,6 +2556,11 @@ export default function LandingPage() {
                     <button id="lang-btn">
                         EN
                     </button>
+                </div>
+                <div className="vertical-section sec-top1" id="v-id">
+                    <div className="panel  ">
+
+                    </div>
                 </div>
             </div >
         </ReactLenis >

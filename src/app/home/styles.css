@@ -54,21 +54,23 @@ body {
 
 #studio-1 {
     position: absolute;
-    top: 90%;
-    transform: translateY(-90%);
-    right: 5px;
-    width: 25vw;
-    height: 35vh;
-    opacity: 0.9;
+    top:4%;
+    /* transform: translateY(-90%); */
+    right:38px;
+    width: auto;
+    height: 75vh;
+    /* opacity: 0.9; */
 }
 
 #studio-2 {
     position: absolute;
-    top: 6%;
-    left: 5px;
-    width: 20vw;
-    height: 35vh;
-    opacity: 0.9;
+    top:5%;
+    /* transform: translateY(-90%); */
+    left: 48px;
+    width: auto;
+    height: 75vh;
+    /* opacity: 0.9; */
+    transform: scaleX(-1);
 }
 
 #section-2 {
@@ -96,9 +98,10 @@ body {
 
 .cnt-for-h {
     position: absolute;
-    top: 50%;
+    top: 45%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -45%);
+    width: auto;
 }
 
 .cnt-for-h button {
@@ -112,16 +115,33 @@ body {
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.129);
 }
 
+.get-intouch{
+    background-color: #2E4BF5;
+    height: 40px;
+    width: 136px;
+    font-family: montesrratlight;
+    color: white;
+    font-size: 12px;
+    border-radius: 40px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.129);
+}
+
 .cnt-for-h button svg {
     margin-left: 6px;
 }
 
 .cnt-for-h .my-btns {
     /* background-color: #7800B0; */
-    margin-top: 50px;
+    margin-top: 42px;
     width: 100%;
     display: flex;
     justify-content: center;
+    /* display: none; */
+}
+
+#sub-script span{
+    font-family: organetto;
+    font-size: 8px;
 }
 
 #headings {
@@ -140,54 +160,51 @@ body {
     font-weight: bold;
 }
 
+#headings{
+    position: relative;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#main-heading {
+    text-align: center;
+    line-height: 1.6;
+    position: relative;
+}
+
+#section-1 h1 {
+    font-family: organetto;
+    font-size: 4.8vw;
+    font-weight: bolder;
+    letter-spacing: 15px;
+    opacity: 0;
+}
+
+#section-1 #headings p {
+    font-size: 1vw;
+    font-weight: lighter;
+    letter-spacing: 0px;
+    color: #000;
+    font-family: organetto;
+    position: absolute;
+    right:0px;
+    bottom: 0px;
+    opacity: 0;
+}
+
 #sub-script {
-    font-size: 1.6vw;
+    font-size: 11px;
     width: 800px;
     text-align: center;
     margin-left: auto;
     margin-right: auto;
     opacity: 0;
+    margin-top: 26px;
+    /* font-family: m; */
+    /* display: none; */
 }
 
-#main-heading {
-    text-align: center;
-    line-height: 1;
-}
-
-#section-1 h1 {
-    font-family: organetto;
-    font-size: 3vw;
-    font-weight: bolder;
-    letter-spacing: 15px;
-    opacity: 0;
-
-
-}
-
-#section-1 sup {
-    font-size: 15px;
-    font-weight: lighter;
-    letter-spacing: 0px;
-}
-
-#section-1 p {
-    margin-top: 50px;
-    font-family: dmsans;
-    color: #000000;
-    font-size: 13px;
-    letter-spacing: 1px;
-    opacity: 0;
-}
-
-#section-1 p sup {
-    font-size: 10px;
-}
-
-#section-1 p span {
-    font-family: organetto;
-    font-weight: lighter;
-    font-size: 8px;
-}
 
 #akaar-presents{  
     position: fixed;
@@ -522,7 +539,8 @@ body {
 }
 
 #section-4 #cealling-lamp {
-    left: 20%;
+    right: 20%;
+    left: auto;
 }
 
 #fashion-illus svg {
@@ -1547,13 +1565,6 @@ body {
     position: relative;
     width: 100vw;
     height: 100vh;
-}
-
-
-
-.vertical-section{
-    background-color: #00bd2a;
-    display: none;
 }
 
 .vertical-section .panel {
