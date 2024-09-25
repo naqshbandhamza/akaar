@@ -54,9 +54,9 @@ body {
 
 #studio-1 {
     position: absolute;
-    top:4%;
+    top: 4%;
     /* transform: translateY(-90%); */
-    right:38px;
+    right: 38px;
     width: auto;
     height: 75vh;
     /* opacity: 0.9; */
@@ -64,7 +64,7 @@ body {
 
 #studio-2 {
     position: absolute;
-    top:5%;
+    top: 5%;
     /* transform: translateY(-90%); */
     left: 48px;
     width: auto;
@@ -105,7 +105,7 @@ body {
 }
 
 .cnt-for-h button {
-    background-color: #2E4BF5;
+    background-color: #EDC68C;
     height: 40px;
     width: 156px;
     font-family: montesrratlight;
@@ -115,7 +115,7 @@ body {
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.129);
 }
 
-.get-intouch{
+.get-intouch {
     background-color: #2E4BF5;
     height: 40px;
     width: 136px;
@@ -139,7 +139,7 @@ body {
     /* display: none; */
 }
 
-#sub-script span{
+#sub-script span {
     font-family: organetto;
     font-size: 8px;
 }
@@ -151,7 +151,7 @@ body {
 .sec-1-btn {
     height: 50px;
     width: 200px;
-    background-color: #2E4BF5;
+    background-color: #EDC68C;
     color: #FFFFFF;
     font-size: 10px;
     font-family: montesrratlight;
@@ -160,7 +160,7 @@ body {
     font-weight: bold;
 }
 
-#headings{
+#headings {
     position: relative;
     width: fit-content;
     margin-left: auto;
@@ -188,7 +188,7 @@ body {
     color: #000;
     font-family: organetto;
     position: absolute;
-    right:0px;
+    right: 0px;
     bottom: 0px;
     opacity: 0;
 }
@@ -206,7 +206,7 @@ body {
 }
 
 
-#akaar-presents{  
+#akaar-presents {
     position: fixed;
     top: 4%;
     left: calc(50vw);
@@ -331,7 +331,7 @@ body {
     height: 50px;
     width: 50px;
     border-radius: 50%;
-    color: #2E4BF5;
+    color: #EDC68C;
     z-index: 999;
     /* display: none; */
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.129);
@@ -347,7 +347,7 @@ body {
     height: 42px;
     width: 42px;
     border-radius: 50%;
-    color: #2E4BF5;
+    color: #EDC68C;
     z-index: 999;
     /* display: none; */
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.129);
@@ -1561,7 +1561,7 @@ body {
     padding: 28px;
 }
 
-.sec-top{
+.sec-top {
     position: relative;
     width: 100vw;
     height: 100vh;
@@ -1575,9 +1575,71 @@ body {
     font-size: 2rem;
 }
 
-.sec-top1{
+.sec-top1 {
     /* height: 100vh;
     width: 100vw;
     background-color: #686660;
     opacity: 0.6; */
+}
+
+#our-brands {
+    font-size: 7px;
+    color: #1f1f1f;
+}
+
+#our-brands h2 span{
+
+    color: #f5ba61;
+}
+
+#our-brands {
+    position: absolute;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30vw;
+    height: 120px;
+    font-family: montesrrat;
+    // font-family: avenir;
+    font-family: organetto;
+}
+
+#our-brands {
+    text-align: center;
+}
+
+
+
+
+#our-brands {
+    // position: relative;
+    // height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    >.inner {
+        // Add extra element to get to set a width
+        border-style: none;
+        border-left-style: solid;
+        border-left-color: #EDC68C;
+        border-width: 3px;
+        overflow: hidden;
+        width: 30vw; // The with of 3 items 3 * 10vw
+
+        // Use CSS grid to stack all the items on top of each other
+        display: grid;
+        align-items: center;
+        justify-items: center;
+
+        >* {
+            grid-area: 1 / 1 / 2 / 2;
+        }
+    }
+}
+
+#our-brands img {
+    object-fit: contain;
+    width: 10vw;
+    height: 40px;
 }
