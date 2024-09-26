@@ -7,13 +7,17 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/all";
 import { ReactLenis, useLenis } from '@studio-freight/react-lenis'
 
+let isScrolling = false; // To prevent multiple triggers during delay
+let current = 1;
+let scrolltween1: any;
+
 export default function LandingPage() {
     const lenis: any = useLenis(({ scroll }) => {
     })
     const [pageloaded, setPageLoaded] = useState(false);
     const [screenWidth, setScreenWidth] = useState(0);
     const ctxRef: any = useRef(null);
-    const [scrolltween1, setScrolltween] = useState<any>(null);
+    // const [scrolltween1, setScrolltween] = useState<any>(null);
 
     // useEffect for page preloader
     useEffect(() => {
@@ -46,6 +50,13 @@ export default function LandingPage() {
         }
     }, []);
 
+    const disableScrollTriggerById = (id) => {
+        // const trigger = ScrollTrigger.getById(id);
+        // if (trigger) {
+        //     trigger.enabled = false;
+        // }
+    }
+
     useEffect(() => {
         window.scrollTo(0, 0);
         if (pageloaded) {
@@ -64,23 +75,46 @@ export default function LandingPage() {
 
                     // horizontal scroll
                     let sections: any = gsap.utils.toArray(".panels");
-                    let scrolltween = gsap.to(sections, {
+                    let scrolltween: any = gsap.to(sections, {
                         xPercent: -100 * (sections.length - 1),
                         ease: "none",
                         scrollTrigger: {
                             trigger: ".slider-container",
                             pin: true,
-                            scrub: 1,
+                            scrub: true,
                             // snap: {
                             //     snapTo: 1 / (sections.length - 1),
                             //     // inertia: false,
                             //     // duration: { min: 0.1, max: 0.1 }
                             // },
                             start: "top top",
-                            end: () => screenWidth * 4 + 100
+                            end: () => screenWidth * 4 + 100,
+                            id: 'horizontalScroll', // You can give it an ID for easy reference
                         }
                     });
-                    setScrolltween(scrolltween)
+                    // scrolltween.scrollTrigger?.disable()
+                    disableScrollTriggerById("horizontalScroll")
+                    scrolltween1 = scrolltween
+
+                    let slidercont: any = document.getElementById("slider-id")
+                    slidercont.addEventListener('wheel', (event) => {
+                        if (isScrolling) return; // Prevent multiple triggers while waiting for delay
+                        isScrolling = true;
+
+                        if (event.deltaY < 0) {
+                            console.log('Scrolling up');
+                            if (current > 1) {
+                                goToOk(`section-${current - 1}`)
+                                current -= 1;
+                            }
+                        } else {
+                            if (current < 4) {
+                                goToOk(`section-${current + 1}`)
+                                current += 1;
+                            }
+                            console.log('Scrolling down');
+                        }
+                    });
 
                     //section 1
                     let tl = gsap.timeline({})
@@ -106,7 +140,7 @@ export default function LandingPage() {
                         ["#lang-btn", "#e-btn"],
                         { backgroundColor: "#FFFFFF", color: "#EDC68C", duration: 0.25 }
                     );
-                    
+
                     scrollassist0.to(
                         [".section-assist"],
                         { color: "#FFFFFF", backgroundColor: "#EDC68C", duration: 0.25 }
@@ -124,7 +158,7 @@ export default function LandingPage() {
                     }
                     )
 
-                    let olapola:any = document.getElementById("scroll-id-wed");
+                    let olapola: any = document.getElementById("scroll-id-wed");
                     scrollassist1.to(
                         ["#lang-btn", "#e-btn", ".section-assist"],
                         { backgroundColor: "#FFF5D8", color: "#FFC325", duration: 0.25 }
@@ -247,7 +281,7 @@ export default function LandingPage() {
                     }
                     )
 
-                    let olapola1:any = document.getElementById("scroll-id-fashion");
+                    let olapola1: any = document.getElementById("scroll-id-fashion");
 
                     scrollassist2.to(
                         ["#lang-btn", "#e-btn", ".section-assist"],
@@ -274,7 +308,7 @@ export default function LandingPage() {
                     }
                     )
 
-                    let olapola2:any = document.getElementById("scroll-id-commercial");
+                    let olapola2: any = document.getElementById("scroll-id-commercial");
 
                     scrollassist3.to(
                         ["#lang-btn", "#e-btn", ".section-assist"],
@@ -670,21 +704,6 @@ export default function LandingPage() {
     }, [pageloaded, screenWidth]);
 
     const goToPortfolio = (id) => {
-        console.log("in here")
-        // let sec: any = document.getElementById(id)
-        // console.log(sec.offsetLeft)
-        // console.log(sec)
-        // gsap.to(window, {
-        //     scrollTo: {
-        //         x: sec.offsetLeft,
-        //         y: 0,
-        //         autoKill: false
-        //     },
-        //     duration: 1,
-        //     ease: 'power2.inOut'
-        // });
-
-        /* Main navigation */
 
         let targetElem = document.getElementById(id),
             panelsContainer: any = document.getElementById("slider-id"),
@@ -702,6 +721,12 @@ export default function LandingPage() {
             },
             duration: 1
         });
+    }
+
+
+    const goToOk = (id) => {
+        goToPortfolio(id)
+        setTimeout(() => isScrolling = false, 1200); // Adjust delay as needed
     }
 
     const lamps = (scrolltween, trigger, targets) => {
