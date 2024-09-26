@@ -1587,7 +1587,7 @@ body {
     color: #1f1f1f;
 }
 
-#our-brands h2 span{
+#our-brands h2 span {
 
     color: #f5ba61;
 }
@@ -1643,3 +1643,150 @@ body {
     width: 10vw;
     height: 40px;
 }
+
+.section-assist {
+    position: fixed;
+    bottom: 20px;
+    width: 380px;
+    height: 20px;
+    left: calc(50vw);
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #edc68c;
+    border-radius: 22px;
+    padding: 15px;
+}
+
+// .section-assist {
+//     div {
+//         height: 6px;
+//         width: 6px;
+//         border-radius: 6px;
+//         background-color: #ffffff;
+//         transition: all 0.5s ease;
+
+//         &:nth-child(3):hover {
+//             border-style: solid;
+//             border-color: white;
+//             border-width: 3px;
+//             height: 12px;
+//             width: 12px;
+//             background-color: yellow;
+//         }
+//     }
+// }
+
+.section-assist {
+    div {
+        
+        height: 6px;
+        width: 6px;
+        border-radius: 6px;
+        background-color: #ffffff;
+        border-style: solid;
+        /* Added this to ensure it can transition */
+        border-color: transparent;
+        /* Set an initial transparent border */
+        border-width: 0;
+        /* Initial border width */
+        transition: all 0.5s ease;
+       
+    }
+}
+
+
+.section-assist #tag {
+    position: absolute;
+    height: 20px;
+    width: 45px;
+    border-radius: 10px;
+    background-color: #e7a43e;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    left: 5px;
+    z-index: 2;
+}
+
+#scroll-id-main:hover {
+    border-style: solid;
+    border-color: white;
+    border-width: 3px;
+    height: 12px;
+    width: 12px;
+    background-color: #e7a43e;
+}
+
+#scroll-id-wed:hover {
+    border-style: solid;
+    border-color: white;
+    border-width: 3px;
+    height: 12px;
+    width: 12px;
+    background-color: yellow;
+}
+
+#scroll-id-fashion:hover {
+    border-style: solid;
+    border-color: white;
+    border-width: 3px;
+    height: 12px;
+    width: 12px;
+    background-color: rgb(255, 0, 0);
+}
+
+#scroll-id-commercial:hover {
+    border-style: solid;
+    border-color: white;
+    border-width: 3px;
+    height: 12px;
+    width: 12px;
+    background-color: rgb(239, 57, 255);
+}
+
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+  }
+  
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    min-width: 120px;
+    max-width: auto;
+    padding: 5px;
+    border-radius: 60px;
+    background-color: #FFFFFF;
+    color: black;
+    text-align: center;
+    padding: 5px 0;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.129);
+    /* Position the tooltip */
+    position: absolute;
+    // z-index: 1;
+    bottom: 320%;
+    left: 50%;
+    margin-left: -60px;
+    font-family: naville;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 12px;
+  }
+  
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+  }
+
+  .tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #FFFFFF transparent transparent transparent;
+  }

@@ -13,6 +13,7 @@ export default function LandingPage() {
     const [pageloaded, setPageLoaded] = useState(false);
     const [screenWidth, setScreenWidth] = useState(0);
     const ctxRef: any = useRef(null);
+    const [scrolltween1, setScrolltween] = useState<any>(null);
 
     // useEffect for page preloader
     useEffect(() => {
@@ -71,12 +72,15 @@ export default function LandingPage() {
                             pin: true,
                             scrub: 1,
                             snap: {
-                                snapTo: 1 / (sections.length - 1)
+                                snapTo: 1 / (sections.length - 1),
+                                // inertia: false,
+                                // duration: { min: 0.1, max: 0.1 }
                             },
                             start: "top top",
                             end: () => screenWidth * 4 + 100
                         }
                     });
+                    setScrolltween(scrolltween)
 
                     //section 1
                     let tl = gsap.timeline({})
@@ -103,6 +107,11 @@ export default function LandingPage() {
                         { backgroundColor: "#FFFFFF", color: "#EDC68C", duration: 0.25 }
                     );
 
+                    scrollassist0.to(
+                        [".section-assist"],
+                        { color: "#FFFFFF", backgroundColor: "#EDC68C", duration: 0.25 }
+                    );
+
                     //section 2
                     const scrollassist1 = gsap.timeline({
                         scrollTrigger: {
@@ -115,8 +124,12 @@ export default function LandingPage() {
                     }
                     )
                     scrollassist1.to(
-                        ["#lang-btn", "#e-btn"],
-                        { backgroundColor: "#FFFFFF", color: "#FFC325", duration: 0.25 }
+                        ["#lang-btn", "#e-btn", ".section-assist"],
+                        { backgroundColor: "#FFF5D8", color: "#FFC325", duration: 0.25 }
+                    );
+                    scrollassist1.to(
+                        [".section-assist #tag"],
+                        { color: "#FFFFFF", backgroundColor: "#FFC325", duration: 0.25, x: document.getElementById("scroll-id-wed")?.offsetLeft - 20 }
                     );
 
                     lamps(scrolltween, "#section-2 #cealling-lamp", ["#section-2 #cealling-lamp #Group_2", "#section-2 #cealling-lamp #Group_12"])
@@ -232,8 +245,16 @@ export default function LandingPage() {
                     )
 
                     scrollassist2.to(
-                        ["#lang-btn", "#e-btn"],
-                        { backgroundColor: "#FFFFFF", color: "#FF2424", duration: 0.25 }
+                        ["#lang-btn", "#e-btn", ".section-assist"],
+                        { backgroundColor: "#FFC7C7", color: "#FF2424", duration: 0.25 }
+                    );
+                    // scrollassist2.to(
+                    //     [".section-assist"],
+                    //     { color: "#FFFFFF", backgroundColor: "#FF2424", duration: 0.25 }
+                    // );
+                    scrollassist2.to(
+                        [".section-assist #tag"],
+                        { color: "#FFFFFF", backgroundColor: "#FF2424", duration: 0.25, x: document.getElementById("scroll-id-fashion")?.offsetLeft - 20 }
                     );
 
                     //section 4
@@ -249,10 +270,17 @@ export default function LandingPage() {
                     )
 
                     scrollassist3.to(
-                        ["#lang-btn", "#e-btn"],
-                        { backgroundColor: "#FFFFFF", color: "#7800B0", duration: 0.25 }
+                        ["#lang-btn", "#e-btn", ".section-assist"],
+                        { backgroundColor: "#DFC3EC", color: "#7800B0", duration: 0.25 }
                     );
-
+                    // scrollassist3.to(
+                    //     [".section-assist"],
+                    //     { color: "#FFFFFF", backgroundColor: "#7800B0", duration: 0.25 }
+                    // );
+                    scrollassist3.to(
+                        [".section-assist #tag"],
+                        { color: "#FFFFFF", backgroundColor: "#7800B0", duration: 0.25, x: document.getElementById("scroll-id-commercial")?.offsetLeft - 20 }
+                    );
 
                     // All the varialbe logic from https://www.youtube.com/watch?v=0DSkgXNFZHs
                     const targets = document.querySelectorAll("#our-brands img");
@@ -635,10 +663,38 @@ export default function LandingPage() {
     }, [pageloaded, screenWidth]);
 
     const goToPortfolio = (id) => {
-        lenis.scrollTo("#" + id, {
-            duration: 4,
-            easing: (t) => t
-        })
+        console.log("in here")
+        // let sec: any = document.getElementById(id)
+        // console.log(sec.offsetLeft)
+        // console.log(sec)
+        // gsap.to(window, {
+        //     scrollTo: {
+        //         x: sec.offsetLeft,
+        //         y: 0,
+        //         autoKill: false
+        //     },
+        //     duration: 1,
+        //     ease: 'power2.inOut'
+        // });
+
+        /* Main navigation */
+
+        let targetElem = document.getElementById(id),
+            panelsContainer: any = document.getElementById("slider-id"),
+            panels: any = gsap.utils.toArray(".panels"),
+            y1: any = targetElem;
+        if (targetElem && panelsContainer.isSameNode(targetElem.parentElement)) {
+            let totalScroll = scrolltween1.scrollTrigger.end - scrolltween1.scrollTrigger.start,
+                totalMovement = (panels.length - 1) * targetElem.offsetWidth;
+            y1 = Math.round(scrolltween1.scrollTrigger.start + (targetElem.offsetLeft / totalMovement) * totalScroll);
+        }
+        gsap.to(window, {
+            scrollTo: {
+                y: y1,
+                autoKill: false
+            },
+            duration: 1
+        });
     }
 
     const lamps = (scrolltween, trigger, targets) => {
@@ -2050,10 +2106,29 @@ export default function LandingPage() {
                         EN
                     </button>
                 </div>
-                <div className="vertical-section sec-top1" id="v-id">
-                    <div className="panel  ">
-
+                <div className="section-assist">
+                    <div id="tag">
+                        <img src={"/static/arrow.png"} />
+                        <img style={{ transform: "scaleX(-1)" }} src={"/static/arrow.png"} />
                     </div>
+                    <div id="scroll-id-main" className="tooltip" onClick={() => {
+                        goToPortfolio("section-1")
+                    }}><span className="tooltiptext">HOME</span></div>
+                    <div id="scroll-id-wed" className="tooltip" onClick={() => {
+                        console.log("clicked")
+                        goToPortfolio("section-2")
+                    }}>  <span className="tooltiptext">Weddings</span>
+                    </div>
+                    <div id="scroll-id-fashion" className="tooltip" onClick={() => {
+                        goToPortfolio("section-3")
+                    }}><span className="tooltiptext">FASHION</span></div>
+                    <div id="scroll-id-commercial" className="tooltip" onClick={() => {
+                        goToPortfolio("section-4")
+                    }}><span className="tooltiptext">COMMERCIAL</span></div>
+                    <div id="scroll-id-product"></div>
+                    <div id="scroll-id-social"></div>
+                    <div id="scroll-id-graphics-post-prod"></div>
+                    <div id="scroll-id-films"></div>
                 </div>
             </div >
         </ReactLenis >
