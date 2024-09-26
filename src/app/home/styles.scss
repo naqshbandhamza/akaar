@@ -1648,7 +1648,7 @@ body {
     position: fixed;
     bottom: 20px;
     width: 380px;
-    height: 20px;
+    height: 34px;
     left: calc(50vw);
     transform: translateX(-50%);
     display: flex;
@@ -1680,19 +1680,19 @@ body {
 
 .section-assist {
     div {
-        
-        height: 6px;
-        width: 6px;
+
+        height:8px;
+        width: 8px;
         border-radius: 6px;
+        border-width: 1px;
         background-color: #ffffff;
-        border-style: solid;
+        border-style: none;
         /* Added this to ensure it can transition */
         border-color: transparent;
         /* Set an initial transparent border */
         border-width: 0;
         /* Initial border width */
         transition: all 0.5s ease;
-       
     }
 }
 
@@ -1713,36 +1713,36 @@ body {
 #scroll-id-main:hover {
     border-style: solid;
     border-color: white;
-    border-width: 3px;
-    height: 12px;
-    width: 12px;
+    border-width: 1px;
+    height: 8px;
+    width: 8px;
     background-color: #e7a43e;
 }
 
 #scroll-id-wed:hover {
     border-style: solid;
     border-color: white;
-    border-width: 3px;
-    height: 12px;
-    width: 12px;
+    border-width: 1px;
+    height: 8px;
+    width: 8px;
     background-color: yellow;
 }
 
 #scroll-id-fashion:hover {
     border-style: solid;
     border-color: white;
-    border-width: 3px;
-    height: 12px;
-    width: 12px;
+    border-width: 1px;
+    height: 8px;
+    width: 8px;
     background-color: rgb(255, 0, 0);
 }
 
 #scroll-id-commercial:hover {
     border-style: solid;
     border-color: white;
-    border-width: 3px;
-    height: 12px;
-    width: 12px;
+    border-width: 1px;
+    height: 8px;
+    width: 8px;
     background-color: rgb(239, 57, 255);
 }
 
@@ -1751,9 +1751,9 @@ body {
     position: relative;
     display: inline-block;
     border-bottom: 1px dotted black;
-  }
-  
-  .tooltip .tooltiptext {
+}
+
+.tooltip .tooltiptext {
     visibility: hidden;
     min-width: 120px;
     max-width: auto;
@@ -1767,20 +1767,25 @@ body {
     /* Position the tooltip */
     position: absolute;
     // z-index: 1;
-    bottom: 320%;
+    bottom: 400%;
     left: 50%;
     margin-left: -60px;
     font-family: naville;
     text-transform: uppercase;
     font-weight: bold;
     font-size: 12px;
-  }
-  
-  .tooltip:hover .tooltiptext {
-    visibility: visible;
-  }
+    opacity: 0;
+    transition: all 0.5s ease ;
+    transition-delay: 0.5s;
+}
 
-  .tooltip .tooltiptext::after {
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(10px);
+}
+
+.tooltip .tooltiptext::after {
     content: "";
     position: absolute;
     top: 100%;
@@ -1789,4 +1794,4 @@ body {
     border-width: 5px;
     border-style: solid;
     border-color: #FFFFFF transparent transparent transparent;
-  }
+}

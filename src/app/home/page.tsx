@@ -106,7 +106,7 @@ export default function LandingPage() {
                         ["#lang-btn", "#e-btn"],
                         { backgroundColor: "#FFFFFF", color: "#EDC68C", duration: 0.25 }
                     );
-
+                    
                     scrollassist0.to(
                         [".section-assist"],
                         { color: "#FFFFFF", backgroundColor: "#EDC68C", duration: 0.25 }
@@ -123,13 +123,15 @@ export default function LandingPage() {
                         }
                     }
                     )
+
+                    let olapola:any = document.getElementById("scroll-id-wed");
                     scrollassist1.to(
                         ["#lang-btn", "#e-btn", ".section-assist"],
                         { backgroundColor: "#FFF5D8", color: "#FFC325", duration: 0.25 }
                     );
                     scrollassist1.to(
                         [".section-assist #tag"],
-                        { color: "#FFFFFF", backgroundColor: "#FFC325", duration: 0.25, x: document.getElementById("scroll-id-wed")?.offsetLeft - 20 }
+                        { color: "#FFFFFF", backgroundColor: "#FFC325", duration: 0.25, x: olapola.offsetLeft - 20 }
                     );
 
                     lamps(scrolltween, "#section-2 #cealling-lamp", ["#section-2 #cealling-lamp #Group_2", "#section-2 #cealling-lamp #Group_12"])
@@ -232,6 +234,7 @@ export default function LandingPage() {
                         }
                     })
 
+
                     //section 3
                     const scrollassist2 = gsap.timeline({
                         scrollTrigger: {
@@ -244,6 +247,8 @@ export default function LandingPage() {
                     }
                     )
 
+                    let olapola1:any = document.getElementById("scroll-id-fashion");
+
                     scrollassist2.to(
                         ["#lang-btn", "#e-btn", ".section-assist"],
                         { backgroundColor: "#FFC7C7", color: "#FF2424", duration: 0.25 }
@@ -254,7 +259,7 @@ export default function LandingPage() {
                     // );
                     scrollassist2.to(
                         [".section-assist #tag"],
-                        { color: "#FFFFFF", backgroundColor: "#FF2424", duration: 0.25, x: document.getElementById("scroll-id-fashion")?.offsetLeft - 20 }
+                        { color: "#FFFFFF", backgroundColor: "#FF2424", duration: 0.25, x: olapola1.offsetLeft - 20 }
                     );
 
                     //section 4
@@ -269,6 +274,8 @@ export default function LandingPage() {
                     }
                     )
 
+                    let olapola2:any = document.getElementById("scroll-id-commercial");
+
                     scrollassist3.to(
                         ["#lang-btn", "#e-btn", ".section-assist"],
                         { backgroundColor: "#DFC3EC", color: "#7800B0", duration: 0.25 }
@@ -279,7 +286,7 @@ export default function LandingPage() {
                     // );
                     scrollassist3.to(
                         [".section-assist #tag"],
-                        { color: "#FFFFFF", backgroundColor: "#7800B0", duration: 0.25, x: document.getElementById("scroll-id-commercial")?.offsetLeft - 20 }
+                        { color: "#FFFFFF", backgroundColor: "#7800B0", duration: 0.25, x: olapola2.offsetLeft - 20 }
                     );
 
                     // All the varialbe logic from https://www.youtube.com/watch?v=0DSkgXNFZHs
