@@ -1875,7 +1875,9 @@ export default function LandingPage() {
                     </div>
                     <div id="section-5" className="panels">
                         <div className="sec-top">
-
+                        <div className="akaar-wedstyle">
+                                <h1 id="akaar-talent">TALENT</h1>
+                            </div>
                         </div>
                     </div>
                     <button id="scroll-assist">Get In Touch</button>
