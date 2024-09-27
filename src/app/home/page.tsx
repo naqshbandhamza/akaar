@@ -50,13 +50,6 @@ export default function LandingPage() {
         }
     }, []);
 
-    const disableScrollTriggerById = (id) => {
-        // const trigger = ScrollTrigger.getById(id);
-        // if (trigger) {
-        //     trigger.enabled = false;
-        // }
-    }
-
     useEffect(() => {
         window.scrollTo(0, 0);
         if (pageloaded) {
@@ -81,40 +74,38 @@ export default function LandingPage() {
                         scrollTrigger: {
                             trigger: ".slider-container",
                             pin: true,
-                            scrub: true,
-                            // snap: {
-                            //     snapTo: 1 / (sections.length - 1),
-                            //     // inertia: false,
-                            //     // duration: { min: 0.1, max: 0.1 }
-                            // },
+                            scrub: 1,
+                            snap: {
+                                snapTo: 1 / (sections.length - 1),
+                                inertia: false,
+                                duration: { min: 0.1, max: 1.5 }
+                            },
                             start: "top top",
                             end: () => screenWidth * 4 + 100,
                             id: 'horizontalScroll', // You can give it an ID for easy reference
                         }
                     });
-                    // scrolltween.scrollTrigger?.disable()
-                    disableScrollTriggerById("horizontalScroll")
                     scrolltween1 = scrolltween
 
-                    let slidercont: any = document.getElementById("slider-id")
-                    slidercont.addEventListener('wheel', (event) => {
-                        if (isScrolling) return; // Prevent multiple triggers while waiting for delay
-                        isScrolling = true;
+                    // let slidercont: any = document.getElementById("slider-id")
+                    // slidercont.addEventListener('wheel', (event) => {
+                    //     if (isScrolling) return; // Prevent multiple triggers while waiting for delay
+                    //     isScrolling = true;
 
-                        if (event.deltaY < 0) {
-                            console.log('Scrolling up');
-                            if (current > 1) {
-                                goToOk(`section-${current - 1}`)
-                                current -= 1;
-                            }
-                        } else {
-                            if (current < 4) {
-                                goToOk(`section-${current + 1}`)
-                                current += 1;
-                            }
-                            console.log('Scrolling down');
-                        }
-                    });
+                    //     if (event.deltaY < 0) {
+                    //         console.log('Scrolling up');
+                    //         if (current > 1) {
+                    //             goToOk(`section-${current - 1}`)
+                    //             current -= 1;
+                    //         }
+                    //     } else {
+                    //         if (current < 4) {
+                    //             goToOk(`section-${current + 1}`)
+                    //             current += 1;
+                    //         }
+                    //         console.log('Scrolling down');
+                    //     }
+                    // });
 
                     //section 1
                     let tl = gsap.timeline({})
@@ -136,14 +127,18 @@ export default function LandingPage() {
                         }
                     }
                     )
+                    let olapola0: any = document.getElementById("scroll-id-main");
                     scrollassist0.to(
                         ["#lang-btn", "#e-btn"],
                         { backgroundColor: "#FFFFFF", color: "#EDC68C", duration: 0.25 }
                     );
-
                     scrollassist0.to(
                         [".section-assist"],
-                        { color: "#FFFFFF", backgroundColor: "#EDC68C", duration: 0.25 }
+                        { backgroundColor: "#edc68c", color: "#FFFFFF", duration: 0.25 }
+                    );
+                    scrollassist0.to(
+                        [".section-assist #tag"],
+                        { color: "#FFFFFF", backgroundColor: "#e7a43e", duration: 0.25, x: olapola0.offsetLeft - 10, ease: "power2.out" }
                     );
 
                     //section 2
@@ -165,7 +160,7 @@ export default function LandingPage() {
                     );
                     scrollassist1.to(
                         [".section-assist #tag"],
-                        { color: "#FFFFFF", backgroundColor: "#FFC325", duration: 0.25, x: olapola.offsetLeft - 20 }
+                        { color: "#FFFFFF", backgroundColor: "#FFC325", duration: 0.25, x: olapola.offsetLeft - 20, ease: "power2.out" }
                     );
 
                     lamps(scrolltween, "#section-2 #cealling-lamp", ["#section-2 #cealling-lamp #Group_2", "#section-2 #cealling-lamp #Group_12"])
@@ -293,7 +288,7 @@ export default function LandingPage() {
                     // );
                     scrollassist2.to(
                         [".section-assist #tag"],
-                        { color: "#FFFFFF", backgroundColor: "#FF2424", duration: 0.25, x: olapola1.offsetLeft - 20 }
+                        { color: "#FFFFFF", backgroundColor: "#FF2424", duration: 0.25, x: olapola1.offsetLeft - 20, ease: "power2.out" }
                     );
 
                     //section 4
@@ -320,7 +315,7 @@ export default function LandingPage() {
                     // );
                     scrollassist3.to(
                         [".section-assist #tag"],
-                        { color: "#FFFFFF", backgroundColor: "#7800B0", duration: 0.25, x: olapola2.offsetLeft - 20 }
+                        { color: "#FFFFFF", backgroundColor: "#7800B0", duration: 0.25, x: olapola2.offsetLeft - 20, ease: "power2.out" }
                     );
 
                     // All the varialbe logic from https://www.youtube.com/watch?v=0DSkgXNFZHs
@@ -410,290 +405,6 @@ export default function LandingPage() {
 
 
                 }
-                // else {
-
-                //     //section 1
-                //     const scrollassist0 = gsap.timeline({
-                //         scrollTrigger: {
-                //             trigger: "#section-1",
-                //             // markers: true,
-                //             start: "top top",
-                //             end: "+=10 top",
-                //             scrub: 1,
-                //         }
-                //     }
-                //     )
-
-
-                //     scrollassist0.to(
-                //         "#scroll-assist, #lang-btn,#e-btn",
-                //         { backgroundColor: "#FFFFFF", color: "#2E4BF5" }
-                //     ).to("#scroll-assist :nth-child(1)", {
-                //         backgroundColor: "#2E4BF5"
-                //     }, "<");
-
-                //     const mytimeline3 = gsap.timeline({ paused: true })
-                //     mytimeline3.fromTo("#headings",
-                //         {
-                //             x: 40, opacity: 0,
-                //         },
-                //         {
-                //             x: 0, opacity: 1,
-                //             duration: 2,
-                //         });
-                //     mytimeline3.fromTo("#my-vectors img",
-                //         {
-                //             x: -50, opacity: 0,
-                //         },
-                //         {
-                //             x: 0, opacity: 1,
-                //             duration: 2,
-
-                //         }, "<");
-
-                //     ScrollTrigger.create({
-                //         trigger: "#headings",
-                //         scrub: 1,
-                //         // markers: true,
-                //         start: "top top",
-                //         end: "500 top",
-                //         onEnter: () => { mytimeline3.reverse() },
-                //         onLeaveBack: () => { mytimeline3.play() },
-                //         once: false,
-                //     });
-
-
-
-                //     //section 2
-                //     const scrollassist1 = gsap.timeline({
-                //         scrollTrigger: {
-                //             trigger: "#section-2",
-                //             // markers: true,
-                //             start: () => `-=20 top`,
-                //             end: () => `+=10 top`,
-                //             scrub: 1,
-                //         }
-                //     }
-                //     )
-                //     scrollassist1.to(
-                //         "#scroll-assist, #lang-btn,#e-btn",
-                //         { backgroundColor: "#FFFFFF", color: "#FFC325" }
-                //     ).to("#scroll-assist :nth-child(1)", {
-                //         backgroundColor: "#FFC325"
-                //     }, "<");
-
-                //     const mytween1 = gsap.to("#akaar-presents", { opacity: 1, duration: 0.5, paused: true, })
-
-                //     ScrollTrigger.create({
-                //         trigger: "#section-2",
-                //         scrub: 1,
-                //         // markers: true,
-                //         start: () => `top top`,
-                //         end: () => `+=500 top`,
-                //         onEnter: () => {
-                //             mytween1.play();
-                //         },
-                //         onLeaveBack: () => {
-                //             mytween1.reverse();
-                //         },
-                //     })
-
-                //     const tl2 = gsap.timeline({
-                //         paused: true
-                //     });
-
-                //     tl2.to("#akaar-wed-shadow",
-                //         {
-                //             y: "+=10", duration: 0.5, ease: "power1.easeInOut"
-                //         }).to("#akaar-wed-shadow-1", {
-                //             y: "+=25", duration: 0.5, ease: "power1.easeInOut"
-                //         }).fromTo("#now-booking-wed",
-                //             {
-                //                 x: 200,
-                //                 scale: 0
-                //             },
-                //             {
-                //                 x: 0,
-                //                 scale: 1,
-                //                 duration: 1.5,
-                //                 ease: "elastic.out"
-                //             }, "<").fromTo("#sub-tag-wed",
-                //                 {
-                //                     y: -10,
-                //                     opacity: 0
-                //                 },
-                //                 {
-                //                     y: 0,
-                //                     opacity: 1,
-                //                     duration: 0.25,
-                //                 }, "-=0.5");
-
-                //     ScrollTrigger.create({
-                //         trigger: "#section-2",
-                //         scrub: 1,
-                //         // markers: true,
-                //         start: () => `-=30 top`,
-                //         end: () => `+=500 top`,
-                //         onEnter: () => tl2.play(),
-                //         onLeaveBack: () => tl2.reverse(),
-                //     })
-
-                //     //section 3
-                //     const scrollassist2 = gsap.timeline({
-                //         scrollTrigger: {
-                //             trigger: "#section-3",
-                //             // markers: true,
-                //             start: () => `-=20 top`,
-                //             end: () => `+=10 top`,
-                //             scrub: 1,
-                //         }
-                //     }
-                //     )
-                //     scrollassist2.to(
-                //         "#scroll-assist, #lang-btn,#e-btn",
-                //         { backgroundColor: "#FFFFFF", color: "#FF2424" }
-                //     ).to("#scroll-assist :nth-child(1)", {
-                //         backgroundColor: "#FF2424"
-                //     }, "<");
-
-                //     const tl3 = gsap.timeline({
-                //         paused: true
-                //     });
-
-                //     tl3.to("#akaar-fashion-shadow",
-                //         {
-                //             y: "+=10", duration: 0.5, ease: "power1.easeInOut"
-                //         }).to("#akaar-fashion-shadow-1", {
-                //             y: "+=25", duration: 0.5, ease: "power1.easeInOut"
-                //         }).fromTo("#now-booking-fashion",
-                //             {
-                //                 x: 200,
-                //                 scale: 0
-                //             },
-                //             {
-                //                 x: 0,
-                //                 scale: 1,
-                //                 duration: 1.5,
-                //                 ease: "elastic.out"
-                //             }, "<").fromTo("#sub-tag-fashion",
-                //                 {
-                //                     y: -10,
-                //                     opacity: 0
-                //                 },
-                //                 {
-                //                     y: 0,
-                //                     opacity: 1,
-                //                     duration: 0.25,
-                //                 }, "-=0.5");
-
-                //     ScrollTrigger.create({
-                //         trigger: "#section-3",
-                //         scrub: 1,
-                //         // markers: true,
-                //         start: () => `-=30 top`,
-                //         end: () => `+=500 top`,
-                //         onEnter: () => tl3.play(),
-                //         onLeaveBack: () => tl3.reverse(),
-                //     })
-
-                //     //section 4
-                //     const scrollassist3 = gsap.timeline({
-                //         scrollTrigger: {
-                //             trigger: "#section-4",
-                //             // markers: true,
-                //             start: () => `-=20 top`,
-                //             end: () => `+=10 top`,
-                //             scrub: 1,
-                //         }
-                //     }
-                //     )
-                //     scrollassist3.to(
-                //         "#scroll-assist, #lang-btn, #e-btn",
-                //         { backgroundColor: "#FFFFFF", color: "#7800B0" }
-                //     ).to("#scroll-assist :nth-child(1)", {
-                //         backgroundColor: "#7800B0"
-                //     }, "<");
-
-                //     const tl445 = gsap.timeline({
-                //         paused: true
-                //     });
-
-                //     tl445.to("#akaar-commercials-shadow",
-                //         {
-                //             y: "+=10", duration: 0.5, ease: "power1.easeInOut"
-                //         }).to("#akaar-commercials-shadow-1", {
-                //             y: "+=25", duration: 0.5, ease: "power1.easeInOut"
-                //         }).fromTo("#now-booking-commercials",
-                //             {
-                //                 x: 200,
-                //                 scale: 0
-                //             },
-                //             {
-                //                 x: 0,
-                //                 scale: 1,
-                //                 duration: 1.5,
-                //                 ease: "elastic.out"
-                //             }, "<").fromTo("#sub-tag-commercials",
-                //                 {
-                //                     y: -10,
-                //                     opacity: 0
-                //                 },
-                //                 {
-                //                     y: 0,
-                //                     opacity: 1,
-                //                     duration: 0.25,
-                //                 }, "-=0.5");
-
-                //     ScrollTrigger.create({
-                //         trigger: "#section-4",
-                //         scrub: 1,
-                //         // markers: true,
-                //         start: () => `top top`,
-                //         end: () => `+=300 top`,
-                //         onEnterBack: () => { mytween1.play(); },
-                //         onLeave: () => { mytween1.reverse(); },
-                //         once: false,
-                //     });
-
-                //     ScrollTrigger.create({
-                //         trigger: "#section-4",
-                //         scrub: 1,
-                //         // markers: true,
-                //         start: () => `-=20 top`,
-                //         end: () => `+=500 top`,
-                //         onEnter: () => { tl445.play(); },
-                //         onLeaveBack: () => { tl445.reverse() },
-                //         once: false,
-                //     });
-
-                //     //section 1
-                //     let tl = gsap.timeline({})
-                //     tl.fromTo(
-                //         document.querySelectorAll(".ofx"),
-                //         { opacity: 0 },
-                //         {
-                //             opacity: 1, duration: 2, ease: "expo.inOut"
-                //         }
-                //     );
-                //     tl.to("#main-heading", {
-                //         opacity: 1, duration: 3, ease: "expo.inOut",
-                //     }, "<")
-                //     tl.fromTo("#sub-script", { y: "0px" }, {
-                //         opacity: 1, duration: 1.5, y: "0px", ease: "power3.out"
-                //     }, "-=1.5")
-                //     tl.fromTo("#my-bulb-svg", {
-                //         left: "-350px", opacity: 0,
-                //     }, { left: "-150px", opacity: 1, duration: 2, ease: "expo.out", }, "-=1.5")
-                //     tl.fromTo("#my-globe-svg", {
-                //         right: "-250px", opacity: 0,
-                //     }, { right: "0px", opacity: 1, duration: 2, ease: "expo.out", }, "<")
-                //     tl.fromTo("#hills", {
-                //         right: "-250px", opacity: 0,
-                //     }, { right: "-100px", opacity: 1, duration: 2, ease: "expo.out", }, "<")
-                //     tl.fromTo("#scroll-assist", {
-                //         y: 100, opacity: 0, scale: 1.2
-                //     }, { y: 0, opacity: 1, scale: 1, duration: 1, ease: "expo.out" })
-                // }
 
             });
 
@@ -725,7 +436,7 @@ export default function LandingPage() {
 
 
     const goToOk = (id) => {
-        goToPortfolio(id)
+        // goToPortfolio(id)
         setTimeout(() => isScrolling = false, 1200); // Adjust delay as needed
     }
 
@@ -2138,6 +1849,9 @@ export default function LandingPage() {
                         EN
                     </button>
                 </div>
+                {/* <div className="section-assist-heading">
+                    <p>Our Domains</p>
+                </div> */}
                 <div className="section-assist">
                     <div id="tag">
                         <img src={"/static/arrow.png"} />
