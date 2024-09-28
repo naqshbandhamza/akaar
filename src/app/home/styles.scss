@@ -175,6 +175,20 @@ body {
     margin-right: auto;
 }
 
+#headings1 {
+    position: relative;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5px;
+    font-family: organetto;
+    font-size: 1.05vw;
+}
+
+#ca{
+    opacity: 0;
+}
+
 #main-heading {
     text-align: center;
     line-height: 1.6;
@@ -187,19 +201,10 @@ body {
     font-weight: bolder;
     letter-spacing: 15px;
     opacity: 0;
+    line-height: 0.8;
 }
 
-#section-1 #headings p {
-    font-size: 1vw;
-    font-weight: lighter;
-    letter-spacing: 0px;
-    color: #000;
-    font-family: organetto;
-    position: absolute;
-    right: 0px;
-    bottom: 0px;
-    opacity: 0;
-}
+
 
 #sub-script {
     font-size: 11px;
@@ -250,10 +255,32 @@ body {
     height: 100%;
     top: 0;
     left: 0;
-    text-align: center;
     opacity: 1;
-    background-color: #ffffff;
+    background-color: #EDC68C;
+    background-color: #FFFFFF;
+    background-color: black;
     z-index: 99;
+    transform: scale(100);
+}
+
+#loading .intro {
+    font-family: organetto;
+    color: black;
+    font-weight: bolder;
+    font-size: 7.5vw;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#loading .intro p:nth-child(1) {
+    color: #da9124;
+}
+
+#loading .intro p:nth-child(3) {
+    color: rgb(48, 48, 48);
+
 }
 
 #full-screen-container {
@@ -635,7 +662,45 @@ body {
     /* display: none; */
 }
 
+#now-booking-talent {
+    position: absolute;
+    top: 62%;
+    left: 50%;
+    transform: translate(-50%, -52%);
+    background-color: #5B8C91;
+    height: 8.7vw;
+    width: 8.7vw;
+    min-width: 120px;
+    min-height: 120px;
+    border-radius: 50%;
+    font-family: naville;
+    letter-spacing: 0.9px;
+    font-weight: bolder;
+    color: white;
+    font-size: 9px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.129);
+    /* display: none; */
+}
+
 #sub-tag-commercials {
+    text-align: center;
+    width: auto;
+    font-family: montesrratlight;
+    font-weight: 550;
+    font-size: 12px;
+    /* color: #454440dd; */
+    color: rgb(29, 29, 29);
+    color: #ffffff;
+    color: #686660;
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translateX(-50%);
+    /* text-shadow: 2px 2px 4px #7800B0; */
+    /* display: none; */
+}
+
+#sub-tag-talent {
     text-align: center;
     width: auto;
     font-family: montesrratlight;

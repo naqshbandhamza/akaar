@@ -7,8 +7,6 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/all";
 import { ReactLenis, useLenis } from '@studio-freight/react-lenis'
 
-let isScrolling = false; // To prevent multiple triggers during delay
-let current = 1;
 let scrolltween1: any;
 
 export default function LandingPage() {
@@ -17,12 +15,12 @@ export default function LandingPage() {
     const [pageloaded, setPageLoaded] = useState(false);
     const [screenWidth, setScreenWidth] = useState(0);
     const ctxRef: any = useRef(null);
-    // const [scrolltween1, setScrolltween] = useState<any>(null);
 
     // useEffect for page preloader
     useEffect(() => {
         setScreenWidth(window.innerWidth);
-
+        let preloader: any = document.getElementById('loading');
+        gsap.timeline().to(preloader, { backgroundColor: "#ffffff", duration: 1, ease: "power4.inOut" }).to(preloader, { transform: "scale(1.5)", duration: 1.5, ease: "power3.out" }, "<")
         if (document.readyState === 'complete') {
             setTimeout(() => {
                 setPageLoaded(true);
@@ -57,7 +55,11 @@ export default function LandingPage() {
             let preloader: any = document.getElementById('loading');
             let content: any = document.getElementById('content');
 
-            preloader.style.display = 'none';
+            gsap.to(preloader, {
+                opacity: 0, duration: 1.75, ease: "expo.inOut", onComplete: () => {
+                    preloader.style.display = 'none';
+                }
+            })
             content.style = "display: block;"
             gsap.fromTo(".slider-container", { opacity: 0 }, { opacity: 1 })
 
@@ -111,11 +113,11 @@ export default function LandingPage() {
                     let tl = gsap.timeline({})
                     tl.fromTo("#main-heading", {
                         yPercent: 100, opacity: 1,
-                    }, { yPercent: 0, opacity: 1, duration: 2.2, delay: 1, ease: "expo.out" })
-                    tl.to(["#ca"], { opacity: 1, duration: 1.2, ease: "expo.in" }, "-=1.5")
+                    }, { yPercent: 0, opacity: 1, duration: 1.7, delay: 1, ease: "power4.out" })
+                    tl.to(["#ca"], { opacity: 1, duration: 1, ease: "expo.in" }, "-=0.75")
                     tl.to(
-                        "#sub-script", { opacity: 1, duration: 1.2, ease: "expo.in" }, "-=1"
-                    );
+                        "#sub-script", { opacity: 1, duration: 1, ease: "expo.in" }, "-=0.5"
+                    ).fromTo(".section-assist", { y: "200%", scale: 1.2 }, { y: 0, scale: 1, duration: 1.25, ease: "power4.out" });
 
                     const scrollassist0 = gsap.timeline({
                         scrollTrigger: {
@@ -138,7 +140,7 @@ export default function LandingPage() {
                     );
                     scrollassist0.to(
                         [".section-assist #tag"],
-                        { color: "#FFFFFF", backgroundColor: "#e7a43e", duration: 0.25, x: olapola0.offsetLeft - 10, ease: "power2.out" }
+                        { color: "#FFFFFF", backgroundColor: "#e7a43e", duration: 0.2, x: olapola0.offsetLeft - 10 }
                     );
 
                     //section 2
@@ -164,7 +166,7 @@ export default function LandingPage() {
                     );
                     scrollassist1.to(
                         [".section-assist #tag"],
-                        { color: "#FFFFFF", backgroundColor: "#FFC325", duration: 0.25, x: olapola.offsetLeft - 20, ease: "power2.out" }
+                        { color: "#FFFFFF", backgroundColor: "#FFC325", duration: 0.2, x: olapola.offsetLeft - 20, ease: "power2.out" }
                     );
 
                     lamps(scrolltween, "#section-2 #cealling-lamp", ["#section-2 #cealling-lamp #Group_2", "#section-2 #cealling-lamp #Group_12"])
@@ -299,7 +301,7 @@ export default function LandingPage() {
                     // );
                     scrollassist2.to(
                         [".section-assist #tag"],
-                        { color: "#FFFFFF", backgroundColor: "#FF2424", duration: 0.25, x: olapola1.offsetLeft - 20, ease: "power2.out" }
+                        { color: "#FFFFFF", backgroundColor: "#FF2424", duration: 0.2, x: olapola1.offsetLeft - 20 }
                     );
 
                     //section 4
@@ -330,7 +332,7 @@ export default function LandingPage() {
                     // );
                     scrollassist3.to(
                         [".section-assist #tag"],
-                        { color: "#FFFFFF", backgroundColor: "#7800B0", duration: 0.25, x: olapola2.offsetLeft - 20, ease: "power2.out" }
+                        { color: "#FFFFFF", backgroundColor: "#7800B0", duration: 0.2, x: olapola2.offsetLeft - 20 }
                     );
 
                     //section-5
@@ -357,7 +359,7 @@ export default function LandingPage() {
                     );
                     scrollassist4.to(
                         [".section-assist #tag"],
-                        { color: "#FFFFFF", backgroundColor: "#5B8C91", duration: 0.25, x: olapola3.offsetLeft - 20, ease: "power2.out" }
+                        { color: "#FFFFFF", backgroundColor: "#5B8C91", duration: 0.2, x: olapola3.offsetLeft - 20 }
                     );
 
                     // All the varialbe logic from https://www.youtube.com/watch?v=0DSkgXNFZHs
@@ -537,9 +539,14 @@ export default function LandingPage() {
             // smoothTouch: true
         }}>
             <div id="loading">
-                <div className="text-container" id="loading-image">
-                    <Image src={"/static/infinity.gif"} height={60} width={80} alt="infinity" />
+                <div className="intro">
+                    <p>Enter</p>
+                    <p>AKAAR</p>
+                    <p>AGENCY</p>
                 </div>
+                {/* <div className="text-container" id="loading-image">
+                    <Image src={"/static/infinity.gif"} height={60} width={80} alt="infinity" />
+                </div> */}
             </div>
 
             <div id="full-screen-container">
@@ -577,6 +584,8 @@ export default function LandingPage() {
                             <div className="cnt-for-h">
                                 <div id="headings">
                                     <h1 id="main-heading">AKAAR</h1>
+                                </div>
+                                <div id="headings1">
                                     <p id="ca"><sup>Creative Agency</sup></p>
                                 </div>
                                 <p id="sub-script"><span>AKAAR</span> - is a dynamic force in the world of visual storytelling, specializing in creative videography, photography, illustration and animation that captivates and inspires. We blend artistic vision with strategic marketing to craft compelling content that resonates with your audience.</p>
@@ -1145,7 +1154,6 @@ export default function LandingPage() {
 
                             <button id="now-booking-wed"
                                 onClick={() => {
-                                    goToPortfolio("v-id")
                                 }}
                             >
                                 PORTFOLIO
@@ -1452,7 +1460,6 @@ export default function LandingPage() {
                                 <p>Taking your fashion to the next level</p>
                             </div>
                             <button id="now-booking-fashion" onClick={() => {
-                                goToPortfolio("section-6")
                             }}>
                                 PORTFOLIO
                             </button>
@@ -1867,7 +1874,6 @@ export default function LandingPage() {
                             </div>
 
                             <button id="now-booking-commercials" onClick={() => {
-                                goToPortfolio("section-5")
                             }}>
                                 PORTFOLIO
                             </button>
@@ -1875,9 +1881,19 @@ export default function LandingPage() {
                     </div>
                     <div id="section-5" className="panels">
                         <div className="sec-top">
-                        <div className="akaar-wedstyle">
+                            <div className="akaar-wedstyle">
                                 <h1 id="akaar-talent">TALENT</h1>
                             </div>
+
+                            <div id="sub-tag-talent">
+                                {/* <p>Be careful, violence tends to escalate</p> */}
+                                <p>Hiring Talent according to your needs</p>
+                            </div>
+
+                            <button id="now-booking-talent" onClick={() => {
+                            }}>
+                                PORTFOLIO
+                            </button>
                         </div>
                     </div>
                     <button id="scroll-assist">Get In Touch</button>
