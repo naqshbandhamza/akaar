@@ -2097,11 +2097,6 @@ export default function LandingPage() {
 
                 </div>
 
-                {/*                     
-<div className="section-assist-heading">
-                    <p>Our Domains</p>
-                </div> */}
-
             </div >
         </ReactLenis >
     );
