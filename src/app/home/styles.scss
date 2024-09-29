@@ -54,9 +54,9 @@ body {
 
 #studio-1 {
     position: absolute;
-    top: 4%;
+    top: 12%;
     /* transform: translateY(-90%); */
-    right: 38px;
+    right: 68px;
     width: auto;
     height: 75vh;
     /* opacity: 0.9; */
@@ -64,14 +64,24 @@ body {
 
 #studio-2 {
     position: absolute;
-    top: 5%;
+    top: 52%;
     /* transform: translateY(-90%); */
-    left: 48px;
+    left: 25%;
+    width: auto;
+    height: 40vh;
+    /* opacity: 0.9; */
+}
+
+#studio-3 {
+    position: absolute;
+    top: 12%;
+    /* transform: translateY(-90%); */
+    left: -10px;
     width: auto;
     height: 75vh;
     /* opacity: 0.9; */
-    transform: scaleX(-1);
 }
+
 
 #section-2 {
     overflow: visible;
