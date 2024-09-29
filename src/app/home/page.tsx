@@ -377,7 +377,7 @@ export default function LandingPage() {
                     })
 
                     const numImages = 20;
-                    const gallery = document.querySelector('.gallery');
+                    const gallery:any = document.querySelector('.gallery');
 
                     // Randomly generate images and append to the gallery
                     for (let i = 0; i < numImages; i++) {
