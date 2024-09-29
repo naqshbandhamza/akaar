@@ -362,6 +362,64 @@ export default function LandingPage() {
                         { color: "#FFFFFF", backgroundColor: "#5B8C91", duration: 0.2, x: olapola3.offsetLeft - 20 }
                     );
 
+                    //gallery
+                    // Number of images and gallery element
+
+                    gsap.fromTo("#g-p", { y: 400 }, {
+                        y: -50,
+                        scrollTrigger: {
+                            // markers: true,
+                            trigger: ".gallery-container",
+                            start: "top center",
+                            end: "bottom top",
+                            scrub: 1
+                        }
+                    })
+
+                    const numImages = 20;
+                    const gallery = document.querySelector('.gallery');
+
+                    // Randomly generate images and append to the gallery
+                    for (let i = 0; i < numImages; i++) {
+                        const img = document.createElement('img');
+                        img.src = `https://placekitten.com/200/200?image=${i}`; // Random image source
+                        img.classList.add('absolute');
+                        img.style.width = '250px';
+                        img.style.height = '150px';
+
+                        // Random positioning
+                        img.style.left = `${Math.random() * window.innerWidth}px`;
+                        img.style.top = `${Math.random() * window.innerHeight}px`;
+
+                        gallery.appendChild(img);
+
+                        // Animate each image
+                        gsap.to(img, {
+                            x: window.innerWidth * 1.5, // Move out from the right
+                            duration: gsap.utils.random(10, 20), // Random duration for each image
+                            repeat: -1,
+                            ease: "none",
+                            modifiers: {
+                                x: gsap.utils.unitize((x) => parseFloat(x) % window.innerWidth) // Looping modifier
+                            }
+                        });
+                    }
+
+                    // Optional Scroll-based Animation
+                    gsap.to('.gallery', {
+                        xPercent: -100, // Moves entire gallery on scroll
+                        ease: "none",
+                        scrollTrigger: {
+                            // markers:true,
+                            trigger: '.gallery-container',
+                            start: 'top top',
+                            end: 'bottom+=1000 top',
+                            pin: true,
+                            scrub: 1, // Smooth scroll effect
+                        }
+                    });
+
+
                     // All the varialbe logic from https://www.youtube.com/watch?v=0DSkgXNFZHs
                     const targets = document.querySelectorAll("#our-brands img");
                     const numberOfTargets = targets.length;
@@ -2004,36 +2062,46 @@ export default function LandingPage() {
                     <button id="lang-btn">
                         EN
                     </button>
+                    <div className="section-assist">
+                        <div id="tag">
+                            <img src={"/static/arrow.png"} />
+                            <img style={{ transform: "scaleX(-1)" }} src={"/static/arrow.png"} />
+                        </div>
+                        <div id="scroll-id-main" className="tooltip" onClick={() => {
+                            goToPortfolio("section-1")
+                        }}><span className="tooltiptext">HOME</span></div>
+                        <div id="scroll-id-wed" className="tooltip" onClick={() => {
+                            console.log("clicked")
+                            goToPortfolio("section-2")
+                        }}>  <span className="tooltiptext">Weddings</span>
+                        </div>
+                        <div id="scroll-id-fashion" className="tooltip" onClick={() => {
+                            goToPortfolio("section-3")
+                        }}><span className="tooltiptext">FASHION</span></div>
+                        <div id="scroll-id-commercial" className="tooltip" onClick={() => {
+                            goToPortfolio("section-4")
+                        }}><span className="tooltiptext">COMMERCIAL</span></div>
+                        <div id="scroll-id-talent" className="tooltip" onClick={() => {
+                            goToPortfolio("section-5")
+                        }}><span className="tooltiptext">TALENT</span></div>
+                        <div id="scroll-id-social"></div>
+                        <div id="scroll-id-graphics-post-prod"></div>
+                        <div id="scroll-id-films"></div>
+                    </div>
                 </div>
-                {/* <div className="section-assist-heading">
+                <div className="gallery-container relative overflow-hidden w-full h-screen">
+                    <div className="gallery flex flex-wrap w-full h-full absolute"></div>
+                    <p id="g-p">The Fastest Growing Video Production Company</p>
+                </div>
+                <div className="another">
+
+                </div>
+
+                {/*                     
+<div className="section-assist-heading">
                     <p>Our Domains</p>
                 </div> */}
-                <div className="section-assist">
-                    <div id="tag">
-                        <img src={"/static/arrow.png"} />
-                        <img style={{ transform: "scaleX(-1)" }} src={"/static/arrow.png"} />
-                    </div>
-                    <div id="scroll-id-main" className="tooltip" onClick={() => {
-                        goToPortfolio("section-1")
-                    }}><span className="tooltiptext">HOME</span></div>
-                    <div id="scroll-id-wed" className="tooltip" onClick={() => {
-                        console.log("clicked")
-                        goToPortfolio("section-2")
-                    }}>  <span className="tooltiptext">Weddings</span>
-                    </div>
-                    <div id="scroll-id-fashion" className="tooltip" onClick={() => {
-                        goToPortfolio("section-3")
-                    }}><span className="tooltiptext">FASHION</span></div>
-                    <div id="scroll-id-commercial" className="tooltip" onClick={() => {
-                        goToPortfolio("section-4")
-                    }}><span className="tooltiptext">COMMERCIAL</span></div>
-                    <div id="scroll-id-talent" className="tooltip" onClick={() => {
-                        goToPortfolio("section-5")
-                    }}><span className="tooltiptext">TALENT</span></div>
-                    <div id="scroll-id-social"></div>
-                    <div id="scroll-id-graphics-post-prod"></div>
-                    <div id="scroll-id-films"></div>
-                </div>
+
             </div >
         </ReactLenis >
     );

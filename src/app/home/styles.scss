@@ -70,6 +70,7 @@ body {
     width: auto;
     height: 40vh;
     /* opacity: 0.9; */
+    display: none;
 }
 
 #studio-3 {
@@ -457,8 +458,8 @@ body {
 #sub-tag-wed {
     text-align: center;
     width: auto;
-    font-family: montesrratlight;
-    font-size: 12px;
+    font-family: soltz;
+    font-size: 14px;
     font-weight: 550;
     color: rgb(29, 29, 29);
     color: #ffffff;
@@ -638,10 +639,9 @@ body {
 #sub-tag-fashion {
     text-align: center;
     width: auto;
-    font-family: montesrratlight;
+    font-family: soltz;
     font-weight: 550;
-    font-size: 12px;
-    color: rgb(29, 29, 29);
+    font-size: 14px;    color: rgb(29, 29, 29);
     color: #ffffff;
     color: #686660;
     position: absolute;
@@ -695,10 +695,9 @@ body {
 #sub-tag-commercials {
     text-align: center;
     width: auto;
-    font-family: montesrratlight;
+    font-family: soltz;
     font-weight: 550;
-    font-size: 12px;
-    /* color: #454440dd; */
+    font-size: 14px;    /* color: #454440dd; */
     color: rgb(29, 29, 29);
     color: #ffffff;
     color: #686660;
@@ -713,10 +712,9 @@ body {
 #sub-tag-talent {
     text-align: center;
     width: auto;
-    font-family: montesrratlight;
+    font-family: soltz;
     font-weight: 550;
-    font-size: 12px;
-    /* color: #454440dd; */
+    font-size: 14px;    /* color: #454440dd; */
     color: rgb(29, 29, 29);
     color: #ffffff;
     color: #686660;
@@ -1546,3 +1544,34 @@ body {
     border-style: solid;
     border-color: #FFFFFF transparent transparent transparent;
 }
+
+.gallery-container {
+    position: relative;
+    overflow: visible;
+    width: 100vw;
+    height: 100vh;
+    background-color:#D7DCC6;
+  }
+
+  .gallery-container p{
+    font-family: soltz;
+    position: absolute;
+    top: 50%;
+    left:50%;
+    font-size: 3vw;
+    font-weight: bold;
+    transform: translate(-50%,-50%);
+}
+  
+  .gallery {
+    display: flex;
+    flex-wrap: wrap;
+    position: absolute;
+  }
+  
+  .another{
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    background-color:#D7DCC6;
+  }

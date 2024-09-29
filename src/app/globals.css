@@ -82,6 +82,11 @@
   src: url("./fonts/Nemorosa-Regular.otf");
 }
 
+@font-face {
+  font-family: soltz;
+  src: url("./fonts/3418-font.otf");
+}
+
 :root {
   --bg: #ffffff;
 }
