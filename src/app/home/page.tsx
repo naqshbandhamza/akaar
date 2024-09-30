@@ -129,6 +129,7 @@ export default function LandingPage() {
                         }
                     }
                     )
+
                     let olapola0: any = document.getElementById("scroll-id-main");
                     scrollassist0.to(
                         ["#lang-btn", "#e-btn"],
@@ -197,7 +198,7 @@ export default function LandingPage() {
                             start: "top+=10 top",
                             end: `left+=${screenWidth * 4} left`,
                             scrub: true,
-                            // markers: true, // For debugging
+                            // markers: true, 
                             onUpdate: (self) => {
                                 myanim.progress(self.progress);
                             },
@@ -215,7 +216,6 @@ export default function LandingPage() {
                             start: "right right",
                             end: "left -=1000",
                             scrub: 1,
-                            // id: "1",
                         }
                     })
 
@@ -242,7 +242,6 @@ export default function LandingPage() {
                             start: "+=20% right",
                             end: "left -=1000",
                             scrub: 1,
-                            // id: "1",
                         }
                     })
 
@@ -255,7 +254,6 @@ export default function LandingPage() {
                             start: "+=20% right",
                             end: "left -=1000",
                             scrub: 1,
-                            // id: "1",
                         }
                     })
 
@@ -268,7 +266,6 @@ export default function LandingPage() {
                             start: "+=20% right",
                             end: "left -=1000",
                             scrub: 1,
-
                         }
                     })
 
@@ -295,10 +292,6 @@ export default function LandingPage() {
                         [".section-assist"],
                         { backgroundColor: "#FFC7C7", color: "#FF2424", duration: 0.25 }
                     );
-                    // scrollassist2.to(
-                    //     [".section-assist"],
-                    //     { color: "#FFFFFF", backgroundColor: "#FF2424", duration: 0.25 }
-                    // );
                     scrollassist2.to(
                         [".section-assist #tag"],
                         { color: "#FFFFFF", backgroundColor: "#FF2424", duration: 0.2, x: olapola1.offsetLeft - 20 }
@@ -326,10 +319,6 @@ export default function LandingPage() {
                         [".section-assist"],
                         { backgroundColor: "#DFC3EC", color: "#7800B0", duration: 0.25 }
                     );
-                    // scrollassist3.to(
-                    //     [".section-assist"],
-                    //     { color: "#FFFFFF", backgroundColor: "#7800B0", duration: 0.25 }
-                    // );
                     scrollassist3.to(
                         [".section-assist #tag"],
                         { color: "#FFFFFF", backgroundColor: "#7800B0", duration: 0.2, x: olapola2.offsetLeft - 20 }
@@ -516,7 +505,7 @@ export default function LandingPage() {
         }
     }, [pageloaded, screenWidth]);
 
-    const goToPortfolio = (id) => {
+    const goToSection = (id) => {
 
         let targetElem = document.getElementById(id),
             panelsContainer: any = document.getElementById("slider-id"),
@@ -2068,21 +2057,21 @@ export default function LandingPage() {
                             <img style={{ transform: "scaleX(-1)" }} src={"/static/arrow.png"} />
                         </div>
                         <div id="scroll-id-main" className="tooltip" onClick={() => {
-                            goToPortfolio("section-1")
+                            goToSection("section-1")
                         }}><span className="tooltiptext">HOME</span></div>
                         <div id="scroll-id-wed" className="tooltip" onClick={() => {
                             console.log("clicked")
-                            goToPortfolio("section-2")
+                            goToSection("section-2")
                         }}>  <span className="tooltiptext">Weddings</span>
                         </div>
                         <div id="scroll-id-fashion" className="tooltip" onClick={() => {
-                            goToPortfolio("section-3")
+                            goToSection("section-3")
                         }}><span className="tooltiptext">FASHION</span></div>
                         <div id="scroll-id-commercial" className="tooltip" onClick={() => {
-                            goToPortfolio("section-4")
+                            goToSection("section-4")
                         }}><span className="tooltiptext">COMMERCIAL</span></div>
                         <div id="scroll-id-talent" className="tooltip" onClick={() => {
-                            goToPortfolio("section-5")
+                            goToSection("section-5")
                         }}><span className="tooltiptext">TALENT</span></div>
                         <div id="scroll-id-social"></div>
                         <div id="scroll-id-graphics-post-prod"></div>
