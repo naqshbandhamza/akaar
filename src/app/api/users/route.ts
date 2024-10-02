@@ -1,26 +1,30 @@
 import { createConnection } from "../../../config/db";
 import { NextResponse } from "next/server";
+import { getSession } from "../../../../utils/libs/libs"
 
 export async function POST(req) {
 
   try {
-    // Get parameters from the request body
-    // const { user, password } = req.body;
 
-    // const connection = await createConnection(process.env.HOST, process.env.USER, process.env.PASSWORD, process.env.DATABASE_NAME);
-    const connection = await createConnection();
+    const session = await getSession();
+    console.log(session)
+    if (session && session.oks.role === "admin") {
+      const connection = await createConnection();
 
-    // Example query using parameters (prevent SQL injection with placeholders)
-    // const [rows] = await connection.execute(
-    //   'SELECT * FROM users WHERE username = ? AND password = ?',
-    //   [user, password]
-    // );
-    const [rows] = await connection.execute(
-      'SELECT * FROM users'
-    );
+      // Example query using parameters (prevent SQL injection with placeholders)
+      // const [rows] = await connection.execute(
+      //   'SELECT * FROM users WHERE username = ? AND password = ?',
+      //   [user, password]
+      // );
+      const [rows] = await connection.execute(
+        'SELECT * FROM users'
+      );
 
-    // Send result back to the client
-    return NextResponse.json({ data: rows });
+      // Send result back to the client
+      return NextResponse.json({ data: rows });
+    } else {
+      return NextResponse.json({ message: "you are not authorized" });
+    }
   } catch (error) {
     console.error('Database query error:', error);
     return NextResponse.json({ message: 'Internal Server Error' });
