@@ -3,18 +3,18 @@ import { getSession, login, logout } from "../../../../utils/libs/libs";
 // import axios from "axios";
 
 export default async function Page() {
-  const session = await getSession();
+  // const session = await getSession();
 
-  const response = await fetch('http://localhost:3000/api/users', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    // body: JSON.stringify({ user, password }),
-  });
+  // const response = await fetch('http://localhost:3000/api/users', {
+  //   method: 'POST',
+  //   headers: {
+  //     'Content-Type': 'application/json',
+  //   },
+  //   // body: JSON.stringify({ user, password }),
+  // });
 
-  // const data = response.json();
-  console.log(response);
+  // // const data = response.json();
+  // console.log(response);
 
 
   return (
@@ -22,11 +22,16 @@ export default async function Page() {
       <form
         action={async (formData) => {
           "use server";
-          await login(formData);
-          redirect("/login-by-akaar-admin576");
+          const res: any = await login(formData);
+          const data = await res.json(); // Parse the JSON content
+
+          if (data.message === "ok") {
+            redirect("/profile");
+          }
         }}
       >
-        <input type="email" placeholder="Email" />
+        <input type="text" name="user" placeholder="Username" />
+        <input type="password" name="pass" placeholder="Password" />
         <br />
         <button type="submit">Login</button>
       </form>
@@ -39,7 +44,7 @@ export default async function Page() {
       >
         <button type="submit">Logout</button>
       </form>
-      <pre>{JSON.stringify(session, null, 2)}</pre>
+      {/* <pre>{JSON.stringify(session, null, 2)}</pre> */}
     </section>
   );
 }

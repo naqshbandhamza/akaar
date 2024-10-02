@@ -1,6 +1,7 @@
 import { SignJWT, jwtVerify } from "jose";
 import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
+import { createConnection } from "../../src/config/db";
 
 const key = new TextEncoder().encode(process.env.SECRET);
 
@@ -8,7 +9,7 @@ export async function encrypt(payload: any) {
     return await new SignJWT(payload)
         .setProtectedHeader({ alg: "HS256" })
         .setIssuedAt()
-        .setExpirationTime("600 sec from now")
+        .setExpirationTime("10 sec from now")
         .sign(key);
 }
 
@@ -22,14 +23,29 @@ export async function decrypt(input: string): Promise<any> {
 export async function login(formData: FormData) {
     // Verify credentials && get the user
 
-    const user = { email: formData.get("email"), name: "John" };
+    let user = formData.get("user")
+    let pass = formData.get("pass")
 
-    // Create the session
-    const expires = new Date(Date.now() + 10 * 1000);
-    const session = await encrypt({ user, expires });
+    const connection = await createConnection();
 
-    // Save the session in a cookie
-    cookies().set("session", session, { expires, httpOnly: true });
+    // Example query using parameters (prevent SQL injection with placeholders)
+    const [rows] = await connection.execute(
+        'SELECT * FROM users WHERE username = ? AND password = ?',
+        [user, pass]
+    );
+
+    let oks = rows[0]
+    // console.log(oks)
+    if (oks !== undefined) {
+        // // Create the session
+        const expires = new Date(Date.now() + 10 * 1000);
+        const session = await encrypt({ oks, expires });
+        // Save the session in a cookie
+        cookies().set("session", session, { expires, httpOnly: true });
+        return NextResponse.json({ message: 'ok', status: 200 });
+    } else {
+        return NextResponse.json({ message: 'invalid username or password', status: 404 });
+    }
 }
 
 export async function logout() {
