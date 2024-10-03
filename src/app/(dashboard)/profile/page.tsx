@@ -1,5 +1,5 @@
 import ProfilePage from "./profilepage"
-import { getSession } from "../../../../utils/libs/libs";
+import { getSession, logout } from "../../../../utils/libs/libs";
 import { redirect } from "next/navigation";
 
 export async function generateMetadata({ params }) {
@@ -13,11 +13,20 @@ export async function generateMetadata({ params }) {
 export default async function SignIn() {
     const session = await getSession();
 
-    if(session===null)
+    if (session === null)
         redirect("/login-by-akaar-admin576");
 
     return (
         <>
+            <form
+                action={async () => {
+                    "use server";
+                    await logout();
+                    redirect("/");
+                }}
+            >
+                <button type="submit">Logout</button>
+            </form>
             <ProfilePage user={session} />
         </>
     )
