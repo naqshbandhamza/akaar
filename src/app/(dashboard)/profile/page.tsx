@@ -22,7 +22,7 @@ export default async function SignIn() {
                 action={async () => {
                     "use server";
                     await logout();
-                    redirect("/");
+                    redirect("/login-by-akaar-admin576");
                 }}
             >
                 <button type="submit">Logout</button>
