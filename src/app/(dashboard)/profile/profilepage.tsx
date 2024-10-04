@@ -1,37 +1,11 @@
 "use client"
-// import axios from "axios";
 import { useEffect, useState } from "react";
 
-async function getUsers() {
-    return new Promise(async (resolve, reject) => {
-        const response = await fetch('http://localhost:3000/api/users', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            // body: JSON.stringify({ user, password }),
-        });
-        let rejs = await response.json()
-        resolve(rejs)
-    })
-}
-
-export default function Page({ user }) {
-    const [usero, setUser] = useState(user.oks)
-    const [directors, setDirectors] = useState([])
+export default function Page({ session, usersdata }) {
+    const [usero, setUser] = useState(session.oks)
+    const [directors, setDirectors] = useState(usersdata)
     const [activeTab, setActiveTab] = useState(1)
-
-    useEffect(() => {
-        if (usero) {
-            if (usero.role === "admin")
-                console.log("logged in as admin")
-
-            getUsers().then((d: any) => {
-                console.log(d);
-                setDirectors(d.data)
-            })
-        }
-    }, [usero])
+    // console.log(directors)
 
     return (
         <>

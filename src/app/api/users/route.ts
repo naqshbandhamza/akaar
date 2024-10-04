@@ -1,11 +1,12 @@
 import { createConnection } from "../../../config/db";
 import { NextResponse } from "next/server";
 import { getSession } from "../../../../utils/libs/libs"
+import type { NextApiRequest, NextApiResponse } from 'next'
 
 export async function POST(req) {
 
   try {
-
+    console.log("in post yeahhhhhhh")
     const session = await getSession();
     console.log(session)
     if (session && session.oks.role === "admin") {
