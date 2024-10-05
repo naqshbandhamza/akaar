@@ -134,7 +134,6 @@ export default function LandingPage() {
 
                     let myanim = gsap.timeline({ paused: true })
 
-                    //#9B71AB
                     myanim
                         .to(".bgsss",
                             { left: "0", top: "0", fill: "#FFFBEC", backgroundColor: "#FFFBEC" }
