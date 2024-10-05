@@ -131,6 +131,15 @@ body {
     height: auto;
 }
 
+#section-8 {
+    overflow: visible;
+    /* overflow-y: hidden; */
+    position: relative;
+    width: 100vw;
+    height: auto;
+}
+
+
 .cnt-for-h {
     position: absolute;
     top: 45%;
@@ -615,7 +624,8 @@ $bg-colors: (
     "now-booking-commercials": #7800B0,
     "now-booking-talent": #5B8C91,
     "now-booking-graphics": #73D5F9,
-    "now-booking-products": #955BAB
+    "now-booking-products": #955BAB,
+    "now-booking-socials":#5BA7F3
 );
 
 // Loop through the IDs and apply styles
@@ -1335,6 +1345,17 @@ $bg-colors: (
     width: 8px;
     background-color: #955BAB;
 }
+
+/*  */
+#scroll-id-socials:hover {
+    border-style: solid;
+    border-color: white;
+    border-width: 1px;
+    height: 8px;
+    width: 8px;
+    background-color: #5BA7F3;
+}
+
 
 .tooltip {
     position: relative;

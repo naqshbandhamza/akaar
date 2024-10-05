@@ -83,7 +83,7 @@ export default function LandingPage() {
                                 duration: { min: 0.1, max: 1.5 }
                             },
                             start: "top top",
-                            end: () => screenWidth * 7 + 100,
+                            end: () => screenWidth * 8 + 100,
                             id: 'horizontalScroll', // You can give it an ID for easy reference
                         }
                     });
@@ -152,6 +152,9 @@ export default function LandingPage() {
                             { left: "0", top: "0", fill: "#6094A6", backgroundColor: "#C4BAC7" }
                         ).to(".bgsss",
 
+                            { left: "0", top: "0", fill: "#6094A6", backgroundColor: "#CEE0F2" }
+                        ).to(".bgsss",
+
                             { left: "0", top: "0", fill: "#D7DCC6", backgroundColor: "#D7DCC6" }
                         );
 
@@ -160,7 +163,7 @@ export default function LandingPage() {
                             trigger: "#section-1",
                             containerAnimation: scrolltween,
                             start: "top+=10 top",
-                            end: `left+=${screenWidth * 6} left`,
+                            end: `left+=${screenWidth * 7} left`,
                             scrub: true,
                             // markers: true, 
                             onUpdate: (self) => {
@@ -252,6 +255,8 @@ export default function LandingPage() {
                     //section-7
                     sassist(scrolltween, "#section-7", "left 50%", "scroll-id-products", "#9A70AA", "#955BAB")
 
+                    //section-8
+                    sassist(scrolltween, "#section-8", "left 50%", "scroll-id-socials", "#ADD1F5", "#5BA7F3")
                     //gallery
                     // Number of images and gallery element
 
@@ -494,7 +499,11 @@ export default function LandingPage() {
         }
         )
 
+
         let olapola: any = document.getElementById(sid);
+        let ox = olapola.offsetLeft - 20;
+        if (trigger === "#section-5")
+            ox = olapola.offsetLeft-35;
         scrollassist1.to(
             ["#lang-btn", "#e-btn"],
             { backgroundColor: "#FFFFFF", color: color, duration: 0.25 }
@@ -505,7 +514,7 @@ export default function LandingPage() {
         );
         scrollassist1.to(
             [".section-assist #tag"],
-            { color: "#FFFFFF", backgroundColor: color, duration: 0.2, x: olapola.offsetLeft - 20, ease: "power2.out" }
+            { color: "#FFFFFF", backgroundColor: color, duration: 0.2, x: ox, ease: "power2.out" }
         );
     }
 
@@ -1982,6 +1991,22 @@ export default function LandingPage() {
                             </button>
                         </div>
                     </div>
+                    <div id="section-8" className="panels">
+                        <div className="sec-top">
+                            <div className="akaar-wedstyle">
+                                <h1 id="akaar-socials">SOCIALS</h1>
+                            </div>
+
+                            <div className="sub-tag">
+                                <p>Marketing Your Brand Identity.</p>
+                            </div>
+
+                            <button id="now-booking-socials" onClick={() => {
+                            }}>
+                                PORTFOLIO
+                            </button>
+                        </div>
+                    </div>
                     <div id="section-5" className="panels">
                         <div className="sec-top">
                             <div className="akaar-wedstyle">
@@ -2037,10 +2062,12 @@ export default function LandingPage() {
                         <div id="scroll-id-products" className="tooltip" onClick={() => {
                             goToSection("section-7")
                         }}><span className="tooltiptext">PRODUCTS</span></div>
+                        <div id="scroll-id-socials" className="tooltip" onClick={() => {
+                            goToSection("section-8")
+                        }}><span className="tooltiptext">SOCIALS</span></div>
                         <div id="scroll-id-talent" className="tooltip" onClick={() => {
                             goToSection("section-5")
                         }}><span className="tooltiptext">TALENT</span></div>
-                        <div id="scroll-id-social"></div>
                     </div>
                 </div>
                 <div className="gallery-container relative overflow-hidden w-full h-screen">
