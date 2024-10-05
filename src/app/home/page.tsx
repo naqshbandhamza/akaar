@@ -83,7 +83,7 @@ export default function LandingPage() {
                                 duration: { min: 0.1, max: 1.5 }
                             },
                             start: "top top",
-                            end: () => screenWidth * 6 + 100,
+                            end: () => screenWidth * 7 + 100,
                             id: 'horizontalScroll', // You can give it an ID for easy reference
                         }
                     });
@@ -134,6 +134,7 @@ export default function LandingPage() {
 
                     let myanim = gsap.timeline({ paused: true })
 
+                    //#9B71AB
                     myanim
                         .to(".bgsss",
                             { left: "0", top: "0", fill: "#FFFBEC", backgroundColor: "#FFFBEC" }
@@ -146,7 +147,10 @@ export default function LandingPage() {
                             { left: "0", top: "0", fill: "#EBD9F3", backgroundColor: "#EBD9F3" }
                         ).to(".bgsss",
 
-                            { left: "0", top: "0", fill: "#6094A6", backgroundColor: "#A9E6FC" }
+                            { left: "0", top: "0", fill: "#6094A6", backgroundColor: "#B8E9FA" }
+                        ).to(".bgsss",
+
+                            { left: "0", top: "0", fill: "#6094A6", backgroundColor: "#C4BAC7" }
                         ).to(".bgsss",
 
                             { left: "0", top: "0", fill: "#D7DCC6", backgroundColor: "#D7DCC6" }
@@ -157,7 +161,7 @@ export default function LandingPage() {
                             trigger: "#section-1",
                             containerAnimation: scrolltween,
                             start: "top+=10 top",
-                            end: `left+=${screenWidth * 5} left`,
+                            end: `left+=${screenWidth * 6} left`,
                             scrub: true,
                             // markers: true, 
                             onUpdate: (self) => {
@@ -246,6 +250,8 @@ export default function LandingPage() {
                     //section-5
                     sassist(scrolltween, "#section-5", "left 50%", "scroll-id-talent", "#D0DCA9", "#5B8C91")
 
+                    //section-7
+                    sassist(scrolltween, "#section-7", "left 50%", "scroll-id-products", "#9A70AA", "#955BAB")
 
                     //gallery
                     // Number of images and gallery element
@@ -1961,6 +1967,22 @@ export default function LandingPage() {
                             </button>
                         </div>
                     </div>
+                    <div id="section-7" className="panels">
+                        <div className="sec-top">
+                            <div className="akaar-wedstyle">
+                                <h1 id="akaar-products">PRODUCTS</h1>
+                            </div>
+
+                            <div className="sub-tag">
+                                <p>Portraying products in the best way.</p>
+                            </div>
+
+                            <button id="now-booking-products" onClick={() => {
+                            }}>
+                                PORTFOLIO
+                            </button>
+                        </div>
+                    </div>
                     <div id="section-5" className="panels">
                         <div className="sec-top">
                             <div className="akaar-wedstyle">
@@ -2013,11 +2035,13 @@ export default function LandingPage() {
                         <div id="scroll-id-graphics-post-prod" className="tooltip" onClick={() => {
                             goToSection("section-6")
                         }}><span className="tooltiptext">GRAPHICS</span></div>
+                        <div id="scroll-id-products" className="tooltip" onClick={() => {
+                            goToSection("section-7")
+                        }}><span className="tooltiptext">PRODUCTS</span></div>
                         <div id="scroll-id-talent" className="tooltip" onClick={() => {
                             goToSection("section-5")
                         }}><span className="tooltiptext">TALENT</span></div>
                         <div id="scroll-id-social"></div>
-                        <div id="scroll-id-films"></div>
                     </div>
                 </div>
                 <div className="gallery-container relative overflow-hidden w-full h-screen">

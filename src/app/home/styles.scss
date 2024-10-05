@@ -123,6 +123,14 @@ body {
     height: auto;
 }
 
+#section-7 {
+    overflow: visible;
+    /* overflow-y: hidden; */
+    position: relative;
+    width: 100vw;
+    height: auto;
+}
+
 .cnt-for-h {
     position: absolute;
     top: 45%;
@@ -204,7 +212,7 @@ body {
     font-size: 1.05vw;
 }
 
-#ca{
+#ca {
     opacity: 0;
 }
 
@@ -486,26 +494,6 @@ body {
 
 }
 
-#now-booking-wed {
-    position: absolute;
-    top: 62%;
-    left: 50%;
-    transform: translate(-50%, -52%);
-    background-color: #FFBC10;
-    height: 8.7vw;
-    width: 8.7vw;
-    min-width: 120px;
-    min-height: 120px;
-    border-radius: 50%;
-    font-family: naville;
-    font-weight: bolder;
-    letter-spacing: 0.9px;
-    color: white;
-    font-size: 9px;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.129);
-    /* display: none; */
-}
-
 .custom-shape-divider-bottom-1726444224 {
     position: absolute;
     top: 100%;
@@ -603,12 +591,11 @@ body {
     transform: rotate(0deg);
 }
 
-#now-booking-fashion {
+@mixin okayss {
     position: absolute;
     top: 62%;
     left: 50%;
     transform: translate(-50%, -52%);
-    background-color: #FF2424;
     height: 8.7vw;
     width: 8.7vw;
     min-width: 120px;
@@ -620,69 +607,24 @@ body {
     color: white;
     font-size: 9px;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.129);
-    /* display: none; */
 }
 
-#now-booking-commercials {
-    position: absolute;
-    top: 62%;
-    left: 50%;
-    transform: translate(-50%, -52%);
-    background-color: #7800B0;
-    height: 8.7vw;
-    width: 8.7vw;
-    min-width: 120px;
-    min-height: 120px;
-    border-radius: 50%;
-    font-family: naville;
-    letter-spacing: 0.9px;
-    font-weight: bolder;
-    color: white;
-    font-size: 9px;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.129);
-    /* display: none; */
-}
+$bg-colors: (
+    "now-booking-wed": #FFBC10,
+    "now-booking-fashion": #FF2424,
+    "now-booking-commercials": #7800B0,
+    "now-booking-talent": #5B8C91,
+    "now-booking-graphics": #73D5F9,
+    "now-booking-products": #955BAB
+);
 
-#now-booking-talent {
-    position: absolute;
-    top: 62%;
-    left: 50%;
-    transform: translate(-50%, -52%);
-    background-color: #5B8C91;
-    height: 8.7vw;
-    width: 8.7vw;
-    min-width: 120px;
-    min-height: 120px;
-    border-radius: 50%;
-    font-family: naville;
-    letter-spacing: 0.9px;
-    font-weight: bolder;
-    color: white;
-    font-size: 9px;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.129);
-    /* display: none; */
+// Loop through the IDs and apply styles
+@each $id, $bg-color in $bg-colors {
+    ##{$id} {
+        @include okayss;
+        background-color: $bg-color;
+    }
 }
-
-#now-booking-graphics {
-    position: absolute;
-    top: 62%;
-    left: 50%;
-    transform: translate(-50%, -52%);
-    background-color: #73D5F9;
-    height: 8.7vw;
-    width: 8.7vw;
-    min-width: 120px;
-    min-height: 120px;
-    border-radius: 50%;
-    font-family: naville;
-    letter-spacing: 0.9px;
-    font-weight: bolder;
-    color: white;
-    font-size: 9px;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.129);
-    /* display: none; */
-}
-
 
 /***************** section 4************************/
 
@@ -830,27 +772,7 @@ body {
 
 /*****************section 7 *************************/
 
-#section-7 {
-    position: relative;
-    width: 400%;
-    height: 80vh;
-    display: flex;
-    flex-direction: row;
-    overflow: hidden;
-    margin-bottom: 200px;
-    /* background-color: #EDB62B; */
-    display: none;
-}
 
-#section-7 div {
-    height: 400px;
-    width: 600px;
-    /* border-width: 5px; */
-    /* border-color: #7800B0; */
-    margin: 60px;
-    margin-top: 2%;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.244);
-}
 
 .common-h1 {
     font-family: makromed;
@@ -1404,6 +1326,15 @@ body {
     background-color: #73D5F9;
 }
 
+/* 955BAB */
+#scroll-id-products:hover {
+    border-style: solid;
+    border-color: white;
+    border-width: 1px;
+    height: 8px;
+    width: 8px;
+    background-color: #955BAB;
+}
 
 .tooltip {
     position: relative;
@@ -1459,28 +1390,28 @@ body {
     overflow: visible;
     width: 100vw;
     height: 100vh;
-    background-color:#D7DCC6;
-  }
+    background-color: #D7DCC6;
+}
 
-  .gallery-container p{
+.gallery-container p {
     font-family: soltz;
     position: absolute;
     top: 50%;
-    left:50%;
+    left: 50%;
     font-size: 3vw;
     font-weight: bold;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
 }
-  
-  .gallery {
+
+.gallery {
     display: flex;
     flex-wrap: wrap;
     position: absolute;
-  }
-  
-  .another{
+}
+
+.another {
     position: relative;
     height: 100vh;
     width: 100%;
-    background-color:#D7DCC6;
-  }
+    background-color: #D7DCC6;
+}
