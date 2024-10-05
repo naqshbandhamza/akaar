@@ -115,6 +115,14 @@ body {
     height: auto;
 }
 
+#section-6 {
+    overflow: visible;
+    /* overflow-y: hidden; */
+    position: relative;
+    width: 100vw;
+    height: auto;
+}
+
 .cnt-for-h {
     position: absolute;
     top: 45%;
@@ -427,35 +435,14 @@ body {
     overflow: visible;
 }
 
-#section-2 .akaar-wedstyle {
+.akaar-wedstyle {
     overflow: visible;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
 }
 
-#section-4 .akaar-wedstyle {
-    overflow: visible;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-}
-
-#section-5 .akaar-wedstyle {
-    overflow: visible;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-}
-
-#section-3 .akaar-wedstyle {
-    top: auto;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-}
-
-#sub-tag-wed {
+.sub-tag {
     text-align: center;
     width: auto;
     font-family: soltz;
@@ -636,22 +623,6 @@ body {
     /* display: none; */
 }
 
-#sub-tag-fashion {
-    text-align: center;
-    width: auto;
-    font-family: soltz;
-    font-weight: 550;
-    font-size: 14px;    color: rgb(29, 29, 29);
-    color: #ffffff;
-    color: #686660;
-    position: absolute;
-    top: 70%;
-    left: 50%;
-    transform: translateX(-50%);
-    /* text-shadow: 2px 2px 4px #FF2424; */
-    /* display: none; */
-}
-
 #now-booking-commercials {
     position: absolute;
     top: 62%;
@@ -692,39 +663,26 @@ body {
     /* display: none; */
 }
 
-#sub-tag-commercials {
-    text-align: center;
-    width: auto;
-    font-family: soltz;
-    font-weight: 550;
-    font-size: 14px;    /* color: #454440dd; */
-    color: rgb(29, 29, 29);
-    color: #ffffff;
-    color: #686660;
+#now-booking-graphics {
     position: absolute;
-    top: 70%;
+    top: 62%;
     left: 50%;
-    transform: translateX(-50%);
-    /* text-shadow: 2px 2px 4px #7800B0; */
+    transform: translate(-50%, -52%);
+    background-color: #73D5F9;
+    height: 8.7vw;
+    width: 8.7vw;
+    min-width: 120px;
+    min-height: 120px;
+    border-radius: 50%;
+    font-family: naville;
+    letter-spacing: 0.9px;
+    font-weight: bolder;
+    color: white;
+    font-size: 9px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.129);
     /* display: none; */
 }
 
-#sub-tag-talent {
-    text-align: center;
-    width: auto;
-    font-family: soltz;
-    font-weight: 550;
-    font-size: 14px;    /* color: #454440dd; */
-    color: rgb(29, 29, 29);
-    color: #ffffff;
-    color: #686660;
-    position: absolute;
-    top: 70%;
-    left: 50%;
-    transform: translateX(-50%);
-    /* text-shadow: 2px 2px 4px #7800B0; */
-    /* display: none; */
-}
 
 /***************** section 4************************/
 
@@ -801,13 +759,6 @@ body {
     font-size: 10px;
 }
 
-#section-6 .sec-p-head {
-    left: 5px;
-    right: auto;
-}
-
-
-
 .portfolio-grid {
     overflow: hidden;
     position: relative;
@@ -876,59 +827,6 @@ body {
     animation: fullscreenbtnanim 1.5s infinite ease-in-out;
 }
 
-/*****************section 6 *************************/
-
-#section-6 #wave2 {
-    position: absolute;
-    top: 10%;
-}
-
-#section-6 #wave1 {
-    position: absolute;
-    top: 40%;
-}
-
-
-#section-6 {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-    font-size: 142px;
-    /* background-color: #7800B0; */
-}
-
-#section-6 .s1 {
-    position: absolute;
-    top: 5px;
-    left: 45px;
-    font-family: podium;
-    color: #7800B0;
-    font-size: 140px;
-}
-
-#section-6 .s2 {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-family: podium;
-    color: #111111;
-    font-size: 82px;
-    width: 400px;
-    text-align: center;
-    line-height: 1;
-    transform-origin: center;
-}
-
-#section-6 .s3 {
-    position: absolute;
-    bottom: 5px;
-    right: 45px;
-    font-family: podium;
-    color: #5C5C5C;
-    font-size: 140px;
-}
 
 /*****************section 7 *************************/
 
@@ -1493,6 +1391,17 @@ body {
     height: 8px;
     width: 8px;
     background-color: #5B8C91;
+}
+
+/* #73D5F9 */
+
+#scroll-id-graphics-post-prod:hover {
+    border-style: solid;
+    border-color: white;
+    border-width: 1px;
+    height: 8px;
+    width: 8px;
+    background-color: #73D5F9;
 }
 
 

@@ -83,31 +83,11 @@ export default function LandingPage() {
                                 duration: { min: 0.1, max: 1.5 }
                             },
                             start: "top top",
-                            end: () => screenWidth * 5 + 100,
+                            end: () => screenWidth * 6 + 100,
                             id: 'horizontalScroll', // You can give it an ID for easy reference
                         }
                     });
                     scrolltween1 = scrolltween
-
-                    // let slidercont: any = document.getElementById("slider-id")
-                    // slidercont.addEventListener('wheel', (event) => {
-                    //     if (isScrolling) return; // Prevent multiple triggers while waiting for delay
-                    //     isScrolling = true;
-
-                    //     if (event.deltaY < 0) {
-                    //         console.log('Scrolling up');
-                    //         if (current > 1) {
-                    //             goToOk(`section-${current - 1}`)
-                    //             current -= 1;
-                    //         }
-                    //     } else {
-                    //         if (current < 4) {
-                    //             goToOk(`section-${current + 1}`)
-                    //             current += 1;
-                    //         }
-                    //         console.log('Scrolling down');
-                    //     }
-                    // });
 
                     //section 1
                     let tl = gsap.timeline({})
@@ -145,30 +125,8 @@ export default function LandingPage() {
                     );
 
                     //section 2
-                    const scrollassist1 = gsap.timeline({
-                        scrollTrigger: {
-                            // markers:true,
-                            trigger: "#section-2",
-                            containerAnimation: scrolltween,
-                            start: "left 50%",
-                            toggleActions: "play none none reverse",
-                        }
-                    }
-                    )
+                    sassist(scrolltween, "#section-2", "left 50%", "scroll-id-wed", "#FFF5D8", "#FFC325")
 
-                    let olapola: any = document.getElementById("scroll-id-wed");
-                    scrollassist1.to(
-                        ["#lang-btn", "#e-btn"],
-                        { backgroundColor: "#FFFFFF", color: "#FFC325", duration: 0.25 }
-                    );
-                    scrollassist1.to(
-                        [".section-assist"],
-                        { backgroundColor: "#FFF5D8", color: "#FFC325", duration: 0.25 }
-                    );
-                    scrollassist1.to(
-                        [".section-assist #tag"],
-                        { color: "#FFFFFF", backgroundColor: "#FFC325", duration: 0.2, x: olapola.offsetLeft - 20, ease: "power2.out" }
-                    );
 
                     lamps(scrolltween, "#section-2 #cealling-lamp", ["#section-2 #cealling-lamp #Group_2", "#section-2 #cealling-lamp #Group_12"])
                     lamps(scrolltween, "#section-3 #cealling-lamp", ["#section-3 #cealling-lamp #Group_2", "#section-3 #cealling-lamp #Group_12"])
@@ -188,6 +146,9 @@ export default function LandingPage() {
                             { left: "0", top: "0", fill: "#EBD9F3", backgroundColor: "#EBD9F3" }
                         ).to(".bgsss",
 
+                            { left: "0", top: "0", fill: "#6094A6", backgroundColor: "#A9E6FC" }
+                        ).to(".bgsss",
+
                             { left: "0", top: "0", fill: "#D7DCC6", backgroundColor: "#D7DCC6" }
                         );
 
@@ -196,7 +157,7 @@ export default function LandingPage() {
                             trigger: "#section-1",
                             containerAnimation: scrolltween,
                             start: "top+=10 top",
-                            end: `left+=${screenWidth * 4} left`,
+                            end: `left+=${screenWidth * 5} left`,
                             scrub: true,
                             // markers: true, 
                             onUpdate: (self) => {
@@ -271,85 +232,20 @@ export default function LandingPage() {
 
 
                     //section 3
-                    const scrollassist2 = gsap.timeline({
-                        scrollTrigger: {
-                            // markers:true,
-                            trigger: "#section-3",
-                            containerAnimation: scrolltween,
-                            start: "left 50%",
-                            toggleActions: "play none none reverse",
-                        }
-                    }
-                    )
+                    sassist(scrolltween, "#section-3", "left 50%", "scroll-id-fashion", "#FFC7C7", "#FF2424")
 
-                    let olapola1: any = document.getElementById("scroll-id-fashion");
-
-                    scrollassist2.to(
-                        ["#lang-btn", "#e-btn"],
-                        { backgroundColor: "#FFFFFF", color: "#FF2424", duration: 0.25 }
-                    );
-                    scrollassist2.to(
-                        [".section-assist"],
-                        { backgroundColor: "#FFC7C7", color: "#FF2424", duration: 0.25 }
-                    );
-                    scrollassist2.to(
-                        [".section-assist #tag"],
-                        { color: "#FFFFFF", backgroundColor: "#FF2424", duration: 0.2, x: olapola1.offsetLeft - 20 }
-                    );
 
                     //section 4
-                    const scrollassist3 = gsap.timeline({
-                        scrollTrigger: {
-                            // markers:true,
-                            trigger: "#section-4",
-                            containerAnimation: scrolltween,
-                            start: "left 50%",
-                            toggleActions: "play none none reverse",
-                        }
-                    }
-                    )
+                    sassist(scrolltween, "#section-4", "left 50%", "scroll-id-commercial", "#DFC3EC", "#7800B0")
 
-                    let olapola2: any = document.getElementById("scroll-id-commercial");
 
-                    scrollassist3.to(
-                        ["#lang-btn", "#e-btn"],
-                        { backgroundColor: "#FFFFFF", color: "#7800B0", duration: 0.25 }
-                    );
-                    scrollassist3.to(
-                        [".section-assist"],
-                        { backgroundColor: "#DFC3EC", color: "#7800B0", duration: 0.25 }
-                    );
-                    scrollassist3.to(
-                        [".section-assist #tag"],
-                        { color: "#FFFFFF", backgroundColor: "#7800B0", duration: 0.2, x: olapola2.offsetLeft - 20 }
-                    );
+                    //section-6
+                    sassist(scrolltween, "#section-6", "left 50%", "scroll-id-graphics-post-prod", "#A9E6FC", "#73D5F9")
+
 
                     //section-5
-                    const scrollassist4 = gsap.timeline({
-                        scrollTrigger: {
-                            // markers:true,
-                            trigger: "#section-5",
-                            containerAnimation: scrolltween,
-                            start: "left 50%",
-                            toggleActions: "play none none reverse",
-                        }
-                    }
-                    )
+                    sassist(scrolltween, "#section-5", "left 50%", "scroll-id-talent", "#D0DCA9", "#5B8C91")
 
-                    let olapola3: any = document.getElementById("scroll-id-talent");
-
-                    scrollassist4.to(
-                        ["#lang-btn", "#e-btn"],
-                        { backgroundColor: "#FFFFFF", color: "#5B8C91", duration: 0.25 }
-                    );
-                    scrollassist4.to(
-                        [".section-assist"],
-                        { backgroundColor: "#D0DCA9", color: "#5B8C91", duration: 0.25 }
-                    );
-                    scrollassist4.to(
-                        [".section-assist #tag"],
-                        { color: "#FFFFFF", backgroundColor: "#5B8C91", duration: 0.2, x: olapola3.offsetLeft - 20 }
-                    );
 
                     //gallery
                     // Number of images and gallery element
@@ -366,7 +262,7 @@ export default function LandingPage() {
                     })
 
                     const numImages = 20;
-                    const gallery:any = document.querySelector('.gallery');
+                    const gallery: any = document.querySelector('.gallery');
 
                     // Randomly generate images and append to the gallery
                     for (let i = 0; i < numImages; i++) {
@@ -578,6 +474,34 @@ export default function LandingPage() {
 
         lamps1();
         lamps2();
+    }
+
+    const sassist = (scrolltween, trigger, starts, sid, bgcolor, color) => {
+
+        const scrollassist1 = gsap.timeline({
+            scrollTrigger: {
+                // markers:true,
+                trigger: trigger,
+                containerAnimation: scrolltween,
+                start: starts,
+                toggleActions: "play none none reverse",
+            }
+        }
+        )
+
+        let olapola: any = document.getElementById(sid);
+        scrollassist1.to(
+            ["#lang-btn", "#e-btn"],
+            { backgroundColor: "#FFFFFF", color: color, duration: 0.25 }
+        );
+        scrollassist1.to(
+            [".section-assist"],
+            { backgroundColor: bgcolor, color: color, duration: 0.25 }
+        );
+        scrollassist1.to(
+            [".section-assist #tag"],
+            { color: "#FFFFFF", backgroundColor: color, duration: 0.2, x: olapola.offsetLeft - 20, ease: "power2.out" }
+        );
     }
 
     return (
@@ -1289,7 +1213,7 @@ export default function LandingPage() {
 
                             </div>
 
-                            <div id="sub-tag-wed">
+                            <div className="sub-tag">
                                 {/* <p>Be careful, violence tends to escalate</p> */}
                                 <p>Your Story Told Like None Other</p>
                             </div>
@@ -1597,7 +1521,7 @@ export default function LandingPage() {
                                     <path d="M113.704 49.158C114.651 50.65 115.98 51.852 117.171 53.157C118.363 54.462 119.46 55.954 119.773 57.694C119.296 57.762 118.805 57.732 118.339 57.606" stroke="#38303B" strokeWidth="0.5" strokeMiterlimit="10" />
                                 </svg>
                             </div>
-                            <div id="sub-tag-fashion">
+                            <div className="sub-tag">
                                 {/* <p>Be careful, violence tends to escalate</p> */}
                                 <p>Taking your fashion to the next level</p>
                             </div>
@@ -2010,12 +1934,28 @@ export default function LandingPage() {
                                 </svg>
                             </div>
 
-                            <div id="sub-tag-commercials">
+                            <div className="sub-tag">
                                 {/* <p>Be careful, violence tends to escalate</p> */}
                                 <p>Building commercials that communicate</p>
                             </div>
 
                             <button id="now-booking-commercials" onClick={() => {
+                            }}>
+                                PORTFOLIO
+                            </button>
+                        </div>
+                    </div>
+                    <div id="section-6" className="panels">
+                        <div className="sec-top">
+                            <div className="akaar-wedstyle">
+                                <h1 id="akaar-graphics">GRAPHICS</h1>
+                            </div>
+
+                            <div className="sub-tag">
+                                <p>Communicating effectively through visual design</p>
+                            </div>
+
+                            <button id="now-booking-graphics" onClick={() => {
                             }}>
                                 PORTFOLIO
                             </button>
@@ -2027,7 +1967,7 @@ export default function LandingPage() {
                                 <h1 id="akaar-talent">TALENT</h1>
                             </div>
 
-                            <div id="sub-tag-talent">
+                            <div className="sub-tag">
                                 {/* <p>Be careful, violence tends to escalate</p> */}
                                 <p>Hiring Talent according to your needs</p>
                             </div>
@@ -2070,11 +2010,13 @@ export default function LandingPage() {
                         <div id="scroll-id-commercial" className="tooltip" onClick={() => {
                             goToSection("section-4")
                         }}><span className="tooltiptext">COMMERCIAL</span></div>
+                        <div id="scroll-id-graphics-post-prod" className="tooltip" onClick={() => {
+                            goToSection("section-6")
+                        }}><span className="tooltiptext">GRAPHICS</span></div>
                         <div id="scroll-id-talent" className="tooltip" onClick={() => {
                             goToSection("section-5")
                         }}><span className="tooltiptext">TALENT</span></div>
                         <div id="scroll-id-social"></div>
-                        <div id="scroll-id-graphics-post-prod"></div>
                         <div id="scroll-id-films"></div>
                     </div>
                 </div>
