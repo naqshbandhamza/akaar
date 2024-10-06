@@ -1,10 +1,8 @@
 import { redirect } from "next/navigation";
 import { getSession, login, logout } from "../../../../utils/libs/libs";
-// import axios from "axios";
 import styles from "./styles/style.module.scss"
 
 export default async function Page() {
-  // const session = await getSession();
 
   return (
     <section>
@@ -53,7 +51,7 @@ export default async function Page() {
               <polygon style={{ stroke: "rgb(0, 0, 0)", strokeWidth: "0", strokeDasharray: "none", strokeLinecap: "butt", strokeDashoffset: "0", strokeLinejoin: "miter", strokeMiterlimit: "4", fill: "rgb(255, 255, 255)", fillRule: "nonzero", opacity: "1" }} points="-50,-50 -50,50 50,50 50,-50 "></polygon>
             </g>
             <g transform="matrix(0.16 0.1 -0.44 0.69 342.03 248.34)">
-              <polygon style={{ stroke: "rgb(0, 0, 0)", strokeWidth: "0", strokeDasharray: "none", strokeLinecap: "butt", strokeDashoffset: "0", strokeLinejoin: "miter", strokeMiterlimit: "4", fill: "rgb(255, 255, 255)", fillRule: "nonzero", opacity: "1" }} vector-effect="non-scaling-stroke" points="-50,-50 -50,50 50,50 50,-50 "></polygon>
+              <polygon style={{ stroke: "rgb(0, 0, 0)", strokeWidth: "0", strokeDasharray: "none", strokeLinecap: "butt", strokeDashoffset: "0", strokeLinejoin: "miter", strokeMiterlimit: "4", fill: "rgb(255, 255, 255)", fillRule: "nonzero", opacity: "1" }} vectorEffect="non-scaling-stroke" points="-50,-50 -50,50 50,50 50,-50 "></polygon>
             </g>
           </svg>
           <div className={styles.email}>

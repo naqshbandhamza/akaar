@@ -1,7 +1,7 @@
 import ProfilePage from "./profilepage"
-import { getSession, logout } from "../../../../utils/libs/libs";
-import { redirect } from "next/navigation";
+import { getSession } from "../../../../utils/libs/libs";
 import { headers } from "next/headers"
+import { redirect } from "next/navigation";
 
 export async function generateMetadata({ params }) {
 
@@ -23,17 +23,6 @@ export default async function Page() {
         redirect("/login-by-akaar-admin576");
 
     return (
-        <>
-            <form
-                action={async () => {
-                    "use server";
-                    await logout();
-                    redirect("/login-by-akaar-admin576");
-                }}
-            >
-                <button type="submit">Logout</button>
-            </form>
-            <ProfilePage session={session} usersdata={usersdata?.data ? usersdata.data : []} />
-        </>
+        <ProfilePage session={session} usersdata={usersdata?.data ? usersdata.data : []} />
     )
 }

@@ -1,4 +1,4 @@
-import { createConnection } from "../../../config/db";
+import pool from "../../../config/db";
 import { NextResponse } from "next/server";
 import { getSession } from "../../../../utils/libs/libs"
 import type { NextApiRequest, NextApiResponse } from 'next'
@@ -10,14 +10,12 @@ export async function POST(req) {
     const session = await getSession();
     console.log(session)
     if (session && session.oks.role === "admin") {
-      const connection = await createConnection();
-
       // Example query using parameters (prevent SQL injection with placeholders)
       // const [rows] = await connection.execute(
       //   'SELECT * FROM users WHERE username = ? AND password = ?',
       //   [user, password]
       // );
-      const [rows] = await connection.execute(
+      const [rows] = await pool.query(
         'SELECT * FROM users'
       );
 

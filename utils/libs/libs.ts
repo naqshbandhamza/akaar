@@ -1,7 +1,7 @@
 import { SignJWT, jwtVerify } from "jose";
 import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
-import { createConnection } from "../../src/config/db";
+import pool from "../../src/config/db";
 
 const key = new TextEncoder().encode(process.env.SECRET);
 
@@ -26,10 +26,8 @@ export async function login(formData: FormData) {
     let user = formData.get("user")
     let pass = formData.get("pass")
 
-    const connection = await createConnection();
-
     // Example query using parameters (prevent SQL injection with placeholders)
-    const [rows] = await connection.execute(
+    const [rows] = await pool.query(
         'SELECT * FROM users WHERE username = ? AND password = ?',
         [user, pass]
     );
