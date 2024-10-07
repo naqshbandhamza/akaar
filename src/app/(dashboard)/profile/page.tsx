@@ -13,16 +13,17 @@ export async function generateMetadata({ params }) {
 
 export default async function Page() {
     const session = await getSession();
-    let data = await fetch('http://localhost:3000/api/users', {
-        method: 'POST',
-        headers: headers(),
-    });
-    let usersdata = await data.json()
-    console.log("usersdATA", usersdata)
     if (session === null)
         redirect("/login-by-akaar-admin576");
 
+    // let data = await fetch('http://localhost:3000/api/users', {
+    //     method: 'POST',
+    //     headers: headers(),
+    // });
+    // let usersdata = await data.json()
+
+    //usersdata={usersdata?.data ? usersdata.data : []}
     return (
-        <ProfilePage session={session} usersdata={usersdata?.data ? usersdata.data : []} />
+        <ProfilePage session={session} />
     )
 }

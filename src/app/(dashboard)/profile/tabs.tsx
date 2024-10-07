@@ -1,9 +1,30 @@
 "use client"
 import { useEffect, useState } from "react"
+import { useRouter } from 'next/navigation'
 
-export default function Page({ usero, directors }) {
-
+export default function Page({ usero }) {
+    const router = useRouter()
+    const [directors, setDirectors] = useState([])
     const [activeTab, setActiveTab] = useState(1)
+
+    useEffect(() => {
+        if (activeTab === 2) {
+            const getUsers = async () => {
+                let data = await fetch('http://localhost:3000/api/users', {
+                    method: 'POST',
+                });
+                let usersdata = await data.json()
+                console.log(usersdata)
+                if (usersdata?.redirect) {
+                    console.log("in redirect")
+                    router.push("/login-by-akaar-admin576")
+                }
+                else
+                    setDirectors(usersdata.data)
+            }
+            getUsers()
+        }
+    }, [activeTab])
 
     return (<>
         <div className="ml-10">

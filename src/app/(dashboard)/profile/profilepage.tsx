@@ -3,9 +3,8 @@ import { logout } from "../../../../utils/libs/libs";
 import { redirect } from "next/navigation";
 import Dropdown from "./dropdown";
 
-export default async function Page({ session, usersdata }) {
+export default async function Page({ session }) {
     let usero = session.oks
-    let directors = usersdata
 
     return (
         <>
@@ -17,7 +16,7 @@ export default async function Page({ session, usersdata }) {
                     <input className="flex items-center h-10 px-4 ml-10 text-sm bg-gray-200 rounded-full focus:outline-none focus:ring" type="search" placeholder="Search for anything…" />
                     <Dropdown usero={usero} />
                 </div>
-                <Tabs usero={usero} directors={directors} />
+                <Tabs usero={usero} />
             </div>
         </>
 

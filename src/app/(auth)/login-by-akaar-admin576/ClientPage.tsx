@@ -6,22 +6,6 @@ export default async function Page() {
 
   return (
     <section>
-      {/* <form
-        action={async (formData) => {
-          "use server";
-          const res: any = await login(formData);
-          const data = await res.json(); // Parse the JSON content
-
-          if (data.message === "ok") {
-            redirect("/profile");
-          }
-        }}
-      >
-        <input type="text" name="user" placeholder="Username" />
-        <input type="password" name="pass" placeholder="Password" />
-        <br />
-        <button type="submit">Login</button>
-      </form> */}
       <form
         action={async (formData) => {
           "use server";

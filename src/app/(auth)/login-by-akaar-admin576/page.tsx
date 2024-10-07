@@ -11,8 +11,6 @@ export async function generateMetadata({ params }) {
 export default async function SignIn() {
 
     return (
-        <>
-            <ClientPage />
-        </>
+        <ClientPage />
     )
 }

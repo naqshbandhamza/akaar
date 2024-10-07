@@ -7,5 +7,4 @@ import { redirect } from "next/navigation"
 export async function GET() {
     await logout();
     return NextResponse.json({ message: 'ok' }, { status: 200 });
-    // return redirect("/login-by-akaar-admin576");
 }

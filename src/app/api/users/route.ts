@@ -6,9 +6,9 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 export async function POST(req) {
 
   try {
-    console.log("in post yeahhhhhhh")
+    // console.log("in post yeahhhhhhh")
     const session = await getSession();
-    console.log(session)
+    // console.log(session)
     if (session && session.oks.role === "admin") {
       // Example query using parameters (prevent SQL injection with placeholders)
       // const [rows] = await connection.execute(
