@@ -1,4 +1,4 @@
-"use client"
+// "use client"
 import BackgroundVideo from 'next-video/background-video';
 
 export default function VideoComponent({ src, w, h, left, top }) {
