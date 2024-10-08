@@ -7,7 +7,20 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/all";
 import { ReactLenis, useLenis } from '@studio-freight/react-lenis'
 import VideoComponent from "../ui/video-component";
-import { Suspense } from 'react'
+import the1 from "../../../videos/1.mp4"
+import the2 from "../../../videos/2.mp4"
+import the3 from "../../../videos/3.mp4"
+import the4 from "../../../videos/4.mp4"
+import the5 from "../../../videos/5.mp4"
+import the6 from "../../../videos/6.mp4"
+import the7 from "../../../videos/7.mp4"
+import the8 from "../../../videos/8.mp4"
+import the9 from "../../../videos/9.mp4"
+import the10 from "../../../videos/10.mp4"
+import the11 from "../../../videos/11.mp4"
+import the12 from "../../../videos/12.mp4"
+import the13 from "../../../videos/13.mp4"
+
 
 let scrolltween1: any;
 
@@ -18,7 +31,7 @@ export default function LandingPage() {
     const [screenWidth, setScreenWidth] = useState(0);
     const ctxRef: any = useRef(null);
 
-    // const [videoData, setVideodata] = useState<any>([]);
+    const [videoData, setVideodata] = useState<any>([]);
 
     // const videos = videoData.map((video, index) => (
     //     <video key={index} src={video.src} width={video.w} height={video.h} style={{ position: "absolute", left: video.left, top: video.top }} controls autoPlay loop muted />
@@ -35,21 +48,22 @@ export default function LandingPage() {
             }, 3000)
         }
 
-        // setVideodata([
-        //     { src: '/static/videos/1.mp4', w: 250, h: 150, left: `${Math.random() * window.innerWidth}px`, top: `${Math.random() * window.innerHeight}px` },
-        //     { src: '/static/videos/2.mp4', w: 250, h: 150, left: `${Math.random() * window.innerWidth}px`, top: `${Math.random() * window.innerHeight}px` },
-        //     { src: '/static/videos/3.mp4', w: 250, h: 150, left: `${Math.random() * window.innerWidth}px`, top: `${Math.random() * window.innerHeight}px` },
-        //     { src: '/static/videos/4.mp4', w: 250, h: 150, left: `${Math.random() * window.innerWidth}px`, top: `${Math.random() * window.innerHeight}px` },
-        //     { src: '/static/videos/5.mp4', w: 250, h: 150, left: `${Math.random() * window.innerWidth}px`, top: `${Math.random() * window.innerHeight}px` },
-        //     { src: '/static/videos/6.mp4', w: 250, h: 150, left: `${Math.random() * window.innerWidth}px`, top: `${Math.random() * window.innerHeight}px` },
-        //     { src: '/static/videos/7.mp4', w: 250, h: 150, left: `${Math.random() * window.innerWidth}px`, top: `${Math.random() * window.innerHeight}px` },
-        //     { src: '/static/videos/8.mp4', w: 250, h: 150, left: `${Math.random() * window.innerWidth}px`, top: `${Math.random() * window.innerHeight}px` },
-        //     { src: '/static/videos/9.mp4', w: 250, h: 150, left: `${Math.random() * window.innerWidth}px`, top: `${Math.random() * window.innerHeight}px` },
-        //     { src: '/static/videos/10.mp4', w: 250, h: 150, left: `${Math.random() * window.innerWidth}px`, top: `${Math.random() * window.innerHeight}px` },
-        //     { src: '/static/videos/11.mp4', w: 250, h: 150, left: `${Math.random() * window.innerWidth}px`, top: `${Math.random() * window.innerHeight}px` },
-        //     { src: '/static/videos/12.mp4', w: 250, h: 150, left: `${Math.random() * window.innerWidth}px`, top: `${Math.random() * window.innerHeight}px` },
-        //     // Add more video objects as needed
-        // ])
+        setVideodata([
+            { src: the1, w: 250, h: 150, left: `${Math.random() * window.innerWidth}px`, top: `${Math.random() * window.innerHeight}px` },
+            { src: the2, w: 250, h: 150, left: `${Math.random() * window.innerWidth}px`, top: `${Math.random() * window.innerHeight}px` },
+            { src: the3, w: 250, h: 150, left: `${Math.random() * window.innerWidth}px`, top: `${Math.random() * window.innerHeight}px` },
+            { src: the4, w: 250, h: 150, left: `${Math.random() * window.innerWidth}px`, top: `${Math.random() * window.innerHeight}px` },
+            { src: the5, w: 250, h: 150, left: `${Math.random() * window.innerWidth}px`, top: `${Math.random() * window.innerHeight}px` },
+            { src: the6, w: 250, h: 150, left: `${Math.random() * window.innerWidth}px`, top: `${Math.random() * window.innerHeight}px` },
+            { src: the7, w: 250, h: 150, left: `${Math.random() * window.innerWidth}px`, top: `${Math.random() * window.innerHeight}px` },
+            { src: the8, w: 250, h: 150, left: `${Math.random() * window.innerWidth}px`, top: `${Math.random() * window.innerHeight}px` },
+            { src: the9, w: 250, h: 150, left: `${Math.random() * window.innerWidth}px`, top: `${Math.random() * window.innerHeight}px` },
+            { src: the10, w: 250, h: 150, left: `${Math.random() * window.innerWidth}px`, top: `${Math.random() * window.innerHeight}px` },
+            { src: the11, w: 250, h: 150, left: `${Math.random() * window.innerWidth}px`, top: `${Math.random() * window.innerHeight}px` },
+            { src: the12, w: 250, h: 150, left: `${Math.random() * window.innerWidth}px`, top: `${Math.random() * window.innerHeight}px` },
+            { src: the13, w: 250, h: 150, left: `${Math.random() * window.innerWidth}px`, top: `${Math.random() * window.innerHeight}px` },
+            // Add more video objects as needed
+        ])
 
         const handlePageLoad = () => {
             setPageLoaded(true);
@@ -285,7 +299,7 @@ export default function LandingPage() {
                     // Number of images and gallery element
 
                     gsap.fromTo("#g-p", { y: 400 }, {
-                        y: -50,
+                        y: -10,
                         scrollTrigger: {
                             // markers: true,
                             trigger: ".gallery-container",
@@ -297,58 +311,73 @@ export default function LandingPage() {
 
                     const numImages = 12;
                     const gallery: any = document.querySelector('.gallery');
-                    gallery.innerHTML = ""
+                    const allvideos = document.querySelectorAll(".gallery video")
+                    console.log(allvideos)
+                    // gallery.innerHTML = ""
 
                     // Randomly generate images and append to the gallery
-                    for (let i = 0; i < numImages; i++) {
-                        const img = document.createElement('video');
-                        if (i === 0)
-                            img.src = `/static/videos/1.mp4`; // Random image source
-                        else if (i === 1)
-                            img.src = `/static/videos/2.mp4`; // Random image source
-                        else if (i === 2)
-                            img.src = `/static/videos/3.mp4`; // Random image source
-                        else if (i === 3)
-                            img.src = `/static/videos/4.mp4`; // Random image source
-                        else if (i === 4)
-                            img.src = `/static/videos/5.mp4`; // Random image source
-                        else if (i === 5)
-                            img.src = `/static/videos/6.mp4`; // Random image source
-                        else if (i === 6)
-                            img.src = `/static/videos/7.mp4`; // Random image source
-                        else if (i === 7)
-                            img.src = `/static/videos/8.mp4`; // Random image source
-                        else if (i === 8)
-                            img.src = `/static/videos/9.mp4`; // Random image source
-                        else if (i === 9)
-                            img.src = `/static/videos/10.mp4`; // Random image source
-                        else if (i === 10)
-                            img.src = `/static/videos/11.mp4`; // Random image source
-                        else if (i === 11)
-                            img.src = `/static/videos/12.mp4`; // Random image source
-                        else if (i === 12)
-                            img.src = `/static/videos/13.mp4`; // Random image source
-                        else
-                            img.src = ""
+                    // for (let i = 0; i < numImages; i++) {
+                    //     // const img = document.createElement('video');
+                    //     // if (i === 0)
+                    //     //     img.src = `/static/videos/1.mp4`; // Random image source
+                    //     // else if (i === 1)
+                    //     //     img.src = `/static/videos/2.mp4`; // Random image source
+                    //     // else if (i === 2)
+                    //     //     img.src = `/static/videos/3.mp4`; // Random image source
+                    //     // else if (i === 3)
+                    //     //     img.src = `/static/videos/4.mp4`; // Random image source
+                    //     // else if (i === 4)
+                    //     //     img.src = `/static/videos/5.mp4`; // Random image source
+                    //     // else if (i === 5)
+                    //     //     img.src = `/static/videos/6.mp4`; // Random image source
+                    //     // else if (i === 6)
+                    //     //     img.src = `/static/videos/7.mp4`; // Random image source
+                    //     // else if (i === 7)
+                    //     //     img.src = `/static/videos/8.mp4`; // Random image source
+                    //     // else if (i === 8)
+                    //     //     img.src = `/static/videos/9.mp4`; // Random image source
+                    //     // else if (i === 9)
+                    //     //     img.src = `/static/videos/10.mp4`; // Random image source
+                    //     // else if (i === 10)
+                    //     //     img.src = `/static/videos/11.mp4`; // Random image source
+                    //     // else if (i === 11)
+                    //     //     img.src = `/static/videos/12.mp4`; // Random image source
+                    //     // else if (i === 12)
+                    //     //     img.src = `/static/videos/13.mp4`; // Random image source
+                    //     // else
+                    //     //     img.src = ""
 
-                        img.classList.add('absolute');
-                        img.style.width = '250px';
-                        img.style.height = '150px';
-                        img.autoplay = true
-                        img.muted = true
-                        img.loop = true
-                        img.style.borderRadius = "5px"
-                        img.style.objectFit = "cover"
-                        img.style.pointerEvents = "none"
+                    //     // img.classList.add('absolute');
+                    //     // img.style.width = '250px';
+                    //     // img.style.height = '150px';
+                    //     // img.autoplay = true
+                    //     // img.muted = true
+                    //     // img.loop = true
+                    //     // img.style.borderRadius = "5px"
+                    //     // img.style.objectFit = "cover"
+                    //     // img.style.pointerEvents = "none"
+                    //     // img.style.boxShadow = "0 3px 10px rgba(0, 0, 0, 0.129)"
 
-                        // Random positioning
-                        img.style.left = `${Math.random() * window.innerWidth}px`;
-                        img.style.top = `${Math.random() * window.innerHeight}px`;
+                    //     // // Random positioning
+                    //     // img.style.left = `${Math.random() * window.innerWidth}px`;
+                    //     // img.style.top = `${Math.random() * window.innerHeight}px`;
 
-                        gallery.appendChild(img);
+                    //     // gallery.appendChild(img);
 
-                        //Animate each image
-                        gsap.to(img, {
+                    //     //Animate each image
+                    //     gsap.to(img, {
+                    //         x: window.innerWidth * 1.5, // Move out from the right
+                    //         duration: gsap.utils.random(10, 20), // Random duration for each image
+                    //         repeat: -1,
+                    //         ease: "none",
+                    //         modifiers: {
+                    //             x: gsap.utils.unitize((x) => parseFloat(x) % window.innerWidth) // Looping modifier
+                    //         }
+                    //     });
+                    // }
+
+                    allvideos.forEach(element => {
+                        gsap.to(element, {
                             x: window.innerWidth * 1.5, // Move out from the right
                             duration: gsap.utils.random(10, 20), // Random duration for each image
                             repeat: -1,
@@ -357,7 +386,7 @@ export default function LandingPage() {
                                 x: gsap.utils.unitize((x) => parseFloat(x) % window.innerWidth) // Looping modifier
                             }
                         });
-                    }
+                    });
 
                     // Optional Scroll-based Animation
                     gsap.to('.gallery', {
@@ -2144,9 +2173,11 @@ export default function LandingPage() {
                 </div>
                 <div className="gallery-container relative overflow-hidden w-full h-screen">
                     <div className="gallery flex flex-wrap w-full h-full absolute">
-
+                        {videoData.map((video, index) => (
+                            <VideoComponent key={index} src={video.src} w={video.w} h={video.h} left={video.left} top={video.top} />
+                        ))}
                     </div>
-                    <p id="g-p">The Fastest Growing Video Production Company</p>
+                    <p id="g-p">The Fastest Growing <span className="span-1">Video</span> Production Company</p>
                     <div className="custom-shape-divider-top-1728323637">
                         <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
                             <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" className="shape-fill"></path>
@@ -2154,7 +2185,6 @@ export default function LandingPage() {
                     </div>
                 </div>
                 <div className="another">
-                    {/* <p>ola dora pora shora</p> */}
                 </div>
                 <div className="another1">
 

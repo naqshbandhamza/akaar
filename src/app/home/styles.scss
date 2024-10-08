@@ -1419,10 +1419,18 @@ $bg-colors: (
     position: absolute;
     top: 50%;
     left: 50%;
-    font-size: 3vw;
+    font-size: 4vw;
     font-weight: bold;
+    color: white;
     transform: translate(-50%, -50%);
     z-index: 3;
+    text-shadow: 0 3px 10px rgba(0, 0, 0, 0.349);
+    ;
+}
+
+.gallery-container p .span-1{
+    color: #7800B0;
+    color:#5B8C91;
 }
 
 .gallery {
@@ -1432,6 +1440,7 @@ $bg-colors: (
     margin-top: 30px;
     overflow: visible;
     z-index: 2;
+    margin-top: 60px;
 }
 
 .another {
