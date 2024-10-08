@@ -6,6 +6,8 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/all";
 import { ReactLenis, useLenis } from '@studio-freight/react-lenis'
+import VideoComponent from "../ui/video-component";
+import { Suspense } from 'react'
 
 let scrolltween1: any;
 
@@ -15,6 +17,12 @@ export default function LandingPage() {
     const [pageloaded, setPageLoaded] = useState(false);
     const [screenWidth, setScreenWidth] = useState(0);
     const ctxRef: any = useRef(null);
+
+    // const [videoData, setVideodata] = useState<any>([]);
+
+    // const videos = videoData.map((video, index) => (
+    //     <video key={index} src={video.src} width={video.w} height={video.h} style={{ position: "absolute", left: video.left, top: video.top }} controls autoPlay loop muted />
+    // ));
 
     // useEffect for page preloader
     useEffect(() => {
@@ -26,6 +34,22 @@ export default function LandingPage() {
                 setPageLoaded(true);
             }, 3000)
         }
+
+        // setVideodata([
+        //     { src: '/static/videos/1.mp4', w: 250, h: 150, left: `${Math.random() * window.innerWidth}px`, top: `${Math.random() * window.innerHeight}px` },
+        //     { src: '/static/videos/2.mp4', w: 250, h: 150, left: `${Math.random() * window.innerWidth}px`, top: `${Math.random() * window.innerHeight}px` },
+        //     { src: '/static/videos/3.mp4', w: 250, h: 150, left: `${Math.random() * window.innerWidth}px`, top: `${Math.random() * window.innerHeight}px` },
+        //     { src: '/static/videos/4.mp4', w: 250, h: 150, left: `${Math.random() * window.innerWidth}px`, top: `${Math.random() * window.innerHeight}px` },
+        //     { src: '/static/videos/5.mp4', w: 250, h: 150, left: `${Math.random() * window.innerWidth}px`, top: `${Math.random() * window.innerHeight}px` },
+        //     { src: '/static/videos/6.mp4', w: 250, h: 150, left: `${Math.random() * window.innerWidth}px`, top: `${Math.random() * window.innerHeight}px` },
+        //     { src: '/static/videos/7.mp4', w: 250, h: 150, left: `${Math.random() * window.innerWidth}px`, top: `${Math.random() * window.innerHeight}px` },
+        //     { src: '/static/videos/8.mp4', w: 250, h: 150, left: `${Math.random() * window.innerWidth}px`, top: `${Math.random() * window.innerHeight}px` },
+        //     { src: '/static/videos/9.mp4', w: 250, h: 150, left: `${Math.random() * window.innerWidth}px`, top: `${Math.random() * window.innerHeight}px` },
+        //     { src: '/static/videos/10.mp4', w: 250, h: 150, left: `${Math.random() * window.innerWidth}px`, top: `${Math.random() * window.innerHeight}px` },
+        //     { src: '/static/videos/11.mp4', w: 250, h: 150, left: `${Math.random() * window.innerWidth}px`, top: `${Math.random() * window.innerHeight}px` },
+        //     { src: '/static/videos/12.mp4', w: 250, h: 150, left: `${Math.random() * window.innerWidth}px`, top: `${Math.random() * window.innerHeight}px` },
+        //     // Add more video objects as needed
+        // ])
 
         const handlePageLoad = () => {
             setPageLoaded(true);
@@ -271,16 +295,52 @@ export default function LandingPage() {
                         }
                     })
 
-                    const numImages = 20;
+                    const numImages = 12;
                     const gallery: any = document.querySelector('.gallery');
+                    gallery.innerHTML = ""
+
+
+
 
                     // Randomly generate images and append to the gallery
                     for (let i = 0; i < numImages; i++) {
-                        const img = document.createElement('img');
-                        img.src = `https://placekitten.com/200/200?image=${i}`; // Random image source
+                        const img = document.createElement('video');
+                        if (i === 0)
+                            img.src = `/static/videos/1.mp4`; // Random image source
+                        else if (i === 1)
+                            img.src = `/static/videos/2.mp4`; // Random image source
+                        else if (i === 2)
+                            img.src = `/static/videos/3.mp4`; // Random image source
+                        else if (i === 3)
+                            img.src = `/static/videos/4.mp4`; // Random image source
+                        else if (i === 4)
+                            img.src = `/static/videos/5.mp4`; // Random image source
+                        else if (i === 5)
+                            img.src = `/static/videos/6.mp4`; // Random image source
+                        else if (i === 6)
+                            img.src = `/static/videos/7.mp4`; // Random image source
+                        else if (i === 7)
+                            img.src = `/static/videos/8.mp4`; // Random image source
+                        else if (i === 8)
+                            img.src = `/static/videos/9.mp4`; // Random image source
+                        else if (i === 9)
+                            img.src = `/static/videos/10.mp4`; // Random image source
+                        else if (i === 10)
+                            img.src = `/static/videos/11.mp4`; // Random image source
+                        else if (i === 11)
+                            img.src = `/static/videos/12.mp4`; // Random image source
+                        else if (i === 12)
+                            img.src = `/static/videos/13.mp4`; // Random image source
+                        else
+                            img.src = ""
+
                         img.classList.add('absolute');
                         img.style.width = '250px';
                         img.style.height = '150px';
+                        img.autoplay = true
+                        img.muted = true
+                        img.style.borderRadius = "10px"
+                        img.style.objectFit = "cover"
 
                         // Random positioning
                         img.style.left = `${Math.random() * window.innerWidth}px`;
@@ -288,7 +348,7 @@ export default function LandingPage() {
 
                         gallery.appendChild(img);
 
-                        // Animate each image
+                        //Animate each image
                         gsap.to(img, {
                             x: window.innerWidth * 1.5, // Move out from the right
                             duration: gsap.utils.random(10, 20), // Random duration for each image
@@ -400,6 +460,19 @@ export default function LandingPage() {
                         stagger * 3 // start when the third has animated
                     );
 
+                    gsap.to('.another', {
+                        xPercent: 0,
+                        ease: "none",
+                        scrollTrigger: {
+                            // markers: true,
+                            trigger: '.another',
+                            start: 'top top',
+                            end: 'bottom+=1000 top',
+                            pin: true,
+                            scrub: 1, // Smooth scroll effect
+                        }
+                    });
+
 
                 }
 
@@ -503,7 +576,7 @@ export default function LandingPage() {
         let olapola: any = document.getElementById(sid);
         let ox = olapola.offsetLeft - 20;
         if (trigger === "#section-5")
-            ox = olapola.offsetLeft-35;
+            ox = olapola.offsetLeft - 35;
         scrollassist1.to(
             ["#lang-btn", "#e-btn"],
             { backgroundColor: "#FFFFFF", color: color, duration: 0.25 }
@@ -2071,10 +2144,20 @@ export default function LandingPage() {
                     </div>
                 </div>
                 <div className="gallery-container relative overflow-hidden w-full h-screen">
-                    <div className="gallery flex flex-wrap w-full h-full absolute"></div>
+                    <div className="gallery flex flex-wrap w-full h-full absolute">
+                        
+                    </div>
                     <p id="g-p">The Fastest Growing Video Production Company</p>
+                    <div className="custom-shape-divider-top-1728323637">
+                        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" className="shape-fill"></path>
+                        </svg>
+                    </div>
                 </div>
                 <div className="another">
+                    {/* <p>ola dora pora shora</p> */}
+                </div>
+                <div className="another1">
 
                 </div>
 

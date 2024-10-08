@@ -1411,7 +1411,7 @@ $bg-colors: (
     overflow: visible;
     width: 100vw;
     height: 100vh;
-    background-color: #D7DCC6;
+    // background-color: #D7DCC6;
 }
 
 .gallery-container p {
@@ -1422,17 +1422,49 @@ $bg-colors: (
     font-size: 3vw;
     font-weight: bold;
     transform: translate(-50%, -50%);
+    z-index: 3;
 }
 
 .gallery {
     display: flex;
     flex-wrap: wrap;
     position: absolute;
+    margin-top: 30px;
+    overflow: visible;
+    z-index: 2;
 }
 
 .another {
     position: relative;
     height: 100vh;
     width: 100%;
-    background-color: #D7DCC6;
+    // background-color: #D7DCC6;
+    margin-top: 40px;
+}
+
+.another1 {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    // background-color: #D7DCC6;
+}
+
+.custom-shape-divider-top-1728323637 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.custom-shape-divider-top-1728323637 svg {
+    position: relative;
+    display: block;
+    width: calc(198% + 1.3px);
+    height: 269px;
+}
+
+.custom-shape-divider-top-1728323637 .shape-fill {
+    fill: #D7DCC6;
 }
