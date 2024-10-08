@@ -299,9 +299,6 @@ export default function LandingPage() {
                     const gallery: any = document.querySelector('.gallery');
                     gallery.innerHTML = ""
 
-
-
-
                     // Randomly generate images and append to the gallery
                     for (let i = 0; i < numImages; i++) {
                         const img = document.createElement('video');
@@ -339,8 +336,10 @@ export default function LandingPage() {
                         img.style.height = '150px';
                         img.autoplay = true
                         img.muted = true
-                        img.style.borderRadius = "10px"
+                        img.loop = true
+                        img.style.borderRadius = "5px"
                         img.style.objectFit = "cover"
+                        img.style.pointerEvents = "none"
 
                         // Random positioning
                         img.style.left = `${Math.random() * window.innerWidth}px`;
@@ -2145,7 +2144,7 @@ export default function LandingPage() {
                 </div>
                 <div className="gallery-container relative overflow-hidden w-full h-screen">
                     <div className="gallery flex flex-wrap w-full h-full absolute">
-                        
+
                     </div>
                     <p id="g-p">The Fastest Growing Video Production Company</p>
                     <div className="custom-shape-divider-top-1728323637">
