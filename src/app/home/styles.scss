@@ -575,7 +575,9 @@ body {
     left: auto;
 }
 
-#section-4 #cealling-lamp {
+#section-4 #cealling-lamp,
+#section-7 #cealling-lamp,
+#section-5 #cealling-lamp{
     right: 20%;
     left: auto;
 }
@@ -1476,4 +1478,9 @@ $bg-colors: (
 
 .custom-shape-divider-top-1728323637 .shape-fill {
     fill: #D7DCC6;
+}
+
+.next-video-bg-video{
+    border-radius:16px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.129);
 }
