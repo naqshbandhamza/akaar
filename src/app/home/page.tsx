@@ -20,6 +20,13 @@ import the10 from "../../../videos/10.mp4"
 import the11 from "../../../videos/11.mp4"
 import the12 from "../../../videos/12.mp4"
 import the13 from "../../../videos/13.mp4"
+import the14 from "../../../videos/14.mp4"
+import the15 from "../../../videos/15.mp4"
+import the16 from "../../../videos/16.mp4"
+import the17 from "../../../videos/17.mp4"
+import the18 from "../../../videos/18.mp4"
+import the19 from "../../../videos/19.mp4"
+
 
 
 let scrolltween1: any;
@@ -62,6 +69,13 @@ export default function LandingPage() {
             { src: the11, w: 250, h: 150, left: `${Math.random() * window.innerWidth}px`, top: `${Math.random() * window.innerHeight}px` },
             { src: the12, w: 250, h: 150, left: `${Math.random() * window.innerWidth}px`, top: `${Math.random() * window.innerHeight}px` },
             { src: the13, w: 250, h: 150, left: `${Math.random() * window.innerWidth}px`, top: `${Math.random() * window.innerHeight}px` },
+            { src: the14, w: 250, h: 150, left: `${Math.random() * window.innerWidth}px`, top: `${Math.random() * window.innerHeight}px` },
+            { src: the15, w: 250, h: 150, left: `${Math.random() * window.innerWidth}px`, top: `${Math.random() * window.innerHeight}px` },
+            { src: the16, w: 250, h: 150, left: `${Math.random() * window.innerWidth}px`, top: `${Math.random() * window.innerHeight}px` },
+            { src: the17, w: 250, h: 150, left: `${Math.random() * window.innerWidth}px`, top: `${Math.random() * window.innerHeight}px` },
+            { src: the18, w: 250, h: 150, left: `${Math.random() * window.innerWidth}px`, top: `${Math.random() * window.innerHeight}px` },
+            { src: the19, w: 250, h: 150, left: `${Math.random() * window.innerWidth}px`, top: `${Math.random() * window.innerHeight}px` },
+
             // Add more video objects as needed
         ])
 
