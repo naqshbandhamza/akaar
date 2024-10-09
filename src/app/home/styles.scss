@@ -577,7 +577,7 @@ body {
 
 #section-4 #cealling-lamp,
 #section-7 #cealling-lamp,
-#section-5 #cealling-lamp{
+#section-5 #cealling-lamp {
     right: 20%;
     left: auto;
 }
@@ -1427,12 +1427,12 @@ $bg-colors: (
     color: white;
     transform: translate(-50%, -50%);
     z-index: 3;
-    text-shadow: 0 3px 10px rgba(0, 0, 0, 0.349);
+    text-shadow: 0 3px 10px rgba(0, 0, 0, 0.089);
 }
 
-.gallery-container p .span-1{
+.gallery-container p .span-1 {
     color: #7800B0;
-    color:#5B8C91;
+    color: #5B8C91;
 }
 
 .gallery {
@@ -1462,11 +1462,12 @@ $bg-colors: (
 
 .custom-shape-divider-top-1728323637 {
     position: absolute;
-    top: 0;
+    bottom: -266px;
     left: 0;
     width: 100%;
     overflow: hidden;
     line-height: 0;
+    // background-color: #00bd2a;
 }
 
 .custom-shape-divider-top-1728323637 svg {
@@ -1480,7 +1481,46 @@ $bg-colors: (
     fill: #D7DCC6;
 }
 
-.next-video-bg-video{
-    border-radius:16px;
+.next-video-bg-video {
+    border-radius: 16px;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.129);
+}
+
+.another-svg {
+    height: 100vh;
+    width: 100vw;
+}
+
+.another-svg svg {
+    height: 100%;
+    width: 100%;
+}
+
+#a-1 {
+    z-index: 2;
+    position: absolute;
+    top:50%;
+    left:0;
+    transform: translateY(-50%);
+    font-family: soltz;
+    font-weight: bolder;
+    color: rgb(255, 255, 255);
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+
+    .line {
+        width: 70%;
+        height: 70px;
+        position: relative;
+        overflow: hidden;
+        span {
+            position: absolute;
+            font-size: 3rem;
+            line-height: 4.2rem;
+        }
+    }
 }

@@ -507,18 +507,34 @@ export default function LandingPage() {
                         stagger * 3 // start when the third has animated
                     );
 
-                    gsap.to('.another', {
-                        xPercent: 0,
-                        ease: "none",
+                    const timelineanother = gsap.timeline({
                         scrollTrigger: {
                             // markers: true,
                             trigger: '.another',
                             start: 'top top',
-                            end: 'bottom+=1000 top',
+                            end: 'bottom+=2000 top',
                             pin: true,
                             scrub: 1, // Smooth scroll effect
                         }
-                    });
+                    })
+
+                    timelineanother.fromTo('#another-svg', {
+                        y: "0%", x: "-100%"
+                    }, { y: "0%", x: "0%" }).fromTo("#another-svg svg path", {
+                        fill: "#FFECEC"
+                    }, {
+                        fill: "#EBD9F3"
+                    }, "<");
+
+                    timelineanother.from("#a-1 .line span", {
+                        y: 100,
+                        ease: "power4.out",
+                        delay: 1,
+                        skewY: 7,
+                        stagger: {
+                            amount: 0.3
+                        },
+                    }, "<")
 
 
                 }
@@ -2577,14 +2593,30 @@ export default function LandingPage() {
                         ))}
                     </div>
                     <p id="g-p">The Fastest Growing <span className="span-1">Video</span> Production Company</p>
-
-                </div>
-                <div className="another">
                     <div className="custom-shape-divider-top-1728323637">
                         <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
                             <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" className="shape-fill"></path>
                         </svg>
                     </div>
+                </div>
+                <div className="another">
+                    <div id="a-1">
+                        <div className="line">
+                            <span>Lets</span>
+                        </div>
+                        <div className="line">
+                            <span>Walk Through <b style={{ color: "#7800B0" }}>Our</b></span>
+                        </div>
+                        <div className="line">
+                            <span style={{ color: "#7800B0" }}>Process</span>
+                        </div>
+                    </div>
+                    <div id="another-svg">
+                        <svg viewBox="0 0 322 333" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M56.32 282.44C104.2 295.33 144.77 268.06 184.02 287.02C200.25 294.85 211.54 312.76 219.35 332.52H321.92C300.2 317.72 284.33 294.26 279.49 268.38C274.92 243.98 279.61 218.63 275.61 194.13C269.87 158.92 245.05 127.41 212.14 113.56C196.97 107.18 180.51 104.41 165.19 98.4C140.67 86.14 121.19 69.23 129.4 39C133.55 23.81 143.54 12.21 152.66 0H0.5V222.61C12.34 260.87 36.59 277.12 56.32 282.44Z" fill="#FFECEC" />
+                        </svg>
+                    </div>
+
                 </div>
                 <div className="another1">
 
